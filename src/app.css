@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+  --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+  color: #000000;
+  font-family: var(--font-sans);
+}
+
+/* =========================================================================
+   HEADING STYLES & AURORA SPHERE CMYK TEXT CLIP
+   Default: Solid Black (#000000) selalu tampak jelas & tegas saat idle
+   Aktif: Aurora CMYK hanya muncul saat kursor mouse melintasi teks heading
+   ========================================================================= */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: #000000;
+}
+
+/* Efek Aurora CMYK saat kursor melewati heading (Liquid Swirling Ink, Dynamic Top Layer) */
+.cmyk-aurora-active {
+  isolation: isolate;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  -webkit-text-stroke: 0 !important;
+  text-shadow: none !important;
+  outline: none !important;
+  background-image:
+    /* Cyan (C) Wave Sphere (Dynamic Depth & Alpha) */
+    radial-gradient(
+      circle calc((190px + var(--aurora-r-c, 0px) + var(--aurora-burst, 0px)) * var(--aurora-opacity, 1))
+      at calc(var(--aurora-x, 50%) + var(--aurora-c-x, 0px)) calc(var(--aurora-y, 50%) + var(--aurora-c-y, 0px)),
+      rgba(0, 240, 255, calc(var(--aurora-a-c, 0.9) * var(--aurora-opacity, 1))) 0%,
+      rgba(0, 240, 255, calc(var(--aurora-a-c, 0.9) * 0.75 * var(--aurora-opacity, 1))) 40%,
+      rgba(0, 240, 255, 0) 72%
+    ),
+    /* Magenta (M) Wave Sphere (Dynamic Depth & Alpha) */
+    radial-gradient(
+      circle calc((190px + var(--aurora-r-m, 0px) + var(--aurora-burst, 0px)) * var(--aurora-opacity, 1))
+      at calc(var(--aurora-x, 50%) + var(--aurora-m-x, 0px)) calc(var(--aurora-y, 50%) + var(--aurora-m-y, 0px)),
+      rgba(255, 0, 127, calc(var(--aurora-a-m, 0.9) * var(--aurora-opacity, 1))) 0%,
+      rgba(255, 0, 127, calc(var(--aurora-a-m, 0.9) * 0.75 * var(--aurora-opacity, 1))) 40%,
+      rgba(255, 0, 127, 0) 72%
+    ),
+    /* Yellow (Y) Wave Sphere (Dynamic Depth & Alpha) */
+    radial-gradient(
+      circle calc((180px + var(--aurora-r-y, 0px) + var(--aurora-burst, 0px)) * var(--aurora-opacity, 1))
+      at calc(var(--aurora-x, 50%) + var(--aurora-y-x, 0px)) calc(var(--aurora-y, 50%) + var(--aurora-y-y, 0px)),
+      rgba(255, 234, 0, calc(var(--aurora-a-y, 0.9) * var(--aurora-opacity, 1))) 0%,
+      rgba(255, 234, 0, calc(var(--aurora-a-y, 0.9) * 0.75 * var(--aurora-opacity, 1))) 40%,
+      rgba(255, 234, 0, 0) 72%
+    );
+  background-color: #000000;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent !important;
+}
+
+.cmyk-aurora-active a,
+.cmyk-aurora-active span {
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+}
+
+/* Inverted CMYK aurora untuk heading pada background gelap (Pure CMY, No White) */
+.bg-black .cmyk-aurora-active {
+  background-image:
+    radial-gradient(
+      circle calc(180px + var(--aurora-burst, 0px)) at calc(var(--aurora-x, 50%) + 25px) calc(var(--aurora-y, 50%) - 20px),
+      #00f0ff 0%,
+      rgba(0, 240, 255, 0.85) 35%,
+      rgba(0, 240, 255, 0) 70%
+    ),
+    radial-gradient(
+      circle calc(180px + var(--aurora-burst, 0px)) at calc(var(--aurora-x, 50%) - 25px) calc(var(--aurora-y, 50%) + 20px),
+      #ff007f 0%,
+      rgba(255, 0, 127, 0.85) 35%,
+      rgba(255, 0, 127, 0) 70%
+    ),
+    radial-gradient(
+      circle calc(170px + var(--aurora-burst, 0px)) at calc(var(--aurora-x, 50%) + 15px) calc(var(--aurora-y, 50%) + 25px),
+      #ffea00 0%,
+      rgba(255, 234, 0, 0.85) 35%,
+      rgba(255, 234, 0, 0) 70%
+    );
+  background-color: transparent;
+}

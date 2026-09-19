@@ -1,0 +1,210 @@
+<script lang="ts">
+  import { page } from '$app/state';
+  import type { PageData } from './$types';
+
+  let { data }: { data: PageData } = $props();
+
+  const products = $derived(data.products || []);
+
+  // Sync initial category from URL query param if present
+  let selectedCategory = $state('all');
+  let searchQuery = $state('');
+
+  $effect(() => {
+    const catParam = page.url.searchParams.get('cat');
+    if (catParam) {
+      selectedCategory = catParam.toLowerCase();
+    }
+  });
+
+  // Extract unique category options
+  const categoryTabs = [
+    { key: 'all', label: 'Semua' },
+    { key: 'indoor', label: 'Indoor Printing', match: ['indoor', 'eco-solvent', 'banner', 'sticker', 'display'] },
+    { key: 'outdoor', label: 'Outdoor Printing', match: ['outdoor', 'solvent', 'spanduk', 'baliho', 'billboard'] },
+    { key: 'sublimasi', label: 'Sublimasi', match: ['sublim', 'textile', 'fashion', 'kain'] },
+    { key: 'dtf', label: 'DTF', match: ['dtf', 'apparel', 'kaos', 'dtg'] },
+    { key: 'uv', label: 'UV Printing', match: ['uv', 'flatbed', 'rotary', 'cylinder', 'tumbler'] },
+    { key: 'laser', label: 'Laser Cutting', match: ['laser', 'co2', 'fiber', 'akrilik', 'mdf'] },
+    { key: 'cnc', label: 'CNC Router', match: ['cnc', 'router', 'plasma', 'kayu', 'acp'] },
+    { key: 'consumable', label: 'Consumable & Tinta', match: ['consumable', 'tinta', 'kertas'] }
+  ];
+
+  function matchesCategory(p: any, catKey: string): boolean {
+    if (catKey === 'all') return true;
+    const tab = categoryTabs.find(t => t.key === catKey);
+    const slug = (p.categorySlug || '').toLowerCase();
+    const name = (p.categoryName || '').toLowerCase();
+    const pName = (p.name || '').toLowerCase();
+
+    if (tab?.match) {
+      return tab.match.some(m => slug.includes(m) || name.includes(m) || pName.includes(m));
+    }
+    return slug.includes(catKey) || name.includes(catKey);
+  }
+
+  const filteredProducts = $derived(
+    products.filter(p => {
+      const matchCat = matchesCategory(p, selectedCategory);
+      const query = searchQuery.trim().toLowerCase();
+      const matchSearch = query === '' ||
+        p.name.toLowerCase().includes(query) ||
+        p.sku.toLowerCase().includes(query) ||
+        p.shortDescription.toLowerCase().includes(query) ||
+        p.categoryName.toLowerCase().includes(query);
+      return matchCat && matchSearch;
+    })
+  );
+</script>
+
+<svelte:head>
+  <title>Katalog Mesin Industri & Percetakan ORIA - Distributor Resmi</title>
+  <meta
+    name="description"
+    content="Katalog resmi mesin digital printing, DTG, UV flatbed, laser cutting, CNC router, dan consumable merk ORIA bergaransi resmi."
+  />
+</svelte:head>
+
+<div class="w-full bg-white text-black py-16 lg:py-24 px-6 lg:px-12">
+  <div class="max-w-6xl mx-auto space-y-12">
+    <!-- Header -->
+    <div class="space-y-4">
+      <div class="font-sans font-bold text-xs uppercase tracking-widest text-black">
+        Katalog Resmi ORIA
+      </div>
+      <h1 class="font-heading font-black text-4xl sm:text-5xl tracking-tighter text-black">
+        Mesin Percetakan & Manufaktur Industri
+      </h1>
+      <p class="font-sans text-base sm:text-lg text-black max-w-2xl leading-relaxed">
+        Jelajahi seluruh lini mesin ORIA berkinerja tinggi yang dirancang untuk stabilitas operasional, efisiensi konsumsi bahan, dan presisi produksi massal.
+      </p>
+    </div>
+
+    <!-- Filters & Search -->
+    <div class="space-y-6">
+      <!-- Search Input -->
+      <div class="max-w-md">
+        <label for="search" class="font-sans font-bold text-xs uppercase tracking-widest block mb-2 text-black">
+          Cari Tipe Mesin / SKU / Kategori
+        </label>
+        <div class="relative">
+          <input
+            id="search"
+            type="text"
+            bind:value={searchQuery}
+            placeholder="Ketik tipe mesin, misal: DTG, UV, Laser, CNC..."
+            class="w-full bg-white text-black text-sm p-3 pr-10 border-b-2 border-black focus:outline-none placeholder:text-black placeholder:opacity-40"
+          />
+          {#if searchQuery}
+            <button
+              type="button"
+              onclick={() => searchQuery = ''}
+              class="absolute right-2 top-3 text-xs font-bold uppercase text-black hover:opacity-60"
+            >
+              Hapus
+            </button>
+          {/if}
+        </div>
+      </div>
+
+      <!-- Categories Filter Tabs -->
+      <div class="flex flex-wrap gap-x-6 gap-y-3 pt-2 text-xs font-semibold uppercase tracking-wider border-b border-gray-200 pb-4">
+        {#each categoryTabs as tab}
+          <button
+            type="button"
+            onclick={() => selectedCategory = tab.key}
+            class="pb-1 transition-all {selectedCategory === tab.key ? 'text-black font-black border-b-2 border-black -mb-[17px]' : 'text-gray-500 hover:text-black'}"
+          >
+            {tab.label}
+          </button>
+        {/each}
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-4">
+      {#each filteredProducts as p (p.id)}
+        <div class="group flex flex-col bg-white border border-gray-200 hover:border-black transition-colors duration-200 overflow-hidden">
+          <!-- Product Image Container -->
+          <a
+            href="/produk/{p.slug}"
+            class="relative aspect-[4/3] bg-neutral-50 overflow-hidden flex items-center justify-center p-4 border-b border-gray-100"
+          >
+            <img
+              src={p.imageUrl}
+              alt={p.name}
+              class="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-300 ease-out"
+              loading="lazy"
+            />
+            <span class="absolute top-3 left-3 bg-black text-white text-[10px] font-mono tracking-widest px-2 py-0.5 uppercase">
+              {p.sku}
+            </span>
+          </a>
+
+          <!-- Product Details -->
+          <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+            <div class="space-y-2">
+              <div class="font-sans text-[11px] font-bold uppercase tracking-widest text-gray-500">
+                {p.categoryName}
+              </div>
+              <h2 class="font-heading font-bold text-lg text-black leading-snug group-hover:underline">
+                <a href="/produk/{p.slug}">
+                  {p.name}
+                </a>
+              </h2>
+              {#if p.shortDescription}
+                <p class="font-sans text-xs text-gray-700 line-clamp-2 leading-relaxed">
+                  {p.shortDescription}
+                </p>
+              {/if}
+            </div>
+
+            <div class="space-y-4 pt-2">
+              <div class="font-sans font-extrabold text-base text-black">
+                {p.priceText}
+              </div>
+
+              <!-- Action Links -->
+              <div class="flex items-center gap-3 pt-1">
+                <a
+                  href="/produk/{p.slug}"
+                  class="flex-1 text-center bg-black text-white py-2.5 text-xs font-semibold uppercase tracking-widest hover:opacity-85 transition-opacity"
+                >
+                  Detail Mesin
+                </a>
+                <a
+                  href="https://wa.me/6281252086455?text={encodeURIComponent(p.whatsappMessage)}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Konsultasi WhatsApp untuk {p.name}"
+                  class="border border-black p-2.5 hover:bg-black hover:text-white transition-colors flex items-center justify-center"
+                  title="WhatsApp"
+                >
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {/each}
+    </div>
+
+    <!-- Empty State -->
+    {#if filteredProducts.length === 0}
+      <div class="py-20 text-center space-y-4 border border-dashed border-gray-300 p-8">
+        <p class="font-sans text-base text-black font-medium">
+          Tidak ada mesin yang sesuai dengan pencarian atau filter yang dipilih.
+        </p>
+        <button
+          type="button"
+          onclick={() => { searchQuery = ''; selectedCategory = 'all'; }}
+          class="font-sans font-bold text-xs uppercase tracking-widest bg-black text-white px-5 py-2.5 hover:opacity-80 transition-opacity"
+        >
+          Reset Filter & Pencarian
+        </button>
+      </div>
+    {/if}
+  </div>
+</div>
