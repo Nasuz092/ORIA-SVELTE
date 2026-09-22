@@ -72,20 +72,25 @@
   <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full relative z-10">
     <div class="max-w-xl lg:max-w-xl xl:max-w-2xl flex flex-col items-center lg:items-start text-center lg:text-left mx-auto lg:mx-0 space-y-4 sm:space-y-6">
       
-      <!-- MAIN HEADLINE (ENLARGED & CENTERED ON MOBILE) -->
-      <h1 class="font-heading font-black text-4xl sm:text-6xl lg:text-6xl xl:text-7xl 2xl:text-[4.75rem] tracking-tight leading-[0.98] text-black uppercase">
-        {slides[current].headline}
-      </h1>
+      <!-- TEXT CONTENT: ANIMATES FROM BOTTOM TO TOP ON SLIDE CHANGE -->
+      {#key current}
+        <div class="slide-enter-up flex flex-col items-center lg:items-start text-center lg:text-left space-y-3 sm:space-y-4 lg:space-y-5 w-full">
+          <!-- MAIN HEADLINE -->
+          <h1 class="font-heading font-black text-4xl sm:text-6xl lg:text-6xl xl:text-7xl 2xl:text-[4.75rem] tracking-tight leading-[0.98] text-black uppercase">
+            {slides[current].headline}
+          </h1>
 
-      <!-- SUBHEADLINE -->
-      <h2 class="font-heading font-bold text-lg sm:text-2xl lg:text-2xl tracking-tight text-black leading-snug">
-        {slides[current].subheadline}
-      </h2>
+          <!-- SUBHEADLINE -->
+          <h2 class="font-heading font-bold text-lg sm:text-2xl lg:text-2xl tracking-tight text-black leading-snug">
+            {slides[current].subheadline}
+          </h2>
 
-      <!-- DESCRIPTION -->
-      <p class="font-sans text-sm sm:text-base text-black/80 leading-relaxed max-w-lg mx-auto lg:mx-0">
-        {slides[current].description}
-      </p>
+          <!-- DESCRIPTION -->
+          <p class="font-sans text-sm sm:text-base text-black/80 leading-relaxed max-w-lg mx-auto lg:mx-0">
+            {slides[current].description}
+          </p>
+        </div>
+      {/key}
 
       <!-- CTA BUTTONS: CENTERED ON MOBILE -->
       <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-1 sm:pt-2 w-full sm:w-auto">
@@ -188,5 +193,20 @@
 
   .slide-enter-right {
     animation: slideInFromRight 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes slideInFromBottom {
+    0% {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .slide-enter-up {
+    animation: slideInFromBottom 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 </style>
