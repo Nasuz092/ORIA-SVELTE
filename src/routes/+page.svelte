@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { PageData } from './$types';
   import Hero from '$lib/components/sections/Hero.svelte';
   import BrandManifesto from '$lib/components/sections/BrandManifesto.svelte';
   import BrandVision from '$lib/components/sections/BrandVision.svelte';
@@ -6,6 +7,8 @@
   import CategoryPreview from '$lib/components/sections/CategoryPreview.svelte';
   import EngineeringExcellence from '$lib/components/sections/EngineeringExcellence.svelte';
   import LatestArticles from '$lib/components/sections/LatestArticles.svelte';
+
+  let { data }: { data: PageData } = $props();
 </script>
 
 <svelte:head>
@@ -19,5 +22,5 @@
 <DualShowcase />
 <CategoryPreview />
 <EngineeringExcellence />
-<LatestArticles />
+<LatestArticles articles={data.articles} />
 

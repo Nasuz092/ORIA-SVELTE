@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { STRAPI_URL, getStrapiMediaUrl } from '$lib/api/products';
+  import type { FormattedArticle } from '$lib/types/article';
 
   interface ArticleCard {
     title: string;
@@ -10,7 +11,9 @@
     ctaText: string;
   }
 
-  let articles: ArticleCard[] = $state([
+  let { articles: initialArticles = [] }: { articles?: FormattedArticle[] } = $props();
+
+  const defaultArticles: ArticleCard[] = [
     {
       title: 'Panduan Cetak DTF pada Kulit Sintetis (PU/PVC)',
       desc: 'Setting temperatur heat press, pemilihan powder elastis anti-retak, dan perhitungan HPP produksi skala industri.',
@@ -32,9 +35,28 @@
       imageUrl: '/images/articles/photoprint_vs_onyx_vs_maintop_31ba2a848b.webp',
       ctaText: 'OPTIMASI RIP'
     }
-  ]);
+  ];
+
+  let clientArticles: ArticleCard[] = $state([]);
+
+  let articles: ArticleCard[] = $derived.by(() => {
+    if (initialArticles && initialArticles.length > 0) {
+      return initialArticles.map(a => ({
+        title: a.title,
+        desc: a.excerpt,
+        href: `/artikel/${a.slug}`,
+        imageUrl: a.imageUrl,
+        ctaText: a.ctaText
+      }));
+    }
+    if (clientArticles && clientArticles.length > 0) {
+      return clientArticles;
+    }
+    return defaultArticles;
+  });
 
   onMount(async () => {
+    if (initialArticles && initialArticles.length > 0) return;
     try {
       const res = await fetch(`${STRAPI_URL}/api/articles?populate=*&sort=createdAt:desc&pagination[pageSize]=3`);
       if (res.ok) {
@@ -42,15 +64,15 @@
         const items = json.data;
         if (items && items.length > 0) {
           const ctaLabels = ['BACA PANDUAN', 'EKSPLORASI TEKNIK', 'TIPS & WAWASAN'];
-          articles = items.map((a: any, idx: number) => {
+          clientArticles = items.map((a: any, idx: number) => {
             const rawImg = a.cover_image?.url || a.image?.url;
-            const imageUrl = rawImg ? getStrapiMediaUrl(rawImg) : articles[idx % articles.length].imageUrl;
+            const imageUrl = rawImg ? getStrapiMediaUrl(rawImg) : defaultArticles[idx % defaultArticles.length].imageUrl;
             return {
               title: a.title,
               desc: a.excerpt || a.seo_description || 'Pelajari wawasan teknis dan panduan operasional terkini dari tim ahli mesin industri ORIA.',
               href: `/artikel/${a.slug}`,
               imageUrl,
-              ctaText: ctaLabels[idx % ctaLabels.length]
+              ctaText: a.category ? `BACA ${a.category.toUpperCase()}` : ctaLabels[idx % ctaLabels.length]
             };
           });
         }
