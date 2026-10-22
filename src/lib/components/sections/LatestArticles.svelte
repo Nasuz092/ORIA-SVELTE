@@ -1,57 +1,124 @@
 <script lang="ts">
-  const articles = [
+  import { onMount } from 'svelte';
+  import { STRAPI_URL, getStrapiMediaUrl } from '$lib/api/products';
+
+  interface ArticleCard {
+    title: string;
+    desc: string;
+    href: string;
+    imageUrl: string;
+    ctaText: string;
+  }
+
+  let articles: ArticleCard[] = $state([
     {
-      date: '18 September 2026',
-      title: 'Panduan Memilih Mesin DTG vs DTF untuk Bisnis Konveksi Modern',
-      desc: 'Analisis perbandingan biaya modal, biaya tinta per meter, kecepatan cetak, dan karakteristik hasil sablon.',
-      href: '/artikel'
+      title: 'Panduan Cetak DTF pada Kulit Sintetis (PU/PVC)',
+      desc: 'Setting temperatur heat press, pemilihan powder elastis anti-retak, dan perhitungan HPP produksi skala industri.',
+      href: '/artikel/panduan-cetak-dtf-kulit-sintetis-pu-pvc-oscar-setting-suhu-hpp',
+      imageUrl: '/images/articles/cetak_dtf_kulit_sintetis_5460c8fd7c.webp',
+      ctaText: 'PANDUAN DTF'
     },
     {
-      date: '14 September 2026',
-      title: 'Perawatan Harian Printhead Epson i3200 Agar Tetap Bebas Clogging',
-      desc: 'Prosedur pembersihan capping station, wiper blade, dan penggunaan cairan flushing yang tepat sesuai standar pabrikan.',
-      href: '/artikel'
+      title: 'Panduan Cetak UV 3D Emboss & Braille Signage',
+      desc: 'Cara setting layering varnish, height sensor presisi tinggi, dan analisa margin keuntungan tinggi untuk produk custom signage.',
+      href: '/artikel/panduan-cetak-uv-3d-emboss-braille-signage-layering-varnish-height-sensor-hpp',
+      imageUrl: '/images/articles/panduan_cetak_uv_3d_emboss_dan_braile_signage_60c1e562ff.webp',
+      ctaText: 'TEKNOLOGI UV'
     },
     {
-      date: '10 September 2026',
-      title: 'Peluang Pasar Cetak UV Flatbed untuk Produk Souvenir & Tumbler Custom',
-      desc: 'Bagaimana memanfaatkan mesin cetak rotary untuk meraup margin profit tinggi di industri merchandise promosi.',
-      href: '/artikel'
+      title: 'Perbandingan RIP Software Photoprint, Onyx & MainTop',
+      desc: 'Optimasi profil warna tinta ICC profile untuk efisiensi biaya produksi (HPP) hingga 25% tanpa menurunkan ketajaman warna.',
+      href: '/artikel/perbandingan-rip-software-photoprint-onyx-maintop-efisiensi-hpp',
+      imageUrl: '/images/articles/photoprint_vs_onyx_vs_maintop_31ba2a848b.webp',
+      ctaText: 'OPTIMASI RIP'
     }
-  ];
+  ]);
+
+  onMount(async () => {
+    try {
+      const res = await fetch(`${STRAPI_URL}/api/articles?populate=*&sort=createdAt:desc&pagination[pageSize]=3`);
+      if (res.ok) {
+        const json = await res.json();
+        const items = json.data;
+        if (items && items.length > 0) {
+          const ctaLabels = ['BACA PANDUAN', 'EKSPLORASI TEKNIK', 'TIPS & WAWASAN'];
+          articles = items.map((a: any, idx: number) => {
+            const rawImg = a.cover_image?.url || a.image?.url;
+            const imageUrl = rawImg ? getStrapiMediaUrl(rawImg) : articles[idx % articles.length].imageUrl;
+            return {
+              title: a.title,
+              desc: a.excerpt || a.seo_description || 'Pelajari wawasan teknis dan panduan operasional terkini dari tim ahli mesin industri ORIA.',
+              href: `/artikel/${a.slug}`,
+              imageUrl,
+              ctaText: ctaLabels[idx % ctaLabels.length]
+            };
+          });
+        }
+      }
+    } catch (e) {
+      // Keep curated defaults
+    }
+  });
 </script>
 
-<section class="w-full bg-white text-black py-20 px-6 sm:px-8 border-t border-black/5">
-  <div class="w-full space-y-12">
-    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-      <div class="space-y-2">
-        <div class="font-sans font-bold text-xs uppercase tracking-widest text-black">
-          Wawasan Industri
-        </div>
-        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl tracking-tight text-black">
-          Artikel & Panduan Teknis
-        </h2>
-      </div>
-      <a href="/artikel" class="font-sans font-semibold text-xs uppercase tracking-widest hover:underline flex items-center gap-1">
-        Baca Semua Artikel
-        <svg class="w-4 h-4 stroke-black" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-        </svg>
-      </a>
+<section class="w-full bg-black text-white pt-14 pb-20 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-28 border-t border-neutral-900 select-none">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+    <!-- Header Title (Lotus Style: MORE LOTUS -> MORE ORIA) -->
+    <div class="mb-8 sm:mb-10 lg:mb-12">
+      <h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl uppercase tracking-[0.22em] text-white">
+        MORE ORIA
+      </h2>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+    <!-- 3-Column Lotus Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 lg:gap-12">
       {#each articles as a}
-        <article class="space-y-3">
-          <div class="font-sans text-xs font-semibold text-black uppercase tracking-wider">
-            {a.date}
+        <article class="group flex flex-col justify-between">
+          <div>
+            <!-- Media Box -->
+            <a
+              href={a.href}
+              class="block aspect-[16/10] w-full overflow-hidden bg-neutral-900 border border-neutral-800 transition-colors duration-300 group-hover:border-neutral-600"
+            >
+              <img
+                src={a.imageUrl}
+                alt={a.title}
+                class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                loading="lazy"
+              />
+            </a>
+
+            <!-- Text Content -->
+            <div class="pt-6 space-y-3">
+              <h3 class="font-heading font-bold text-lg sm:text-xl lg:text-2xl text-white group-hover:underline leading-snug line-clamp-2">
+                <a href={a.href}>
+                  {a.title}
+                </a>
+              </h3>
+              <p class="font-sans text-sm sm:text-base text-neutral-400 font-normal leading-relaxed line-clamp-3">
+                {a.desc}
+              </p>
+            </div>
           </div>
-          <h3 class="font-heading font-bold text-lg text-black leading-snug">
-            <a href={a.href} class="hover:underline">{a.title}</a>
-          </h3>
-          <p class="font-sans text-sm text-black leading-relaxed">
-            {a.desc}
-          </p>
+
+          <!-- CTA Link (STRICT RULE: Only Chevron, Never Arrows) -->
+          <div class="pt-5 sm:pt-6">
+            <a
+              href={a.href}
+              class="inline-flex items-center gap-2 font-sans font-bold text-xs sm:text-sm uppercase tracking-[0.22em] text-white hover:text-[#FFE500] transition-colors group/cta"
+            >
+              <span>{a.ctaText}</span>
+              <svg
+                class="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-current transition-transform duration-300 group-hover/cta:translate-x-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2.5"
+                aria-hidden="true"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
         </article>
       {/each}
     </div>

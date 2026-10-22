@@ -5,9 +5,7 @@
   import DualShowcase from '$lib/components/sections/DualShowcase.svelte';
   import CategoryPreview from '$lib/components/sections/CategoryPreview.svelte';
   import EngineeringExcellence from '$lib/components/sections/EngineeringExcellence.svelte';
-  import FeaturedProducts from '$lib/components/sections/FeaturedProducts.svelte';
   import LatestArticles from '$lib/components/sections/LatestArticles.svelte';
-  import CtaSection from '$lib/components/sections/CtaSection.svelte';
 </script>
 
 <svelte:head>
@@ -21,7 +19,5 @@
 <DualShowcase />
 <CategoryPreview />
 <EngineeringExcellence />
-<FeaturedProducts />
 <LatestArticles />
-<CtaSection />
 

@@ -26,8 +26,8 @@
     {
       id: 'laser',
       title: 'Laser Cutting',
-      tagline: 'ORIA LASER CUTTING 1490',
-      desc: 'Potong dan grafir akrilik, kayu, MDF, dan ACP dengan presisi optik industri.',
+      tagline: 'ORIA LASER CUTTING 6040',
+      desc: 'Potong dan grafir akrilik, kayu, MDF, dan souvenir dengan presisi tabung CO2 stabil.',
       href: '/produk?cat=laser',
       image: '/images/categories/laser.webp',
       imgClass: 'max-h-[170px] sm:max-h-[215px] md:max-h-[250px] lg:max-h-[270px] max-w-[85%]',
@@ -56,8 +56,8 @@
     {
       id: 'indoor',
       title: 'Indoor Printing',
-      tagline: 'ORIA INDOOR 1801',
-      desc: 'Hasil cetak foto, poster, sticker, dan POSM display beresolusi tajam.',
+      tagline: 'ORIA INDOOR 3202',
+      desc: 'Hasil cetak foto, poster, sticker, dan POSM display beresolusi tajam hingga lebar 3,2 meter.',
       href: '/produk?cat=indoor',
       image: '/images/categories/indoor.webp',
       imgClass: 'max-h-[170px] sm:max-h-[215px] md:max-h-[250px] lg:max-h-[270px] max-w-[95%]',
