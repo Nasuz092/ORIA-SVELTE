@@ -31,8 +31,8 @@
   <meta property="og:image" content={product.imageUrl} />
 </svelte:head>
 
-<div class="w-full bg-white text-black py-10 lg:py-16 px-6 lg:px-12">
-  <div class="max-w-6xl mx-auto space-y-12">
+<div class="w-full bg-white text-black py-10 lg:py-16 px-6 sm:px-8">
+  <div class="w-full space-y-12">
     <!-- Breadcrumbs -->
     <nav class="flex items-center gap-2 text-xs font-sans text-gray-500 uppercase tracking-wider" aria-label="Breadcrumb">
       <a href="/" class="hover:text-black transition-colors">Beranda</a>

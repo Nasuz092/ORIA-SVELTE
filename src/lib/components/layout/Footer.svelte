@@ -1,8 +1,8 @@
 <script lang="ts">
 </script>
 
-<footer class="w-full bg-white text-black py-20 px-6 lg:px-12">
-  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 text-sm leading-relaxed">
+<footer class="w-full bg-white text-black py-16 sm:py-20 px-6 sm:px-8 border-t border-black/5">
+  <div class="w-full grid grid-cols-1 md:grid-cols-4 gap-12 text-sm leading-relaxed">
     <!-- Brand & About -->
     <div class="space-y-4">
       <div class="font-heading font-black text-3xl tracking-tighter text-black">
@@ -33,10 +33,13 @@
         Kategori Mesin
       </div>
       <ul class="space-y-2 font-sans">
-        <li><a href="/produk?cat=dtg" class="hover:underline">Digital Textile & DTG</a></li>
-        <li><a href="/produk?cat=uv" class="hover:underline">UV Flatbed & Rotary</a></li>
         <li><a href="/produk?cat=laser" class="hover:underline">Laser Cutting & Marking</a></li>
+        <li><a href="/produk?cat=indoor" class="hover:underline">Indoor Printing</a></li>
+        <li><a href="/produk?cat=uv" class="hover:underline">UV Flatbed & Rotary</a></li>
+        <li><a href="/produk?cat=sublimasi" class="hover:underline">Textile & Sublimasi</a></li>
         <li><a href="/produk?cat=cnc" class="hover:underline">CNC Router & Plasma</a></li>
+        <li><a href="/produk?cat=dtf" class="hover:underline">Digital Apparel & DTF</a></li>
+        <li><a href="/produk?cat=outdoor" class="hover:underline">Outdoor Printing</a></li>
         <li><a href="/produk?cat=consumable" class="hover:underline">Tinta & Consumable</a></li>
       </ul>
     </div>
@@ -58,7 +61,7 @@
     </div>
   </div>
 
-  <div class="max-w-7xl mx-auto pt-16 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-sans text-black">
+  <div class="w-full pt-16 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-sans text-black">
     <div>
       © 2026 ORIA. Seluruh Hak Cipta Dilindungi.
     </div>

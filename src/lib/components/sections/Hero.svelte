@@ -1,212 +1,181 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount, onDestroy } from 'svelte';
+  import Siema from 'siema';
 
   const slides = [
     {
-      headline: 'PRINTING BEYOND LIMITS',
-      subheadline: 'Solusi Mesin Digital Printing Masa Depan',
-      description: 'Dari Indoor Hingga Outdoor, ORIA Hadir untuk Mendukung Pertumbuhan Bisnis Anda.',
-      image: '/images/hero/slide-1.webp',
-      alt: 'Mesin Digital Printing Outdoor ORIA',
-      // Pengaturan slide 1:
-      // - Diperbesar sedikit: `lg:w-[80vw]`
-      // - Offset 2/3 kanan keluar frame: `lg:translate-x-[66%]`
-      containerClass: 'lg:w-[80vw] lg:min-w-[1250px] xl:min-w-[1600px] 2xl:min-w-[1900px] lg:translate-x-[66%]',
-      imageClass: 'max-h-[70vh] lg:max-h-[80vh] xl:max-h-[85vh]'
+      id: 'outdoor',
+      line1: 'ORIA',
+      line2: 'OUTDOOR 3204',
+      desc1: 'Standar Baru Digital Printing Outdoor Skala Industri.',
+      desc2: 'Kecepatan Cetak Tinggi, Presisi, dan Tahan Cuaca Ekstrem.',
+      ctaText: 'DISCOVER',
+      ctaHref: '/produk?cat=outdoor',
+      desktopImage: '/images/hero/outdoor-oria-desktop.png',
+      mobileImage: '/images/hero/outdoor-oria-mobile.png',
+      alt: 'Mesin Digital Printing Outdoor ORIA 3204'
     },
     {
-      headline: 'PRECISION IN EVERY ROTATION',
-      subheadline: 'Cetak Rotary Lebih Presisi, Tanpa Batas Kreasi',
-      description: 'Hadirkan hasil cetak berkualitas tinggi pada tumbler dan berbagai produk silinder dengan teknologi UV Rotary ORIA.',
-      image: '/images/hero/slide-2.webp',
-      alt: 'Mesin UV Rotary ORIA',
-      // Pengaturan slide 2:
-      containerClass: 'lg:w-[52vw] lg:min-w-[900px] xl:min-w-[1150px] 2xl:min-w-[1350px] lg:translate-x-[35%]',
-      imageClass: 'max-h-[62vh] lg:max-h-[72vh] xl:max-h-[78vh]'
-    },
-    {
-      headline: 'COLOR THAT DRIVES BUSINESS',
-      subheadline: 'Warna Lebih Hidup, Produksi Lebih Maksimal',
-      description: 'Teknologi sublimasi ORIA menghadirkan warna tajam dan konsisten untuk kebutuhan produksi tekstil dan produk custom.',
-      image: '/images/hero/slide-3.webp',
-      alt: 'Mesin Textile Printing Sublimasi ORIA',
-      // Pengaturan slide 3:
-      containerClass: 'lg:w-[58vw] lg:min-w-[1000px] xl:min-w-[1250px] 2xl:min-w-[1450px] lg:translate-x-[44%]',
-      imageClass: 'max-h-[64vh] lg:max-h-[74vh] xl:max-h-[80vh]'
+      id: 'sublimasi',
+      line1: 'ORIA',
+      line2: 'SUBLIMASI 1902',
+      desc1: 'Inovasi Percetakan Tekstil & Apparel Masa Depan.',
+      desc2: 'Gradasi Warna Tajam, Efisiensi Tinta, dan Konsistensi Produksi Massal.',
+      ctaText: 'DISCOVER',
+      ctaHref: '/produk?cat=sublimasi',
+      desktopImage: '/images/hero/sublim-oria-desktop.png',
+      mobileImage: '/images/hero/sublim-oria-mobile.png',
+      alt: 'Mesin Textile Printing Sublimasi ORIA 1902'
     }
   ];
 
+  // Pool slide yang cukup (minimal 8 items) agar Siema dapat melakukan infinite loop mulus dua arah
+  const carouselSlides = $derived.by(() => {
+    let list = [...slides];
+    while (list.length < 8) {
+      list = [...list, ...slides];
+    }
+    return list;
+  });
+
+  let siemaEl: HTMLDivElement | null = $state(null);
+  let controller: Siema | null = null;
   let current = $state(0);
   let isHovered = $state(false);
+  let autoplayTimer: ReturnType<typeof setInterval> | null = null;
 
-  function nextSlide() {
-    current = (current + 1) % slides.length;
+  function updateCurrent() {
+    if (!controller) return;
+    const raw = controller.currentSlide;
+    const n = slides.length;
+    current = ((raw % n) + n) % n;
   }
 
-  function prevSlide() {
-    current = (current - 1 + slides.length) % slides.length;
+  function startAutoplay() {
+    stopAutoplay();
+    autoplayTimer = setInterval(() => {
+      if (!isHovered && controller) {
+        controller.next();
+      }
+    }, 6500);
   }
 
-  function goToSlide(index: number) {
-    current = index;
+  function stopAutoplay() {
+    if (autoplayTimer) {
+      clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  }
+
+  function goToSlide(targetIndex: number) {
+    if (!controller) return;
+    const raw = controller.currentSlide;
+    const n = slides.length;
+    const currentNormalized = ((raw % n) + n) % n;
+    let diff = targetIndex - currentNormalized;
+    if (diff > n / 2) diff -= n;
+    if (diff < -n / 2) diff += n;
+    controller.goTo(raw + diff);
   }
 
   onMount(() => {
-    const timer = setInterval(() => {
-      if (!isHovered) {
-        nextSlide();
+    if (!siemaEl) return;
+    controller = new Siema({
+      selector: siemaEl,
+      perPage: 1,
+      loop: true,
+      duration: 650,
+      easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+      draggable: true,
+      multipleDrag: false,
+      threshold: 20,
+      onChange: () => {
+        updateCurrent();
       }
-    }, 6500);
+    });
 
-    return () => clearInterval(timer);
+    startAutoplay();
+  });
+
+  onDestroy(() => {
+    stopAutoplay();
+    controller?.destroy(true);
   });
 </script>
 
+<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 <section
-  class="relative w-full bg-white text-black overflow-hidden h-[100svh] min-h-[100svh] flex flex-col justify-center pt-16 pb-6 lg:py-0"
+  class="relative w-full h-[100svh] min-h-[580px] bg-black text-white overflow-hidden select-none"
   onmouseenter={() => (isHovered = true)}
   onmouseleave={() => (isHovered = false)}
   aria-roledescription="carousel"
-  aria-label="Hero Slider Mesin ORIA"
+  aria-label="Hero Slider ORIA"
 >
-  <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full relative z-10">
-    <div class="max-w-xl lg:max-w-xl xl:max-w-2xl flex flex-col items-center lg:items-start text-center lg:text-left mx-auto lg:mx-0 space-y-4 sm:space-y-6">
-      
-      <!-- TEXT CONTENT: ANIMATES FROM BOTTOM TO TOP ON SLIDE CHANGE -->
-      {#key current}
-        <div class="slide-enter-up flex flex-col items-center lg:items-start text-center lg:text-left space-y-3 sm:space-y-4 lg:space-y-5 w-full">
-          <!-- MAIN HEADLINE -->
-          <h1 class="font-heading font-black text-4xl sm:text-6xl lg:text-6xl xl:text-7xl 2xl:text-[4.75rem] tracking-tight leading-[0.98] text-black uppercase">
-            {slides[current].headline}
-          </h1>
+  <!-- Siema Carousel Sliding Track: Infinite loop dengan drag & swipe bawaan Siema -->
+  <div bind:this={siemaEl} class="w-full h-full">
+    {#each carouselSlides as slide, i (`${slide.id}-${i}`)}
+      <div class="relative w-full h-[100svh] min-h-[580px] overflow-hidden select-none">
+        <!-- Background Responsive Picture (draggable false agar tidak memicu drag-and-drop native gambar) -->
+        <picture class="w-full h-full block pointer-events-none select-none">
+          <source media="(max-width: 767px)" srcset={slide.mobileImage} />
+          <img
+            src={slide.desktopImage}
+            alt={slide.alt}
+            draggable="false"
+            class="w-full h-full object-cover object-center pointer-events-none select-none"
+            loading={i < 2 ? 'eager' : 'lazy'}
+          />
+        </picture>
 
-          <!-- SUBHEADLINE -->
-          <h2 class="font-heading font-bold text-lg sm:text-2xl lg:text-2xl tracking-tight text-black leading-snug">
-            {slides[current].subheadline}
-          </h2>
+        <!-- Layer Gradient Hitam ke Transparan (Dari kiri hitam ke kanan transparan) -->
+        <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-transparent pointer-events-none z-10"></div>
 
-          <!-- DESCRIPTION -->
-          <p class="font-sans text-sm sm:text-base text-black/80 leading-relaxed max-w-lg mx-auto lg:mx-0">
-            {slides[current].description}
-          </p>
-        </div>
-      {/key}
+        <!-- Content Overlay: Menempel langsung di dalam slide, ikut meluncur bersama gambar -->
+        <div class="absolute bottom-14 sm:bottom-16 lg:bottom-20 left-6 sm:left-12 lg:left-16 z-20 max-w-lg pointer-events-auto">
+          <div class="space-y-3 sm:space-y-4">
+            <!-- Headline: Ukuran font proporsional dengan shadow -->
+            <div class="font-heading font-black text-xl sm:text-2xl md:text-3xl lg:text-[2.25rem] tracking-[0.18em] sm:tracking-[0.22em] leading-tight text-[#FFE500] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+              <div>{slide.line1}</div>
+              <div class="mt-0.5 sm:mt-1">{slide.line2}</div>
+            </div>
 
-      <!-- CTA BUTTONS: CENTERED ON MOBILE -->
-      <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-1 sm:pt-2 w-full sm:w-auto">
-        <a
-          href="/produk"
-          class="w-full sm:w-auto text-center bg-black text-white px-8 py-3.5 text-xs font-semibold uppercase tracking-widest hover:bg-black/85 transition-colors whitespace-nowrap"
-        >
-          Jelajahi Mesin
-        </a>
-        <a
-          href="/kontak"
-          class="w-full sm:w-auto text-center text-black px-4 py-3.5 text-xs font-semibold uppercase tracking-widest hover:underline flex items-center justify-center lg:justify-start gap-2 whitespace-nowrap"
-        >
-          Konsultasi Teknis
-          <svg class="w-4 h-4 stroke-black" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
-      </div>
+            <!-- Description: 2 lines in crisp white -->
+            <div class="font-sans text-xs sm:text-sm text-white/95 leading-relaxed max-w-md font-medium drop-shadow-[0_1px_6px_rgba(0,0,0,0.95)]">
+              <p>{slide.desc1}</p>
+              <p>{slide.desc2}</p>
+            </div>
 
-      <!-- SLIDER CONTROLS: CHEVRONS & BAR INDICATORS (CENTERED ON MOBILE) -->
-      <div class="flex items-center justify-center lg:justify-start gap-6 pt-2">
-        <!-- Prev / Next Chevrons -->
-        <div class="flex items-center gap-2">
-          <button
-            type="button"
-            onclick={prevSlide}
-            class="w-9 h-9 flex items-center justify-center rounded-full text-black hover:bg-black/5 active:bg-black/10 transition-colors cursor-pointer focus:outline-none"
-            aria-label="Slide Sebelumnya"
-          >
-            <svg class="w-5 h-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="15 18 9 12 15 6" />
-            </svg>
-          </button>
-          <button
-            type="button"
-            onclick={nextSlide}
-            class="w-9 h-9 flex items-center justify-center rounded-full text-black hover:bg-black/5 active:bg-black/10 transition-colors cursor-pointer focus:outline-none"
-            aria-label="Slide Selanjutnya"
-          >
-            <svg class="w-5 h-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6" />
-            </svg>
-          </button>
-        </div>
-
-        <!-- Slide Bar Indicators -->
-        <div class="flex items-center gap-2">
-          {#each slides as _, i}
-            <button
-              type="button"
-              onclick={() => goToSlide(i)}
-              class="py-2.5 px-0.5 focus:outline-none cursor-pointer group"
-              aria-label="Menuju Slide {i + 1}"
-            >
-              <span
-                class="block h-1 rounded-full transition-all duration-300 {current === i ? 'w-10 bg-black' : 'w-5 bg-black/25 group-hover:bg-black/60'}"
-              ></span>
-            </button>
-          {/each}
+            <!-- CTA Button (Yellow solid rectangle, Chevron rule respected) -->
+            <div class="pt-1.5 sm:pt-2">
+              <a
+                href={slide.ctaHref}
+                class="inline-flex items-center gap-2 bg-[#FFE500] hover:bg-[#ffe500]/90 text-black font-heading font-black text-[11px] sm:text-xs uppercase tracking-widest px-6 sm:px-8 py-2.5 sm:py-3 transition-all shadow-xl cursor-pointer"
+              >
+                <span>{slide.ctaText}</span>
+                <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    {/each}
   </div>
 
-  <!-- MACHINE IMAGE:
-       MOBILE: HIDDEN for now as requested
-       DESKTOP (lg:): Positioned absolute on the right edge with smooth right-to-left entrance
-  -->
-  <div
-    class="hidden lg:flex pointer-events-none select-none z-0
-      lg:mt-0 lg:px-0 lg:flex-initial lg:justify-end lg:absolute lg:top-1/2 lg:-translate-y-1/2 lg:right-0
-      {slides[current].containerClass}"
-  >
-    {#key current}
-      <div class="slide-enter-right w-full flex justify-center items-center lg:justify-end">
-        <img
-          src={slides[current].image}
-          alt={slides[current].alt}
-          class="w-full max-w-full h-auto object-contain
-            lg:max-h-none lg:w-full lg:h-auto drop-shadow-none {slides[current].imageClass}"
-          loading="eager"
-        />
-      </div>
-    {/key}
+  <!-- Slide Indicators (Hanya bar/dot di tengah bawah tanpa tombol navigasi) -->
+  <div class="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2.5 pointer-events-auto">
+    {#each slides as _, i}
+      <button
+        type="button"
+        onclick={() => goToSlide(i)}
+        class="py-2 px-1 focus:outline-none cursor-pointer group"
+        aria-label="Menuju Slide {i + 1}"
+      >
+        <span
+          class="block h-1.5 rounded-full transition-all duration-300 drop-shadow-md {current === i ? 'w-7 bg-[#FFE500]' : 'w-2 bg-white/70 group-hover:bg-white'}"
+        ></span>
+      </button>
+    {/each}
   </div>
 </section>
-
-<style>
-  @keyframes slideInFromRight {
-    0% {
-      opacity: 0;
-      transform: translateX(120px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  .slide-enter-right {
-    animation: slideInFromRight 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-
-  @keyframes slideInFromBottom {
-    0% {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .slide-enter-up {
-    animation: slideInFromBottom 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-</style>

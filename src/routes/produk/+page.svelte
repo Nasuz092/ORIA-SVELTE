@@ -17,26 +17,51 @@
     }
   });
 
-  // Extract unique category options
+  // Extract unique category options ordered by machine count in database
   const categoryTabs = [
     { key: 'all', label: 'Semua' },
-    { key: 'indoor', label: 'Indoor Printing', match: ['indoor', 'eco-solvent', 'banner', 'sticker', 'display'] },
-    { key: 'outdoor', label: 'Outdoor Printing', match: ['outdoor', 'solvent', 'spanduk', 'baliho', 'billboard'] },
-    { key: 'sublimasi', label: 'Sublimasi', match: ['sublim', 'textile', 'fashion', 'kain'] },
-    { key: 'dtf', label: 'DTF', match: ['dtf', 'apparel', 'kaos', 'dtg'] },
-    { key: 'uv', label: 'UV Printing', match: ['uv', 'flatbed', 'rotary', 'cylinder', 'tumbler'] },
     { key: 'laser', label: 'Laser Cutting', match: ['laser', 'co2', 'fiber', 'akrilik', 'mdf'] },
+    { key: 'indoor', label: 'Indoor Printing', match: ['indoor', 'eco-solvent', 'ecosolvent', 'banner', 'sticker', 'display'] },
+    { key: 'uv', label: 'UV Printing', match: ['uv', 'flatbed', 'rotary', 'cylinder', 'tumbler'] },
+    { key: 'sublimasi', label: 'Sublimasi', match: ['sublim', 'textile', 'fashion', 'kain'] },
     { key: 'cnc', label: 'CNC Router', match: ['cnc', 'router', 'plasma', 'kayu', 'acp'] },
+    { key: 'dtf', label: 'DTF', match: ['dtf', 'apparel', 'kaos', 'dtg'] },
+    { key: 'outdoor', label: 'Outdoor Printing', match: ['outdoor', 'solvent', 'spanduk', 'baliho', 'billboard'] },
     { key: 'consumable', label: 'Consumable & Tinta', match: ['consumable', 'tinta', 'kertas'] }
   ];
 
   function matchesCategory(p: any, catKey: string): boolean {
     if (catKey === 'all') return true;
-    const tab = categoryTabs.find(t => t.key === catKey);
     const slug = (p.categorySlug || '').toLowerCase();
     const name = (p.categoryName || '').toLowerCase();
     const pName = (p.name || '').toLowerCase();
 
+    if (catKey === 'laser') {
+      return pName.includes('laser');
+    }
+    if (catKey === 'cnc') {
+      return (pName.includes('cnc') || pName.includes('router') || pName.includes('plasma')) && !pName.includes('laser');
+    }
+    if (catKey === 'indoor') {
+      return slug.includes('indoor') || (pName.includes('indoor') && !pName.includes('outdoor')) || pName.includes('ecosolvent');
+    }
+    if (catKey === 'outdoor') {
+      return (slug.includes('outdoor') || pName.includes('outdoor')) && !pName.includes('indoor') && !slug.includes('consumable');
+    }
+    if (catKey === 'uv') {
+      return slug.includes('uv') || pName.includes('uv');
+    }
+    if (catKey === 'sublimasi') {
+      return slug.includes('sublim') || (pName.includes('sublim') && !slug.includes('consumable'));
+    }
+    if (catKey === 'dtf') {
+      return slug.includes('dtf') || slug.includes('dtg') || pName.includes('dtf') || pName.includes('dtg');
+    }
+    if (catKey === 'consumable') {
+      return slug.includes('consumable') || pName.includes('tinta') || pName.includes('kertas');
+    }
+
+    const tab = categoryTabs.find(t => t.key === catKey);
     if (tab?.match) {
       return tab.match.some(m => slug.includes(m) || name.includes(m) || pName.includes(m));
     }
@@ -65,8 +90,8 @@
   />
 </svelte:head>
 
-<div class="w-full bg-white text-black py-16 lg:py-24 px-6 lg:px-12">
-  <div class="max-w-6xl mx-auto space-y-12">
+<div class="w-full bg-white text-black py-16 lg:py-24 px-6 sm:px-8">
+  <div class="w-full space-y-12">
     <!-- Header -->
     <div class="space-y-4">
       <div class="font-sans font-bold text-xs uppercase tracking-widest text-black">

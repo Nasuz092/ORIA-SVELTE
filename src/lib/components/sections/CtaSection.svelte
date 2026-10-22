@@ -1,8 +1,8 @@
 <script lang="ts">
 </script>
 
-<section class="w-full bg-white text-black py-20 lg:py-28 px-6 lg:px-12">
-  <div class="max-w-5xl mx-auto space-y-6">
+<section class="w-full bg-white text-black py-20 lg:py-28 px-6 sm:px-8 border-t border-black/5">
+  <div class="w-full space-y-6">
     <div class="font-sans font-bold text-xs uppercase tracking-widest text-black">
       Konsultasi Gratis
     </div>

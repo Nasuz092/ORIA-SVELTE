@@ -22,8 +22,8 @@
   <meta name="description" content="Hubungi tim penjualan dan teknis ORIA untuk konsultasi mesin, penawaran harga, dan jadwal demo showroom." />
 </svelte:head>
 
-<div class="w-full bg-white text-black py-16 lg:py-24 px-6 lg:px-12">
-  <div class="max-w-5xl mx-auto space-y-16">
+<div class="w-full bg-white text-black py-16 lg:py-24 px-6 sm:px-8">
+  <div class="w-full space-y-16">
     <!-- Header -->
     <div class="space-y-4">
       <div class="font-sans font-bold text-xs uppercase tracking-widest text-black">

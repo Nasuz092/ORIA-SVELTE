@@ -1,127 +1,256 @@
 <script lang="ts">
-  let scrollContainer: HTMLElement | null = $state(null);
+  import { onMount, onDestroy } from 'svelte';
+  import Siema from 'siema';
 
   const categories = [
-    { title: 'Indoor Printing', desc: 'Sticker, Banner, Display', href: '/produk?cat=indoor', code: '01' },
-    { title: 'Outdoor Printing', desc: 'Spanduk, Baliho, Billboard', href: '/produk?cat=outdoor', code: '02' },
-    { title: 'Sublimasi', desc: 'Textile & Fashion', href: '/produk?cat=sublimasi', code: '03' },
-    { title: 'DTF', desc: 'Custom Apparel', href: '/produk?cat=dtf', code: '04' },
-    { title: 'UV Printing', desc: 'Flatbed & Cylinder', href: '/produk?cat=uv', code: '05' },
-    { title: 'Laser Cutting', desc: 'Akrilik, Kayu, MDF, ACP', href: '/produk?cat=laser', code: '06' },
-    { title: 'CNC Router', desc: 'Fabrikasi & Woodworking', href: '/produk?cat=cnc', code: '07' }
+    {
+      id: 'uv',
+      title: 'UV Printing',
+      tagline: 'ORIA UV FLATBED 4062 PRO',
+      desc: 'Presisi cetak tinggi untuk media datar akrilik, kayu, kaca, dan merchandise.',
+      href: '/produk?cat=uv',
+      image: '/images/categories/uv.webp',
+      imgClass: 'max-h-[175px] sm:max-h-[220px] md:max-h-[255px] lg:max-h-[275px] max-w-[85%]',
+      ctaText: 'DISCOVER'
+    },
+    {
+      id: 'sublimasi',
+      title: 'Sublimasi Textile',
+      tagline: 'ORIA SUBLIMASI 1902',
+      desc: 'Inovasi cetak tekstil berkecepatan tinggi untuk apparel, jersey, dan fashion.',
+      href: '/produk?cat=sublimasi',
+      image: '/images/categories/sublimasi.webp',
+      imgClass: 'max-h-[170px] sm:max-h-[215px] md:max-h-[250px] lg:max-h-[270px] max-w-[95%]',
+      ctaText: 'DISCOVER'
+    },
+    {
+      id: 'laser',
+      title: 'Laser Cutting',
+      tagline: 'ORIA LASER CUTTING 1490',
+      desc: 'Potong dan grafir akrilik, kayu, MDF, dan ACP dengan presisi optik industri.',
+      href: '/produk?cat=laser',
+      image: '/images/categories/laser.webp',
+      imgClass: 'max-h-[170px] sm:max-h-[215px] md:max-h-[250px] lg:max-h-[270px] max-w-[85%]',
+      ctaText: 'DISCOVER'
+    },
+    {
+      id: 'dtf',
+      title: 'DTF Printing',
+      tagline: 'ORIA DTF 6004 INDUSTRIAL',
+      desc: 'Solusi transfer film otomatis untuk custom apparel dan sablon kaos massal.',
+      href: '/produk?cat=dtf',
+      image: '/images/categories/dtf.webp',
+      imgClass: 'max-h-[175px] sm:max-h-[220px] md:max-h-[255px] lg:max-h-[275px] max-w-[85%]',
+      ctaText: 'DISCOVER'
+    },
+    {
+      id: 'outdoor',
+      title: 'Outdoor Printing',
+      tagline: 'ORIA OUTDOOR 3204',
+      desc: 'Mesin cetak spanduk flexi, baliho, dan billboard heavy-duty tahan cuaca ekstrem.',
+      href: '/produk?cat=outdoor',
+      image: '/images/categories/outdoor.webp',
+      imgClass: 'max-h-[160px] sm:max-h-[200px] md:max-h-[235px] lg:max-h-[255px] max-w-[98%]',
+      ctaText: 'DISCOVER'
+    },
+    {
+      id: 'indoor',
+      title: 'Indoor Printing',
+      tagline: 'ORIA INDOOR 1801',
+      desc: 'Hasil cetak foto, poster, sticker, dan POSM display beresolusi tajam.',
+      href: '/produk?cat=indoor',
+      image: '/images/categories/indoor.webp',
+      imgClass: 'max-h-[170px] sm:max-h-[215px] md:max-h-[250px] lg:max-h-[270px] max-w-[95%]',
+      ctaText: 'DISCOVER'
+    },
+    {
+      id: 'cnc',
+      title: 'CNC Router',
+      tagline: 'ORIA CNC ROUTER 1325',
+      desc: 'Fabrikasi reklame, huruf timbul, panel 3D, dan pengerjaan kayu skala industri.',
+      href: '/produk?cat=cnc',
+      image: '/images/categories/cnc.webp',
+      imgClass: 'max-h-[175px] sm:max-h-[220px] md:max-h-[255px] lg:max-h-[275px] max-w-[75%]',
+      ctaText: 'DISCOVER'
+    }
   ];
 
-  function scrollLeft() {
-    if (scrollContainer) {
-      scrollContainer.scrollBy({ left: -320, behavior: 'smooth' });
-    }
+  // Duplikasi kategori agar Siema dapat melakukan infinite loop mulus tanpa celah
+  const carouselSlides = [...categories, ...categories, ...categories];
+
+  let siemaEl: HTMLDivElement | null = $state(null);
+  let controller: Siema | null = null;
+  let activeIndex = $state(0);
+  let currentCategoryIndex = $state(0);
+
+  function updateCurrent() {
+    if (!controller) return;
+    const raw = controller.currentSlide;
+    const total = carouselSlides.length;
+    const n = categories.length;
+    activeIndex = ((raw % total) + total) % total;
+    currentCategoryIndex = ((raw % n) + n) % n;
   }
 
-  function scrollRight() {
-    if (scrollContainer) {
-      scrollContainer.scrollBy({ left: 320, behavior: 'smooth' });
-    }
+  function handlePrev() {
+    controller?.prev();
   }
+
+  function handleNext() {
+    controller?.next();
+  }
+
+  onMount(() => {
+    if (!siemaEl) return;
+
+    controller = new Siema({
+      selector: siemaEl,
+      perPage: 1,
+      loop: true,
+      duration: 500,
+      easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+      draggable: true,
+      multipleDrag: false,
+      threshold: 20,
+      onChange: () => {
+        updateCurrent();
+      }
+    });
+
+    // Buat overflow visible pada container selector Siema agar slide kanan-kiri dapat mengintip (peek)
+    if (siemaEl) {
+      siemaEl.style.overflow = 'visible';
+      const frame = siemaEl.firstElementChild as HTMLElement | null;
+      if (frame) {
+        frame.style.height = '100%';
+        frame.style.display = 'flex';
+        frame.style.alignItems = 'center';
+        Array.from(frame.children).forEach((child) => {
+          const el = child as HTMLElement;
+          el.style.height = '100%';
+          el.style.display = 'flex';
+          el.style.alignItems = 'center';
+          el.style.justifyContent = 'center';
+          el.style.float = 'none';
+        });
+      }
+    }
+
+    updateCurrent();
+  });
+
+  onDestroy(() => {
+    if (controller) {
+      controller.destroy(true);
+    }
+  });
+
+  let activeCategory = $derived(categories[currentCategoryIndex]);
 </script>
 
-<section class="w-full bg-white text-black py-20 lg:py-28 px-6 lg:px-12 border-t border-black/5">
-  <div class="max-w-7xl mx-auto space-y-10 lg:space-y-14">
-    
-    <!-- Section Header (2 Columns) -->
-    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-      <div class="space-y-3 max-w-2xl">
-        <span class="font-sans font-bold text-xs uppercase tracking-widest text-black/60">
-          JELAJAHI KATEGORI
-        </span>
-        <h2 class="font-heading font-black text-3xl sm:text-4xl lg:text-5xl tracking-tight text-black leading-[1.08]">
-          Temukan Mesin yang Sesuai untuk Bisnis Anda
-        </h2>
-      </div>
+<section class="relative w-full bg-white text-black pt-10 pb-14 sm:pt-12 sm:pb-16 lg:pt-14 lg:pb-20 overflow-hidden select-none border-t border-neutral-100">
+  <!-- Top Center Header (Lotus Style: OUR MODELS) -->
+  <div class="text-center mb-6 sm:mb-8">
+    <h2 class="font-heading font-bold text-base sm:text-lg lg:text-xl uppercase tracking-[0.3em] text-neutral-800">
+      OUR MODELS
+    </h2>
+  </div>
 
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between lg:justify-end gap-6 max-w-md">
-        <p class="font-sans text-sm sm:text-base text-black/70 leading-relaxed">
-          Berbagai pilihan mesin digital printing dengan teknologi terkini untuk memenuhi semua kebutuhan produksi Anda.
-        </p>
-
-        <!-- Navigation Chevrons for Horizontal Scroll -->
-        <div class="hidden sm:flex items-center gap-2 flex-shrink-0">
-          <button
-            type="button"
-            onclick={scrollLeft}
-            class="w-10 h-10 rounded-full border border-black/15 flex items-center justify-center text-black hover:bg-black hover:text-white transition-colors cursor-pointer focus:outline-none"
-            aria-label="Gulir ke Kiri"
-          >
-            <svg class="w-4 h-4 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
-              <polyline points="15 18 9 12 15 6" />
-            </svg>
-          </button>
-          <button
-            type="button"
-            onclick={scrollRight}
-            class="w-10 h-10 rounded-full border border-black/15 flex items-center justify-center text-black hover:bg-black hover:text-white transition-colors cursor-pointer focus:outline-none"
-            aria-label="Gulir ke Kanan"
-          >
-            <svg class="w-4 h-4 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
-              <polyline points="9 18 15 12 9 6" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Category Cards Horizontal Track (Monochrome, No Image Boxes, H3 Headings for Aurora Effect) -->
+  <!-- Carousel Stage with Center Active Machine and Side Peek Previews (Equally Centered) -->
+  <div class="relative w-full max-w-7xl mx-auto h-[210px] sm:h-[260px] md:h-[290px] lg:h-[320px] px-2 sm:px-6 flex items-center justify-center">
+    <!-- Siema Viewport Container (Centered, sized so adjacent slides peek outside) -->
     <div
-      bind:this={scrollContainer}
-      class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar gap-5 pb-4 pt-1 -mx-6 px-6 lg:-mx-0 lg:px-0"
+      bind:this={siemaEl}
+      class="siema-carousel w-[82vw] sm:w-[70vw] md:w-[60vw] lg:w-[54vw] max-w-3xl h-full mx-auto cursor-grab active:cursor-grabbing"
     >
-      {#each categories as cat}
-        <a
-          href={cat.href}
-          class="snap-start flex-shrink-0 w-[260px] sm:w-[280px] lg:w-[300px] h-[220px] bg-white border border-black/10 hover:border-black rounded-2xl p-6 flex flex-col justify-between group transition-all duration-300 hover:shadow-md cursor-pointer relative"
-        >
-          <!-- Top: Code & Title & Description -->
-          <div class="space-y-3">
-            <div class="flex items-center justify-between text-xs font-mono font-semibold text-black/40">
-              <span>{cat.code}</span>
-              <span class="text-[10px] tracking-widest uppercase text-black/30 group-hover:text-black transition-colors">Mesin ORIA</span>
-            </div>
-
-            <div class="space-y-1.5">
-              <!-- H3 Heading: Mendukung CMYK aurora sphere saat kursor hover -->
-              <h3 class="font-heading font-black text-xl sm:text-2xl text-black tracking-tight leading-tight">
-                {cat.title}
-              </h3>
-              <p class="font-sans text-xs text-black/60 leading-relaxed line-clamp-2">
-                {cat.desc}
-              </p>
-            </div>
+      {#each carouselSlides as cat, idx}
+        <div class="w-full h-full flex-shrink-0 px-2 sm:px-4 md:px-6 transition-all duration-500 {idx === activeIndex ? 'opacity-100 scale-100' : 'opacity-35 sm:opacity-45 scale-[0.88]'}">
+          <!-- Machine Display Card: Perfectly centered with pure white background -->
+          <div class="relative w-full h-full flex items-center justify-center">
+            <img
+              src={cat.image}
+              alt={cat.title}
+              class="w-auto object-contain select-none pointer-events-none transition-transform duration-500 {cat.imgClass}"
+              draggable="false"
+              loading="lazy"
+            />
           </div>
-
-          <!-- Bottom: Action with Chevron (NO ARROWS, STRICT RULE) -->
-          <div class="flex items-center justify-between pt-2 border-t border-black/5">
-            <span class="text-[11px] font-sans font-bold uppercase tracking-wider text-black/40 group-hover:text-black transition-colors">
-              Lihat Mesin
-            </span>
-            <div class="w-9 h-9 rounded-full bg-black/5 group-hover:bg-black text-black group-hover:text-white flex items-center justify-center transition-all duration-300">
-              <svg class="w-4 h-4 stroke-current transform group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </div>
-          </div>
-        </a>
+        </div>
       {/each}
     </div>
 
+    <!-- Floating Navigation Controls: Centered at horizontal midline, Transparent Box -->
+    <!-- Left Chevron Button -->
+    <button
+      type="button"
+      onclick={handlePrev}
+      class="absolute left-2 sm:left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 border-2 border-neutral-300 hover:border-[#FFE500] bg-transparent text-neutral-800 hover:text-[#FFE500] flex items-center justify-center transition-all duration-300 cursor-pointer focus:outline-none group"
+      aria-label="Model Sebelumnya"
+    >
+      <svg class="w-4 h-4 sm:w-5 sm:h-5 stroke-current transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <!-- Right Chevron Button -->
+    <button
+      type="button"
+      onclick={handleNext}
+      class="absolute right-2 sm:right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 border-2 border-neutral-300 hover:border-[#FFE500] bg-transparent text-neutral-800 hover:text-[#FFE500] flex items-center justify-center transition-all duration-300 cursor-pointer focus:outline-none group"
+      aria-label="Model Berikutnya"
+    >
+      <svg class="w-4 h-4 sm:w-5 sm:h-5 stroke-current transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
   </div>
+
+  <!-- Bottom Details: Active Model Name, Description, and Discover CTA (Lotus Style) -->
+  {#if activeCategory}
+    <div class="mt-6 sm:mt-8 text-center flex flex-col items-center px-6">
+      <!-- Model Title (Enlarged) -->
+      <h3 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl uppercase tracking-[0.16em] text-neutral-900 transition-all duration-300">
+        {activeCategory.tagline}
+      </h3>
+
+      <!-- Model Description (Enlarged) -->
+      <p class="mt-2 font-sans text-sm sm:text-base lg:text-[17px] text-neutral-600 font-normal max-w-xl mx-auto leading-relaxed transition-all duration-300">
+        {activeCategory.desc}
+      </p>
+
+      <!-- CTA Button: Transparent Box, Adapts to Section Background -->
+      <div class="mt-5 sm:mt-6">
+        <a
+          href={activeCategory.href}
+          class="inline-flex items-center gap-2.5 px-10 sm:px-12 py-3.5 sm:py-4 border border-black text-black hover:bg-black hover:text-white font-sans text-xs sm:text-sm font-bold uppercase tracking-[0.25em] transition-all duration-300 group bg-transparent"
+        >
+          <span>{activeCategory.ctaText}</span>
+          <svg
+            class="w-4 h-4 stroke-current transition-transform duration-300 group-hover:translate-x-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2.5"
+            aria-hidden="true"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  {/if}
 </section>
 
 <style>
-  /* Hide scrollbar for clean horizontal track */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
+  :global(.siema-carousel > div) {
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
   }
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  :global(.siema-carousel > div > div) {
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    float: none !important;
   }
 </style>

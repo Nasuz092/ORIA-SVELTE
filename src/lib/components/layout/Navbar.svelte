@@ -1,275 +1,229 @@
 <script lang="ts">
   import { page } from '$app/state';
+  import { ScrollArea } from '$lib/components/ui/scroll-area';
 
-  let mobileOpen = $state(false);
-  let mobileProductsOpen = $state(false);
-  let desktopDropdownOpen = $state(false);
+  let drawerOpen = $state(false);
   let scrollY = $state(0);
-  let dropdownTimeout: any;
 
-  // Background transparan saat belum di-scroll (scrollY <= 15) dan mobile menu tertutup.
-  // Saat di-scroll atau saat menu mobile terbuka, background menjadi putih bersih.
-  let isScrolled = $derived(scrollY > 15);
+  // Background transparan saat di atas Hero slider, dan gelap ber-blur saat di-scroll
+  let isScrolled = $derived(scrollY > 20);
 
-  function toggleMobile() {
-    mobileOpen = !mobileOpen;
-    if (!mobileOpen) {
-      mobileProductsOpen = false;
-    }
+  function openDrawer() {
+    drawerOpen = true;
   }
 
-  function closeMobile() {
-    mobileOpen = false;
-    mobileProductsOpen = false;
+  function closeDrawer() {
+    drawerOpen = false;
   }
 
-  function toggleMobileProducts(e: MouseEvent) {
-    e.preventDefault();
-    mobileProductsOpen = !mobileProductsOpen;
-  }
-
-  function handleDesktopEnter() {
-    clearTimeout(dropdownTimeout);
-    desktopDropdownOpen = true;
-  }
-
-  function handleDesktopLeave() {
-    dropdownTimeout = setTimeout(() => {
-      desktopDropdownOpen = false;
-    }, 180);
-  }
-
+  // Kategori produk terurut berdasarkan mesin terbanyak di database
   const productCategories = [
-    { title: 'Indoor Printing', desc: 'Sticker, Banner, Display', href: '/produk?cat=indoor' },
-    { title: 'Outdoor Printing', desc: 'Spanduk, Baliho, Billboard', href: '/produk?cat=outdoor' },
-    { title: 'Sublimasi', desc: 'Textile & Fashion', href: '/produk?cat=sublimasi' },
-    { title: 'DTF', desc: 'Custom Apparel', href: '/produk?cat=dtf' },
-    { title: 'UV Printing', desc: 'Flatbed & Cylinder', href: '/produk?cat=uv' },
     { title: 'Laser Cutting', desc: 'Akrilik, Kayu, MDF, ACP', href: '/produk?cat=laser' },
-    { title: 'CNC Router', desc: 'Fabrikasi & Woodworking', href: '/produk?cat=cnc' }
+    { title: 'Indoor Printing', desc: 'Sticker, Banner, Display', href: '/produk?cat=indoor' },
+    { title: 'UV Printing', desc: 'Flatbed & Cylinder', href: '/produk?cat=uv' },
+    { title: 'Sublimasi', desc: 'Textile & Fashion', href: '/produk?cat=sublimasi' },
+    { title: 'CNC Router', desc: 'Fabrikasi & Woodworking', href: '/produk?cat=cnc' },
+    { title: 'DTF', desc: 'Custom Apparel', href: '/produk?cat=dtf' },
+    { title: 'Outdoor Printing', desc: 'Spanduk, Baliho, Billboard', href: '/produk?cat=outdoor' }
   ];
 
-  const mainNavLinks = [
-    { name: 'Beranda', href: '/' },
-    { name: 'Tentang', href: '/tentang' },
-    { name: 'Artikel', href: '/artikel' },
-    { name: 'Kontak', href: '/kontak' }
+  const secondaryNavLinks = [
+    { name: 'Discover ORIA', href: '/tentang' },
+    { name: 'Katalog Semua Mesin', href: '/produk' },
+    { name: 'Artikel & Wawasan', href: '/artikel' },
+    { name: 'Kontak & Showroom', href: '/kontak' }
   ];
+
+  $effect(() => {
+    if (typeof document !== 'undefined') {
+      if (drawerOpen) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    }
+  });
+
+  // Sinkronisasi posisi scroll dari ScrollArea layout utama
+  $effect(() => {
+    function onLayoutScroll(e: Event) {
+      const ce = e as CustomEvent<{ scrollY: number }>;
+      if (ce.detail && typeof ce.detail.scrollY === 'number') {
+        scrollY = ce.detail.scrollY;
+      }
+    }
+    if (typeof window !== 'undefined') {
+      window.addEventListener('layout-scroll', onLayoutScroll);
+      return () => {
+        window.removeEventListener('layout-scroll', onLayoutScroll);
+      };
+    }
+  });
 </script>
 
-<svelte:window bind:scrollY={scrollY} />
+<svelte:window
+  bind:scrollY={scrollY}
+  onkeydown={(e) => {
+    if (e.key === 'Escape' && drawerOpen) closeDrawer();
+  }}
+/>
 
+<!-- TOP NAVBAR (Clean, logo di tengah menggunakan oria-logo-hd.png, hamburger di kanan) -->
 <header
-  class="w-full fixed top-0 left-0 z-50 transition-all duration-300 {isScrolled || mobileOpen
-    ? 'bg-white/95 backdrop-blur-md shadow-xs border-b border-black/5 py-4'
-    : 'bg-transparent border-b border-transparent py-5'}"
+  class="w-full fixed top-0 left-0 z-40 transition-all duration-300 {isScrolled || page.url.pathname !== '/'
+    ? 'bg-black/95 shadow-lg border-b border-white/10 py-3.5 sm:py-4'
+    : 'bg-transparent border-b border-transparent py-4 sm:py-5'}"
 >
-  <div class="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
-    <!-- Brand Logo -->
-    <a href="/" class="font-heading font-black text-2xl tracking-tighter text-black flex items-center gap-2">
-      ORIA
-    </a>
-
-    <!-- Desktop Navigation -->
-    <nav class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide">
-      <a
-        href="/"
-        class="text-black transition-opacity hover:opacity-60 {page.url.pathname === '/' ? 'font-bold underline underline-offset-4' : ''}"
-      >
-        Beranda
-      </a>
-
-      <!-- Desktop Produk Link with Hover Dropdown -->
-      <!-- svelte-ignore a11y_no_static_element_interactions -->
-      <div
-        class="relative"
-        onmouseenter={handleDesktopEnter}
-        onmouseleave={handleDesktopLeave}
-      >
-        <a
-          href="/produk"
-          class="text-black transition-opacity hover:opacity-60 flex items-center gap-1.5 py-1 {page.url.pathname.startsWith('/produk') ? 'font-bold underline underline-offset-4' : ''}"
-        >
-          Produk
-          <svg
-            class="w-3.5 h-3.5 stroke-black transition-transform duration-200 {desktopDropdownOpen ? 'rotate-180' : ''}"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="2.5"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        </a>
-
-        <!-- Desktop Dropdown Card -->
-        {#if desktopDropdownOpen}
-          <div
-            class="absolute top-full -left-4 mt-2 w-80 bg-white/98 backdrop-blur-xl border border-black/10 shadow-2xl rounded-2xl p-3 z-50 animate-in fade-in slide-in-from-top-2 duration-200"
-          >
-            <!-- All Products Direct Link -->
-            <a
-              href="/produk"
-              class="flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-black/5 text-black font-heading font-bold text-xs uppercase tracking-wider transition-colors group"
-            >
-              <span>Semua Mesin & Produk</span>
-              <svg class="w-3.5 h-3.5 stroke-black transform group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
-
-            <div class="h-px bg-black/10 my-1.5 mx-2"></div>
-
-            <!-- Category Links -->
-            <div class="flex flex-col gap-0.5">
-              {#each productCategories as cat}
-                <a
-                  href={cat.href}
-                  class="flex items-center justify-between px-3 py-2 rounded-xl hover:bg-black/5 transition-colors group"
-                >
-                  <div>
-                    <div class="text-xs font-heading font-bold text-black group-hover:text-black">
-                      {cat.title}
-                    </div>
-                    <div class="text-[11px] text-black/60">
-                      {cat.desc}
-                    </div>
-                  </div>
-                  <svg class="w-3.5 h-3.5 stroke-black/40 group-hover:stroke-black group-hover:translate-x-0.5 transition-all flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                </a>
-              {/each}
-            </div>
-          </div>
-        {/if}
-      </div>
-
-      {#each mainNavLinks.slice(1) as link}
-        <a
-          href={link.href}
-          class="text-black transition-opacity hover:opacity-60 {page.url.pathname === link.href ? 'font-bold underline underline-offset-4' : ''}"
-        >
-          {link.name}
-        </a>
-      {/each}
-    </nav>
-
-    <!-- Right Action CTA -->
-    <div class="hidden md:flex items-center gap-4">
-      <a
-        href="/kontak"
-        class="bg-black text-white px-5 py-2.5 text-xs font-semibold uppercase tracking-widest hover:opacity-85 transition-opacity"
-      >
-        Hubungi Kami
-      </a>
+  <div class="w-full px-6 sm:px-10 lg:px-16 flex items-center justify-between">
+    <!-- Left Spacer (Memastikan Logo Tepat 100% di Tengah Layar) -->
+    <div class="w-12 sm:w-16 flex items-center justify-start">
+      <span class="w-2 h-2 rounded-full bg-white/30 hidden sm:block"></span>
     </div>
 
-    <!-- Mobile Hamburger Toggle -->
+    <!-- Centered Brand Logo (Menggunakan oria-logo-hd.png) -->
+    <a
+      href="/"
+      class="flex items-center justify-center hover:opacity-90 transition-opacity select-none py-1"
+    >
+      <img
+        src="/images/oria-logo-hd.png"
+        alt="Logo ORIA"
+        class="h-7 sm:h-8 md:h-9 w-auto object-contain brightness-0 invert drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+      />
+    </a>
+
+    <!-- Right Hamburger Menu Button -->
+    <div class="w-12 sm:w-16 flex items-center justify-end">
+      <button
+        type="button"
+        onclick={openDrawer}
+        class="text-white p-2.5 hover:text-[#FFE500] focus:outline-none cursor-pointer transition-colors group flex items-center justify-center drop-shadow-md"
+        aria-label="Buka Menu Navigasi"
+      >
+        <div class="flex flex-col items-end gap-1.5 w-6 sm:w-7">
+          <span class="block w-full h-[2px] bg-white group-hover:bg-[#FFE500] transition-colors"></span>
+          <span class="block w-4/5 h-[2px] bg-white group-hover:w-full group-hover:bg-[#FFE500] transition-all"></span>
+          <span class="block w-full h-[2px] bg-white group-hover:bg-[#FFE500] transition-colors"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- BACKDROP OVERLAY UNTUK DRAWER (Murni Gelap Transparan Tanpa Blur) -->
+{#if drawerOpen}
+  <!-- svelte-ignore a11y_no_static_element_interactions -->
+  <!-- svelte-ignore a11y_click_events_have_key_events -->
+  <div
+    class="fixed inset-0 bg-black/50 z-50 transition-opacity duration-300 animate-in fade-in"
+    onclick={closeDrawer}
+    onwheel={(e) => e.preventDefault()}
+    ontouchmove={(e) => e.preventDefault()}
+  ></div>
+{/if}
+
+<!-- SLIDE-IN DRAWER DARI KANAN KE KIRI (Setengah layar, warna hitam solid, scrollbar shadcn-svelte) -->
+<aside
+  class="fixed top-0 right-0 h-full z-50 w-full sm:w-[85vw] md:w-[65vw] lg:w-[48vw] xl:w-[40vw] bg-[#09090b] text-white flex flex-col justify-between transform transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-2xl border-l border-white/10 p-6 sm:p-10 lg:p-12 {drawerOpen ? 'translate-x-0' : 'translate-x-full'}"
+  aria-label="Menu Navigasi Utama"
+  aria-hidden={!drawerOpen}
+>
+  <!-- Drawer Top: Brand Logo oria-logo-hd.png & Close Button -->
+  <div class="flex items-center justify-between pb-5 border-b border-white/10 flex-shrink-0">
+    <a
+      href="/"
+      onclick={closeDrawer}
+      class="flex items-center"
+    >
+      <img
+        src="/images/oria-logo-hd.png"
+        alt="Logo ORIA"
+        class="h-6 sm:h-7 w-auto object-contain brightness-0 invert"
+      />
+    </a>
+
     <button
       type="button"
-      onclick={toggleMobile}
-      class="md:hidden text-black p-2 focus:outline-none cursor-pointer"
-      aria-label="Toggle Navigation"
+      onclick={closeDrawer}
+      class="w-10 h-10 rounded-full flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 transition-colors cursor-pointer focus:outline-none"
+      aria-label="Tutup Menu"
     >
-      {#if mobileOpen}
-        <svg class="w-6 h-6 stroke-black" fill="none" viewBox="0 0 24 24" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      {:else}
-        <svg class="w-6 h-6 stroke-black" fill="none" viewBox="0 0 24 24" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      {/if}
+      <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
     </button>
   </div>
 
-  <!-- Mobile Dropdown Menu (Absolute Overlay agar tidak pernah mendorong konten Hero ke bawah) -->
-  {#if mobileOpen}
-    <div
-      class="md:hidden absolute top-full left-0 w-full bg-white/98 backdrop-blur-xl border-b border-black/10 shadow-lg px-6 pb-6 pt-3 flex flex-col gap-2 text-base font-medium max-h-[80vh] overflow-y-auto"
+  <!-- Drawer Middle Navigation dengan shadcn-svelte ScrollArea -->
+  <div class="flex-1 my-4 overflow-hidden">
+    <ScrollArea
+      class="h-full w-full pr-3 sm:pr-4"
+      scrollbarClass="bg-white/10"
+      thumbClass="bg-white/30 hover:bg-white/50"
     >
-      <a
-        href="/"
-        onclick={closeMobile}
-        class="text-black py-2 {page.url.pathname === '/' ? 'font-bold underline underline-offset-4' : ''}"
-      >
-        Beranda
-      </a>
+      <div class="py-4 flex flex-col gap-3 sm:gap-4">
+        <div class="font-sans font-bold text-[10px] uppercase tracking-[0.25em] text-[#FFE500] mb-1">
+          Lini Mesin Industrial
+        </div>
 
-      <!-- Mobile Produk Accordion Toggle (Klik untuk buka/tutup kategori) -->
-      <div class="py-1">
-        <button
-          type="button"
-          onclick={toggleMobileProducts}
-          class="w-full flex items-center justify-between text-black py-2 font-medium cursor-pointer focus:outline-none"
-        >
-          <span class={page.url.pathname.startsWith('/produk') ? 'font-bold underline underline-offset-4' : ''}>
-            Produk
-          </span>
-          <svg
-            class="w-4 h-4 stroke-black transition-transform duration-200 {mobileProductsOpen ? 'rotate-180' : ''}"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="2.5"
+        {#each productCategories as cat}
+          <a
+            href={cat.href}
+            onclick={closeDrawer}
+            class="group flex items-center justify-between text-lg sm:text-2xl lg:text-[1.55rem] font-heading font-black uppercase tracking-[0.14em] text-white hover:text-[#FFE500] transition-colors py-1 sm:py-1.5"
           >
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
+            <span class="group-hover:translate-x-1 transition-transform duration-300">{cat.title}</span>
+            <svg class="w-4 h-4 sm:w-5 sm:h-5 stroke-current transition-transform duration-300 group-hover:translate-x-1.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </a>
+        {/each}
 
-        <!-- Sub-menu Kategori di Mobile -->
-        {#if mobileProductsOpen}
-          <div class="pl-3 pr-1 py-2 flex flex-col gap-2 border-l-2 border-black/10 mt-1 mb-2 bg-black/[0.02] rounded-r-xl">
+        <!-- Divider -->
+        <div class="h-px bg-white/10 my-4 sm:my-5"></div>
+
+        <!-- Secondary Links (Discover ORIA, Artikel, Showroom) -->
+        <div class="flex flex-col gap-2 sm:gap-2.5">
+          {#each secondaryNavLinks as link}
             <a
-              href="/produk"
-              onclick={closeMobile}
-              class="text-xs font-heading font-bold text-black uppercase tracking-wider py-1.5 flex items-center justify-between"
+              href={link.href}
+              onclick={closeDrawer}
+              class="group flex items-center justify-between text-xs sm:text-sm font-heading font-bold uppercase tracking-widest text-white/70 hover:text-white transition-colors py-1"
             >
-              <span>Semua Produk</span>
-              <svg class="w-3.5 h-3.5 stroke-black" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              <span class="group-hover:translate-x-1 transition-transform duration-300">{link.name}</span>
+              <svg class="w-3.5 h-3.5 stroke-current transition-transform duration-300 group-hover:translate-x-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
+                <polyline points="9 18 15 12 9 6" />
               </svg>
             </a>
-            <div class="h-px bg-black/10 my-0.5"></div>
-            {#each productCategories as cat}
-              <a
-                href={cat.href}
-                onclick={closeMobile}
-                class="py-1.5 flex items-center justify-between group"
-              >
-                <div>
-                  <div class="text-xs font-heading font-semibold text-black">
-                    {cat.title}
-                  </div>
-                  <div class="text-[10px] text-black/60">
-                    {cat.desc}
-                  </div>
-                </div>
-                <svg class="w-3 h-3 stroke-black/40 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </a>
-            {/each}
-          </div>
-        {/if}
+          {/each}
+        </div>
       </div>
+    </ScrollArea>
+  </div>
 
-      {#each mainNavLinks.slice(1) as link}
-        <a
-          href={link.href}
-          onclick={closeMobile}
-          class="text-black py-2 {page.url.pathname === link.href ? 'font-bold underline underline-offset-4' : ''}"
-        >
-          {link.name}
-        </a>
-      {/each}
+  <!-- Drawer Bottom: Showroom & WhatsApp Support -->
+  <div class="border-t border-white/10 pt-5 flex flex-col gap-2.5 text-xs tracking-wider text-white/70 font-sans flex-shrink-0">
+    <a
+      href="/kontak"
+      onclick={closeDrawer}
+      class="flex items-center gap-2.5 text-white/80 hover:text-[#FFE500] transition-colors uppercase font-semibold"
+    >
+      <svg class="w-4 h-4 stroke-current flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+      </svg>
+      <span>Showroom Surabaya & Jakarta</span>
+    </a>
 
-      <a
-        href="/kontak"
-        onclick={closeMobile}
-        class="bg-black text-white text-center py-3 text-xs font-semibold uppercase tracking-widest mt-3"
-      >
-        Hubungi Kami
-      </a>
-    </div>
-  {/if}
-</header>
+    <a
+      href="https://wa.me/6281252086455"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex items-center gap-2.5 text-white/80 hover:text-[#FFE500] transition-colors uppercase font-semibold"
+    >
+      <svg class="w-4 h-4 stroke-current flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+      </svg>
+      <span>WhatsApp: +62 812-5208-6455</span>
+    </a>
+  </div>
+</aside>

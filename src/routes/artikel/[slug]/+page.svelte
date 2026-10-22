@@ -8,7 +8,7 @@
   <title>Artikel Teknis - ORIA</title>
 </svelte:head>
 
-<article class="w-full bg-white text-black py-16 lg:py-24 px-6 lg:px-12">
+<article class="w-full bg-white text-black py-16 lg:py-24 px-6 sm:px-8">
   <div class="max-w-3xl mx-auto space-y-8">
     <a href="/artikel" class="font-sans font-bold text-xs uppercase tracking-widest text-black hover:underline flex items-center gap-2">
       <svg class="w-4 h-4 stroke-black" fill="none" viewBox="0 0 24 24" stroke-width="2.5">

@@ -6,8 +6,8 @@
   <meta name="description" content="Profil ORIA sebagai penyedia mesin percetakan dan manufaktur berpresisi tinggi di Indonesia." />
 </svelte:head>
 
-<div class="w-full bg-white text-black py-16 lg:py-24 px-6 lg:px-12">
-  <div class="max-w-4xl mx-auto space-y-16">
+<div class="w-full bg-white text-black py-16 lg:py-24 px-6 sm:px-8">
+  <div class="w-full space-y-16">
     <!-- Header -->
     <div class="space-y-4">
       <div class="font-sans font-bold text-xs uppercase tracking-widest text-black">

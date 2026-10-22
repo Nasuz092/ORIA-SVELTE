@@ -21,8 +21,8 @@
   ];
 </script>
 
-<section class="w-full bg-white text-black py-20 px-6 lg:px-12">
-  <div class="max-w-5xl mx-auto space-y-12">
+<section class="w-full bg-white text-black py-20 px-6 sm:px-8 border-t border-black/5">
+  <div class="w-full space-y-12">
     <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
       <div class="space-y-2">
         <div class="font-sans font-bold text-xs uppercase tracking-widest text-black">

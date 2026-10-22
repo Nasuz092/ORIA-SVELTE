@@ -48,8 +48,8 @@
   <meta name="description" content="Kumpulan artikel teknis, tips perawatan mesin cetak, dan panduan bisnis percetakan digital." />
 </svelte:head>
 
-<div class="w-full bg-white text-black py-16 lg:py-24 px-6 lg:px-12">
-  <div class="max-w-4xl mx-auto space-y-12">
+<div class="w-full bg-white text-black py-16 lg:py-24 px-6 sm:px-8">
+  <div class="w-full space-y-12">
     <!-- Header -->
     <div class="space-y-4">
       <div class="font-sans font-bold text-xs uppercase tracking-widest text-black">
