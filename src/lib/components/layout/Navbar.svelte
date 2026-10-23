@@ -115,69 +115,69 @@
 <!-- TOP NAVBAR -->
 <header
   class="w-full fixed top-0 left-0 z-40 transition-all duration-300 {isTentang
-    ? (isScrolled ? 'bg-black/95 shadow-lg border-b border-white/10' : 'bg-transparent border-b border-transparent')
+    ? (isScrolled ? 'bg-black shadow-lg border-b border-white/10' : 'bg-transparent border-b border-transparent')
     : (isScrolled || page.url.pathname !== '/'
       ? 'bg-black/95 shadow-lg border-b border-white/10 py-3.5 sm:py-4'
       : 'bg-transparent border-b border-transparent py-4 sm:py-5')}"
 >
-  <!-- Hamburger Button (Fixed in Top Right, stays in place whether scrolled or not) -->
-  <div class="absolute top-0 right-0 z-50 h-14 sm:h-16 flex items-center pr-6 sm:pr-10 lg:pr-16 pointer-events-auto">
+  <!-- Hamburger Button (Fixed in Top Right, perfectly aligned with the bar height h-11 on Tentang) -->
+  <div class="absolute top-0 right-0 z-50 {isTentang ? 'h-11' : 'h-14 sm:h-16'} flex items-center pr-6 sm:pr-10 lg:pr-16 pointer-events-auto">
     <button
       type="button"
       onclick={openDrawer}
-      class="text-white p-2.5 hover:text-[#FFE500] focus:outline-none cursor-pointer transition-colors group flex items-center justify-center drop-shadow-md"
+      class="text-white hover:text-[#FFE500] focus:outline-none cursor-pointer transition-colors group flex items-center justify-center drop-shadow-md"
       aria-label="Buka Menu Navigasi"
     >
-      <div class="flex flex-col items-end gap-1.5 w-6 sm:w-7">
-        <span class="block w-full h-[2px] bg-white group-hover:bg-[#FFE500] transition-colors"></span>
-        <span class="block w-4/5 h-[2px] bg-white group-hover:w-full group-hover:bg-[#FFE500] transition-all"></span>
-        <span class="block w-full h-[2px] bg-white group-hover:bg-[#FFE500] transition-colors"></span>
+      <div class="flex flex-col items-end gap-[5px] w-5 sm:w-6">
+        <span class="block w-full h-[1.5px] bg-white group-hover:bg-[#FFE500] transition-colors"></span>
+        <span class="block w-4/5 h-[1.5px] bg-white group-hover:w-full group-hover:bg-[#FFE500] transition-all"></span>
+        <span class="block w-full h-[1.5px] bg-white group-hover:bg-[#FFE500] transition-colors"></span>
       </div>
     </button>
   </div>
 
   {#if isTentang}
-    <!-- TENTANG PAGE: Dual-Row Navbar that shifts on scroll -->
+    <!-- TENTANG PAGE: Slim Dual-Row Navbar where Row 1 physically collapses on scroll -->
     <div class="w-full flex flex-col">
-      <!-- ROW 1: Logo row (Slides up and disappears when isScrolled!) -->
+      <!-- ROW 1: Logo row (Height h-11, collapses to max-h-0 when isScrolled) -->
       <div
-        class="w-full h-14 sm:h-16 flex items-center justify-center transition-all duration-300 ease-out {isScrolled
-          ? '-translate-y-full opacity-0 pointer-events-none'
-          : 'translate-y-0 opacity-100'}"
+        class="w-full transition-all duration-300 ease-in-out overflow-hidden flex items-center justify-center {isScrolled
+          ? 'max-h-0 opacity-0 pointer-events-none'
+          : 'max-h-11 h-11 opacity-100 pointer-events-auto'}"
       >
         <a
           href="/"
-          class="flex items-center justify-center hover:opacity-90 transition-opacity select-none py-1 pointer-events-auto"
+          class="flex items-center justify-center hover:opacity-90 transition-opacity select-none"
         >
           <img
             src="/images/oria-logo-hd.png"
             alt="Logo ORIA"
-            class="h-7 sm:h-8 md:h-9 w-auto object-contain brightness-0 invert drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+            class="h-6 w-auto object-contain brightness-0 invert drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
           />
         </a>
       </div>
 
-      <!-- ROW 2: Subnav row (Slides up into top-0 when isScrolled!) -->
+      <!-- ROW 2: Subnav row (Height h-11, perfectly level with hamburger at top-0!) -->
       <div
-        class="w-full transition-all duration-300 ease-out {isScrolled
-          ? '-translate-y-14 sm:-translate-y-16 bg-black border-b border-white/10 shadow-lg'
+        class="w-full h-11 transition-all duration-300 {isScrolled
+          ? ''
           : 'bg-black/25 backdrop-blur-xs border-t border-white/10'}"
       >
-        <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pr-20 sm:pr-24 lg:pr-28">
+        <div class="max-w-7xl mx-auto h-full px-6 sm:px-10 lg:px-16 pr-16 sm:pr-20 lg:pr-24 flex items-center">
           <nav
             aria-label="Navigasi Halaman Tentang"
-            class="flex items-center gap-4 sm:gap-6 md:gap-7 overflow-x-auto no-scrollbar py-2.5"
+            class="h-full flex items-center gap-4 sm:gap-6 md:gap-7 overflow-x-auto no-scrollbar"
           >
             {#each subNavItems as item}
               <a
                 href="#{item.id}"
                 onclick={(e) => scrollToSection(item.id, e)}
-                class="text-[10px] sm:text-[11px] md:text-xs font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors pb-2 relative group {activeSection === item.id
+                class="h-full flex items-center text-[10.5px] sm:text-[11px] md:text-xs font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors relative group px-0.5 leading-none {activeSection === item.id
                   ? 'text-white font-bold'
                   : 'text-white/60 hover:text-white'}"
               >
-                <span>{item.label}</span>
-                <!-- Active underline -->
+                <span class="inline-flex items-center leading-none">{item.label}</span>
+                <!-- Active underline directly attached to the bottom edge of the h-11 bar -->
                 <span
                   class="absolute bottom-0 left-0 w-full h-[2px] transition-all duration-300 {activeSection === item.id
                     ? 'bg-white opacity-100'
