@@ -121,12 +121,12 @@
       ? 'bg-black shadow-lg border-b border-white/10'
       : 'bg-transparent border-b border-transparent'}"
   >
-    <!-- Hamburger Button (Fixed in Top Right, full size matching homepage) -->
-    <div class="absolute top-0 right-0 z-50 flex items-center justify-end px-6 sm:px-10 lg:px-16 pointer-events-auto {isScrolled ? 'py-3.5 sm:py-4' : 'py-4 sm:py-5'} transition-all duration-300">
+  <!-- Hamburger Button (Fixed in Top Right, full size, optically leveled with menu) -->
+    <div class="absolute top-0 right-0 z-50 h-14 sm:h-16 flex items-center justify-end px-6 sm:px-10 lg:px-16 pointer-events-auto">
       <button
         type="button"
         onclick={openDrawer}
-        class="text-white p-2.5 hover:text-[#FFE500] focus:outline-none cursor-pointer transition-colors group flex items-center justify-center drop-shadow-md"
+        class="text-white p-2 hover:text-[#FFE500] focus:outline-none cursor-pointer transition-colors group flex items-center justify-center drop-shadow-md -translate-y-0.5 sm:-translate-y-1"
         aria-label="Buka Menu Navigasi"
       >
         <div class="flex flex-col items-end gap-1.5 w-6 sm:w-7">
@@ -142,7 +142,7 @@
       <div
         class="w-full transition-all duration-300 ease-in-out overflow-hidden flex items-center justify-center {isScrolled
           ? 'max-h-0 opacity-0 pointer-events-none'
-          : 'max-h-24 py-4 sm:py-5 opacity-100 pointer-events-auto'}"
+          : 'max-h-20 h-14 sm:h-16 opacity-100 pointer-events-auto'}"
       >
         <a
           href="/"
@@ -158,7 +158,7 @@
 
       <!-- ROW 2: Subnav Row (Horizontally centered, transparent, no borders, no underline, yellow hover/active) -->
       <div
-        class="w-full transition-all duration-300 bg-transparent border-none {isScrolled ? 'py-3.5 sm:py-4' : 'py-3 sm:py-3.5'} flex items-center justify-center"
+        class="w-full h-14 sm:h-16 transition-all duration-300 bg-transparent border-none flex items-center justify-center"
       >
         <div class="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 overflow-x-auto no-scrollbar flex items-center justify-center">
           <nav
