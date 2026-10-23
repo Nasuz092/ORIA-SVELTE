@@ -112,34 +112,33 @@
   }}
 />
 
-<!-- TOP NAVBAR -->
-<header
-  class="w-full fixed top-0 left-0 z-40 transition-all duration-300 {isTentang
-    ? (isScrolled ? 'bg-black shadow-lg border-b border-white/10' : 'bg-transparent border-b border-transparent')
-    : (isScrolled || page.url.pathname !== '/'
-      ? 'bg-black/95 shadow-lg border-b border-white/10 py-3.5 sm:py-4'
-      : 'bg-transparent border-b border-transparent py-4 sm:py-5')}"
->
-  <!-- Hamburger Button (Fixed in Top Right, perfectly aligned with the bar height h-11 on Tentang) -->
-  <div class="absolute top-0 right-0 z-50 {isTentang ? 'h-11' : 'h-14 sm:h-16'} flex items-center pr-6 sm:pr-10 lg:pr-16 pointer-events-auto">
-    <button
-      type="button"
-      onclick={openDrawer}
-      class="text-white hover:text-[#FFE500] focus:outline-none cursor-pointer transition-colors group flex items-center justify-center drop-shadow-md"
-      aria-label="Buka Menu Navigasi"
-    >
-      <div class="flex flex-col items-end gap-[5px] w-5 sm:w-6">
-        <span class="block w-full h-[1.5px] bg-white group-hover:bg-[#FFE500] transition-colors"></span>
-        <span class="block w-4/5 h-[1.5px] bg-white group-hover:w-full group-hover:bg-[#FFE500] transition-all"></span>
-        <span class="block w-full h-[1.5px] bg-white group-hover:bg-[#FFE500] transition-colors"></span>
-      </div>
-    </button>
-  </div>
+{#if isTentang}
+  <!-- ================================================================= -->
+  <!-- TENTANG PAGE NAVBAR (Dual-Row at top, collapses to sticky slim row) -->
+  <!-- ================================================================= -->
+  <header
+    class="w-full fixed top-0 left-0 z-40 transition-colors duration-300 {isScrolled
+      ? 'bg-black shadow-lg border-b border-white/10'
+      : 'bg-transparent border-b border-transparent'}"
+  >
+    <!-- Hamburger Button (Fixed in Top Right, aligned with Row 1 when unscrolled, and with Row 2 when scrolled) -->
+    <div class="absolute top-0 right-0 z-50 h-11 flex items-center pr-6 sm:pr-10 lg:pr-16 pointer-events-auto">
+      <button
+        type="button"
+        onclick={openDrawer}
+        class="text-white hover:text-[#FFE500] focus:outline-none cursor-pointer transition-colors group flex items-center justify-center drop-shadow-md"
+        aria-label="Buka Menu Navigasi"
+      >
+        <div class="flex flex-col items-end gap-[5px] w-5 sm:w-6">
+          <span class="block w-full h-[1.5px] bg-white group-hover:bg-[#FFE500] transition-colors"></span>
+          <span class="block w-4/5 h-[1.5px] bg-white group-hover:w-full group-hover:bg-[#FFE500] transition-all"></span>
+          <span class="block w-full h-[1.5px] bg-white group-hover:bg-[#FFE500] transition-colors"></span>
+        </div>
+      </button>
+    </div>
 
-  {#if isTentang}
-    <!-- TENTANG PAGE: Slim Dual-Row Navbar where Row 1 physically collapses on scroll -->
     <div class="w-full flex flex-col">
-      <!-- ROW 1: Logo row (Height h-11, collapses to max-h-0 when isScrolled) -->
+      <!-- ROW 1: Centered Logo Row (Height h-11, collapses to max-h-0 on scroll) -->
       <div
         class="w-full transition-all duration-300 ease-in-out overflow-hidden flex items-center justify-center {isScrolled
           ? 'max-h-0 opacity-0 pointer-events-none'
@@ -147,7 +146,7 @@
       >
         <a
           href="/"
-          class="flex items-center justify-center hover:opacity-90 transition-opacity select-none"
+          class="flex items-center justify-center hover:opacity-90 transition-opacity select-none focus:outline-none"
         >
           <img
             src="/images/oria-logo-hd.png"
@@ -157,44 +156,46 @@
         </a>
       </div>
 
-      <!-- ROW 2: Subnav row (Height h-11, perfectly level with hamburger at top-0!) -->
+      <!-- ROW 2: Subnav Row (Transparent bg, NO borders, NO underline, yellow on hover/active) -->
       <div
-        class="w-full h-11 transition-all duration-300 {isScrolled
-          ? ''
-          : 'bg-black/25 backdrop-blur-xs border-t border-white/10'}"
+        class="w-full h-11 transition-all duration-300 bg-transparent border-none"
       >
         <div class="max-w-7xl mx-auto h-full px-6 sm:px-10 lg:px-16 pr-16 sm:pr-20 lg:pr-24 flex items-center">
           <nav
             aria-label="Navigasi Halaman Tentang"
-            class="h-full flex items-center gap-4 sm:gap-6 md:gap-7 overflow-x-auto no-scrollbar"
+            class="h-full flex items-center gap-5 sm:gap-7 md:gap-8 overflow-x-auto no-scrollbar border-none"
           >
             {#each subNavItems as item}
               <a
                 href="#{item.id}"
                 onclick={(e) => scrollToSection(item.id, e)}
-                class="h-full flex items-center text-[10.5px] sm:text-[11px] md:text-xs font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors relative group px-0.5 leading-none {activeSection === item.id
-                  ? 'text-white font-bold'
-                  : 'text-white/60 hover:text-white'}"
+                class="h-full flex items-center text-[10.5px] sm:text-[11px] md:text-xs font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none {activeSection === item.id
+                  ? 'text-[#FFE500] font-bold'
+                  : 'text-white/70 hover:text-[#FFE500]'}"
               >
-                <span class="inline-flex items-center leading-none">{item.label}</span>
-                <!-- Active underline directly attached to the bottom edge of the h-11 bar -->
-                <span
-                  class="absolute bottom-0 left-0 w-full h-[2px] transition-all duration-300 {activeSection === item.id
-                    ? 'bg-white opacity-100'
-                    : 'bg-transparent opacity-0 group-hover:bg-white/40 group-hover:opacity-100'}"
-                ></span>
+                <span>{item.label}</span>
               </a>
             {/each}
           </nav>
         </div>
       </div>
     </div>
-  {:else}
-    <!-- NORMAL PAGES HEADER -->
+  </header>
+{:else}
+  <!-- ================================================================= -->
+  <!-- NORMAL PAGES NAVBAR (Homepage, Katalog, Artikel, Kontak, dll.)    -->
+  <!-- 100% ORIGINAL: Tinggi, padding, logo, dan hamburger asli           -->
+  <!-- ================================================================= -->
+  <header
+    class="w-full fixed top-0 left-0 z-40 transition-all duration-300 {isScrolled || page.url.pathname !== '/'
+      ? 'bg-black/95 shadow-lg border-b border-white/10 py-3.5 sm:py-4'
+      : 'bg-transparent border-b border-transparent py-4 sm:py-5'}"
+  >
     <div class="relative w-full px-6 sm:px-10 lg:px-16 flex items-center justify-between">
+      <!-- Left Spacer -->
       <div class="w-12 sm:w-16"></div>
 
-      <!-- Centered Brand Logo -->
+      <!-- Centered Brand Logo (100% Persis di Tengah Layar Secara Mutlak) -->
       <div class="absolute left-1/2 -translate-x-1/2 flex items-center justify-center pointer-events-auto">
         <a
           href="/"
@@ -208,10 +209,24 @@
         </a>
       </div>
 
-      <div class="w-12 sm:w-16"></div>
+      <!-- Right Hamburger Menu Button (Asli, sesuai desain awal) -->
+      <div class="w-12 sm:w-16 flex items-center justify-end">
+        <button
+          type="button"
+          onclick={openDrawer}
+          class="text-white p-2.5 hover:text-[#FFE500] focus:outline-none cursor-pointer transition-colors group flex items-center justify-center drop-shadow-md"
+          aria-label="Buka Menu Navigasi"
+        >
+          <div class="flex flex-col items-end gap-1.5 w-6 sm:w-7">
+            <span class="block w-full h-[2px] bg-white group-hover:bg-[#FFE500] transition-colors"></span>
+            <span class="block w-4/5 h-[2px] bg-white group-hover:w-full group-hover:bg-[#FFE500] transition-all"></span>
+            <span class="block w-full h-[2px] bg-white group-hover:bg-[#FFE500] transition-colors"></span>
+          </div>
+        </button>
+      </div>
     </div>
-  {/if}
-</header>
+  </header>
+{/if}
 
 <!-- BACKDROP OVERLAY UNTUK DRAWER (Murni Gelap Transparan Tanpa Blur) -->
 {#if drawerOpen}
