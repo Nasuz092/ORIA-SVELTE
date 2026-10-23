@@ -117,32 +117,6 @@
 </section>
 
 <!-- ======================================================================= -->
-<!-- STICKY SUBNAV BAR (Floating when scrolling below Hero, Compact & Mepet) -->
-<!-- ======================================================================= -->
-<div class="sticky top-14 sm:top-16 z-30 w-full bg-black/95 backdrop-blur-md border-b border-white/10 select-none shadow-md">
-  <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-    <nav class="flex items-center gap-4 sm:gap-6 md:gap-7 overflow-x-auto no-scrollbar py-2.5">
-      {#each subNavItems as item}
-        <a
-          href="#{item.id}"
-          onclick={(e) => scrollToSection(item.id, e)}
-          class="text-[10px] sm:text-[11px] md:text-xs font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors pb-2 relative group {activeSection === item.id
-            ? 'text-[#FFE500] font-bold'
-            : 'text-neutral-400 hover:text-white'}"
-        >
-          <span>{item.label}</span>
-          <span
-            class="absolute bottom-0 left-0 w-full h-[2px] transition-all duration-300 {activeSection === item.id
-              ? 'bg-[#FFE500]'
-              : 'bg-transparent group-hover:bg-neutral-600'}"
-          ></span>
-        </a>
-      {/each}
-    </nav>
-  </div>
-</div>
-
-<!-- ======================================================================= -->
 <!-- SECTION 1: #oria-story (Profil Perusahaan & Filosofi Lotus Style)       -->
 <!-- ======================================================================= -->
 <section id="oria-story" class="w-full bg-black text-white py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 border-b border-white/10 select-none scroll-mt-28">
