@@ -37,7 +37,10 @@
   let isTentang = $derived(page.url.pathname === '/tentang');
 
   const subNavItems = [
-    { id: 'oria-story', label: 'ORIA STORY' },
+    { id: 'oria-story', label: 'STORY' },
+    { id: 'our-legacy', label: 'LEGACY' },
+    { id: 'our-machines', label: 'MACHINES' },
+    { id: 'our-core', label: 'CORE' },
     { id: 'about-oria', label: 'ABOUT ORIA' },
     { id: 'standar-rekayasa', label: 'STANDAR REKAYASA' },
     { id: 'kapasitas-layanan', label: 'KAPASITAS LAYANAN' },

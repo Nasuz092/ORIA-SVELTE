@@ -20,47 +20,20 @@
         OUR LEGACY
       </h2>
 
-      <!-- Narrative Body Text -->
-      <div class="space-y-4 sm:space-y-5 font-sans text-xs sm:text-sm md:text-base text-neutral-300 font-normal leading-relaxed">
+      <!-- Narrative Body Text (Concise) -->
+      <div class="space-y-4 font-sans text-xs sm:text-sm md:text-base text-neutral-300 font-normal leading-relaxed">
         <p>
-          ORIA lahir dari visi rekayasa presisi dan dedikasi mendalam terhadap kemandirian industri manufaktur Indonesia. Sejak awal mula berdiri, kami terobsesi dengan solusi mesin yang cerdas, efisien, dan berdaya tahan tanpa batas.
-        </p>
-
-        <p>
-          Di saat pasar sering kali terpaku pada harga murah tanpa memikirkan durabilitas operasional, kami meyakini bahwa kekuatan mesin yang sesungguhnya bertumpu pada keselarasan antara presisi mikron sasis, stabilitas printhead, dan kemudahan perawatan teknis.
+          ORIA lahir dari visi rekayasa presisi dan dedikasi terhadap kemandirian industri manufaktur Indonesia. Kami meyakini bahwa keunggulan sejati sebuah mesin bertumpu pada keselarasan antara stabilitas mikron sasis, daya tahan operasional jangka panjang, dan kemudahan perawatan teknis.
         </p>
 
         <!-- Signature Quote / Ethos -->
-        <p class="text-white italic text-sm sm:text-base md:text-lg font-serif border-l-2 border-[#FFE500] pl-4 py-1 my-3 text-neutral-200">
+        <p class="text-white italic text-sm sm:text-base md:text-lg font-serif border-l-2 border-[#FFE500] pl-4 py-1 my-2 text-neutral-200">
           &lsquo;Presisi tanpa kompromi, efisiensi tanpa batas.&rsquo;
         </p>
 
-        <p>
-          Sebuah etos kerja yang kami padukan dengan keahlian teknisi tersertifikasi dan komitmen tak kenal lelah untuk menghadirkan terobosan teknologi mutakhir bagi para pelaku industri kreatif di seluruh Nusantara.
-        </p>
-
         <p class="text-neutral-400">
-          ORIA senantiasa setia pada semangat kepeloporan ini — terus melanjutkan misi menghadirkan mesin percetakan digital dan fabrikasi presisi di garis terdepan rekayasa, teknologi, dan keandalan.
+          Sebuah etos kerja yang kami padukan bersama teknisi tersertifikasi untuk menghadirkan solusi percetakan digital andal bagi para pelaku industri di seluruh Nusantara.
         </p>
-      </div>
-
-      <!-- Action Link with Chevron (Strict Rule from AGENTS.md: Never use arrow, always Chevron) -->
-      <div class="pt-3">
-        <a
-          href="#about-oria"
-          class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase text-white hover:text-[#FFE500] transition-colors group"
-        >
-          <span>THE ORIA STORY</span>
-          <svg
-            class="w-4 h-4 stroke-current transition-transform duration-300 group-hover:translate-x-1"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="2.5"
-            aria-hidden="true"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
       </div>
     </div>
   </div>
