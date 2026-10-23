@@ -4,7 +4,6 @@
   import OurLegacy from '$lib/sections/tentang/OurLegacy.svelte';
   import OurMachines from '$lib/sections/tentang/OurMachines.svelte';
   import OurCore from '$lib/sections/tentang/OurCore.svelte';
-  import AboutOria from '$lib/sections/tentang/AboutOria.svelte';
   import StandarRekayasa from '$lib/sections/tentang/StandarRekayasa.svelte';
   import KapasitasLayanan from '$lib/sections/tentang/KapasitasLayanan.svelte';
   import VisiDedikasi from '$lib/sections/tentang/VisiDedikasi.svelte';
@@ -24,7 +23,6 @@
 <OurLegacy />
 <OurMachines />
 <OurCore />
-<AboutOria />
 <StandarRekayasa />
 <KapasitasLayanan />
 <VisiDedikasi />

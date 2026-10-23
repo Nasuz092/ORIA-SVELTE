@@ -33,48 +33,38 @@
     {
       id: '01',
       tag: '01 / PRESISI',
-      title: 'Rekayasa Presisi Mikron',
-      desc: 'Rel pemandu THK linier dan sistem carriage presisi tinggi memastikan akurasi pergerakan tingkat mikron pada setiap siklus cetak.',
+      title: 'Presisi Tanpa Kompromi',
+      desc: 'Menggunakan guide rail heavy-duty THK Jepang, sasis baja peredam getaran mikron, dan printhead piezoelektrik presisi tinggi untuk gradasi warna foto tajam.',
       image: '/images/core-precision.jpg',
       alt: 'Detail Linear Guide Rail THK Presisi Tinggi ORIA',
-      stackedClass: 'lg:translate-x-[150%] sm:translate-x-[50%] sm:translate-y-[35%] -rotate-6 scale-[0.6] opacity-25 z-10',
+      stackedClass: 'translate-y-[100%] md:translate-y-0 md:translate-x-[100%] -rotate-6 scale-[0.6] opacity-30 z-10',
       delay: 'delay-100'
     },
     {
       id: '02',
-      tag: '02 / DURABILITAS',
-      title: 'Daya Tahan Operasional 24/7',
-      desc: 'Sasis baja masif anti-vibrasi dirancang khusus untuk menangani siklus kerja produksi industri terberat tanpa kompromi performa.',
-      image: '/images/our-drive-workshop.png',
-      alt: 'Fasilitas Fabrikasi Sasis Baja Mesin ORIA',
-      stackedClass: 'lg:translate-x-[50%] sm:-translate-x-[50%] sm:translate-y-[35%] -rotate-2 scale-[0.63] opacity-35 z-20',
+      tag: '02 / EFISIENSI',
+      title: 'Efisiensi Produksi Tinggi',
+      desc: 'Optimalisasi software RIP cerdas dan profil warna ICC khusus yang mampu menghemat konsumsi tinta hingga 25% tanpa mengurangi kepadatan warna (density).',
+      image: '/images/showcase-products.png',
+      alt: 'Efisiensi Produksi Tinggi Mesin Percetakan ORIA',
+      stackedClass: 'translate-y-0 md:translate-x-0 rotate-0 scale-[0.64] opacity-40 z-20',
       delay: 'delay-200'
     },
     {
       id: '03',
-      tag: '03 / TEKNOLOGI',
-      title: 'Inovasi Digital Cerdas',
-      desc: 'Sistem pengeringan UV LED mutakhir, integrasi software RIP canggih, dan kontrol digital yang memaksimalkan efisiensi produksi.',
-      image: '/images/showcase-products.png',
-      alt: 'Lini Mesin Percetakan Digital Berteknologi Modern ORIA',
-      stackedClass: 'lg:-translate-x-[50%] sm:translate-x-[50%] sm:-translate-y-[35%] rotate-2 scale-[0.65] opacity-35 z-30',
-      delay: 'delay-300'
-    },
-    {
-      id: '04',
-      tag: '04 / DUKUNGAN',
-      title: 'Dukungan Ekosistem Total',
-      desc: 'Ketersediaan suku cadang orisinal lengkap, teknisi bersertifikasi, dan layanan perawatan teknis berkala di seluruh Nusantara.',
+      tag: '03 / DUKUNGAN',
+      title: 'Dukungan Purna Jual Total',
+      desc: 'Pelatihan operator bersertifikasi hingga siap mandiri, suku cadang orisinal ready-stock, serta respon teknisi tanggap darurat on-site di berbagai kota.',
       image: '/images/our-drive-showroom.png',
-      alt: 'Showroom dan Pusat Layanan Teknis ORIA',
-      stackedClass: 'lg:-translate-x-[150%] sm:-translate-x-[50%] sm:-translate-y-[35%] rotate-6 scale-[0.68] opacity-25 z-40',
-      delay: 'delay-400'
+      alt: 'Pusat Layanan Purna Jual dan Showroom ORIA',
+      stackedClass: 'translate-y-[-100%] md:translate-y-0 md:-translate-x-[100%] rotate-6 scale-[0.6] opacity-30 z-10',
+      delay: 'delay-300'
     }
   ];
 </script>
 
 <!-- ======================================================================= -->
-<!-- SECTION: Our Core (Lotus "OUR CORE" Style - 4 Value Dispersion Cards)   -->
+<!-- SECTION: Our Core (Lotus "OUR CORE" Style - 3 Value Dispersion Cards)   -->
 <!-- ======================================================================= -->
 <section
   id="our-core"
@@ -99,9 +89,9 @@
       </div>
     </div>
 
-    <!-- 4 Value Cards with Center Stacked to Dispersed Scroll Animation -->
+    <!-- 3 Value Cards with Center Stacked to Dispersed Scroll Animation -->
     <div class="relative mt-16 sm:mt-24 min-h-[460px] sm:min-h-[500px]">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
         {#each values as value}
           <div
             class="transform-gpu will-change-transform transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] {value.delay} {isDispersed
