@@ -1,12 +1,12 @@
 <script lang="ts">
   import type { PageData } from './$types';
-  import Hero from '$lib/components/sections/Hero.svelte';
-  import BrandManifesto from '$lib/components/sections/BrandManifesto.svelte';
-  import BrandVision from '$lib/components/sections/BrandVision.svelte';
-  import DualShowcase from '$lib/components/sections/DualShowcase.svelte';
-  import CategoryPreview from '$lib/components/sections/CategoryPreview.svelte';
-  import EngineeringExcellence from '$lib/components/sections/EngineeringExcellence.svelte';
-  import LatestArticles from '$lib/components/sections/LatestArticles.svelte';
+  import Hero from '$lib/sections/homepage/Hero.svelte';
+  import BrandManifesto from '$lib/sections/homepage/BrandManifesto.svelte';
+  import BrandVision from '$lib/sections/homepage/BrandVision.svelte';
+  import DualShowcase from '$lib/sections/homepage/DualShowcase.svelte';
+  import CategoryPreview from '$lib/sections/homepage/CategoryPreview.svelte';
+  import EngineeringExcellence from '$lib/sections/homepage/EngineeringExcellence.svelte';
+  import LatestArticles from '$lib/sections/homepage/LatestArticles.svelte';
 
   let { data }: { data: PageData } = $props();
 </script>
