@@ -70,7 +70,7 @@
 
 <!-- TOP NAVBAR (Clean, logo di tengah menggunakan oria-logo-hd.png, hamburger di kanan) -->
 <header
-  class="w-full fixed top-0 left-0 z-40 transition-all duration-300 {isScrolled || page.url.pathname !== '/'
+  class="w-full fixed top-0 left-0 z-40 transition-all duration-300 {isScrolled || (page.url.pathname !== '/' && page.url.pathname !== '/tentang')
     ? 'bg-black/95 shadow-lg border-b border-white/10 py-3.5 sm:py-4'
     : 'bg-transparent border-b border-transparent py-4 sm:py-5'}"
 >

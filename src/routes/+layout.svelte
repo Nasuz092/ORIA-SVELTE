@@ -40,7 +40,7 @@
 >
   <div class="min-h-screen flex flex-col bg-white text-black font-sans relative">
     <Navbar />
-    <main class="flex-1 w-full bg-white text-black {page.url.pathname === '/' ? '' : 'pt-16 sm:pt-20'}">
+    <main class="flex-1 w-full bg-white text-black {page.url.pathname === '/' || page.url.pathname === '/tentang' ? '' : 'pt-16 sm:pt-20'}">
       {@render children()}
     </main>
     <Footer />

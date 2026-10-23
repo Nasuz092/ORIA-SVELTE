@@ -10,7 +10,7 @@
       desc1: 'Standar Baru Digital Printing Outdoor Skala Industri.',
       desc2: 'Kecepatan Cetak Tinggi, Presisi, dan Tahan Cuaca Ekstrem.',
       ctaText: 'DISCOVER',
-      ctaHref: '/produk?cat=outdoor',
+      ctaHref: '/produk/mesin-digital-printing-outdoor-starwin-konica-st-km512i-30-pl',
       desktopImage: '/images/hero/outdoor-oria-desktop.png',
       mobileImage: '/images/hero/outdoor-oria-mobile.png',
       alt: 'Mesin Digital Printing Outdoor ORIA 3204'
@@ -22,7 +22,7 @@
       desc1: 'Inovasi Percetakan Tekstil & Apparel Masa Depan.',
       desc2: 'Gradasi Warna Tajam, Efisiensi Tinta, dan Konsistensi Produksi Massal.',
       ctaText: 'DISCOVER',
-      ctaHref: '/produk?cat=sublimasi',
+      ctaHref: '/produk/mesin-printing-textile-sublim-oria-1902-double-head-i3200',
       desktopImage: '/images/hero/sublim-oria-desktop.png',
       mobileImage: '/images/hero/sublim-oria-mobile.png',
       alt: 'Mesin Textile Printing Sublimasi ORIA 1902'
