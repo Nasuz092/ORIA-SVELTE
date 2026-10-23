@@ -30,7 +30,7 @@
           }
         }
       },
-      { rootMargin: '-25% 0px -65% 0px' }
+      { rootMargin: '-20% 0px -60% 0px' }
     );
 
     for (const item of subNavItems) {
@@ -53,33 +53,33 @@
 <!-- ======================================================================= -->
 <!-- 1. HERO SECTION (Lotus Inspired Full Bleed with Subnav & Tracked Title) -->
 <!-- ======================================================================= -->
-<section class="relative w-full h-[100svh] min-h-[640px] bg-black text-white overflow-hidden select-none flex flex-col justify-between">
-  <!-- Hero Background Image (Gambar Section Tentang dari Halaman Utama: showcase-about.png) -->
+<section class="relative w-full h-[100svh] min-h-[620px] bg-black text-white overflow-hidden select-none flex flex-col justify-between">
+  <!-- Hero Background Image: Menggunakan gambar dari section Visi & Misi di halaman utama (our-drive-workshop.png) -->
   <div class="absolute inset-0 w-full h-full pointer-events-none">
     <img
-      src="/images/showcase-about.png"
-      alt="Fasilitas Rekayasa Presisi dan Showroom Resmi ORIA"
-      class="w-full h-full object-cover object-center scale-100 transition-transform duration-1000 ease-out"
+      src="/images/our-drive-workshop.png"
+      alt="Workshop dan Fasilitas Rekayasa Presisi ORIA"
+      class="w-full h-full object-cover object-center lg:object-[center_35%]"
       loading="eager"
     />
-    <!-- Cinematic Gradients for Contrast & Legibility -->
-    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-black/75"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-transparent"></div>
+    <!-- Cinematic Dark Gradient Overlays (Lotus High-End Aesthetics) -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/70"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/35 to-transparent"></div>
   </div>
 
-  <!-- Top Area: Spacing under Navbar + Lotus-Style Subnav -->
-  <div class="relative z-30 pt-20 sm:pt-24 lg:pt-28 w-full border-b border-white/10 backdrop-blur-xs bg-black/20">
+  <!-- Top Area: Spacing under Navbar + Lotus-Style Compact Subnav (Mepet & Rapi) -->
+  <div class="relative z-30 pt-16 sm:pt-20 lg:pt-24 w-full border-b border-white/10 backdrop-blur-xs bg-black/25">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
       <nav
         aria-label="Navigasi Halaman Tentang"
-        class="flex items-center gap-6 sm:gap-8 lg:gap-12 overflow-x-auto no-scrollbar py-3"
+        class="flex items-center gap-4 sm:gap-6 md:gap-7 overflow-x-auto no-scrollbar py-2.5"
       >
         {#each subNavItems as item}
           <a
             href="#{item.id}"
             onclick={(e) => scrollToSection(item.id, e)}
-            class="text-[11px] sm:text-xs font-semibold tracking-[0.2em] whitespace-nowrap transition-all duration-300 pb-2 relative group {activeSection === item.id
-              ? 'text-white'
+            class="text-[10px] sm:text-[11px] md:text-xs font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors pb-2 relative group {activeSection === item.id
+              ? 'text-white font-bold'
               : 'text-white/60 hover:text-white'}"
           >
             <span>{item.label}</span>
@@ -96,10 +96,10 @@
   </div>
 
   <!-- Bottom Left Area: Lotus-Style Hero Typography -->
-  <div class="relative z-20 max-w-7xl mx-auto w-full px-6 sm:px-10 lg:px-16 pb-16 sm:pb-20 lg:pb-24">
+  <div class="relative z-20 max-w-7xl mx-auto w-full px-6 sm:px-10 lg:px-16 pb-14 sm:pb-18 lg:pb-22">
     <div class="space-y-3 sm:space-y-4 max-w-3xl">
       <!-- Tag / Accent Category (Lotus: LOTUS STORY -> ORIA: ORIA STORY) -->
-      <div class="font-heading font-black text-xs sm:text-sm md:text-base tracking-[0.28em] text-[#FFE500] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+      <div class="font-heading font-black text-xs sm:text-sm tracking-[0.25em] text-[#FFE500] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
         ORIA STORY
       </div>
 
@@ -117,17 +117,17 @@
 </section>
 
 <!-- ======================================================================= -->
-<!-- STICKY SUBNAV BAR (Floating when scrolling below Hero)                  -->
+<!-- STICKY SUBNAV BAR (Floating when scrolling below Hero, Compact & Mepet) -->
 <!-- ======================================================================= -->
-<div class="sticky top-16 sm:top-20 z-30 w-full bg-black/95 backdrop-blur-md border-b border-white/10 select-none shadow-md">
+<div class="sticky top-14 sm:top-16 z-30 w-full bg-black/95 backdrop-blur-md border-b border-white/10 select-none shadow-md">
   <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-    <nav class="flex items-center gap-6 sm:gap-8 lg:gap-10 overflow-x-auto no-scrollbar py-3">
+    <nav class="flex items-center gap-4 sm:gap-6 md:gap-7 overflow-x-auto no-scrollbar py-2.5">
       {#each subNavItems as item}
         <a
           href="#{item.id}"
           onclick={(e) => scrollToSection(item.id, e)}
-          class="text-[11px] sm:text-xs font-semibold tracking-[0.18em] whitespace-nowrap transition-all duration-300 pb-1.5 relative group {activeSection === item.id
-            ? 'text-[#FFE500]'
+          class="text-[10px] sm:text-[11px] md:text-xs font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors pb-2 relative group {activeSection === item.id
+            ? 'text-[#FFE500] font-bold'
             : 'text-neutral-400 hover:text-white'}"
         >
           <span>{item.label}</span>

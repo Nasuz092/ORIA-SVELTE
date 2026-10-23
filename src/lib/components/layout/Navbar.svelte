@@ -74,23 +74,23 @@
     ? 'bg-black/95 shadow-lg border-b border-white/10 py-3.5 sm:py-4'
     : 'bg-transparent border-b border-transparent py-4 sm:py-5'}"
 >
-  <div class="w-full px-6 sm:px-10 lg:px-16 flex items-center justify-between">
-    <!-- Left Spacer (Memastikan Logo Tepat 100% di Tengah Layar) -->
-    <div class="w-12 sm:w-16 flex items-center justify-start">
-      <span class="w-2 h-2 rounded-full bg-white/30 hidden sm:block"></span>
-    </div>
+  <div class="relative w-full px-6 sm:px-10 lg:px-16 flex items-center justify-between">
+    <!-- Left Spacer (Titik lingkaran dihapus) -->
+    <div class="w-12 sm:w-16"></div>
 
-    <!-- Centered Brand Logo (Menggunakan oria-logo-hd.png) -->
-    <a
-      href="/"
-      class="flex items-center justify-center hover:opacity-90 transition-opacity select-none py-1"
-    >
-      <img
-        src="/images/oria-logo-hd.png"
-        alt="Logo ORIA"
-        class="h-7 sm:h-8 md:h-9 w-auto object-contain brightness-0 invert drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
-      />
-    </a>
+    <!-- Centered Brand Logo (100% Persis di Tengah Layar Secara Mutlak) -->
+    <div class="absolute left-1/2 -translate-x-1/2 flex items-center justify-center pointer-events-auto">
+      <a
+        href="/"
+        class="flex items-center justify-center hover:opacity-90 transition-opacity select-none py-1"
+      >
+        <img
+          src="/images/oria-logo-hd.png"
+          alt="Logo ORIA"
+          class="h-7 sm:h-8 md:h-9 w-auto object-contain brightness-0 invert drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+        />
+      </a>
+    </div>
 
     <!-- Right Hamburger Menu Button -->
     <div class="w-12 sm:w-16 flex items-center justify-end">
