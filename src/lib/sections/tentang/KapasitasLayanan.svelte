@@ -1,40 +1,109 @@
-<!-- SECTION 4: #kapasitas-layanan (4 Statistics & Kapasitas Layanan) -->
-<section id="kapasitas-layanan" class="w-full bg-neutral-950 text-white py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 border-b border-white/10 select-none scroll-mt-14 sm:scroll-mt-16">
+<script lang="ts">
+  let sectionEl: HTMLElement | null = $state(null);
+  let hasAnimated = $state(false);
+
+  let count500 = $state(0);
+  let count24 = $state(0);
+  let count2 = $state(0);
+
+  function animateCount(target: number, duration: number, callback: (v: number) => void) {
+    const start = performance.now();
+    function step(now: number) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      // Fluid easeOutExpo for ultra-smooth counting deceleration
+      const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      callback(Math.round(ease * target));
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  $effect(() => {
+    if (!sectionEl) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            hasAnimated = true;
+            animateCount(500, 1800, (v) => (count500 = v));
+            animateCount(24, 1400, (v) => (count24 = v));
+            animateCount(2, 1000, (v) => (count2 = v));
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(sectionEl);
+
+    return () => {
+      observer.disconnect();
+    };
+  });
+</script>
+
+<!-- ======================================================================= -->
+<!-- SECTION: Kapasitas Layanan (3 Statistics with Smooth Counter Animation) -->
+<!-- ======================================================================= -->
+<section
+  id="kapasitas-layanan"
+  bind:this={sectionEl}
+  class="w-full bg-neutral-950 text-white py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 border-b border-white/10 select-none scroll-mt-14 sm:scroll-mt-16"
+>
   <div class="max-w-7xl mx-auto space-y-16">
-    <div class="space-y-2">
-      <div class="text-[11px] font-mono uppercase tracking-[0.25em] text-[#FFE500]">04 / KREDIBILITAS</div>
+    <!-- Header: Clean Title without Number Tag -->
+    <div class="space-y-3 max-w-2xl">
       <h2 class="font-heading font-light text-3xl sm:text-4xl lg:text-5xl tracking-[0.2em] sm:tracking-[0.25em] uppercase text-white">
         KAPASITAS LAYANAN
       </h2>
-      <p class="font-sans text-sm sm:text-base text-neutral-400 max-w-xl leading-relaxed pt-2">
+      <p class="font-sans text-sm sm:text-base text-neutral-400 max-w-xl leading-relaxed pt-1">
         Komitmen nyata dan integritas kemitraan jangka panjang yang telah dipercaya oleh ratusan pengusaha percetakan di Indonesia.
       </p>
     </div>
 
-    <!-- 4 Stats Boxes (Lotus Minimalist Grid) -->
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-      <div class="p-8 bg-black border border-neutral-800 space-y-2">
-        <div class="font-heading font-light text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight">500<span class="text-[#FFE500] font-normal">+</span></div>
-        <div class="text-xs font-heading font-bold uppercase tracking-[0.2em] text-neutral-300 pt-2">Unit Terpasang</div>
-        <p class="text-xs text-neutral-500 font-sans leading-relaxed">Beroperasi aktif di berbagai provinsi di Indonesia.</p>
+    <!-- 3 Clean Borderless Stats Columns with Animated Counters -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 lg:gap-16">
+      <!-- Stat 1: 500+ Unit Terpasang -->
+      <div class="space-y-3">
+        <div class="font-heading font-light text-5xl sm:text-6xl lg:text-7xl text-white tracking-tight tabular-nums">
+          {count500}<span class="text-[#FFE500] font-normal">+</span>
+        </div>
+        <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
+          Unit Terpasang
+        </div>
+        <p class="text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed">
+          Beroperasi aktif di berbagai provinsi di Indonesia.
+        </p>
       </div>
 
-      <div class="p-8 bg-black border border-neutral-800 space-y-2">
-        <div class="font-heading font-light text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight">100<span class="text-[#FFE500] font-normal">%</span></div>
-        <div class="text-xs font-heading font-bold uppercase tracking-[0.2em] text-neutral-300 pt-2">Garansi Resmi</div>
-        <p class="text-xs text-neutral-500 font-sans leading-relaxed">Jaminan keaslian komponen dan proteksi investasi unit.</p>
+      <!-- Stat 2: 24/7 Dukungan Teknis -->
+      <div class="space-y-3">
+        <div class="font-heading font-light text-5xl sm:text-6xl lg:text-7xl text-white tracking-tight tabular-nums">
+          {count24}<span class="text-[#FFE500] font-normal">/7</span>
+        </div>
+        <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
+          Dukungan Teknis
+        </div>
+        <p class="text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed">
+          Konsultasi cepat dan penanganan teknisi tersertifikasi.
+        </p>
       </div>
 
-      <div class="p-8 bg-black border border-neutral-800 space-y-2">
-        <div class="font-heading font-light text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight">24<span class="text-[#FFE500] font-normal">/7</span></div>
-        <div class="text-xs font-heading font-bold uppercase tracking-[0.2em] text-neutral-300 pt-2">Dukungan Teknis</div>
-        <p class="text-xs text-neutral-500 font-sans leading-relaxed">Konsultasi cepat dan penanganan teknisi tersertifikasi.</p>
-      </div>
-
-      <div class="p-8 bg-black border border-neutral-800 space-y-2">
-        <div class="font-heading font-light text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight">2 <span class="text-[#FFE500] text-2xl sm:text-3xl font-bold">KOTA</span></div>
-        <div class="text-xs font-heading font-bold uppercase tracking-[0.2em] text-neutral-300 pt-2">Showroom & Lab</div>
-        <p class="text-xs text-neutral-500 font-sans leading-relaxed">Fasilitas demonstrasi lengkap di Jakarta & Surabaya.</p>
+      <!-- Stat 3: 2 KOTA Showroom & Lab -->
+      <div class="space-y-3">
+        <div class="font-heading font-light text-5xl sm:text-6xl lg:text-7xl text-white tracking-tight tabular-nums">
+          {count2} <span class="text-[#FFE500] text-2xl sm:text-3xl lg:text-4xl font-bold align-baseline">KOTA</span>
+        </div>
+        <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
+          Showroom &amp; Lab
+        </div>
+        <p class="text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed">
+          Fasilitas demonstrasi lengkap di Jakarta &amp; Surabaya.
+        </p>
       </div>
     </div>
   </div>

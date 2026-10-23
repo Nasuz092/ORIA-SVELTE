@@ -3,7 +3,6 @@
   <div class="max-w-7xl mx-auto space-y-16">
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-neutral-800 pb-8">
       <div class="space-y-2">
-        <div class="text-[11px] font-mono uppercase tracking-[0.25em] text-[#FFE500]">02 / NILAI KAMI</div>
         <h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl tracking-[0.2em] uppercase text-white">
           TIGA PILAR KEUNGGULAN
         </h2>

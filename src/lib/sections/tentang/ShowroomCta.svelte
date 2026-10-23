@@ -3,7 +3,6 @@
   <div class="max-w-7xl mx-auto space-y-12">
     <div class="p-8 sm:p-12 lg:p-16 bg-black border border-neutral-800 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 sm:gap-10">
       <div class="space-y-4 max-w-2xl">
-        <div class="text-[11px] font-mono uppercase tracking-[0.25em] text-[#FFE500]">06 / KONSULTASI & DEMO</div>
         <h2 class="font-heading font-black text-2xl sm:text-3xl lg:text-4xl uppercase tracking-wider text-white leading-tight">
           KUNJUNGI SHOWROOM KAMI
         </h2>

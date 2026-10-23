@@ -2,7 +2,6 @@
 <section id="visi-dedikasi" class="relative w-full bg-black text-white py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 border-b border-white/10 select-none scroll-mt-14 sm:scroll-mt-16 overflow-hidden">
   <div class="max-w-7xl mx-auto space-y-10">
     <div class="space-y-2">
-      <div class="text-[11px] font-mono uppercase tracking-[0.25em] text-[#FFE500]">05 / VISI MASA DEPAN</div>
       <h2 class="font-heading font-light text-3xl sm:text-4xl lg:text-5xl tracking-[0.2em] sm:tracking-[0.25em] uppercase text-white">
         DEDIKASI KAMI
       </h2>
