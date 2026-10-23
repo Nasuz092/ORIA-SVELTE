@@ -1,45 +1,4 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-
-  const subNavItems = [
-    { id: 'oria-story', label: 'ORIA STORY' },
-    { id: 'about-oria', label: 'ABOUT ORIA' },
-    { id: 'standar-rekayasa', label: 'STANDAR REKAYASA' },
-    { id: 'kapasitas-layanan', label: 'KAPASITAS LAYANAN' },
-    { id: 'visi-dedikasi', label: 'VISI & DEDIKASI' },
-    { id: 'showroom', label: 'SHOWROOM & LAB' }
-  ];
-
-  let activeSection = $state('oria-story');
-
-  function scrollToSection(id: string, e?: MouseEvent) {
-    if (e) e.preventDefault();
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      activeSection = id;
-    }
-  }
-
-  onMount(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            activeSection = entry.target.id;
-          }
-        }
-      },
-      { rootMargin: '-20% 0px -60% 0px' }
-    );
-
-    for (const item of subNavItems) {
-      const el = document.getElementById(item.id);
-      if (el) observer.observe(el);
-    }
-
-    return () => observer.disconnect();
-  });
 </script>
 
 <svelte:head>
@@ -51,9 +10,9 @@
 </svelte:head>
 
 <!-- ======================================================================= -->
-<!-- 1. HERO SECTION (Lotus Inspired Full Bleed with Subnav & Tracked Title) -->
+<!-- 1. HERO SECTION (Lotus Inspired Full Bleed Background & Tracked Title) -->
 <!-- ======================================================================= -->
-<section class="relative w-full h-[100svh] min-h-[620px] bg-black text-white overflow-hidden select-none flex flex-col justify-between">
+<section class="relative w-full h-[100svh] min-h-[620px] bg-black text-white overflow-hidden select-none flex flex-col justify-end">
   <!-- Hero Background Image: Menggunakan gambar dari section Visi & Misi di halaman utama (our-drive-workshop.png) -->
   <div class="absolute inset-0 w-full h-full pointer-events-none">
     <img
@@ -65,34 +24,6 @@
     <!-- Cinematic Dark Gradient Overlays (Lotus High-End Aesthetics) -->
     <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/70"></div>
     <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/35 to-transparent"></div>
-  </div>
-
-  <!-- Top Area: Spacing under Navbar + Lotus-Style Compact Subnav (Mepet & Rapi) -->
-  <div class="relative z-30 pt-16 sm:pt-20 lg:pt-24 w-full border-b border-white/10 backdrop-blur-xs bg-black/25">
-    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-      <nav
-        aria-label="Navigasi Halaman Tentang"
-        class="flex items-center gap-4 sm:gap-6 md:gap-7 overflow-x-auto no-scrollbar py-2.5"
-      >
-        {#each subNavItems as item}
-          <a
-            href="#{item.id}"
-            onclick={(e) => scrollToSection(item.id, e)}
-            class="text-[10px] sm:text-[11px] md:text-xs font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors pb-2 relative group {activeSection === item.id
-              ? 'text-white font-bold'
-              : 'text-white/60 hover:text-white'}"
-          >
-            <span>{item.label}</span>
-            <!-- Active underline -->
-            <span
-              class="absolute bottom-0 left-0 w-full h-[2px] transition-all duration-300 {activeSection === item.id
-                ? 'bg-white opacity-100'
-                : 'bg-transparent opacity-0 group-hover:bg-white/40 group-hover:opacity-100'}"
-            ></span>
-          </a>
-        {/each}
-      </nav>
-    </div>
   </div>
 
   <!-- Bottom Left Area: Lotus-Style Hero Typography -->

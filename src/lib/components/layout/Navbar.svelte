@@ -34,6 +34,50 @@
     { name: 'Kontak & Showroom', href: '/kontak' }
   ];
 
+  let isTentang = $derived(page.url.pathname === '/tentang');
+
+  const subNavItems = [
+    { id: 'oria-story', label: 'ORIA STORY' },
+    { id: 'about-oria', label: 'ABOUT ORIA' },
+    { id: 'standar-rekayasa', label: 'STANDAR REKAYASA' },
+    { id: 'kapasitas-layanan', label: 'KAPASITAS LAYANAN' },
+    { id: 'visi-dedikasi', label: 'VISI & DEDIKASI' },
+    { id: 'showroom', label: 'SHOWROOM & LAB' }
+  ];
+
+  let activeSection = $state('oria-story');
+
+  function scrollToSection(id: string, e?: MouseEvent) {
+    if (e) e.preventDefault();
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      activeSection = id;
+    }
+  }
+
+  $effect(() => {
+    if (typeof window !== 'undefined' && page.url.pathname === '/tentang') {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              activeSection = entry.target.id;
+            }
+          }
+        },
+        { rootMargin: '-20% 0px -60% 0px' }
+      );
+
+      for (const item of subNavItems) {
+        const el = document.getElementById(item.id);
+        if (el) observer.observe(el);
+      }
+
+      return () => observer.disconnect();
+    }
+  });
+
   $effect(() => {
     if (typeof document !== 'undefined') {
       if (drawerOpen) {
@@ -68,46 +112,105 @@
   }}
 />
 
-<!-- TOP NAVBAR (Clean, logo di tengah menggunakan oria-logo-hd.png, hamburger di kanan) -->
+<!-- TOP NAVBAR -->
 <header
-  class="w-full fixed top-0 left-0 z-40 transition-all duration-300 {isScrolled || (page.url.pathname !== '/' && page.url.pathname !== '/tentang')
-    ? 'bg-black/95 shadow-lg border-b border-white/10 py-3.5 sm:py-4'
-    : 'bg-transparent border-b border-transparent py-4 sm:py-5'}"
+  class="w-full fixed top-0 left-0 z-40 transition-all duration-300 {isTentang
+    ? (isScrolled ? 'bg-black/95 shadow-lg border-b border-white/10' : 'bg-transparent border-b border-transparent')
+    : (isScrolled || page.url.pathname !== '/'
+      ? 'bg-black/95 shadow-lg border-b border-white/10 py-3.5 sm:py-4'
+      : 'bg-transparent border-b border-transparent py-4 sm:py-5')}"
 >
-  <div class="relative w-full px-6 sm:px-10 lg:px-16 flex items-center justify-between">
-    <!-- Left Spacer (Titik lingkaran dihapus) -->
-    <div class="w-12 sm:w-16"></div>
-
-    <!-- Centered Brand Logo (100% Persis di Tengah Layar Secara Mutlak) -->
-    <div class="absolute left-1/2 -translate-x-1/2 flex items-center justify-center pointer-events-auto">
-      <a
-        href="/"
-        class="flex items-center justify-center hover:opacity-90 transition-opacity select-none py-1"
-      >
-        <img
-          src="/images/oria-logo-hd.png"
-          alt="Logo ORIA"
-          class="h-7 sm:h-8 md:h-9 w-auto object-contain brightness-0 invert drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
-        />
-      </a>
-    </div>
-
-    <!-- Right Hamburger Menu Button -->
-    <div class="w-12 sm:w-16 flex items-center justify-end">
-      <button
-        type="button"
-        onclick={openDrawer}
-        class="text-white p-2.5 hover:text-[#FFE500] focus:outline-none cursor-pointer transition-colors group flex items-center justify-center drop-shadow-md"
-        aria-label="Buka Menu Navigasi"
-      >
-        <div class="flex flex-col items-end gap-1.5 w-6 sm:w-7">
-          <span class="block w-full h-[2px] bg-white group-hover:bg-[#FFE500] transition-colors"></span>
-          <span class="block w-4/5 h-[2px] bg-white group-hover:w-full group-hover:bg-[#FFE500] transition-all"></span>
-          <span class="block w-full h-[2px] bg-white group-hover:bg-[#FFE500] transition-colors"></span>
-        </div>
-      </button>
-    </div>
+  <!-- Hamburger Button (Fixed in Top Right, stays in place whether scrolled or not) -->
+  <div class="absolute top-0 right-0 z-50 h-14 sm:h-16 flex items-center pr-6 sm:pr-10 lg:pr-16 pointer-events-auto">
+    <button
+      type="button"
+      onclick={openDrawer}
+      class="text-white p-2.5 hover:text-[#FFE500] focus:outline-none cursor-pointer transition-colors group flex items-center justify-center drop-shadow-md"
+      aria-label="Buka Menu Navigasi"
+    >
+      <div class="flex flex-col items-end gap-1.5 w-6 sm:w-7">
+        <span class="block w-full h-[2px] bg-white group-hover:bg-[#FFE500] transition-colors"></span>
+        <span class="block w-4/5 h-[2px] bg-white group-hover:w-full group-hover:bg-[#FFE500] transition-all"></span>
+        <span class="block w-full h-[2px] bg-white group-hover:bg-[#FFE500] transition-colors"></span>
+      </div>
+    </button>
   </div>
+
+  {#if isTentang}
+    <!-- TENTANG PAGE: Dual-Row Navbar that shifts on scroll -->
+    <div class="w-full flex flex-col">
+      <!-- ROW 1: Logo row (Slides up and disappears when isScrolled!) -->
+      <div
+        class="w-full h-14 sm:h-16 flex items-center justify-center transition-all duration-300 ease-out {isScrolled
+          ? '-translate-y-full opacity-0 pointer-events-none'
+          : 'translate-y-0 opacity-100'}"
+      >
+        <a
+          href="/"
+          class="flex items-center justify-center hover:opacity-90 transition-opacity select-none py-1 pointer-events-auto"
+        >
+          <img
+            src="/images/oria-logo-hd.png"
+            alt="Logo ORIA"
+            class="h-7 sm:h-8 md:h-9 w-auto object-contain brightness-0 invert drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+          />
+        </a>
+      </div>
+
+      <!-- ROW 2: Subnav row (Slides up into top-0 when isScrolled!) -->
+      <div
+        class="w-full transition-all duration-300 ease-out {isScrolled
+          ? '-translate-y-14 sm:-translate-y-16 bg-black border-b border-white/10 shadow-lg'
+          : 'bg-black/25 backdrop-blur-xs border-t border-white/10'}"
+      >
+        <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pr-20 sm:pr-24 lg:pr-28">
+          <nav
+            aria-label="Navigasi Halaman Tentang"
+            class="flex items-center gap-4 sm:gap-6 md:gap-7 overflow-x-auto no-scrollbar py-2.5"
+          >
+            {#each subNavItems as item}
+              <a
+                href="#{item.id}"
+                onclick={(e) => scrollToSection(item.id, e)}
+                class="text-[10px] sm:text-[11px] md:text-xs font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors pb-2 relative group {activeSection === item.id
+                  ? 'text-white font-bold'
+                  : 'text-white/60 hover:text-white'}"
+              >
+                <span>{item.label}</span>
+                <!-- Active underline -->
+                <span
+                  class="absolute bottom-0 left-0 w-full h-[2px] transition-all duration-300 {activeSection === item.id
+                    ? 'bg-white opacity-100'
+                    : 'bg-transparent opacity-0 group-hover:bg-white/40 group-hover:opacity-100'}"
+                ></span>
+              </a>
+            {/each}
+          </nav>
+        </div>
+      </div>
+    </div>
+  {:else}
+    <!-- NORMAL PAGES HEADER -->
+    <div class="relative w-full px-6 sm:px-10 lg:px-16 flex items-center justify-between">
+      <div class="w-12 sm:w-16"></div>
+
+      <!-- Centered Brand Logo -->
+      <div class="absolute left-1/2 -translate-x-1/2 flex items-center justify-center pointer-events-auto">
+        <a
+          href="/"
+          class="flex items-center justify-center hover:opacity-90 transition-opacity select-none py-1"
+        >
+          <img
+            src="/images/oria-logo-hd.png"
+            alt="Logo ORIA"
+            class="h-7 sm:h-8 md:h-9 w-auto object-contain brightness-0 invert drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+          />
+        </a>
+      </div>
+
+      <div class="w-12 sm:w-16"></div>
+    </div>
+  {/if}
 </header>
 
 <!-- BACKDROP OVERLAY UNTUK DRAWER (Murni Gelap Transparan Tanpa Blur) -->
