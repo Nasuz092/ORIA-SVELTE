@@ -117,11 +117,11 @@
   <!-- TENTANG PAGE NAVBAR (Dual-Row at top, collapses to sticky row)    -->
   <!-- ================================================================= -->
   <header
-    class="w-full fixed top-0 left-0 z-40 transition-colors duration-300 {isScrolled
+    class="w-full fixed top-0 left-0 z-40 overflow-hidden transition-colors duration-300 {isScrolled
       ? 'bg-black shadow-lg border-b border-white/10'
       : 'bg-transparent border-b border-transparent'}"
   >
-  <!-- Hamburger Button (Fixed in Top Right, full size, optically leveled with menu) -->
+    <!-- Hamburger Button (Fixed in Top Right, full size, optically leveled with menu) -->
     <div class="absolute top-0 right-0 z-50 h-14 sm:h-16 flex items-center justify-end px-6 sm:px-10 lg:px-16 pointer-events-auto">
       <button
         type="button"
@@ -138,11 +138,11 @@
     </div>
 
     <div class="w-full flex flex-col">
-      <!-- ROW 1: Centered Logo Row (Matches homepage height & logo size, collapses on scroll) -->
+      <!-- ROW 1: Centered Logo Row (Smooth glide with exact negative margin, no max-height bouncing) -->
       <div
-        class="w-full transition-all duration-300 ease-in-out overflow-hidden flex items-center justify-center {isScrolled
-          ? 'max-h-0 opacity-0 pointer-events-none'
-          : 'max-h-20 h-14 sm:h-16 opacity-100 pointer-events-auto'}"
+        class="w-full h-14 sm:h-16 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-center {isScrolled
+          ? '-mt-14 sm:-mt-16 opacity-0 pointer-events-none'
+          : 'mt-0 opacity-100 pointer-events-auto'}"
       >
         <a
           href="/"
