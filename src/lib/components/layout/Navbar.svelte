@@ -114,64 +114,64 @@
 
 {#if isTentang}
   <!-- ================================================================= -->
-  <!-- TENTANG PAGE NAVBAR (Dual-Row at top, collapses to sticky slim row) -->
+  <!-- TENTANG PAGE NAVBAR (Dual-Row at top, collapses to sticky row)    -->
   <!-- ================================================================= -->
   <header
     class="w-full fixed top-0 left-0 z-40 transition-colors duration-300 {isScrolled
       ? 'bg-black shadow-lg border-b border-white/10'
       : 'bg-transparent border-b border-transparent'}"
   >
-    <!-- Hamburger Button (Fixed in Top Right, aligned with Row 1 when unscrolled, and with Row 2 when scrolled) -->
-    <div class="absolute top-0 right-0 z-50 h-11 flex items-center pr-6 sm:pr-10 lg:pr-16 pointer-events-auto">
+    <!-- Hamburger Button (Fixed in Top Right, full size matching homepage) -->
+    <div class="absolute top-0 right-0 z-50 flex items-center justify-end px-6 sm:px-10 lg:px-16 pointer-events-auto {isScrolled ? 'py-3.5 sm:py-4' : 'py-4 sm:py-5'} transition-all duration-300">
       <button
         type="button"
         onclick={openDrawer}
-        class="text-white hover:text-[#FFE500] focus:outline-none cursor-pointer transition-colors group flex items-center justify-center drop-shadow-md"
+        class="text-white p-2.5 hover:text-[#FFE500] focus:outline-none cursor-pointer transition-colors group flex items-center justify-center drop-shadow-md"
         aria-label="Buka Menu Navigasi"
       >
-        <div class="flex flex-col items-end gap-[5px] w-5 sm:w-6">
-          <span class="block w-full h-[1.5px] bg-white group-hover:bg-[#FFE500] transition-colors"></span>
-          <span class="block w-4/5 h-[1.5px] bg-white group-hover:w-full group-hover:bg-[#FFE500] transition-all"></span>
-          <span class="block w-full h-[1.5px] bg-white group-hover:bg-[#FFE500] transition-colors"></span>
+        <div class="flex flex-col items-end gap-1.5 w-6 sm:w-7">
+          <span class="block w-full h-[2px] bg-white group-hover:bg-[#FFE500] transition-colors"></span>
+          <span class="block w-4/5 h-[2px] bg-white group-hover:w-full group-hover:bg-[#FFE500] transition-all"></span>
+          <span class="block w-full h-[2px] bg-white group-hover:bg-[#FFE500] transition-colors"></span>
         </div>
       </button>
     </div>
 
     <div class="w-full flex flex-col">
-      <!-- ROW 1: Centered Logo Row (Height h-11, collapses to max-h-0 on scroll) -->
+      <!-- ROW 1: Centered Logo Row (Matches homepage height & logo size, collapses on scroll) -->
       <div
         class="w-full transition-all duration-300 ease-in-out overflow-hidden flex items-center justify-center {isScrolled
           ? 'max-h-0 opacity-0 pointer-events-none'
-          : 'max-h-11 h-11 opacity-100 pointer-events-auto'}"
+          : 'max-h-24 py-4 sm:py-5 opacity-100 pointer-events-auto'}"
       >
         <a
           href="/"
-          class="flex items-center justify-center hover:opacity-90 transition-opacity select-none focus:outline-none"
+          class="flex items-center justify-center hover:opacity-90 transition-opacity select-none focus:outline-none py-1"
         >
           <img
             src="/images/oria-logo-hd.png"
             alt="Logo ORIA"
-            class="h-6 w-auto object-contain brightness-0 invert drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+            class="h-7 sm:h-8 md:h-9 w-auto object-contain brightness-0 invert drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
           />
         </a>
       </div>
 
-      <!-- ROW 2: Subnav Row (Transparent bg, NO borders, NO underline, yellow on hover/active) -->
+      <!-- ROW 2: Subnav Row (Horizontally centered, transparent, no borders, no underline, yellow hover/active) -->
       <div
-        class="w-full h-11 transition-all duration-300 bg-transparent border-none"
+        class="w-full transition-all duration-300 bg-transparent border-none {isScrolled ? 'py-3.5 sm:py-4' : 'py-3 sm:py-3.5'} flex items-center justify-center"
       >
-        <div class="max-w-7xl mx-auto h-full px-6 sm:px-10 lg:px-16 pr-16 sm:pr-20 lg:pr-24 flex items-center">
+        <div class="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 overflow-x-auto no-scrollbar flex items-center justify-center">
           <nav
             aria-label="Navigasi Halaman Tentang"
-            class="h-full flex items-center gap-5 sm:gap-7 md:gap-8 overflow-x-auto no-scrollbar border-none"
+            class="mx-auto flex items-center justify-center gap-6 sm:gap-8 md:gap-10 shrink-0 border-none"
           >
             {#each subNavItems as item}
               <a
                 href="#{item.id}"
                 onclick={(e) => scrollToSection(item.id, e)}
-                class="h-full flex items-center text-[10.5px] sm:text-[11px] md:text-xs font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none {activeSection === item.id
+                class="flex items-center text-[11px] sm:text-xs md:text-[13px] font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none py-1 {activeSection === item.id
                   ? 'text-[#FFE500] font-bold'
-                  : 'text-white/70 hover:text-[#FFE500]'}"
+                  : 'text-white/75 hover:text-[#FFE500]'}"
               >
                 <span>{item.label}</span>
               </a>
