@@ -189,7 +189,7 @@
   <!-- 100% ORIGINAL: Tinggi, padding, logo, dan hamburger asli           -->
   <!-- ================================================================= -->
   <header
-    class="w-full fixed top-0 left-0 z-40 transition-all duration-300 {isScrolled || page.url.pathname !== '/'
+    class="w-full fixed top-0 left-0 z-40 transition-all duration-300 {isScrolled || (page.url.pathname !== '/' && page.url.pathname !== '/produk')
       ? 'bg-black/95 shadow-lg border-b border-white/10 py-3.5 sm:py-4'
       : 'bg-transparent border-b border-transparent py-4 sm:py-5'}"
   >

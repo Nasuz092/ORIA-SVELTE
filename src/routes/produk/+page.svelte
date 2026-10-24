@@ -1,12 +1,14 @@
 <script lang="ts">
   import { page } from '$app/state';
   import type { PageData } from './$types';
+  import ProdukHero from '$lib/sections/produk/ProdukHero.svelte';
+  import ProdukOverview from '$lib/sections/produk/ProdukOverview.svelte';
+  import ProdukCategories from '$lib/sections/produk/ProdukCategories.svelte';
 
   let { data }: { data: PageData } = $props();
 
   const products = $derived(data.products || []);
 
-  // Sync initial category from URL query param if present
   let selectedCategory = $state('all');
   let searchQuery = $state('');
 
@@ -17,17 +19,27 @@
     }
   });
 
+  function handleCategorySelect(catId: string) {
+    selectedCategory = catId;
+    if (typeof window !== 'undefined') {
+      const el = document.getElementById('catalog');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  }
+
   // Extract unique category options ordered by machine count in database
   const categoryTabs = [
-    { key: 'all', label: 'Semua' },
-    { key: 'laser', label: 'Laser Cutting', match: ['laser', 'co2', 'fiber', 'akrilik', 'mdf'] },
-    { key: 'indoor', label: 'Indoor Printing', match: ['indoor', 'eco-solvent', 'ecosolvent', 'banner', 'sticker', 'display'] },
+    { key: 'all', label: 'All Machines' },
     { key: 'uv', label: 'UV Printing', match: ['uv', 'flatbed', 'rotary', 'cylinder', 'tumbler'] },
-    { key: 'sublimasi', label: 'Sublimasi', match: ['sublim', 'textile', 'fashion', 'kain'] },
+    { key: 'sublimasi', label: 'Sublimasi Textile', match: ['sublim', 'textile', 'fashion', 'kain'] },
+    { key: 'laser', label: 'Laser Cutting', match: ['laser', 'co2', 'fiber', 'akrilik', 'mdf'] },
     { key: 'cnc', label: 'CNC Router', match: ['cnc', 'router', 'plasma', 'kayu', 'acp'] },
-    { key: 'dtf', label: 'DTF', match: ['dtf', 'apparel', 'kaos', 'dtg'] },
+    { key: 'dtf', label: 'DTF Printing', match: ['dtf', 'apparel', 'kaos', 'dtg'] },
     { key: 'outdoor', label: 'Outdoor Printing', match: ['outdoor', 'solvent', 'spanduk', 'baliho', 'billboard'] },
-    { key: 'consumable', label: 'Consumable & Tinta', match: ['consumable', 'tinta', 'kertas'] }
+    { key: 'indoor', label: 'Indoor Printing', match: ['indoor', 'eco-solvent', 'ecosolvent', 'banner', 'sticker', 'display'] },
+    { key: 'consumable', label: 'Consumable & Ink', match: ['consumable', 'tinta', 'kertas'] }
   ];
 
   function matchesCategory(p: any, catKey: string): boolean {
@@ -36,30 +48,14 @@
     const name = (p.categoryName || '').toLowerCase();
     const pName = (p.name || '').toLowerCase();
 
-    if (catKey === 'laser') {
-      return pName.includes('laser');
-    }
-    if (catKey === 'cnc') {
-      return (pName.includes('cnc') || pName.includes('router') || pName.includes('plasma')) && !pName.includes('laser');
-    }
-    if (catKey === 'indoor') {
-      return slug.includes('indoor') || (pName.includes('indoor') && !pName.includes('outdoor')) || pName.includes('ecosolvent');
-    }
-    if (catKey === 'outdoor') {
-      return (slug.includes('outdoor') || pName.includes('outdoor')) && !pName.includes('indoor') && !slug.includes('consumable');
-    }
-    if (catKey === 'uv') {
-      return slug.includes('uv') || pName.includes('uv');
-    }
-    if (catKey === 'sublimasi') {
-      return slug.includes('sublim') || (pName.includes('sublim') && !slug.includes('consumable'));
-    }
-    if (catKey === 'dtf') {
-      return slug.includes('dtf') || slug.includes('dtg') || pName.includes('dtf') || pName.includes('dtg');
-    }
-    if (catKey === 'consumable') {
-      return slug.includes('consumable') || pName.includes('tinta') || pName.includes('kertas');
-    }
+    if (catKey === 'laser') return pName.includes('laser');
+    if (catKey === 'cnc') return (pName.includes('cnc') || pName.includes('router') || pName.includes('plasma')) && !pName.includes('laser');
+    if (catKey === 'indoor') return slug.includes('indoor') || (pName.includes('indoor') && !pName.includes('outdoor')) || pName.includes('ecosolvent');
+    if (catKey === 'outdoor') return (slug.includes('outdoor') || pName.includes('outdoor')) && !pName.includes('indoor') && !slug.includes('consumable');
+    if (catKey === 'uv') return slug.includes('uv') || pName.includes('uv');
+    if (catKey === 'sublimasi') return slug.includes('sublim') || (pName.includes('sublim') && !slug.includes('consumable'));
+    if (catKey === 'dtf') return slug.includes('dtf') || slug.includes('dtg') || pName.includes('dtf') || pName.includes('dtg');
+    if (catKey === 'consumable') return slug.includes('consumable') || pName.includes('tinta') || pName.includes('kertas');
 
     const tab = categoryTabs.find(t => t.key === catKey);
     if (tab?.match) {
@@ -83,25 +79,43 @@
 </script>
 
 <svelte:head>
-  <title>Katalog Mesin Industri & Percetakan ORIA - Distributor Resmi</title>
+  <title>ORIA Heritage - Industrial Machinery &amp; Digital Printing Portfolio</title>
   <meta
     name="description"
-    content="Katalog resmi mesin digital printing, DTG, UV flatbed, laser cutting, CNC router, dan consumable merk ORIA bergaransi resmi."
+    content="Jelajahi seluruh kategori mesin industri ORIA: UV Flatbed, Sublimasi, Laser Cutting, CNC Router, DTF, dan Outdoor Printing berstandar presisi manufaktur."
   />
 </svelte:head>
 
-<div class="w-full bg-white text-black py-16 lg:py-24 px-6 sm:px-8">
-  <div class="w-full space-y-12">
-    <!-- Header -->
-    <div class="space-y-4">
-      <div class="font-sans font-bold text-xs uppercase tracking-widest text-black">
-        Katalog Resmi ORIA
+<!-- ======================================================================= -->
+<!-- SECTION 1: Hero (Lotus Heritage Style - Full Bleed)                    -->
+<!-- ======================================================================= -->
+<ProdukHero />
+
+<!-- ======================================================================= -->
+<!-- SECTION 2: Overview Narrative (Lotus Iconic Heritage Style - Centered) -->
+<!-- ======================================================================= -->
+<ProdukOverview />
+
+<!-- ======================================================================= -->
+<!-- SECTION 3: Category Cards (Lotus Heritage Cars Style - Borderless 3-Col)-->
+<!-- ======================================================================= -->
+<ProdukCategories onSelectCategory={handleCategorySelect} />
+
+<!-- ======================================================================= -->
+<!-- SECTION 4: Machine Catalog & Filters (Clean Architectural Grid)        -->
+<!-- ======================================================================= -->
+<div id="catalog" class="w-full bg-white text-black py-20 sm:py-28 px-6 sm:px-10 lg:px-16 scroll-mt-20 border-t border-neutral-200">
+  <div class="max-w-7xl mx-auto space-y-12">
+    <!-- Section Header -->
+    <div class="space-y-3">
+      <div class="font-mono text-xs uppercase tracking-[0.25em] text-neutral-500 font-semibold">
+        FULL PORTFOLIO
       </div>
-      <h1 class="font-heading font-black text-4xl sm:text-5xl tracking-tighter text-black">
-        Mesin Percetakan & Manufaktur Industri
-      </h1>
-      <p class="font-sans text-base sm:text-lg text-black max-w-2xl leading-relaxed">
-        Jelajahi seluruh lini mesin ORIA berkinerja tinggi yang dirancang untuk stabilitas operasional, efisiensi konsumsi bahan, dan presisi produksi massal.
+      <h2 class="font-heading font-light text-3xl sm:text-4xl lg:text-5xl tracking-[0.2em] sm:tracking-[0.25em] uppercase text-black">
+        CATALOG &amp; SPECIFICATIONS
+      </h2>
+      <p class="font-sans text-sm sm:text-base text-neutral-600 max-w-2xl leading-relaxed pt-1">
+        Jelajahi seluruh mesin industri ORIA berkinerja tinggi yang dirancang untuk stabilitas operasional, efisiensi konsumsi bahan, dan presisi mikron.
       </p>
     </div>
 
@@ -172,11 +186,11 @@
               <div class="font-sans text-[11px] font-bold uppercase tracking-widest text-gray-500">
                 {p.categoryName}
               </div>
-              <h2 class="font-heading font-bold text-lg text-black leading-snug group-hover:underline">
+              <h3 class="font-heading font-bold text-lg text-black leading-snug group-hover:underline">
                 <a href="/produk/{p.slug}">
                   {p.name}
                 </a>
-              </h2>
+              </h3>
               {#if p.shortDescription}
                 <p class="font-sans text-xs text-gray-700 line-clamp-2 leading-relaxed">
                   {p.shortDescription}
@@ -189,13 +203,16 @@
                 {p.priceText}
               </div>
 
-              <!-- Action Links -->
+              <!-- Action Links (Strict Rule: Chevron only, never arrow) -->
               <div class="flex items-center gap-3 pt-1">
                 <a
                   href="/produk/{p.slug}"
-                  class="flex-1 text-center bg-black text-white py-2.5 text-xs font-semibold uppercase tracking-widest hover:opacity-85 transition-opacity"
+                  class="flex-1 inline-flex items-center justify-center gap-2 bg-black text-white py-2.5 px-4 text-xs font-semibold uppercase tracking-widest hover:opacity-85 transition-opacity group/btn"
                 >
-                  Detail Mesin
+                  <span>Detail Mesin</span>
+                  <svg class="w-3.5 h-3.5 stroke-current transition-transform duration-300 group-hover/btn:translate-x-1" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
                 </a>
                 <a
                   href="https://wa.me/6281252086455?text={encodeURIComponent(p.whatsappMessage)}"
@@ -227,7 +244,7 @@
           onclick={() => { searchQuery = ''; selectedCategory = 'all'; }}
           class="font-sans font-bold text-xs uppercase tracking-widest bg-black text-white px-5 py-2.5 hover:opacity-80 transition-opacity"
         >
-          Reset Filter & Pencarian
+          Reset Filter &amp; Pencarian
         </button>
       </div>
     {/if}
