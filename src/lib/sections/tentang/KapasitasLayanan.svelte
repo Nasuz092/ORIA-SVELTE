@@ -3,8 +3,8 @@
   let hasAnimated = $state(false);
 
   let count500 = $state(0);
+  let count100 = $state(0);
   let count24 = $state(0);
-  let count2 = $state(0);
 
   function animateCount(target: number, duration: number, callback: (v: number) => void) {
     const start = performance.now();
@@ -30,8 +30,8 @@
           if (entry.isIntersecting && !hasAnimated) {
             hasAnimated = true;
             animateCount(500, 1800, (v) => (count500 = v));
-            animateCount(24, 1400, (v) => (count24 = v));
-            animateCount(2, 1000, (v) => (count2 = v));
+            animateCount(100, 1500, (v) => (count100 = v));
+            animateCount(24, 1200, (v) => (count24 = v));
           }
         });
       },
@@ -47,7 +47,7 @@
 </script>
 
 <!-- ======================================================================= -->
-<!-- SECTION: Kapasitas Layanan (3 Statistics with Smooth Counter Animation) -->
+<!-- SECTION: Our Capacity (3 Statistics: 500+, 100%, 24/7 - Borderless)    -->
 <!-- ======================================================================= -->
 <section
   id="kapasitas-layanan"
@@ -73,36 +73,36 @@
           {count500}<span class="text-[#FFE500] font-normal">+</span>
         </div>
         <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
-          Units Installed
+          UNITS INSTALLED
         </div>
         <p class="text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed">
           Beroperasi aktif di berbagai provinsi di Indonesia.
         </p>
       </div>
 
-      <!-- Stat 2: 24/7 Technical Support -->
+      <!-- Stat 2: 100% Official Warranty -->
+      <div class="space-y-3">
+        <div class="font-heading font-light text-5xl sm:text-6xl lg:text-7xl text-white tracking-tight tabular-nums">
+          {count100}<span class="text-[#FFE500] font-normal">%</span>
+        </div>
+        <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
+          OFFICIAL WARRANTY
+        </div>
+        <p class="text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed">
+          Jaminan keaslian komponen dan proteksi investasi unit.
+        </p>
+      </div>
+
+      <!-- Stat 3: 24/7 Technical Support -->
       <div class="space-y-3">
         <div class="font-heading font-light text-5xl sm:text-6xl lg:text-7xl text-white tracking-tight tabular-nums">
           {count24}<span class="text-[#FFE500] font-normal">/7</span>
         </div>
         <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
-          Technical Support
+          TECHNICAL SUPPORT
         </div>
         <p class="text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed">
           Konsultasi cepat dan penanganan teknisi tersertifikasi.
-        </p>
-      </div>
-
-      <!-- Stat 3: 2 CITIES Showroom & Lab -->
-      <div class="space-y-3">
-        <div class="font-heading font-light text-5xl sm:text-6xl lg:text-7xl text-white tracking-tight tabular-nums">
-          {count2} <span class="text-[#FFE500] text-2xl sm:text-3xl lg:text-4xl font-bold align-baseline">CITIES</span>
-        </div>
-        <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
-          Showroom &amp; Lab
-        </div>
-        <p class="text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed">
-          Fasilitas demonstrasi lengkap di Jakarta &amp; Surabaya.
         </p>
       </div>
     </div>
