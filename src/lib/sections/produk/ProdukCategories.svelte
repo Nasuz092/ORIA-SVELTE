@@ -73,12 +73,12 @@
           onclick={() => handleClick(cat.id)}
           class="group block flex flex-col focus:outline-none cursor-pointer"
         >
-          <!-- Category Machine Image (No border, clean subtle dark frame, smooth hover scale) -->
-          <div class="w-full aspect-[16/10] overflow-hidden bg-neutral-900/60 flex items-center justify-center p-6 sm:p-8 relative">
+          <!-- Category Machine Image Box (Uniform pure white studio box across all cards) -->
+          <div class="w-full aspect-[4/3] overflow-hidden bg-white flex items-center justify-center p-5 sm:p-6 lg:p-7 relative">
             <img
               src={cat.image}
               alt={cat.alt}
-              class="max-h-[170px] sm:max-h-[210px] w-auto object-contain scale-100 group-hover:scale-105 transition-transform duration-500 ease-out"
+              class="w-full h-full object-contain scale-100 group-hover:scale-105 transition-transform duration-500 ease-out pointer-events-none select-none"
               loading="lazy"
             />
           </div>
