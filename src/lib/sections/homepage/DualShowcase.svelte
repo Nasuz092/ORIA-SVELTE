@@ -7,7 +7,7 @@
     <!-- Section Top Header Title (Lotus-style tracked uppercase) -->
     <div class="mb-8 sm:mb-12 lg:mb-16">
       <h2 class="font-heading font-light text-xs sm:text-sm lg:text-base tracking-[0.25em] sm:tracking-[0.3em] uppercase text-white/90">
-        MASA DEPAN PRESISI CETAK DIGITAL
+        THE FUTURE OF INDUSTRIAL PRECISION
       </h2>
     </div>
 
@@ -33,7 +33,7 @@
         <div class="mt-6 flex flex-col flex-1 justify-between">
           <div>
             <h3 class="font-heading font-medium text-xl sm:text-2xl text-white group-hover:text-[#FFE500] transition-colors">
-              Lini Mesin Industrial
+              Industrial Machine Lineup
             </h3>
             <p class="mt-2.5 font-sans text-xs sm:text-sm text-neutral-400 leading-relaxed max-w-lg">
               Eksplorasi jajaran mesin digital printing berkecepatan tinggi, UV Flatbed presisi, DTF modern, dan Laser Cutting untuk skala industri.
@@ -42,7 +42,7 @@
 
           <!-- CTA Link with Chevron -->
           <div class="mt-5 inline-flex items-center gap-2 text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-white group-hover:text-[#FFE500] transition-colors">
-            <span>JELAJAHI PRODUK</span>
+            <span>EXPLORE PRODUCTS</span>
             <svg
               class="w-4 h-4 stroke-current transition-transform duration-300 group-hover:translate-x-1"
               fill="none"
@@ -76,7 +76,7 @@
         <div class="mt-6 flex flex-col flex-1 justify-between">
           <div>
             <h3 class="font-heading font-medium text-xl sm:text-2xl text-white flex items-center gap-2 sm:gap-2.5">
-              <span class="group-hover:text-[#FFE500] transition-colors duration-300">Tentang</span>
+              <span class="group-hover:text-[#FFE500] transition-colors duration-300">About</span>
               <span
                 class="inline-block h-5 sm:h-6 aspect-[2101/666] bg-white group-hover:bg-[#FFE500] transition-colors duration-300"
                 style="-webkit-mask-image: url('/images/oria-logo-hd.png'); mask-image: url('/images/oria-logo-hd.png'); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;"
@@ -91,7 +91,7 @@
 
           <!-- CTA Link with Chevron -->
           <div class="mt-5 inline-flex items-center gap-2 text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-white group-hover:text-[#FFE500] transition-colors">
-            <span>MENGENAL ORIA</span>
+            <span>DISCOVER ORIA</span>
             <svg
               class="w-4 h-4 stroke-current transition-transform duration-300 group-hover:translate-x-1"
               fill="none"

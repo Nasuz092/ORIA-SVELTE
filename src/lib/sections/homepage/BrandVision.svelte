@@ -21,7 +21,7 @@
     <div class="max-w-xl sm:max-w-2xl space-y-4 sm:space-y-6">
       <!-- Title -->
       <h2 class="font-heading font-medium text-2xl sm:text-3xl lg:text-4xl uppercase tracking-[0.25em] text-white leading-tight drop-shadow-md">
-        DEDIKASI KAMI
+        OUR DEDICATION
       </h2>
 
       <!-- Description (Disesuaikan khusus industri percetakan digital skala industri) -->
@@ -35,7 +35,7 @@
           href="/tentang"
           class="inline-flex items-center gap-3 px-7 sm:px-8 py-3.5 sm:py-4 border border-white text-white hover:bg-white hover:text-black font-sans text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] transition-all duration-300 backdrop-blur-xs group"
         >
-          <span>VISI DAN MISI</span>
+          <span>OUR VISION</span>
           <svg
             class="w-4 h-4 stroke-current transition-transform duration-300 group-hover:translate-x-1"
             fill="none"

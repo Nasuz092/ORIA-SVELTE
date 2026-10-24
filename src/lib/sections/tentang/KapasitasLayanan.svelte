@@ -55,10 +55,10 @@
   class="w-full bg-neutral-950 text-white py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 border-b border-white/10 select-none scroll-mt-14 sm:scroll-mt-16"
 >
   <div class="max-w-7xl mx-auto space-y-16">
-    <!-- Header: Clean Title without Number Tag -->
+    <!-- Header: Clean Title in English (Lotus Style) -->
     <div class="space-y-3 max-w-2xl">
       <h2 class="font-heading font-light text-3xl sm:text-4xl lg:text-5xl tracking-[0.2em] sm:tracking-[0.25em] uppercase text-white">
-        KAPASITAS LAYANAN
+        OUR CAPACITY
       </h2>
       <p class="font-sans text-sm sm:text-base text-neutral-400 max-w-xl leading-relaxed pt-1">
         Komitmen nyata dan integritas kemitraan jangka panjang yang telah dipercaya oleh ratusan pengusaha percetakan di Indonesia.
@@ -67,36 +67,36 @@
 
     <!-- 3 Clean Borderless Stats Columns with Animated Counters -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 lg:gap-16">
-      <!-- Stat 1: 500+ Unit Terpasang -->
+      <!-- Stat 1: 500+ Installed Units -->
       <div class="space-y-3">
         <div class="font-heading font-light text-5xl sm:text-6xl lg:text-7xl text-white tracking-tight tabular-nums">
           {count500}<span class="text-[#FFE500] font-normal">+</span>
         </div>
         <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
-          Unit Terpasang
+          Units Installed
         </div>
         <p class="text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed">
           Beroperasi aktif di berbagai provinsi di Indonesia.
         </p>
       </div>
 
-      <!-- Stat 2: 24/7 Dukungan Teknis -->
+      <!-- Stat 2: 24/7 Technical Support -->
       <div class="space-y-3">
         <div class="font-heading font-light text-5xl sm:text-6xl lg:text-7xl text-white tracking-tight tabular-nums">
           {count24}<span class="text-[#FFE500] font-normal">/7</span>
         </div>
         <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
-          Dukungan Teknis
+          Technical Support
         </div>
         <p class="text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed">
           Konsultasi cepat dan penanganan teknisi tersertifikasi.
         </p>
       </div>
 
-      <!-- Stat 3: 2 KOTA Showroom & Lab -->
+      <!-- Stat 3: 2 CITIES Showroom & Lab -->
       <div class="space-y-3">
         <div class="font-heading font-light text-5xl sm:text-6xl lg:text-7xl text-white tracking-tight tabular-nums">
-          {count2} <span class="text-[#FFE500] text-2xl sm:text-3xl lg:text-4xl font-bold align-baseline">KOTA</span>
+          {count2} <span class="text-[#FFE500] text-2xl sm:text-3xl lg:text-4xl font-bold align-baseline">CITIES</span>
         </div>
         <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
           Showroom &amp; Lab

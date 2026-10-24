@@ -40,11 +40,11 @@
     { id: 'oria-story', label: 'STORY' },
     { id: 'our-legacy', label: 'LEGACY' },
     { id: 'our-machines', label: 'MACHINES' },
-    { id: 'our-core', label: 'OUR CORE' },
-    { id: 'standar-rekayasa', label: 'STANDAR REKAYASA' },
-    { id: 'kapasitas-layanan', label: 'KAPASITAS LAYANAN' },
-    { id: 'visi-dedikasi', label: 'VISI & DEDIKASI' },
-    { id: 'showroom', label: 'SHOWROOM & LAB' }
+    { id: 'our-core', label: 'CORE' },
+    { id: 'standar-rekayasa', label: 'ENGINEERING' },
+    { id: 'kapasitas-layanan', label: 'CAPACITY' },
+    { id: 'visi-dedikasi', label: 'DEDICATION' },
+    { id: 'showroom', label: 'SHOWROOM' }
   ];
 
   let activeSection = $state('oria-story');

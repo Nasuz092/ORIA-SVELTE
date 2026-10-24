@@ -3,7 +3,7 @@
   <div class="max-w-7xl mx-auto space-y-10">
     <div class="space-y-2">
       <h2 class="font-heading font-light text-3xl sm:text-4xl lg:text-5xl tracking-[0.2em] sm:tracking-[0.25em] uppercase text-white">
-        DEDIKASI KAMI
+        OUR DEDICATION
       </h2>
     </div>
 
