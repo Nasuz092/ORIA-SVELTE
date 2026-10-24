@@ -18,13 +18,13 @@
 
   // Kategori produk terurut berdasarkan mesin terbanyak di database
   const productCategories = [
-    { title: 'Laser Cutting', desc: 'Akrilik, Kayu, MDF, ACP', href: '/produk?cat=laser' },
-    { title: 'Indoor Printing', desc: 'Sticker, Banner, Display', href: '/produk?cat=indoor' },
-    { title: 'UV Printing', desc: 'Flatbed & Cylinder', href: '/produk?cat=uv' },
-    { title: 'Sublimasi', desc: 'Textile & Fashion', href: '/produk?cat=sublimasi' },
-    { title: 'CNC Router', desc: 'Fabrikasi & Woodworking', href: '/produk?cat=cnc' },
-    { title: 'DTF', desc: 'Custom Apparel', href: '/produk?cat=dtf' },
-    { title: 'Outdoor Printing', desc: 'Spanduk, Baliho, Billboard', href: '/produk?cat=outdoor' }
+    { title: 'Laser Cutting', desc: 'Akrilik, Kayu, MDF, ACP', href: '/produk/kategori/laser' },
+    { title: 'Indoor Printing', desc: 'Sticker, Banner, Display', href: '/produk/kategori/indoor' },
+    { title: 'UV Printing', desc: 'Flatbed & Cylinder', href: '/produk/kategori/uv' },
+    { title: 'Sublimasi', desc: 'Textile & Fashion', href: '/produk/kategori/sublimasi' },
+    { title: 'CNC Router', desc: 'Fabrikasi & Woodworking', href: '/produk/kategori/cnc' },
+    { title: 'DTF', desc: 'Custom Apparel', href: '/produk/kategori/dtf' },
+    { title: 'Outdoor Printing', desc: 'Spanduk, Baliho, Billboard', href: '/produk/kategori/outdoor' }
   ];
 
   const secondaryNavLinks = [
@@ -189,7 +189,7 @@
   <!-- 100% ORIGINAL: Tinggi, padding, logo, dan hamburger asli           -->
   <!-- ================================================================= -->
   <header
-    class="w-full fixed top-0 left-0 z-40 transition-all duration-300 {isScrolled || (page.url.pathname !== '/' && page.url.pathname !== '/produk')
+    class="w-full fixed top-0 left-0 z-40 transition-all duration-300 {isScrolled || (page.url.pathname !== '/' && !page.url.pathname.startsWith('/produk'))
       ? 'bg-black/95 shadow-lg border-b border-white/10 py-3.5 sm:py-4'
       : 'bg-transparent border-b border-transparent py-4 sm:py-5'}"
   >
