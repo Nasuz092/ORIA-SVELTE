@@ -19,10 +19,10 @@
   <div class="relative z-20 w-full px-6 sm:px-10 lg:px-16 pb-16 sm:pb-20 lg:pb-24">
     <div class="max-w-7xl mx-auto w-full">
       <div class="space-y-3 sm:space-y-4 max-w-3xl">
-      <!-- Tag / Category in Yellow Tracked Heading (Ukuran font sama dengan nama produk hero halaman utama) -->
-      <h1 class="font-heading font-medium text-xl sm:text-2xl md:text-3xl lg:text-[2.25rem] tracking-[0.18em] sm:tracking-[0.22em] uppercase text-[#FFE500] leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
+      <!-- Tag / Category in Yellow Tracked Heading (Ukuran font seimbang & elegan) -->
+      <h1 class="font-heading font-medium text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-[0.16em] sm:tracking-[0.2em] uppercase text-[#FFE500] leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
         <span class="block">ORIA</span>
-        <span class="block mt-0.5 sm:mt-1">HERITAGE</span>
+        <span class="block mt-1 sm:mt-1.5">HERITAGE</span>
       </h1>
 
       <!-- Subtitle in White Tracked Uppercase -->

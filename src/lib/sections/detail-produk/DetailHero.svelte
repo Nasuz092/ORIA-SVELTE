@@ -59,8 +59,8 @@
           <span class="text-[#FFE500] truncate max-w-[200px] sm:max-w-[280px] font-medium">{product.sku}</span>
         </nav>
 
-        <!-- Main Model Name (Ukuran font sama dengan nama produk hero halaman utama, font-medium elegan) -->
-        <h1 class="mt-3 sm:mt-4 font-heading font-medium tracking-[0.18em] sm:tracking-[0.22em] text-xl sm:text-2xl md:text-3xl lg:text-[2.25rem] uppercase text-[#FFE500] leading-tight drop-shadow-[0_4px_30px_rgba(0,0,0,0.95)]">
+        <!-- Main Model Name (Ukuran font seimbang & elegan, tidak terlalu besar atau terlalu kecil) -->
+        <h1 class="mt-3 sm:mt-4 font-heading font-medium tracking-[0.16em] sm:tracking-[0.2em] text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase text-[#FFE500] leading-tight drop-shadow-[0_4px_30px_rgba(0,0,0,0.95)]">
           {cleanModelName}
         </h1>
       </div>
