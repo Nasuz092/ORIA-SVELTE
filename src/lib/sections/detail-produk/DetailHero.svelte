@@ -38,10 +38,10 @@
   </div>
 
   <!-- KONTEN TEKS KIRI: Breadcrumbs & Judul, dan 4 Spesifikasi (2x2 di Desktop, 1 Kolom di Mobile, Tanpa Garis) -->
-  <div class="relative z-20 w-full h-full px-6 sm:px-10 lg:px-16 pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-14 lg:pb-16 pointer-events-none">
+  <div class="relative z-20 w-full h-full px-6 sm:px-10 lg:px-16 pb-12 sm:pb-14 lg:pb-16 pointer-events-none">
     <div class="w-full h-full max-w-7xl mx-auto flex flex-col justify-between">
-      <!-- ATAS: Breadcrumbs & Model Title Langsung (Tanpa Prefix di antaranya, Tanpa Sub-Nama di bawahnya) -->
-      <div class="max-w-xl lg:max-w-2xl xl:max-w-3xl pointer-events-auto">
+      <!-- ATAS: Breadcrumbs & Model Title Langsung (Diberikan pt-20 agar tidak menempel) -->
+      <div class="max-w-xl lg:max-w-3xl xl:max-w-4xl pointer-events-auto pt-20">
         <!-- Breadcrumbs & Category Bar -->
         <nav class="flex flex-wrap items-center gap-1.5 sm:gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-[0.22em] text-neutral-300" aria-label="Breadcrumb">
           <a href="/produk" class="hover:text-[#FFE500] transition-colors">CATALOG</a>
@@ -59,38 +59,38 @@
           <span class="text-[#FFE500] truncate max-w-[200px] sm:max-w-[280px] font-semibold">{product.sku}</span>
         </nav>
 
-        <!-- Main Model Name (Langsung setelah breadcrumb, tanpa prefix 'ORIA INDUSTRIAL MACHINERY', tanpa sub-nama di bawah) -->
-        <h1 class="mt-4 sm:mt-6 font-heading font-normal tracking-[0.16em] sm:tracking-[0.2em] text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl uppercase text-[#FFE500] leading-[1.12] drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
+        <!-- Main Model Name (Diperbesar drastis & berwibawa) -->
+        <h1 class="mt-4 sm:mt-6 font-heading font-black tracking-[0.12em] sm:tracking-[0.16em] text-4xl sm:text-6xl md:text-7xl lg:text-8xl uppercase text-[#FFE500] leading-none drop-shadow-[0_4px_30px_rgba(0,0,0,0.95)]">
           {cleanModelName}
         </h1>
       </div>
 
-      <!-- BAWAH: 4 Spesifikasi Utama (2x2 di Desktop, 1 Kolom di Mobile, Tanpa Border/Garis) -->
-      <div class="pointer-events-auto w-full pt-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-16 gap-y-5 sm:gap-y-6 max-w-2xl">
+      <!-- BAWAH: 4 Spesifikasi Utama (2x2 di Desktop, 1 Kolom di Mobile, Nilai Diperbesar, Tanpa Garis) -->
+      <div class="pointer-events-auto w-full pt-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-20 gap-y-6 sm:gap-y-8 max-w-3xl">
           {#each specs.slice(0, 4) as s}
             {@const isSize = s.val.includes('x') || s.val.endsWith('m') || s.val.endsWith('cm') || s.val.endsWith('mm')}
-            <div class="flex sm:flex-col items-baseline sm:items-start justify-between sm:justify-start gap-1.5">
-              <!-- Metric Primary Value -->
-              <div class="font-heading font-medium tracking-tight text-white drop-shadow-md flex items-baseline gap-1.5">
+            <div class="flex sm:flex-col items-baseline sm:items-start justify-between sm:justify-start gap-1.5 sm:gap-2">
+              <!-- Metric Primary Value (Diperbesar Signifikan) -->
+              <div class="font-heading font-black tracking-tight text-white drop-shadow-lg flex items-baseline gap-2">
                 {#if isSize && s.val.includes(' ')}
                   {@const parts = s.val.split(' ')}
-                  <span class="text-xl sm:text-2xl lg:text-3xl font-bold text-[#FFE500]">{parts[0]}</span>
-                  <span class="text-xs sm:text-sm lg:text-base font-normal text-[#FFE500] tracking-normal">{parts.slice(1).join(' ')}</span>
+                  <span class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#FFE500] leading-none">{parts[0]}</span>
+                  <span class="text-sm sm:text-base lg:text-xl font-bold text-[#FFE500] tracking-normal">{parts.slice(1).join(' ')}</span>
                 {:else if s.val.includes(' ')}
                   {@const parts = s.val.split(' ')}
-                  <span class="text-xl sm:text-2xl lg:text-3xl font-bold">{parts[0]}</span>
-                  <span class="text-xs sm:text-sm lg:text-base font-normal text-neutral-300 tracking-normal">{parts.slice(1).join(' ')}</span>
+                  <span class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-none">{parts[0]}</span>
+                  <span class="text-sm sm:text-base lg:text-xl font-bold text-neutral-300 tracking-normal">{parts.slice(1).join(' ')}</span>
                 {:else}
-                  <span class="text-xl sm:text-2xl lg:text-3xl font-bold">{s.val}</span>
+                  <span class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-none">{s.val}</span>
                 {/if}
               </div>
               <!-- Metric Unit & Subtitle -->
-              <div class="space-y-0.5 min-w-0">
-                <div class="font-sans font-bold text-[10px] sm:text-xs uppercase tracking-wider {isSize ? 'text-[#FFE500]' : 'text-white'} drop-shadow-sm truncate">
+              <div class="space-y-1 min-w-0">
+                <div class="font-sans font-bold text-xs sm:text-sm uppercase tracking-wider {isSize ? 'text-[#FFE500]' : 'text-white'} drop-shadow-sm truncate">
                   {s.unit}
                 </div>
-                <div class="font-sans text-[10px] sm:text-[11px] text-neutral-300 leading-tight line-clamp-2 drop-shadow-sm">
+                <div class="font-sans text-xs sm:text-[13px] text-neutral-300 leading-snug line-clamp-2 drop-shadow-sm">
                   {s.desc}
                 </div>
               </div>

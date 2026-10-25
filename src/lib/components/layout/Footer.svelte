@@ -17,9 +17,9 @@
   }
 </script>
 
-<footer class="w-full bg-black text-white pt-16 sm:pt-20 lg:pt-24 pb-10 select-none">
+<footer class="w-full bg-black text-white pt-16 sm:pt-20 lg:pt-24 pb-10 select-none px-6 sm:px-10 lg:px-16">
   <!-- Top Center Yellow CTA Logo Badge Intersecting Yellow Horizontal Divider -->
-  <div class="relative w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 mb-16 sm:mb-20 lg:mb-24">
+  <div class="relative w-full max-w-7xl mx-auto mb-16 sm:mb-20 lg:mb-24">
     <!-- Thin Yellow Divider Line -->
     <div class="w-full border-t border-[#FFE500]"></div>
 
@@ -41,7 +41,7 @@
   </div>
 
   <!-- Main Footer Content (Social Links, Models Column, About ORIA Column) -->
-  <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+  <div class="max-w-7xl mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-14 pb-16 sm:pb-20">
       <!-- Left Column: Circular Social Media Icons -->
       <div class="md:col-span-5 lg:col-span-5 flex flex-col justify-end">
@@ -181,7 +181,7 @@
   </div>
 
   <!-- Bottom Bar with Yellow Divider Line -->
-  <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+  <div class="max-w-7xl mx-auto">
     <div class="border-t border-[#FFE500] pt-6 pb-2 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-sans text-neutral-400">
       <!-- Legal Links -->
       <div class="flex flex-wrap items-center justify-center sm:justify-start gap-6 sm:gap-8">

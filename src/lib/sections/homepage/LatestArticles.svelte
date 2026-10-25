@@ -83,8 +83,8 @@
   });
 </script>
 
-<section class="w-full bg-black text-white pt-14 pb-20 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-28 border-t border-neutral-900 select-none">
-  <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+<section class="w-full bg-black text-white pt-14 pb-20 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-28 border-t border-neutral-900 select-none px-6 sm:px-10 lg:px-16">
+  <div class="max-w-7xl mx-auto">
     <!-- Header Title (Lotus Style: MORE LOTUS -> MORE ORIA) -->
     <div class="mb-8 sm:mb-10 lg:mb-12">
       <h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl uppercase tracking-[0.22em] text-white">

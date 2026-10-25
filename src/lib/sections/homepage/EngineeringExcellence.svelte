@@ -2,7 +2,7 @@
   // Section banner sinematik ala Lotus (LEADING THE WAY)
 </script>
 
-<section class="relative w-full min-h-[480px] sm:min-h-[540px] lg:min-h-[620px] flex items-center overflow-hidden bg-neutral-950 text-white select-none">
+<section class="relative w-full min-h-[480px] sm:min-h-[540px] lg:min-h-[620px] flex items-center overflow-hidden bg-neutral-950 text-white select-none px-6 sm:px-10 lg:px-16">
   <!-- Background Image: Extreme Macro Machine Engineering -->
   <picture class="absolute inset-0 w-full h-full pointer-events-none">
     <source srcset="/images/engineering-excellence.webp" type="image/webp" />
@@ -19,7 +19,7 @@
   <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30 pointer-events-none"></div>
 
   <!-- Content Container (Lotus Layout: Left-aligned, generous padding, pristine typography) -->
-  <div class="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-16 sm:py-20 lg:py-24">
+  <div class="relative z-10 w-full max-w-7xl mx-auto py-16 sm:py-20 lg:py-24">
     <div class="max-w-xl sm:max-w-2xl space-y-5 sm:space-y-6">
       <!-- Section Title (Lotus Style) -->
       <h2 class="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl uppercase tracking-[0.22em] text-white leading-[1.15]">
