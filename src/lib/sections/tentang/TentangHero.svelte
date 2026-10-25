@@ -22,8 +22,8 @@
           ORIA STORY
         </div>
 
-        <!-- Main Headline (Lotus: ABOUT US with ultra-wide tracking) -->
-        <h1 class="font-heading font-light sm:font-normal text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-[0.2em] sm:tracking-[0.25em] uppercase text-white leading-none drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
+        <!-- Main Headline (Ukuran font serasi dengan hero produk, font-medium elegan) -->
+        <h1 class="font-heading font-medium text-xl sm:text-2xl md:text-3xl lg:text-[2.25rem] tracking-[0.18em] sm:tracking-[0.22em] uppercase text-white leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
           ABOUT US
         </h1>
 

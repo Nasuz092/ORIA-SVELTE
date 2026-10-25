@@ -33,14 +33,14 @@
   <div class="relative z-20 w-full px-6 sm:px-10 lg:px-16 pb-16 sm:pb-20 lg:pb-24">
     <div class="max-w-7xl mx-auto w-full">
       <div class="space-y-3 sm:space-y-4 max-w-3xl">
-        <!-- Tag / Category in Yellow Tracked Heading (Lotus: LOTUS HERITAGE) -->
-        <h1 class="font-heading font-light text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-[0.2em] sm:tracking-[0.25em] uppercase text-[#FFE500] leading-none drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
+        <!-- Tag / Category in Yellow Tracked Heading (Ukuran font sama dengan nama produk hero halaman utama) -->
+        <h1 class="font-heading font-medium text-xl sm:text-2xl md:text-3xl lg:text-[2.25rem] tracking-[0.18em] sm:tracking-[0.22em] uppercase text-[#FFE500] leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
           <span class="block">{category.heroLine1}</span>
-          <span class="block mt-2 sm:mt-3">{category.heroLine2}</span>
+          <span class="block mt-0.5 sm:mt-1">{category.heroLine2}</span>
         </h1>
 
-        <!-- Subtitle in White Tracked Uppercase (Lotus: ROAD CARS) -->
-        <div class="font-heading font-bold text-xs sm:text-sm md:text-base tracking-[0.28em] text-white uppercase pt-2 sm:pt-3 drop-shadow-md">
+        <!-- Subtitle in White Tracked Uppercase -->
+        <div class="font-heading font-medium text-xs sm:text-sm md:text-base tracking-[0.28em] text-white uppercase pt-1 sm:pt-2 drop-shadow-md">
           {category.heroSubtitle}
         </div>
       </div>
