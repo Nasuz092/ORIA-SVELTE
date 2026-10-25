@@ -19,11 +19,6 @@
   <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
 
   <div class="relative z-10 flex flex-col items-center justify-center max-w-xl mx-auto space-y-5 sm:space-y-6">
-    <!-- System Badge -->
-    <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-neutral-400">
-      <span class="w-1.5 h-1.5 rounded-full bg-[#FFE500] animate-pulse"></span>
-      <span>STATUS LAPORAN SISTEM</span>
-    </div>
 
     <!-- Error Number: Kuning (#FFE500) di Tengah Layar -->
     <div class="relative flex items-center justify-center my-1 sm:my-2">
