@@ -265,7 +265,7 @@
 <!-- ========================================================================= -->
 <!-- HERO SECTION: FULL WIDTH, 100VH, GRADIENT HITAM DARI KIRI KE KANAN, TEKS PUTIH -->
 <!-- ========================================================================= -->
-<section class="relative w-full h-[100svh] min-h-[640px] bg-black text-white overflow-hidden flex flex-col justify-start sm:justify-center select-none">
+<section class="relative w-full h-[100svh] min-h-[640px] bg-black text-white overflow-hidden select-none">
   <!-- GAMBAR MESIN: Full width & 100vh (Desktop / Mobile dari Strapi) -->
   <div class="absolute inset-0 w-full h-full pointer-events-none">
     <picture class="w-full h-full">
@@ -284,9 +284,10 @@
     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/60"></div>
   </div>
 
-  <!-- KONTEN TEKS KIRI: Breadcrumbs, ORIA & Nama Mesin, dan 4 Poin Spesifikasi (Mepet ke Atas di Mobile) -->
-  <div class="relative z-20 w-full px-6 sm:px-10 lg:px-16 xl:px-20 pt-20 sm:pt-20 lg:pt-0">
-    <div class="max-w-xl lg:max-w-2xl xl:max-w-3xl">
+  <!-- KONTEN TEKS KIRI: Breadcrumbs & Judul (Agak Diturunkan), dan 4 Spesifikasi (Mepet ke Bawah) -->
+  <div class="relative z-20 w-full h-full px-6 sm:px-10 lg:px-16 xl:px-20 pt-28 sm:pt-32 lg:pt-36 pb-12 sm:pb-14 lg:pb-16 flex flex-col justify-between pointer-events-none">
+    <!-- ATAS: Breadcrumbs & Model Title (Agak Diturunkan) -->
+    <div class="max-w-xl lg:max-w-2xl xl:max-w-3xl pointer-events-auto">
       <!-- Breadcrumbs & Category Bar (Menggunakan Chevron, Bukan '/') -->
       <nav class="flex flex-wrap items-center gap-1.5 sm:gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-[0.22em] text-neutral-300" aria-label="Breadcrumb">
         <a href="/produk" class="hover:text-[#FFE500] transition-colors">KATALOG</a>
@@ -309,9 +310,11 @@
           {cleanModelName}
         </h1>
       </div>
+    </div>
 
-      <!-- 4 SPESIFIKASI UTAMA (MOBILE: 1 BARIS KE BAWAH, DESKTOP: 2 KOLOM, DENGAN JARAK LEGA DARI JUDUL) -->
-      <div class="mt-8 sm:mt-10 lg:mt-12 grid grid-cols-1 sm:grid-cols-2 gap-x-6 sm:gap-x-10 gap-y-3.5 sm:gap-y-5">
+    <!-- BAWAH: 4 SPESIFIKASI UTAMA (LEBIH MEPET KE BAWAH, 1 BARIS KE BAWAH DI MOBILE, 2 KOLOM DI DESKTOP) -->
+    <div class="max-w-xl lg:max-w-2xl xl:max-w-3xl pointer-events-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 sm:gap-x-10 gap-y-3 sm:gap-y-4">
         {#each specs.slice(0, 4) as s}
           {@const parsed = parseSpecMetric(s.val)}
           {@const isSize = isSizeMetric(s)}
