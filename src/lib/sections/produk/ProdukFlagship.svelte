@@ -16,26 +16,26 @@
     {
       id: 'uv',
       name: 'UV FLATBED',
-      tagline: 'ORIA UV Flatbed 4062 Pro',
-      desc: 'The high-precision ORIA UV Flatbed 4062 Pro. An industrial multi-material printing platform that defines a new standard of micron accuracy across rigid, flexible, and cylindrical media — redefining your production standards.',
+      tagline: 'ORIA UV Flatbed A3',
+      desc: 'The high-precision ORIA UV Flatbed A3. An industrial multi-material printing platform that defines a new standard of micron accuracy across rigid, flexible, and cylindrical media — redefining your production standards.',
       image: '/images/showcase-products.png',
-      href: '/produk/mesin-uv-flatbed-oria-a3'
+      href: '/produk/oria-uv-flatbed-a3'
     },
     {
       id: 'sublimasi',
       name: 'SUBLIMASI',
-      tagline: 'ORIA Sublimasi 1902',
-      desc: 'The continuous-speed ORIA Sublimasi 1902. An industrial dye-sublimation powerhouse engineered for maximum ink efficiency, vivid saturation, and relentless 24/7 roll-to-roll textile manufacturing.',
+      tagline: 'ORIA Sublim 1902',
+      desc: 'The continuous-speed ORIA Sublim 1902. An industrial dye-sublimation powerhouse engineered for maximum ink efficiency, vivid saturation, and relentless 24/7 roll-to-roll textile manufacturing.',
       image: '/images/hero/sublim-oria-desktop.png',
-      href: '/produk/mesin-printing-textile-sublim-oria-1902-double-head-i3200'
+      href: '/produk/oria-sublim-1902'
     },
     {
       id: 'outdoor',
       name: 'OUTDOOR',
-      tagline: 'ORIA Outdoor 3204',
-      desc: 'The heavy-duty ORIA Outdoor 3204. Engineered on a reinforced anti-vibration steel chassis for high-speed large format printing with unyielding all-weather durability.',
+      tagline: 'ORIA Outdoor 3204 ST',
+      desc: 'The heavy-duty ORIA Outdoor 3204 ST. Engineered on a reinforced anti-vibration steel chassis for high-speed large format printing with unyielding all-weather durability.',
       image: '/images/hero/outdoor-oria-desktop.png',
-      href: '/produk/mesin-digital-printing-outdoor-starwin-konica-st-km512i-30-pl'
+      href: '/produk/oria-outdoor-3204-st'
     }
   ];
 

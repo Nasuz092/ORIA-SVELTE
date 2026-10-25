@@ -6,9 +6,9 @@
     {
       id: 'uv',
       title: 'UV Printing',
-      tagline: 'ORIA UV FLATBED 4062 PRO',
+      tagline: 'ORIA UV FLATBED A3',
       desc: 'Presisi cetak tinggi untuk media datar akrilik, kayu, kaca, dan merchandise.',
-      href: '/produk/mesin-uv-flatbed-oria-a3',
+      href: '/produk/oria-uv-flatbed-a3',
       image: '/images/categories/uv.webp',
       imgClass: 'max-h-[175px] sm:max-h-[220px] md:max-h-[255px] lg:max-h-[275px] max-w-[85%]',
       ctaText: 'DISCOVER'
@@ -16,9 +16,9 @@
     {
       id: 'sublimasi',
       title: 'Sublimasi Textile',
-      tagline: 'ORIA SUBLIMASI 1902',
+      tagline: 'ORIA SUBLIM 1902',
       desc: 'Inovasi cetak tekstil berkecepatan tinggi untuk apparel, jersey, dan fashion.',
-      href: '/produk/mesin-printing-textile-sublim-oria-1902-double-head-i3200',
+      href: '/produk/oria-sublim-1902',
       image: '/images/categories/sublimasi.webp',
       imgClass: 'max-h-[170px] sm:max-h-[215px] md:max-h-[250px] lg:max-h-[270px] max-w-[95%]',
       ctaText: 'DISCOVER'
@@ -28,7 +28,7 @@
       title: 'Laser Cutting',
       tagline: 'ORIA LASER CUTTING 6040',
       desc: 'Potong dan grafir akrilik, kayu, MDF, dan souvenir dengan presisi tabung CO2 stabil.',
-      href: '/produk/mesin-laser-cutting-engrave-oria-6040',
+      href: '/produk/oria-laser-cutting-6040',
       image: '/images/categories/laser.webp',
       imgClass: 'max-h-[170px] sm:max-h-[215px] md:max-h-[250px] lg:max-h-[270px] max-w-[85%]',
       ctaText: 'DISCOVER'
@@ -36,9 +36,9 @@
     {
       id: 'dtf',
       title: 'DTF Printing',
-      tagline: 'ORIA DTF 6004 INDUSTRIAL',
+      tagline: 'ORIA DTF 6004',
       desc: 'Solusi transfer film otomatis untuk custom apparel dan sablon kaos massal.',
-      href: '/produk/mesin-dtf-oria-6004-industrial-4-head-dtf-profesional',
+      href: '/produk/oria-dtf-6004',
       image: '/images/categories/dtf.webp',
       imgClass: 'max-h-[175px] sm:max-h-[220px] md:max-h-[255px] lg:max-h-[275px] max-w-[85%]',
       ctaText: 'DISCOVER'
@@ -46,9 +46,9 @@
     {
       id: 'outdoor',
       title: 'Outdoor Printing',
-      tagline: 'ORIA OUTDOOR 3204',
+      tagline: 'ORIA OUTDOOR 3204 ST',
       desc: 'Mesin cetak spanduk flexi, baliho, dan billboard heavy-duty tahan cuaca ekstrem.',
-      href: '/produk/mesin-digital-printing-outdoor-starwin-konica-st-km512i-30-pl',
+      href: '/produk/oria-outdoor-3204-st',
       image: '/images/categories/outdoor.webp',
       imgClass: 'max-h-[160px] sm:max-h-[200px] md:max-h-[235px] lg:max-h-[255px] max-w-[98%]',
       ctaText: 'DISCOVER'
@@ -58,7 +58,7 @@
       title: 'Indoor Printing',
       tagline: 'ORIA INDOOR 3202',
       desc: 'Hasil cetak foto, poster, sticker, dan POSM display beresolusi tajam hingga lebar 3,2 meter.',
-      href: '/produk/mesin-digital-printing-indoor-ecosolvent-oria-3202-2-ph-xp600-32m',
+      href: '/produk/oria-indoor-3202',
       image: '/images/categories/indoor.webp',
       imgClass: 'max-h-[170px] sm:max-h-[215px] md:max-h-[250px] lg:max-h-[270px] max-w-[95%]',
       ctaText: 'DISCOVER'
@@ -68,7 +68,7 @@
       title: 'CNC Router',
       tagline: 'ORIA CNC ROUTER 1325',
       desc: 'Fabrikasi reklame, huruf timbul, panel 3D, dan pengerjaan kayu skala industri.',
-      href: '/produk/mesin-cnc-router-oria-1325',
+      href: '/produk/oria-cnc-router-1325',
       image: '/images/categories/cnc.webp',
       imgClass: 'max-h-[175px] sm:max-h-[220px] md:max-h-[255px] lg:max-h-[275px] max-w-[75%]',
       ctaText: 'DISCOVER'

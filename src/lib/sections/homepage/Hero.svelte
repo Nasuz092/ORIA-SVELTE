@@ -6,23 +6,23 @@
     {
       id: 'outdoor',
       line1: 'ORIA',
-      line2: 'OUTDOOR 3204',
+      line2: 'OUTDOOR 3204 ST',
       desc1: 'Standar Baru Digital Printing Outdoor Skala Industri.',
       desc2: 'Kecepatan Cetak Tinggi, Presisi, dan Tahan Cuaca Ekstrem.',
       ctaText: 'DISCOVER',
-      ctaHref: '/produk/mesin-digital-printing-outdoor-starwin-konica-st-km512i-30-pl',
+      ctaHref: '/produk/oria-outdoor-3204-st',
       desktopImage: '/images/hero/outdoor-oria-desktop.png',
       mobileImage: '/images/hero/outdoor-oria-mobile.png',
-      alt: 'Mesin Digital Printing Outdoor ORIA 3204'
+      alt: 'Mesin Digital Printing Outdoor ORIA 3204 ST'
     },
     {
       id: 'sublimasi',
       line1: 'ORIA',
-      line2: 'SUBLIMASI 1902',
+      line2: 'SUBLIM 1902',
       desc1: 'Inovasi Percetakan Tekstil & Apparel Masa Depan.',
       desc2: 'Gradasi Warna Tajam, Efisiensi Tinta, dan Konsistensi Produksi Massal.',
       ctaText: 'DISCOVER',
-      ctaHref: '/produk/mesin-printing-textile-sublim-oria-1902-double-head-i3200',
+      ctaHref: '/produk/oria-sublim-1902',
       desktopImage: '/images/hero/sublim-oria-desktop.png',
       mobileImage: '/images/hero/sublim-oria-mobile.png',
       alt: 'Mesin Textile Printing Sublimasi ORIA 1902'
