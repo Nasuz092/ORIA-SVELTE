@@ -247,8 +247,328 @@
     );
   }
 
+  interface SpecRow {
+    label: string;
+    value: string;
+  }
+
+  interface SpecGroup {
+    title: string;
+    items: SpecRow[];
+  }
+
+  function getDetailedSpecColumns(prod: FormattedProduct): { left: SpecGroup[]; right: SpecGroup[] } {
+    const name = (prod.name || '').toLowerCase();
+    const cat = (prod.categoryName || '').toLowerCase();
+
+    const groupsDict: Record<string, SpecRow[]> = {
+      'Sistem Cetak & Performa': [],
+      'Area & Media Kerja': [],
+      'Sistem Tinta & Warna': [],
+      'Kelistrikan & Operasional': [],
+      'Dimensi & Konstruksi': [],
+      'Konektivitas & Sistem Kontrol': [],
+      'Informasi Unit & Garansi': []
+    };
+
+    // 1. Parse HTML table from Strapi if available
+    if (prod.descriptionHtml) {
+      const regex = /<tr[^>]*>\s*<td[^>]*>(.*?)<\/td>\s*<td[^>]*>(.*?)<\/td>\s*<\/tr>/gi;
+      let match;
+      while ((match = regex.exec(prod.descriptionHtml)) !== null) {
+        let rawK = match[1].replace(/<[^>]+>/g, '').trim().replace(/^[\s:-]+/, '').replace(/[\s:-]+$/, '');
+        let rawV = match[2].replace(/<[^>]+>/g, '').trim().replace(/^[\s:-]+/, '');
+        if (rawK && rawV && !/^(spesifikasi|detail mesin)$/i.test(rawK)) {
+          const k = rawK.toLowerCase();
+          if (
+            k.includes('head') ||
+            k.includes('speed') ||
+            k.includes('kecepatan') ||
+            k.includes('resolusi') ||
+            k.includes('laser') ||
+            k.includes('spindle') ||
+            k.includes('akurasi')
+          ) {
+            groupsDict['Sistem Cetak & Performa'].push({ label: rawK, value: rawV });
+          } else if (
+            k.includes('lebar') ||
+            k.includes('area') ||
+            k.includes('media') ||
+            k.includes('meja') ||
+            k.includes('bed') ||
+            k.includes('tebal')
+          ) {
+            groupsDict['Area & Media Kerja'].push({ label: rawK, value: rawV });
+          } else if (
+            k.includes('tinta') ||
+            k.includes('ink') ||
+            k.includes('warna') ||
+            k.includes('color')
+          ) {
+            groupsDict['Sistem Tinta & Warna'].push({ label: rawK, value: rawV });
+          } else if (
+            k.includes('listrik') ||
+            k.includes('power') ||
+            k.includes('daya') ||
+            k.includes('suhu') ||
+            k.includes('pemanas') ||
+            k.includes('voltage') ||
+            k.includes('tegangan')
+          ) {
+            groupsDict['Kelistrikan & Operasional'].push({ label: rawK, value: rawV });
+          } else if (
+            k.includes('dimensi') ||
+            k.includes('berat') ||
+            k.includes('weight') ||
+            k.includes('ukuran') ||
+            k.includes('gantry') ||
+            k.includes('rail')
+          ) {
+            groupsDict['Dimensi & Konstruksi'].push({ label: rawK, value: rawV });
+          } else if (
+            k.includes('rip') ||
+            k.includes('software') ||
+            k.includes('interface') ||
+            k.includes('koneksi') ||
+            k.includes('port') ||
+            k.includes('dsp') ||
+            k.includes('kontrol')
+          ) {
+            groupsDict['Konektivitas & Sistem Kontrol'].push({ label: rawK, value: rawV });
+          } else {
+            groupsDict['Informasi Unit & Garansi'].push({ label: rawK, value: rawV });
+          }
+        }
+      }
+    }
+
+    // 2. Fallback comprehensive data per machine category if empty
+    if (groupsDict['Sistem Cetak & Performa'].length === 0) {
+      if (name.includes('outdoor') || cat.includes('outdoor')) {
+        groupsDict['Sistem Cetak & Performa'] = [
+          { label: 'Tipe Printhead', value: 'Konica Minolta KM512i (30 PL Heavy-Duty Industrial)' },
+          { label: 'Konfigurasi Head', value: '4 Printheads (Staggered Arrangement)' },
+          { label: 'Kecepatan Cetak', value: '125 m²/h (Billboard 2-Pass) | 80 m²/h (Produksi 3-Pass)' },
+          { label: 'Resolusi Maksimal', value: '1,440 DPI High Color Density' },
+          { label: 'Teknologi Semprot', value: 'Drop-on-Demand Piezoelectric Micro-Nozzle' }
+        ];
+        groupsDict['Area & Media Kerja'] = [
+          { label: 'Lebar Area Cetak', value: '3,200 mm (3.2 Meter Super Wide Format)' },
+          { label: 'Tipe Media Roll', value: 'Frontlit, Backlit Banner, Flex, Vinyl Sticker, Mesh, One Way' },
+          { label: 'Sistem Feeding', value: 'Industrial Heavy Duty Dual Motor Roll-to-Roll Feed & Take-Up' },
+          { label: 'Ketebalan Media', value: 'Maksimal 2.5 mm Media Roll Industri' }
+        ];
+        groupsDict['Sistem Tinta & Warna'] = [
+          { label: 'Tipe Tinta', value: 'Solvent Industrial Ink High Pigment' },
+          { label: 'Konfigurasi Warna', value: 'CMYK (4 Warna Tinta Solvent)' },
+          { label: 'Sistem Pasokan', value: 'Continuous Ink Supply System (CISS) dengan Sub-tank Filter' },
+          { label: 'Ketahanan Cuaca', value: '2+ Tahun Tahan Paparan Sinar UV & Cuaca Luar Ruangan' }
+        ];
+        groupsDict['Kelistrikan & Operasional'] = [
+          { label: 'Kebutuhan Daya', value: 'Operasional 1,200 Watt, Pemanas Maksimal 3,500 Watt' },
+          { label: 'Tegangan Listrik', value: 'AC 220V ± 10%, 50/60 Hz, Single Phase' },
+          { label: 'Sistem Pemanas', value: '3-Way Intelligent Heater (Pre, Mid, & Post Heater)' },
+          { label: 'Sistem Pengering', value: 'Infrared Heating Bar + Multi-Blower Fan System' }
+        ];
+        groupsDict['Dimensi & Konstruksi'] = [
+          { label: 'Dimensi Unit Mesin', value: '4,800 mm x 1,050 mm x 1,450 mm' },
+          { label: 'Berat Bersih Mesin', value: 'Sekitar 850 kg (Rigid High-Tensile Steel Body)' },
+          { label: 'Rel Pemandu Gantry', value: 'THK Dual Linear Mute Guide Rail Made in Japan' }
+        ];
+        groupsDict['Konektivitas & Sistem Kontrol'] = [
+          { label: 'Antarmuka Komunikasi', value: 'High-Speed USB 3.0 / Gigabit LAN Port' },
+          { label: 'Kompatibilitas RIP', value: 'Photoprint, Maintop, Onyx RIP Software' },
+          { label: 'Sistem Operasi', value: 'Windows 10 / Windows 11 (64-bit)' }
+        ];
+      } else if (name.includes('sublim') || cat.includes('sublim')) {
+        groupsDict['Sistem Cetak & Performa'] = [
+          { label: 'Tipe Printhead', value: name.includes('1804') ? '4x Epson i3200-A1 PrecisionCore' : '2x Epson i3200-A1 PrecisionCore' },
+          { label: 'Kecepatan Cetak', value: name.includes('1804') ? 'Hingga 140 m²/h (2-Pass Mode)' : 'Hingga 80 m²/h (2-Pass Mode)' },
+          { label: 'Resolusi Maksimal', value: '3,200 DPI Micro-Piezo Droplet 3.8 pl' },
+          { label: 'Sistem Anti-Blinking', value: 'Auto Capping, Wiping, and Anti-Clogging Nozzle Flush' }
+        ];
+        groupsDict['Area & Media Kerja'] = [
+          { label: 'Lebar Area Cetak', value: '1,900 mm (1.9 Meter Roll-to-Roll Textile)' },
+          { label: 'Kompatibilitas Kertas', value: 'Sublimation Transfer Paper 35 Gsm - 100 Gsm' },
+          { label: 'Sistem Penegang Kertas', value: 'Tension-Balanced Multi-Roller Feeding System' }
+        ];
+        groupsDict['Sistem Tinta & Warna'] = [
+          { label: 'Jenis Tinta', value: 'Water-Based Dye Sublimation Disperse Ink' },
+          { label: 'Konfigurasi Warna', value: 'CMYK (4 Warna Hi-Fi Color Gamut)' },
+          { label: 'Kapasitas Pasokan', value: 'Bulk Ink Tank 1.5 Liter per Warna dengan Level Sensor' }
+        ];
+        groupsDict['Kelistrikan & Operasional'] = [
+          { label: 'Daya Operasional', value: 'Mesin 800 Watt, Pemanas Kering 2,200 Watt' },
+          { label: 'Kebutuhan Listrik', value: 'AC 220V, 50 Hz Single Phase' },
+          { label: 'Sistem Pengeringan', value: 'Smart Front Dryer Infrared + Turbofan System' }
+        ];
+        groupsDict['Dimensi & Konstruksi'] = [
+          { label: 'Dimensi Unit Mesin', value: '3,100 mm x 950 mm x 1,450 mm' },
+          { label: 'Berat Bersih Mesin', value: 'Sekitar 320 kg' },
+          { label: 'Sistem Motor Penggerak', value: 'Integrated High Torque Brushless Leadshine Servo' }
+        ];
+        groupsDict['Konektivitas & Sistem Kontrol'] = [
+          { label: 'Port Antarmuka', value: 'Gigabit Ethernet Optical Interface / USB 3.0' },
+          { label: 'Software RIP', value: 'Maintop / Photoprint / Neostampa' }
+        ];
+      } else if (name.includes('uv') || cat.includes('uv')) {
+        groupsDict['Sistem Cetak & Performa'] = [
+          { label: 'Tipe Printhead', value: 'Epson i3200-U1 / Epson XP600 Industrial UV' },
+          { label: 'Konfigurasi Nozzle', value: 'CMYK + White + Gloss Varnish Layering' },
+          { label: 'Resolusi Cetak', value: '2,400 x 1,200 DPI Micro Varnish Precision' },
+          { label: 'Sistem Pengeringan', value: 'Dual Water-Cooled LED UV Curing System Instant Dry' }
+        ];
+        groupsDict['Area & Media Kerja'] = [
+          { label: 'Area Meja Kerja', value: name.includes('a3') ? '300 mm x 420 mm (A3 Format)' : (name.includes('6090') ? '600 mm x 900 mm' : '1,300 mm x 2,500 mm Industrial Bed') },
+          { label: 'Ketebalan Media', value: 'Hingga 150 mm (Auto Height Measurement Sensor)' },
+          { label: 'Aplikasi Material', value: 'Akrilik, Kaca, Kayu, Keramik, Logam, Tumbler 360°, Case HP' }
+        ];
+        groupsDict['Sistem Tinta & Warna'] = [
+          { label: 'Jenis Tinta', value: 'UV LED Curable Ink (Hard / Flexible Formula)' },
+          { label: 'Sirkulasi Tinta Putih', value: 'Automatic White Ink Agitation & Circulation System' },
+          { label: 'Efek Khusus', value: 'Emboss 3D Texture, Braille Print, Glossy Clear Coat' }
+        ];
+        groupsDict['Kelistrikan & Operasional'] = [
+          { label: 'Konsumsi Daya', value: '800W - 1,800W (Hemat Energi LED UV)' },
+          { label: 'Kebutuhan Listrik', value: 'AC 220V, 50/60 Hz' }
+        ];
+        groupsDict['Dimensi & Konstruksi'] = [
+          { label: 'Struktur Meja', value: 'Aviation Aluminum Vacuum Suction Bed' },
+          { label: 'Sistem Sumbu', value: 'Dual Ball Screw Lead Z-Axis + Linear Rail' }
+        ];
+        groupsDict['Konektivitas & Sistem Kontrol'] = [
+          { label: 'Interface Data', value: 'High Speed Network RJ45 / USB' },
+          { label: 'Software Kontrol', value: 'PrintExp / UltraPrint / Photoprint DX' }
+        ];
+      } else if (name.includes('laser') || cat.includes('laser')) {
+        const isFiber = name.includes('fiber') || name.includes('6000w') || name.includes('1500w');
+        groupsDict['Sistem Cetak & Performa'] = [
+          { label: 'Sumber Laser', value: isFiber ? 'Raycus / Maxphotonics Continuous Fiber Laser' : 'Sealed CO2 Glass Laser Tube Reinforced' },
+          { label: 'Daya Output Laser', value: name.includes('6040') ? '60 - 80 Watt CO2' : (name.includes('1490') ? '100 - 130 Watt CO2' : '1,500W - 6,000W Fiber') },
+          { label: 'Kecepatan Proses', value: 'Hingga 600 mm/s (Cutting) | 1,000 mm/s (Engraving)' },
+          { label: 'Akurasi Reposisi', value: '±0.01 mm High Precision Optical Motion' }
+        ];
+        groupsDict['Area & Media Kerja'] = [
+          { label: 'Area Efektif Kerja', value: name.includes('6040') ? '600 mm x 400 mm' : (name.includes('1490') ? '1,400 mm x 900 mm' : '1,300 mm x 2,500 mm') },
+          { label: 'Tipe Meja Potong', value: 'Blade Table Strip + Honeycomb Bed Convertible' },
+          { label: 'Kemampuan Potong', value: isFiber ? 'Plat Stainless, Carbon Steel, Kuningan, Tembaga' : 'Akrilik, MDF, Kayu, Kulit, Karet Stempel, Kain' }
+        ];
+        groupsDict['Kelistrikan & Operasional'] = [
+          { label: 'Sistem Pendingin', value: 'Industrial Water Chiller CW-5200 Automatic Thermostat' },
+          { label: 'Sistem Pembuangan', value: 'High Flow Air Exhaust Blower + Air Assist Compressor' },
+          { label: 'Kebutuhan Listrik', value: 'AC 220V ± 10%, 50 Hz Single Phase' }
+        ];
+        groupsDict['Dimensi & Konstruksi'] = [
+          { label: 'Konstruksi Chasis', value: 'Heavy Sheet Metal Chasis Laser Cut & Welded' },
+          { label: 'Rel & Transmisi', value: 'Hiwin Square Linear Rails + Kevlar Timing Belt' }
+        ];
+        groupsDict['Konektivitas & Sistem Kontrol'] = [
+          { label: 'Sistem Kontrol DSP', value: 'Ruida 6445G / 6442S Offline Color Screen Controller' },
+          { label: 'Format File Didukung', value: 'AI, DXF, PLT, BMP, DST, DSB, EPS' }
+        ];
+      } else if (name.includes('dtf') || cat.includes('dtf')) {
+        groupsDict['Sistem Cetak & Performa'] = [
+          { label: 'Tipe Printhead', value: 'Epson i3200 / XP600 Direct-to-Film Industrial' },
+          { label: 'Kecepatan Cetak', value: '22 m²/h (4-Pass High Speed Textile)' },
+          { label: 'Resolusi Maksimal', value: '2,400 DPI Nozzle Density' }
+        ];
+        groupsDict['Area & Media Kerja'] = [
+          { label: 'Lebar Media Film', value: name.includes('a3') ? 'A3 (300 mm) Roll' : '600 mm PET Transfer Film Roll' },
+          { label: 'Sistem Pengering Shaker', value: 'Automatic Powder Shaker & Infrared Baking Tunnel' }
+        ];
+        groupsDict['Sistem Tinta & Warna'] = [
+          { label: 'Jenis Tinta', value: 'DTF Textile Elastic Pigment Ink' },
+          { label: 'Konfigurasi Warna', value: 'CMYK + Special White Ink' },
+          { label: 'Sistem Sirkulasi', value: 'White Ink Circulation Pump & Magnetic Stirrer' }
+        ];
+        groupsDict['Kelistrikan & Operasional'] = [
+          { label: 'Daya Total Sistem', value: 'Mesin 400W, Shaker Tunnel 2,500W' },
+          { label: 'Tegangan', value: 'AC 220V, 50 Hz' }
+        ];
+        groupsDict['Dimensi & Konstruksi'] = [
+          { label: 'Sistem Penarikan', value: 'Sync Automatic Auto Feeding & Rewinder Roll' }
+        ];
+        groupsDict['Konektivitas & Sistem Kontrol'] = [
+          { label: 'Software RIP', value: 'Cadlink Digital Factory / Maintop DTF Edition' }
+        ];
+      } else if (name.includes('cnc') || cat.includes('cnc') || name.includes('router')) {
+        groupsDict['Sistem Cetak & Performa'] = [
+          { label: 'Motor Spindle', value: '3.1 kW / 5.5 kW Water Cooled High Speed Spindle' },
+          { label: 'Kecepatan Putaran', value: 'Hingga 24,000 RPM Stepless Inverter Control' },
+          { label: 'Presisi Reposisi', value: '±0.03 mm Dual Helical Rack & Pinion' }
+        ];
+        groupsDict['Area & Media Kerja'] = [
+          { label: 'Area Kerja Efektif', value: '1,300 mm x 2,500 mm x 200 mm (Z-Axis Clearance)' },
+          { label: 'Tipe Meja Kerja', value: 'Multi-Zone Vacuum Suction Table + T-Slot Clamping' }
+        ];
+        groupsDict['Kelistrikan & Operasional'] = [
+          { label: 'Konsumsi Daya', value: 'Spindle 5.5 kW, Vacuum Blower 7.5 kW' },
+          { label: 'Tegangan Operasional', value: '3-Phase AC 380V / Single-Phase AC 220V' }
+        ];
+        groupsDict['Dimensi & Konstruksi'] = [
+          { label: 'Struktur Gantry', value: 'Heavy Duty Seamless Steel Tube Welded & Annealed' },
+          { label: 'Rel Pemandu Sumbu', value: 'Hiwin 25 mm Square Linear Rails All Axes' }
+        ];
+        groupsDict['Konektivitas & Sistem Kontrol'] = [
+          { label: 'Sistem Kontrol', value: 'DSP A11 Handheld Controller / NC Studio USB' },
+          { label: 'Kompatibilitas CAD/CAM', value: 'ArtCAM, Aspire, Vectric, Fusion 360 (G-Code)' }
+        ];
+      } else {
+        groupsDict['Sistem Cetak & Performa'] = [
+          { label: 'Grade Konstruksi', value: 'Industrial Heavy Duty Production Standard' },
+          { label: 'Akurasi Operasional', value: 'High Precision Linear Motion System' }
+        ];
+        groupsDict['Area & Media Kerja'] = [
+          { label: 'Format Media', value: 'Industrial Roll-to-Roll / Flatbed Rigid Sheet' }
+        ];
+        groupsDict['Kelistrikan & Operasional'] = [
+          { label: 'Tegangan Operasional', value: 'AC 220V ± 10%, 50/60 Hz' }
+        ];
+        groupsDict['Dimensi & Konstruksi'] = [
+          { label: 'Struktur Rangka', value: 'Solid Steel Reinforced Chasis Anti-Vibration' }
+        ];
+        groupsDict['Konektivitas & Sistem Kontrol'] = [
+          { label: 'Interface Data', value: 'High Speed Industrial USB / Gigabit Ethernet' }
+        ];
+      }
+    }
+
+    // Official Warranty Information
+    groupsDict['Informasi Unit & Garansi'] = [
+      { label: 'Manufaktur & Brand', value: `ORIA Industrial Series (${prod.brand || 'ORIA'})` },
+      { label: 'Model & SKU', value: `${prod.name} (SKU: ${prod.sku})` },
+      { label: 'Kategori Mesin', value: prod.categoryName },
+      { label: 'Garansi Resmi', value: '1 Tahun Garansi Resmi ORIA (Servis & Non-Consumable Sparepart)' },
+      { label: 'Layanan Purnajual', value: 'Instalasi On-Site, Kalibrasi Warna Profil ICC, Training Operator Sampai Mahir' },
+      { label: 'Dukungan Sparepart', value: 'Pasokan Tinta Original & Sparepart Resmi Dijamin Berkesinambungan' }
+    ];
+
+    const activeGroups: SpecGroup[] = Object.entries(groupsDict)
+      .filter(([_, items]) => items.length > 0)
+      .map(([title, items]) => ({ title, items }));
+
+    const left: SpecGroup[] = [];
+    const right: SpecGroup[] = [];
+    let leftWeight = 0;
+    let rightWeight = 0;
+
+    for (const g of activeGroups) {
+      const weight = g.items.length + 2;
+      if (leftWeight <= rightWeight) {
+        left.push(g);
+        leftWeight += weight;
+      } else {
+        right.push(g);
+        rightWeight += weight;
+      }
+    }
+
+    return { left, right };
+  }
+
   let cleanModelName = $derived(getCleanModelTitle(product.name));
   let specs = $derived(getProductSpecs(product));
+  let detailedSpecs = $derived(getDetailedSpecColumns(product));
 </script>
 
 <svelte:head>
@@ -265,7 +585,7 @@
 <!-- ========================================================================= -->
 <!-- HERO SECTION: FULL WIDTH, 100VH, GRADIENT HITAM DARI KIRI KE KANAN, TEKS PUTIH -->
 <!-- ========================================================================= -->
-<section class="relative w-full h-[100svh] min-h-[640px] bg-black text-white overflow-hidden select-none">
+<section id="overview" class="relative w-full h-[100svh] min-h-[640px] bg-black text-white overflow-hidden select-none">
   <!-- GAMBAR MESIN: Full width & 100vh (Desktop / Mobile dari Strapi) -->
   <div class="absolute inset-0 w-full h-full pointer-events-none">
     <picture class="w-full h-full">
@@ -346,22 +666,93 @@
 </section>
 
 <!-- ========================================================================= -->
-<!-- KONTEN LANJUTAN: Galeri, Dokumentasi Teknis, Garansi & Rekomendasi Mesin -->
+<!-- SECTION 2: STORY (LOTUS "FREEDOM TO DRIVE" STYLE)                         -->
 <!-- ========================================================================= -->
-<div id="spesifikasi-lengkap" class="w-full bg-white text-black py-16 lg:py-24 px-6 sm:px-10 lg:px-16 border-t border-neutral-200">
-  <div class="max-w-7xl mx-auto space-y-16">
+<section id="story" class="relative w-full bg-black text-white py-28 sm:py-36 lg:py-48 px-6 sm:px-10 lg:px-16 overflow-hidden select-none">
+  <!-- Ambient radial backdrop glow -->
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,229,0,0.06)_0%,_transparent_70%)] pointer-events-none"></div>
+
+  <div class="relative z-10 max-w-4xl mx-auto text-center space-y-10 sm:space-y-14">
+    <!-- Header: Wide letter spacing (Lotus Freedom style) -->
+    <div class="space-y-3 sm:space-y-4">
+      <div class="font-mono text-[10px] sm:text-xs uppercase tracking-[0.35em] text-[#FFE500]">
+        THE ENGINEERING PHILOSOPHY
+      </div>
+      <h2 class="font-heading font-light tracking-[0.22em] sm:tracking-[0.32em] text-2xl sm:text-4xl lg:text-5xl uppercase text-white leading-tight">
+        FREEDOM TO CREATE
+      </h2>
+    </div>
+
+    <!-- Main Narrative Paragraphs -->
+    <div class="space-y-6 sm:space-y-8 font-sans text-neutral-300 text-sm sm:text-base lg:text-lg leading-relaxed font-light tracking-wide max-w-3xl mx-auto">
+      <p class="text-white font-normal text-base sm:text-xl lg:text-2xl leading-relaxed">
+        Sebagian mesin menuntut Anda berkompromi dengan batas kemampuan mereka.<br class="hidden sm:inline" />
+        <span class="text-[#FFE500] font-medium font-heading">ORIA {cleanModelName}</span> direkayasa agar Anda dapat sepenuhnya terlarut dalam proses produksi tanpa batasan.
+      </p>
+
+      <p class="text-neutral-400 max-w-2xl mx-auto leading-relaxed">
+        Tanpa interupsi. Tanpa keraguan stabilitas warna. Tanpa rasa cemas akan waktu henti produksi.
+        Hanya performa industri presisi tinggi yang konsisten, selalu siap menghasilkan dalam kecepatan penuh—karena keunggulan rekayasa sejati baru bermakna ketika Anda dapat mengandalkannya setiap detik.
+      </p>
+
+      {#if product.shortDescription}
+        <p class="text-neutral-400/90 text-xs sm:text-sm max-w-2xl mx-auto pt-2 italic border-t border-white/10">
+          "{product.shortDescription}"
+        </p>
+      {/if}
+    </div>
+
+    <!-- 3 Pillars of Precision (Minimalist Grid) -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 pt-8 sm:pt-12 border-t border-white/10 max-w-3xl mx-auto">
+      <div class="space-y-1 text-center">
+        <div class="font-heading font-bold text-xl sm:text-2xl text-[#FFE500] tracking-tight">24/7 HEAVY DUTY</div>
+        <div class="font-mono text-[10px] uppercase tracking-widest text-neutral-400">STABILITAS INDUSTRI</div>
+        <p class="font-sans text-xs text-neutral-500">Rigid chasis untuk produksi maraton stabil.</p>
+      </div>
+      <div class="space-y-1 text-center">
+        <div class="font-heading font-bold text-xl sm:text-2xl text-white tracking-tight">MICRON PRECISION</div>
+        <div class="font-mono text-[10px] uppercase tracking-widest text-neutral-400">AKURASI MOTOR & GANTRY</div>
+        <p class="font-sans text-xs text-neutral-500">Sistem linier pemandu tanpa vibrasi.</p>
+      </div>
+      <div class="space-y-1 text-center">
+        <div class="font-heading font-bold text-xl sm:text-2xl text-[#FFE500] tracking-tight">ZERO COMPROMISE</div>
+        <div class="font-mono text-[10px] uppercase tracking-widest text-neutral-400">GARANSI & DUKUNGAN RESMI</div>
+        <p class="font-sans text-xs text-neutral-500">Teknisi standby & ketersediaan sparepart.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================================= -->
+<!-- SECTION 3: SPEC (MESINPRINTINGJERSEY STYLE IN LOTUS/ORIA COLOR PALETTE)   -->
+<!-- ========================================================================= -->
+<section id="spec" class="w-full bg-black text-white py-24 sm:py-32 lg:py-40 px-6 sm:px-10 lg:px-16 select-none">
+  <div class="max-w-7xl mx-auto space-y-16 sm:space-y-20">
+    <!-- Header -->
+    <div class="text-center space-y-3 sm:space-y-4">
+      <div class="font-mono text-xs uppercase tracking-[0.3em] text-[#FFE500]">
+        TECHNICAL SPECIFICATIONS
+      </div>
+      <h2 class="font-heading font-black text-2xl sm:text-4xl lg:text-5xl uppercase tracking-[0.16em] text-white">
+        SPESIFIKASI LENGKAP UNIT
+      </h2>
+      <p class="font-sans text-xs sm:text-sm text-neutral-400 max-w-xl mx-auto leading-relaxed">
+        Parameter teknis resmi dan spesifikasi operasional untuk unit <span class="text-white font-medium">{product.name}</span>.
+      </p>
+    </div>
+
     <!-- Gallery Thumbnails (Jika ada lebih dari 1 gambar) -->
     {#if allImages.length > 1}
-      <div class="space-y-4">
-        <div class="font-sans font-bold text-xs uppercase tracking-widest text-neutral-500">
-          Galeri Sudut Pandang Mesin
+      <div class="space-y-3 p-6 bg-neutral-950 border border-white/10">
+        <div class="font-mono text-[11px] uppercase tracking-widest text-neutral-400">
+          SUDUT PANDANG MESIN & DETAIL FISIK
         </div>
-        <div class="flex items-center gap-4 overflow-x-auto pb-3">
+        <div class="flex items-center gap-4 overflow-x-auto pb-2">
           {#each allImages as img, idx}
             <button
               type="button"
               onclick={() => (activeImage = img)}
-              class="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 bg-neutral-50 border-2 transition-all p-2 flex items-center justify-center cursor-pointer {activeImage === img ? 'border-black ring-2 ring-black' : 'border-neutral-200 opacity-60 hover:opacity-100'}"
+              class="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 bg-black border-2 transition-all p-2 flex items-center justify-center cursor-pointer {activeImage === img ? 'border-[#FFE500] ring-1 ring-[#FFE500]' : 'border-white/20 opacity-60 hover:opacity-100'}"
               aria-label="Tampilkan gambar ke-{idx + 1}"
             >
               <img src={img} alt="{product.name} view {idx + 1}" class="w-full h-full object-contain" />
@@ -371,128 +762,178 @@
       </div>
     {/if}
 
-    <!-- Komitmen Layanan & Garansi Mesin Industri ORIA -->
+    <!-- 2-Column Grid of Categorized Groups (mesinprintingjersey.id Style) -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-12 lg:gap-x-16 gap-y-12 lg:gap-y-16">
+      <!-- Left Column -->
+      <div class="space-y-12 sm:space-y-14">
+        {#each detailedSpecs.left as group}
+          <div>
+            <h3 class="text-xs sm:text-sm font-bold font-heading tracking-widest text-[#FFE500] uppercase mb-4 pb-2.5 border-b border-[#FFE500]/30 flex items-center justify-between">
+              <span>{group.title}</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-[#FFE500]/70"></span>
+            </h3>
+            <div>
+              {#each group.items as item}
+                <div class="grid grid-cols-12 py-3.5 border-b border-white/10 text-xs sm:text-sm items-baseline gap-2 sm:gap-4 transition-colors hover:bg-white/[0.03]">
+                  <span class="col-span-5 text-neutral-400 font-medium leading-relaxed">
+                    {item.label}
+                  </span>
+                  <span class="col-span-7 text-white font-semibold leading-relaxed">
+                    {item.value}
+                  </span>
+                </div>
+              {/each}
+            </div>
+          </div>
+        {/each}
+      </div>
+
+      <!-- Right Column -->
+      <div class="space-y-12 sm:space-y-14">
+        {#each detailedSpecs.right as group}
+          <div>
+            <h3 class="text-xs sm:text-sm font-bold font-heading tracking-widest text-[#FFE500] uppercase mb-4 pb-2.5 border-b border-[#FFE500]/30 flex items-center justify-between">
+              <span>{group.title}</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-[#FFE500]/70"></span>
+            </h3>
+            <div>
+              {#each group.items as item}
+                <div class="grid grid-cols-12 py-3.5 border-b border-white/10 text-xs sm:text-sm items-baseline gap-2 sm:gap-4 transition-colors hover:bg-white/[0.03]">
+                  <span class="col-span-5 text-neutral-400 font-medium leading-relaxed">
+                    {item.label}
+                  </span>
+                  <span class="col-span-7 text-white font-semibold leading-relaxed">
+                    {item.value}
+                  </span>
+                </div>
+              {/each}
+            </div>
+          </div>
+        {/each}
+      </div>
+    </div>
+
+    <!-- Official Warranty & Service Cards (Dark Luxury Style) -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
-      <div class="border border-neutral-200 p-6 space-y-2 bg-neutral-50">
-        <div class="font-heading font-bold text-base text-black flex items-center gap-2">
-          <svg class="w-5 h-5 stroke-black" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
+      <div class="border border-white/10 p-6 space-y-2 bg-neutral-950">
+        <div class="font-heading font-bold text-sm sm:text-base text-white flex items-center gap-2">
+          <svg class="w-5 h-5 text-[#FFE500] stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
           </svg>
           Garansi Resmi 1 Tahun
         </div>
-        <p class="font-sans text-xs text-neutral-600 leading-relaxed">
+        <p class="font-sans text-xs text-neutral-400 leading-relaxed">
           Jaminan perlindungan penuh untuk sparepart non-consumable dan servis berkala oleh teknisi resmi pabrikan ORIA.
         </p>
       </div>
 
-      <div class="border border-neutral-200 p-6 space-y-2 bg-neutral-50">
-        <div class="font-heading font-bold text-base text-black flex items-center gap-2">
-          <svg class="w-5 h-5 stroke-black" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
+      <div class="border border-white/10 p-6 space-y-2 bg-neutral-950">
+        <div class="font-heading font-bold text-sm sm:text-base text-white flex items-center gap-2">
+          <svg class="w-5 h-5 text-[#FFE500] stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
           </svg>
           Instalasi & Training On-Site
         </div>
-        <p class="font-sans text-xs text-neutral-600 leading-relaxed">
+        <p class="font-sans text-xs text-neutral-400 leading-relaxed">
           Tim teknisi kami hadir langsung di workshop Anda untuk setting mesin, kalibrasi warna, dan pelatihan operator hingga mahir.
         </p>
       </div>
 
-      <div class="border border-neutral-200 p-6 space-y-2 bg-neutral-50">
-        <div class="font-heading font-bold text-base text-black flex items-center gap-2">
-          <svg class="w-5 h-5 stroke-black" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
+      <div class="border border-white/10 p-6 space-y-2 bg-neutral-950">
+        <div class="font-heading font-bold text-sm sm:text-base text-white flex items-center gap-2">
+          <svg class="w-5 h-5 text-[#FFE500] stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
           </svg>
           Pasokan Tinta & Sparepart Siap
         </div>
-        <p class="font-sans text-xs text-neutral-600 leading-relaxed">
+        <p class="font-sans text-xs text-neutral-400 leading-relaxed">
           Ketersediaan consumable original terjamin berkesinambungan agar jadwal produksi bisnis Anda tidak pernah terhenti.
         </p>
       </div>
     </div>
 
-    <!-- Spesifikasi Teknis Mendalam & Dokumentasi HTML dari Strapi -->
-    {#if product.descriptionHtml}
-      <div class="border-t border-neutral-200 pt-12 space-y-6">
-        <div class="space-y-2">
-          <div class="font-sans font-bold text-xs uppercase tracking-widest text-neutral-500">
-            Dokumentasi Teknis
+    <!-- CTA Box at the bottom with Chevron (Strict: Chevron only) -->
+    <div class="p-8 sm:p-12 lg:p-14 bg-neutral-950 border border-white/10 relative overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,229,0,0.08)_0%,_transparent_60%)] pointer-events-none"></div>
+
+      <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 sm:gap-8">
+        <div class="space-y-2 max-w-2xl">
+          <div class="font-mono text-xs uppercase tracking-[0.25em] text-[#FFE500] font-bold">
+            LAYANAN SPESIALIS ORIA
           </div>
-          <h2 class="font-heading font-black text-2xl sm:text-3xl text-black tracking-tight">
-            Deskripsi & Spesifikasi Lengkap Unit
-          </h2>
+          <h3 class="font-heading font-black text-xl sm:text-3xl text-white">
+            Ingin Uji Coba Sample Cetak atau Demo Unit Ini?
+          </h3>
+          <p class="font-sans text-xs sm:text-sm text-neutral-300 leading-relaxed">
+            Konsultasikan kebutuhan produksi Anda dengan spesialis teknis kami. Kami menyediakan layanan demo mesin dan pengujian sampel cetak langsung di showroom ORIA.
+          </p>
         </div>
 
-        <div class="oria-content text-black leading-relaxed">
-          {@html product.descriptionHtml}
-        </div>
-      </div>
-    {/if}
+        <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
+          <a
+            href="https://wa.me/6281807090888?text={encodeURIComponent(`Halo ORIA, saya ingin konsultasi teknis dan demo mesin ${product.name}`)}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#FFE500] hover:bg-[#fff04d] text-black font-heading font-bold text-xs uppercase tracking-[0.22em] transition-all duration-300 group shadow-lg"
+          >
+            <span>KONSULTASI TEKNIS</span>
+            <svg
+              class="w-4 h-4 stroke-current transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2.5"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
 
-    <!-- Banner Uji Coba Sample Cetak / Kunjungan Showroom -->
-    <div class="bg-black text-white p-8 sm:p-12 lg:p-14 space-y-6 select-none">
-      <div class="space-y-2 max-w-2xl">
-        <div class="font-sans text-xs uppercase tracking-widest text-[#FFE500] font-bold">
-          Layanan Pelanggan & Uji Coba ORIA
+          <a
+            href="/kontak?unit={encodeURIComponent(product.name)}"
+            class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white/5 hover:bg-white/10 text-white border border-white/20 hover:border-white/40 font-heading font-medium text-xs uppercase tracking-[0.22em] transition-all duration-300 group"
+          >
+            <span>SHOWROOM & DEMO</span>
+            <svg
+              class="w-4 h-4 stroke-current transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2.5"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
         </div>
-        <h3 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white">
-          Ingin Uji Coba Sample Cetak atau Demo Mesin Langsung?
-        </h3>
-        <p class="font-sans text-sm sm:text-base text-neutral-300 leading-relaxed">
-          Kirimkan file desain atau bahan produksi Anda untuk pengujian kualitas cetak dan presisi mesin langsung bersama tim teknis spesialis kami di showroom.
-        </p>
-      </div>
-
-      <div class="flex flex-wrap gap-4 pt-2">
-        <a
-          href="/kontak?unit={encodeURIComponent(product.name)}"
-          class="inline-flex items-center gap-2 bg-[#FFE500] text-black px-8 py-3.5 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition-colors"
-        >
-          <span>Jadwalkan Kunjungan / Demo</span>
-          <svg class="w-3.5 h-3.5 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
-        <a
-          href="https://wa.me/6281252086455?text={encodeURIComponent('Halo ORIA, saya ingin konsultasi teknis demo unit: ' + product.name)}"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 border border-white text-white px-8 py-3.5 text-xs font-bold uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-colors"
-        >
-          <span>Chat WhatsApp Langsung</span>
-          <svg class="w-3.5 h-3.5 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
       </div>
     </div>
 
-    <!-- Rekomendasi Mesin Terkait -->
+    <!-- Rekomendasi Mesin Terkait (Dark Luxury Grid) -->
     {#if relatedProducts.length > 0}
-      <div class="border-t border-neutral-200 pt-12 space-y-8">
+      <div class="pt-8 space-y-8">
         <div class="flex items-center justify-between">
-          <div>
-            <div class="font-sans font-bold text-xs uppercase tracking-widest text-neutral-500">
-              Rekomendasi Terkait
+          <div class="space-y-1">
+            <div class="font-mono text-xs uppercase tracking-widest text-[#FFE500]">
+              REKOMENDASI TERKAIT
             </div>
-            <h2 class="font-heading font-bold text-2xl text-black">
-              Pilihan Mesin Industri Lainnya
-            </h2>
+            <h3 class="font-heading font-bold text-xl sm:text-2xl text-white">
+              PILIHAN MESIN INDUSTRI LAINNYA
+            </h3>
           </div>
-          <a href="/produk" class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest hover:underline text-black">
-            <span>Lihat Semua Mesin</span>
-            <svg class="w-3.5 h-3.5 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
+          <a href="/produk" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest hover:text-[#FFE500] text-neutral-300 transition-colors group">
+            <span>SEMUA MESIN</span>
+            <svg class="w-3.5 h-3.5 stroke-current transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </a>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
           {#each relatedProducts as rel}
             <a
               href="/produk/{rel.slug}"
-              class="group block bg-white border border-neutral-200 hover:border-black transition-colors p-4 space-y-3"
+              class="group block bg-neutral-950 border border-white/10 hover:border-[#FFE500]/60 transition-colors p-5 space-y-4"
             >
-              <div class="aspect-[4/3] bg-neutral-50 flex items-center justify-center p-3 overflow-hidden">
+              <div class="aspect-[4/3] bg-black flex items-center justify-center p-3 overflow-hidden">
                 <img
                   src={rel.imageUrl}
                   alt={rel.name}
@@ -500,12 +941,12 @@
                   loading="lazy"
                 />
               </div>
-              <div class="space-y-1">
-                <div class="text-[10px] font-mono uppercase text-neutral-500">{rel.sku}</div>
-                <div class="font-heading font-bold text-sm text-black group-hover:underline line-clamp-2">
+              <div class="space-y-1.5">
+                <div class="text-[10px] font-mono uppercase text-neutral-400">{rel.sku}</div>
+                <div class="font-heading font-bold text-sm sm:text-base text-white group-hover:text-[#FFE500] transition-colors line-clamp-2">
                   {rel.name}
                 </div>
-                <div class="text-xs font-extrabold text-black pt-1">{rel.priceText}</div>
+                <div class="text-xs font-semibold text-[#FFE500] pt-1">{rel.priceText}</div>
               </div>
             </a>
           {/each}
@@ -513,7 +954,7 @@
       </div>
     {/if}
   </div>
-</div>
+</section>
 
 <style>
   :global(.oria-content) {

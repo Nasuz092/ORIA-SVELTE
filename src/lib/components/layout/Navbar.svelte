@@ -35,8 +35,12 @@
   ];
 
   let isTentang = $derived(page.url.pathname === '/tentang');
+  let isProductDetail = $derived(
+    page.url.pathname.startsWith('/produk/') && !page.url.pathname.startsWith('/produk/kategori')
+  );
+  let hasSubNav = $derived(isTentang || isProductDetail);
 
-  const subNavItems = [
+  const tentangSubNavItems = [
     { id: 'oria-story', label: 'STORY' },
     { id: 'our-legacy', label: 'LEGACY' },
     { id: 'our-machines', label: 'MACHINES' },
@@ -47,7 +51,17 @@
     { id: 'showroom', label: 'SHOWROOM' }
   ];
 
-  let activeSection = $state('oria-story');
+  const productSubNavItems = [
+    { id: 'overview', label: 'OVERVIEW' },
+    { id: 'story', label: 'STORY' },
+    { id: 'spec', label: 'SPEC' }
+  ];
+
+  let currentSubNavItems = $derived(
+    isTentang ? tentangSubNavItems : isProductDetail ? productSubNavItems : []
+  );
+
+  let activeSection = $state('overview');
 
   function scrollToSection(id: string, e?: MouseEvent) {
     if (e) e.preventDefault();
@@ -59,7 +73,13 @@
   }
 
   $effect(() => {
-    if (typeof window !== 'undefined' && page.url.pathname === '/tentang') {
+    if (typeof window !== 'undefined' && hasSubNav) {
+      if (isProductDetail) {
+        activeSection = 'overview';
+      } else if (isTentang) {
+        activeSection = 'oria-story';
+      }
+
       const observer = new IntersectionObserver(
         (entries) => {
           for (const entry of entries) {
@@ -71,7 +91,7 @@
         { rootMargin: '-20% 0px -60% 0px' }
       );
 
-      for (const item of subNavItems) {
+      for (const item of currentSubNavItems) {
         const el = document.getElementById(item.id);
         if (el) observer.observe(el);
       }
@@ -114,9 +134,9 @@
   }}
 />
 
-{#if isTentang}
+{#if hasSubNav}
   <!-- ================================================================= -->
-  <!-- TENTANG PAGE NAVBAR (Dual-Row at top, collapses to sticky row)    -->
+  <!-- DUAL-ROW NAVBAR WITH SUBNAV (Tentang & Detail Produk)             -->
   <!-- ================================================================= -->
   <header
     class="w-full fixed top-0 left-0 z-40 overflow-hidden transition-colors duration-300 {isScrolled
@@ -164,10 +184,10 @@
       >
         <div class="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 overflow-x-auto no-scrollbar flex items-center justify-center">
           <nav
-            aria-label="Navigasi Halaman Tentang"
+            aria-label={isProductDetail ? 'Navigasi Detail Produk' : 'Navigasi Halaman Tentang'}
             class="mx-auto flex items-center justify-center gap-6 sm:gap-8 md:gap-10 shrink-0 border-none"
           >
-            {#each subNavItems as item}
+            {#each currentSubNavItems as item}
               <a
                 href="#{item.id}"
                 onclick={(e) => scrollToSection(item.id, e)}
