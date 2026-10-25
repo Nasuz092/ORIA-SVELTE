@@ -66,16 +66,16 @@
       else if (name.includes('6090')) power = '90-100 W';
       else if (name.includes('1490')) power = '100-130 W';
 
-      let area = '1300 x 2500 mm';
-      if (name.includes('6040') || desc.includes('60x40') || desc.includes('600x400')) area = '600 x 400 mm';
-      else if (name.includes('6090') || desc.includes('60x90') || desc.includes('600x900')) area = '600 x 900 mm';
-      else if (name.includes('1490') || desc.includes('1400x900')) area = '1400 x 900 mm';
-      else if (name.includes('1310') || desc.includes('1300x1000')) area = '1300 x 1000 mm';
-      else if (name.includes('1325') || desc.includes('1300x2500')) area = '1300 x 2500 mm';
-      else if (name.includes('3015') || desc.includes('3000x1500')) area = '3000 x 1500 mm';
-      else if (name.includes('6015') || desc.includes('6000x1500') || desc.includes('1500 x 6000')) area = '6000 x 1500 mm';
-      else if (name.includes('1615') || desc.includes('1600x1500')) area = '1600 x 1500 mm';
-      else if (name.includes('2020') || desc.includes('200x200')) area = '200 x 200 mm';
+      let area = '130 x 250 cm';
+      if (name.includes('6040') || desc.includes('60x40') || desc.includes('600x400')) area = '60 x 40 cm';
+      else if (name.includes('6090') || desc.includes('60x90') || desc.includes('600x900')) area = '60 x 90 cm';
+      else if (name.includes('1490') || desc.includes('1400x900')) area = '140 x 90 cm';
+      else if (name.includes('1310') || desc.includes('1300x1000')) area = '130 x 100 cm';
+      else if (name.includes('1325') || desc.includes('1300x2500')) area = '130 x 250 cm';
+      else if (name.includes('3015') || desc.includes('3000x1500')) area = '300 x 150 cm';
+      else if (name.includes('6015') || desc.includes('6000x1500') || desc.includes('1500 x 6000')) area = '600 x 150 cm';
+      else if (name.includes('1615') || desc.includes('1600x1500')) area = '160 x 150 cm';
+      else if (name.includes('2020') || desc.includes('200x200')) area = '20 x 20 cm';
 
       let speed = '600 mm/s';
       if (name.includes('marking') || desc.includes('7000mm/s') || desc.includes('8000 mm/s')) speed = '7,000 mm/s';
@@ -159,8 +159,8 @@
 
     // 6. UV FLATBED & CYLINDER
     if (name.includes('uv') || cat.includes('uv')) {
-      let area = '400 x 620 mm';
-      if (name.includes('a3')) area = '300 x 420 mm';
+      let area = '40 x 62 cm';
+      if (name.includes('a3')) area = '30 x 42 cm';
       else if (name.includes('cylinder') || name.includes('tumbler')) area = '360° Rotary';
       return [
         { val: area, unit: 'Area Cetak', desc: 'Media Datar & Silinder' },
@@ -178,7 +178,7 @@
       else if (name.includes('plasma')) spindle = 'Plasma Arc';
       return [
         { val: spindle, unit: 'Spindle Power', desc: name.includes('plasma') ? 'Potong Plat Besi' : 'High Frequency Spindle' },
-        { val: '1300x2500 mm', unit: 'Meja Kerja', desc: 'Vacuum Table Bed + T-Slot' },
+        { val: '130 x 250 cm', unit: 'Meja Kerja', desc: 'Vacuum Table Bed + T-Slot' },
         { val: '24,000 RPM', unit: 'Putaran', desc: 'Milling Kayu & ACP Halus' },
         { val: '±0.03 mm', unit: 'Presisi Gantry', desc: 'DSP Controller System' }
       ];
@@ -187,7 +187,7 @@
     // 8. DTG
     if (name.includes('dtg')) {
       return [
-        { val: '400x500 mm', unit: 'Area Sablon', desc: 'Plat Kaos Flatbed' },
+        { val: '40 x 50 cm', unit: 'Area Sablon', desc: 'Plat Kaos Flatbed' },
         { val: '2x i3200HD', unit: 'Printhead', desc: 'Dual Industrial Head' },
         { val: '1.5 min', unit: 'Speed/Pcs', desc: 'Kaos Gelap & Terang' },
         { val: '8 Warna', unit: 'Tinta Pigment', desc: 'CMYK + Special White' }
