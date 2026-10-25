@@ -252,12 +252,12 @@
         <span class="text-neutral-300 font-sans">{product.sku}</span>
       </nav>
 
-      <!-- Model Title (Warna Putih) -->
-      <div class="space-y-2 sm:space-y-3">
-        <div class="font-heading font-extrabold text-2xl sm:text-4xl lg:text-5xl uppercase tracking-[0.24em] text-white leading-none drop-shadow-md">
+      <!-- Model Title (ORIA Putih, Nama Tipe/Model Kuning Lotus, Ukuran Disesuaikan) -->
+      <div class="space-y-1.5 sm:space-y-2">
+        <div class="font-heading font-extrabold text-xl sm:text-3xl lg:text-4xl uppercase tracking-[0.24em] text-white leading-none drop-shadow-md">
           ORIA
         </div>
-        <h1 class="font-heading font-black text-3xl sm:text-5xl lg:text-6xl uppercase tracking-[0.12em] text-white leading-[1.06] drop-shadow-lg">
+        <h1 class="font-heading font-black text-2xl sm:text-4xl lg:text-5xl uppercase tracking-[0.1em] text-[#FFE500] leading-[1.12] drop-shadow-lg">
           {cleanModelName}
         </h1>
       </div>
