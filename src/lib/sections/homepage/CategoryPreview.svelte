@@ -66,9 +66,9 @@
     {
       id: 'cnc',
       title: 'CNC Router',
-      tagline: 'ORIA CNC ROUTER 1325',
-      desc: 'Fabrikasi reklame, huruf timbul, panel 3D, dan pengerjaan kayu skala industri.',
-      href: '/produk/cnc/oria-cnc-router-1325',
+      tagline: 'ORIA CNC 6090',
+      desc: 'Fabrikasi presisi logam, akrilik, reklame huruf timbul, dan panel dengan area kerja 60x90cm.',
+      href: '/produk/cnc/oria-cnc-metal-6090',
       image: '/images/categories/cnc.webp',
       imgClass: 'max-h-[175px] sm:max-h-[220px] md:max-h-[255px] lg:max-h-[275px] max-w-[75%]',
       ctaText: 'DISCOVER'
