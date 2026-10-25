@@ -80,12 +80,12 @@
             href="/produk/{category.id}/{product.slug}"
             class="group block flex flex-col focus:outline-none cursor-pointer"
           >
-            <!-- 1:1 Ratio Studio Box (Hanya gambar produk ukuran 1:1, tidak terpotong) -->
-            <div class="w-full aspect-square overflow-hidden bg-white flex items-center justify-center p-6 sm:p-7 lg:p-8 relative">
+            <!-- 1:1 Ratio Machine Image Box: Full width, hanya sisi kanan (mesin) yang diambil sehingga space kiri terpotong -->
+            <div class="w-full aspect-square overflow-hidden bg-black relative">
               <img
-                src={product.imageUrl}
+                src={product.mainImageDesktopUrl || product.imageUrl}
                 alt={product.name}
-                class="w-full h-full object-contain scale-100 group-hover:scale-105 transition-transform duration-500 ease-out pointer-events-none select-none"
+                class="w-full h-full object-cover object-right scale-100 group-hover:scale-105 transition-transform duration-500 ease-out pointer-events-none select-none"
                 loading="lazy"
               />
             </div>
