@@ -39,7 +39,8 @@
     page.url.pathname.startsWith('/produk/') &&
     page.url.pathname.split('/').filter(Boolean).length >= 3
   );
-  let hasSubNav = $derived(isTentang || isProductDetail);
+  let isArtikel = $derived(page.url.pathname === '/artikel');
+  let hasSubNav = $derived(isTentang || isProductDetail || isArtikel);
 
   const tentangSubNavItems = [
     { id: 'oria-story', label: 'STORY' },
@@ -58,8 +59,14 @@
     { id: 'spec', label: 'SPEC' }
   ];
 
+  const artikelSubNavItems = [
+    { id: 'overview', label: 'OVERVIEW' },
+    { id: 'categories', label: 'CATEGORIES' },
+    { id: 'articles', label: 'ARTICLES' }
+  ];
+
   let currentSubNavItems = $derived(
-    isTentang ? tentangSubNavItems : isProductDetail ? productSubNavItems : []
+    isProductDetail ? productSubNavItems : isArtikel ? artikelSubNavItems : isTentang ? tentangSubNavItems : []
   );
 
   let activeSection = $state('overview');
@@ -75,7 +82,7 @@
 
   $effect(() => {
     if (typeof window !== 'undefined' && hasSubNav) {
-      if (isProductDetail) {
+      if (isProductDetail || isArtikel) {
         activeSection = 'overview';
       } else if (isTentang) {
         activeSection = 'oria-story';
@@ -185,7 +192,7 @@
       >
         <div class="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 overflow-x-auto no-scrollbar flex items-center justify-center">
           <nav
-            aria-label={isProductDetail ? 'Navigasi Detail Produk' : 'Navigasi Halaman Tentang'}
+            aria-label={isProductDetail ? 'Navigasi Detail Produk' : isArtikel ? 'Navigasi Halaman Artikel' : 'Navigasi Halaman Tentang'}
             class="mx-auto flex items-center justify-center gap-6 sm:gap-8 md:gap-10 shrink-0 border-none"
           >
             {#each currentSubNavItems as item}
