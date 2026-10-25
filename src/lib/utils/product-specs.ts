@@ -81,10 +81,10 @@ export function getProductSpecs(p: FormattedProduct): ProductKeySpec[] {
     if (name.includes('fiber') || name.includes('3015') || name.includes('6015')) precision = '±0.02 mm';
 
     return [
-      { val: power, unit: 'Laser Power', desc: name.includes('fiber') ? 'Raycus Fiber Source' : 'CO2 Glass Tube' },
-      { val: area, unit: 'Working Bed', desc: 'Area Efektif Pemotongan' },
-      { val: speed, unit: 'Max Speed', desc: 'Kecepatan Proses Cepat' },
-      { val: precision, unit: 'Akurasi', desc: 'Presisi Posisi Optik' }
+      { val: power, unit: 'Laser Power', desc: name.includes('fiber') ? 'Raycus Fiber' : 'CO2 Glass Tube' },
+      { val: area, unit: 'Working Bed', desc: 'Area Efektif' },
+      { val: speed, unit: 'Max Speed', desc: 'Kecepatan Proses' },
+      { val: precision, unit: 'Akurasi', desc: 'Presisi Optik' }
     ];
   }
 
@@ -109,20 +109,20 @@ export function getProductSpecs(p: FormattedProduct): ProductKeySpec[] {
     else if (name.includes('3202')) speed = '45 m²/h';
 
     return [
-      { val: width, unit: 'Lebar Cetak', desc: 'Format Fleksibel Indoor' },
-      { val: head, unit: 'Printhead', desc: 'Presisi Nozzle Tajam' },
-      { val: speed, unit: 'Kecepatan', desc: 'Output Produksi Cepat' },
-      { val: '2,400 DPI', unit: 'Resolusi', desc: 'Gradasi Lembut & Tajam' }
+      { val: width, unit: 'Lebar Cetak', desc: 'Roll Fleksibel' },
+      { val: head, unit: 'Printhead', desc: 'Presisi Nozzle' },
+      { val: speed, unit: 'Kecepatan', desc: 'Output Produksi' },
+      { val: '2,400 DPI', unit: 'Resolusi', desc: 'Gradasi Lembut' }
     ];
   }
 
   // 3. OUTDOOR SOLVENT
   if (name.includes('outdoor') || cat.includes('outdoor')) {
     return [
-      { val: '3.2 m', unit: 'Lebar Cetak', desc: 'Super Wide Format Roll' },
-      { val: '4x KM512i', unit: 'Printhead', desc: 'Konica Minolta 30 PL Heavy-Duty' },
-      { val: '125 m²/h', unit: 'Kecepatan', desc: 'Produksi Massal Billboard' },
-      { val: '2+ Tahun', unit: 'Daya Tahan', desc: 'Tinta Solvent Tahan Cuaca' }
+      { val: '3.2 m', unit: 'Lebar Cetak', desc: 'Super Wide Roll' },
+      { val: '4x KM512i', unit: 'Printhead', desc: 'Konica Minolta' },
+      { val: '125 m²/h', unit: 'Kecepatan', desc: 'Produksi Billboard' },
+      { val: '2+ Tahun', unit: 'Daya Tahan', desc: 'Solvent Tahan Cuaca' }
     ];
   }
 
@@ -131,10 +131,10 @@ export function getProductSpecs(p: FormattedProduct): ProductKeySpec[] {
     let head = '2x i3200';
     if (name.includes('1804') || desc.includes('4 head')) head = '4x i3200-A1';
     return [
-      { val: '1.9 m', unit: 'Lebar Kain', desc: 'Roll-to-Roll Tekstil' },
+      { val: '1.9 m', unit: 'Lebar Kain', desc: 'Roll Tekstil' },
       { val: head, unit: 'Printhead', desc: 'Micro-Piezo Precision' },
-      { val: name.includes('1804') ? '140 m²/h' : '80 m²/h', unit: 'Kecepatan', desc: 'Output Maraton Tekstil' },
-      { val: '3,200 DPI', unit: 'Resolusi', desc: 'Saturasi Warna Solid' }
+      { val: name.includes('1804') ? '140 m²/h' : '80 m²/h', unit: 'Kecepatan', desc: 'Output Maraton' },
+      { val: '3,200 DPI', unit: 'Resolusi', desc: 'Saturasi Solid' }
     ];
   }
 
@@ -146,10 +146,10 @@ export function getProductSpecs(p: FormattedProduct): ProductKeySpec[] {
     else if (name.includes('dtg a3')) head = 'Industrial Head';
 
     return [
-      { val: name.includes('6004') ? '60 cm' : (name.includes('a3') ? 'A3 Format' : 'Roll Format'), unit: 'Format Bidang', desc: 'Film / Garmen Kaos' },
-      { val: head, unit: 'Printhead', desc: 'Color + White + Glue/Varnish' },
-      { val: name.includes('6004') ? '22 m²/h' : 'Presisi Tinggi', unit: 'Kecepatan', desc: 'Shaker & Dryer Tunnel' },
-      { val: 'Stretch & Anti-Crack', unit: 'Daya Rekat', desc: 'Sablon Lentur Tahan Cuci' }
+      { val: name.includes('6004') ? '60 cm' : (name.includes('a3') ? 'Format A3' : 'Format Roll'), unit: 'Format Bidang', desc: 'Film / Garmen' },
+      { val: head, unit: 'Printhead', desc: 'CMYK + White + Glue' },
+      { val: name.includes('6004') ? '22 m²/h' : 'Presisi Tinggi', unit: 'Kecepatan', desc: 'Shaker & Dryer' },
+      { val: 'Anti-Crack', unit: 'Daya Rekat', desc: 'Lentur Tahan Cuci' }
     ];
   }
 
@@ -163,32 +163,32 @@ export function getProductSpecs(p: FormattedProduct): ProductKeySpec[] {
     if (name.includes('plasma')) speed = 'Auto THC Control';
 
     return [
-      { val: spindle, unit: 'Spindle Power', desc: name.includes('plasma') ? 'Torch Plasma Heavy-Duty' : 'High Frequency Spindle' },
-      { val: name.includes('6090') ? '60 x 90 cm' : '130 x 250 cm', unit: 'Working Bed', desc: 'Meja Vakum T-Slot' },
-      { val: speed, unit: 'Max RPM', desc: 'Presisi Ukir & Milling' },
-      { val: '±0.02 mm', unit: 'Akurasi', desc: 'Dual Rack & Helical Pinion' }
+      { val: spindle, unit: 'Spindle Power', desc: name.includes('plasma') ? 'Torch Plasma' : 'HF Spindle' },
+      { val: name.includes('6090') ? '60 x 90 cm' : '130 x 250 cm', unit: 'Working Bed', desc: 'Vakum T-Slot' },
+      { val: speed, unit: 'Max RPM', desc: 'Ukir & Milling' },
+      { val: '±0.02 mm', unit: 'Akurasi', desc: 'Helical Rack Pinion' }
     ];
   }
 
   // 7. UV FLATBED / CYLINDER
   if (name.includes('uv') || cat.includes('uv') || name.includes('cylinder')) {
     let bed = 'A3+ Format';
-    if (name.includes('cylinder') || name.includes('tumbler')) bed = '360° Rotary Bed';
+    if (name.includes('cylinder') || name.includes('tumbler')) bed = 'Silinder 360°';
 
     return [
-      { val: bed, unit: 'Format Meja', desc: name.includes('cylinder') ? 'Tumbler & Silinder 360°' : 'Rigid & Flat Sheet' },
-      { val: 'LED UV Curing', unit: 'Sistem Kering', desc: 'Dual Water-Cooled Lamp' },
-      { val: 'CMYK + W + Varnish', unit: 'Konfigurasi Tinta', desc: 'Efek Emboss Tekstur 3D' },
-      { val: 'Hingga 15 cm', unit: 'Ketebalan Media', desc: 'Auto Height Sensor' }
+      { val: bed, unit: 'Format Meja', desc: name.includes('cylinder') ? 'Silinder 360°' : 'Flat & Sheet' },
+      { val: 'LED UV', unit: 'Sistem Kering', desc: 'Water-Cooled' },
+      { val: 'CMYK+W+V', unit: 'Tinta UV', desc: 'Tekstur Emboss 3D' },
+      { val: '15 cm', unit: 'Tebal Media', desc: 'Auto Height' }
     ];
   }
 
   // DEFAULT INDUSTRIAL SPECS
   return [
-    { val: 'Industrial', unit: 'Grade Rangka', desc: 'Heavy-Duty Anti-Vibration Chasis' },
-    { val: 'Presisi Tinggi', unit: 'Sistem Motor', desc: 'Leadshine Hybrid Servo' },
-    { val: '24/7', unit: 'Siklus Kerja', desc: 'Daya Tahan Produksi Maraton' },
-    { val: 'Garansi Resmi', unit: 'Proteksi ORIA', desc: 'Dukungan Sparepart & Servis' }
+    { val: 'Industrial', unit: 'Grade Rangka', desc: 'Heavy-Duty Chassis' },
+    { val: 'Presisi Tinggi', unit: 'Sistem Motor', desc: 'Hybrid Servo' },
+    { val: '24/7', unit: 'Siklus Kerja', desc: 'Produksi Non-Stop' },
+    { val: 'Garansi Resmi', unit: 'Proteksi ORIA', desc: 'Sparepart & Servis' }
   ];
 }
 

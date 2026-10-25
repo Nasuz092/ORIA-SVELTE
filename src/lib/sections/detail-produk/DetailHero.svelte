@@ -19,21 +19,21 @@
 <!-- HERO SECTION: FULL WIDTH, 100VH, GRADIENT HITAM DARI KIRI KE KANAN, TEKS PUTIH -->
 <!-- ========================================================================= -->
 <section id="overview" class="relative w-full h-[100svh] min-h-[640px] bg-black text-white overflow-hidden select-none">
-  <!-- GAMBAR MESIN: Full width & 100vh (Desktop / Mobile dari Strapi) -->
-  <div class="absolute inset-0 w-full h-full pointer-events-none">
-    <picture class="w-full h-full">
+  <!-- GAMBAR MESIN: Full width & 100vh, hanya sisi kanan (mesin) yang diambil sehingga space kiri terpotong -->
+  <div class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
+    <picture class="w-full h-full block overflow-hidden">
       {#if product.mainImageMobileUrl}
         <source media="(max-width: 640px)" srcset={product.mainImageMobileUrl} />
       {/if}
       <img
         src={product.mainImageDesktopUrl || product.imageUrl}
         alt={product.name}
-        class="w-full h-full object-cover object-center lg:object-[center_right] select-none"
+        class="w-full h-full object-cover object-right select-none scale-[1.3] sm:scale-[1.45] lg:scale-[1.65] origin-[90%_75%] transition-transform duration-700"
         loading="eager"
       />
     </picture>
     <!-- Layer gradient hitam dari kiri ke kanan transparan -->
-    <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black via-black/85 lg:via-black/70 to-transparent"></div>
     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/60"></div>
   </div>
 
