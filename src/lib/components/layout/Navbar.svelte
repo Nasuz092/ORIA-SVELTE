@@ -148,8 +148,8 @@
   <!-- ================================================================= -->
   <header
     class="w-full fixed top-0 left-0 z-40 overflow-hidden transition-colors duration-300 {isScrolled
-      ? 'bg-black shadow-lg border-b border-white/10'
-      : 'bg-transparent border-b border-transparent'}"
+      ? 'bg-black shadow-lg border-b border-white/10 pointer-events-auto'
+      : 'bg-transparent border-b border-transparent pointer-events-none'}"
   >
     <!-- Hamburger Button (Fixed in Top Right, full size, optically leveled with menu) -->
     <div class="absolute top-0 right-0 z-50 h-14 sm:h-16 flex items-center justify-end px-6 sm:px-10 lg:px-16 pointer-events-auto">
@@ -176,7 +176,7 @@
       >
         <a
           href="/"
-          class="flex items-center justify-center hover:opacity-90 transition-opacity select-none focus:outline-none py-1"
+          class="flex items-center justify-center hover:opacity-90 transition-opacity select-none focus:outline-none py-1 pointer-events-auto"
         >
           <img
             src="/images/oria-logo-hd.png"
@@ -188,12 +188,12 @@
 
       <!-- ROW 2: Subnav Row (Horizontally centered, transparent, no borders, no underline, yellow hover/active) -->
       <div
-        class="w-full h-14 sm:h-16 transition-all duration-300 bg-transparent border-none flex items-center justify-center"
+        class="w-full h-14 sm:h-16 transition-all duration-300 bg-transparent border-none flex items-center justify-center pointer-events-none"
       >
-        <div class="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 overflow-x-auto no-scrollbar flex items-center justify-center">
+        <div class="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 overflow-x-auto no-scrollbar flex items-center justify-center pointer-events-none">
           <nav
             aria-label={isProductDetail ? 'Navigasi Detail Produk' : isArtikel ? 'Navigasi Halaman Artikel' : 'Navigasi Halaman Tentang'}
-            class="mx-auto flex items-center justify-center gap-6 sm:gap-8 md:gap-10 shrink-0 border-none"
+            class="mx-auto flex items-center justify-center gap-6 sm:gap-8 md:gap-10 shrink-0 border-none pointer-events-auto"
           >
             {#each currentSubNavItems as item}
               <a
