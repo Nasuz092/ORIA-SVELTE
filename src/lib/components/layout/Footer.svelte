@@ -17,7 +17,7 @@
   }
 </script>
 
-<footer class="w-full bg-black text-white pt-16 sm:pt-20 lg:pt-24 pb-10 select-none border-t border-neutral-900">
+<footer class="w-full bg-black text-white pt-16 sm:pt-20 lg:pt-24 pb-10 select-none">
   <!-- Top Center Yellow CTA Logo Badge Intersecting Yellow Horizontal Divider -->
   <div class="relative w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 mb-16 sm:mb-20 lg:mb-24">
     <!-- Thin Yellow Divider Line -->

@@ -49,7 +49,7 @@
 <!-- ======================================================================= -->
 <!-- SECTION 2: Category Products Grid (1:1 Product Image, Title, CTA Button)-->
 <!-- ======================================================================= -->
-<section id="products-grid" class="w-full bg-black text-white py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 border-t border-white/10 select-none">
+<section id="products-grid" class="w-full bg-black text-white py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 select-none">
   <div class="max-w-7xl mx-auto">
     <!-- Back to All Categories Breadcrumb (Chevron only) -->
     <div class="mb-12 sm:mb-16">

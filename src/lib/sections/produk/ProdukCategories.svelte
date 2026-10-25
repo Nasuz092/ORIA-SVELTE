@@ -5,7 +5,7 @@
 <!-- ======================================================================= -->
 <!-- SECTION: Produk Categories (Lotus Heritage Cars Style - Borderless 3-Col)-->
 <!-- ======================================================================= -->
-<section id="categories" class="w-full bg-black text-white py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 border-b border-white/10 select-none">
+<section id="categories" class="w-full bg-black text-white py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 select-none">
   <div class="max-w-7xl mx-auto">
     <!-- 3-Column Borderless Grid (Lotus Heritage Style) -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-12 lg:gap-16">

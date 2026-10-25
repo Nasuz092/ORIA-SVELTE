@@ -1,7 +1,7 @@
 <!-- ======================================================================= -->
 <!-- SECTION: Produk Overview (Lotus Iconic Heritage Style - Centered Text)  -->
 <!-- ======================================================================= -->
-<section class="w-full bg-black text-white py-24 sm:py-32 lg:py-40 px-6 sm:px-10 lg:px-16 border-b border-white/10 select-none">
+<section class="w-full bg-black text-white py-24 sm:py-32 lg:py-40 px-6 sm:px-10 lg:px-16 select-none">
   <div class="max-w-4xl mx-auto text-center space-y-8 sm:space-y-10">
     <!-- Big Tracked Lotus-Style Title -->
     <h2 class="font-heading font-light text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-[0.25em] sm:tracking-[0.3em] uppercase text-white leading-tight">
