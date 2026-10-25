@@ -14,22 +14,24 @@
   </div>
 
   <!-- Bottom Left Area: Lotus-Style Hero Typography -->
-  <div class="relative z-20 max-w-7xl mx-auto w-full px-6 sm:px-10 lg:px-16 pb-14 sm:pb-18 lg:pb-22">
-    <div class="space-y-3 sm:space-y-4 max-w-3xl">
-      <!-- Tag / Accent Category (Lotus: LOTUS STORY -> ORIA: ORIA STORY) -->
-      <div class="font-heading font-black text-xs sm:text-sm tracking-[0.25em] text-[#FFE500] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-        ORIA STORY
+  <div class="relative z-20 w-full px-6 sm:px-10 lg:px-16 pb-14 sm:pb-18 lg:pb-22">
+    <div class="max-w-7xl mx-auto w-full">
+      <div class="space-y-3 sm:space-y-4 max-w-3xl">
+        <!-- Tag / Accent Category (Lotus: LOTUS STORY -> ORIA: ORIA STORY) -->
+        <div class="font-heading font-black text-xs sm:text-sm tracking-[0.25em] text-[#FFE500] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+          ORIA STORY
+        </div>
+
+        <!-- Main Headline (Lotus: ABOUT US with ultra-wide tracking) -->
+        <h1 class="font-heading font-light sm:font-normal text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-[0.2em] sm:tracking-[0.25em] uppercase text-white leading-none drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
+          ABOUT US
+        </h1>
+
+        <!-- Short Lead -->
+        <p class="font-sans text-xs sm:text-sm md:text-base text-neutral-300 font-normal max-w-xl leading-relaxed pt-1 drop-shadow-md">
+          Membangun standar rekayasa mesin percetakan digital dan manufaktur berpresisi tinggi untuk menopang pertumbuhan kreator dan industri di Indonesia.
+        </p>
       </div>
-
-      <!-- Main Headline (Lotus: ABOUT US with ultra-wide tracking) -->
-      <h1 class="font-heading font-light sm:font-normal text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-[0.2em] sm:tracking-[0.25em] uppercase text-white leading-none drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
-        ABOUT US
-      </h1>
-
-      <!-- Short Lead -->
-      <p class="font-sans text-xs sm:text-sm md:text-base text-neutral-300 font-normal max-w-xl leading-relaxed pt-1 drop-shadow-md">
-        Membangun standar rekayasa mesin percetakan digital dan manufaktur berpresisi tinggi untuk menopang pertumbuhan kreator dan industri di Indonesia.
-      </p>
     </div>
   </div>
 </section>

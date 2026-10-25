@@ -33,33 +33,35 @@
   </div>
 
   <!-- Left-Aligned Content (Lotus Eletre X Style) -->
-  <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full py-20 sm:py-28">
-    <div class="max-w-xl lg:max-w-2xl space-y-8 sm:space-y-10">
-      <h2 class="font-heading font-light tracking-[0.22em] sm:tracking-[0.32em] text-3xl sm:text-5xl lg:text-6xl uppercase text-white leading-[1.15]">
-        ORIA {cleanModelName}
-        <span class="block font-thin tracking-[0.2em] sm:tracking-[0.28em] text-neutral-300 text-2xl sm:text-4xl lg:text-5xl pt-2">
-          EXPERIENCE
-        </span>
-      </h2>
+  <div class="relative z-10 w-full px-6 sm:px-10 lg:px-16 py-20 sm:py-28">
+    <div class="max-w-7xl mx-auto w-full">
+      <div class="max-w-xl lg:max-w-2xl space-y-8 sm:space-y-10">
+        <h2 class="font-heading font-light tracking-[0.22em] sm:tracking-[0.32em] text-3xl sm:text-5xl lg:text-6xl uppercase text-white leading-[1.15]">
+          ORIA {cleanModelName}
+          <span class="block font-thin tracking-[0.2em] sm:tracking-[0.28em] text-neutral-300 text-2xl sm:text-4xl lg:text-5xl pt-2">
+            EXPERIENCE
+          </span>
+        </h2>
 
-      <div>
-        <a
-          href="https://wa.me/6281807090888?text={encodeURIComponent(`Halo ORIA, saya ingin konsultasi teknis dan demo mesin ${product.name}`)}"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 bg-transparent hover:bg-white hover:text-black text-white border border-white font-heading font-bold text-xs sm:text-sm uppercase tracking-[0.28em] transition-all duration-300 group select-none cursor-pointer"
-        >
-          <span>EXPLORE NOW</span>
-          <svg
-            class="w-4 h-4 stroke-current transition-transform duration-300 group-hover:translate-x-1"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="2.5"
-            aria-hidden="true"
+        <div>
+          <a
+            href="https://wa.me/6281807090888?text={encodeURIComponent(`Halo ORIA, saya ingin konsultasi teknis dan demo mesin ${product.name}`)}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 bg-transparent hover:bg-white hover:text-black text-white border border-white font-heading font-bold text-xs sm:text-sm uppercase tracking-[0.28em] transition-all duration-300 group select-none cursor-pointer"
           >
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
+            <span>EXPLORE NOW</span>
+            <svg
+              class="w-4 h-4 stroke-current transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2.5"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </div>

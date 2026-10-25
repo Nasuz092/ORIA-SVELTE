@@ -131,8 +131,8 @@
         <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-transparent pointer-events-none z-10"></div>
 
         <!-- Content Overlay: Menempel langsung di dalam slide, ikut meluncur bersama gambar -->
-        <div class="absolute inset-0 z-20 pointer-events-none">
-          <div class="w-full h-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 flex flex-col justify-end pb-14 sm:pb-16 lg:pb-20">
+        <div class="absolute inset-0 z-20 pointer-events-none px-6 sm:px-10 lg:px-16">
+          <div class="w-full h-full max-w-7xl mx-auto flex flex-col justify-end pb-14 sm:pb-16 lg:pb-20">
             <div class="max-w-lg pointer-events-auto space-y-3 sm:space-y-4">
               <!-- Headline: Ukuran font proporsional dengan shadow -->
               <div class="font-heading font-black text-xl sm:text-2xl md:text-3xl lg:text-[2.25rem] tracking-[0.18em] sm:tracking-[0.22em] leading-tight text-[#FFE500] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
