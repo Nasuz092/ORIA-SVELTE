@@ -9,6 +9,7 @@
   let { data }: { data: PageData } = $props();
 
   const product = $derived(data.product);
+  const kategori = $derived(data.kategori);
   let cleanModelName = $derived(getCleanModelTitle(product.name));
   let specs = $derived(getProductSpecs(product));
   let detailedSpecs = $derived(getDetailedSpecColumns(product));
@@ -25,7 +26,7 @@
   <meta property="og:image" content={product.imageUrl} />
 </svelte:head>
 
-<DetailHero {product} {cleanModelName} {specs} />
+<DetailHero {product} {cleanModelName} {specs} categoryId={kategori} />
 <DetailStory {product} {cleanModelName} />
 <DetailSpec {product} {detailedSpecs} />
 <DetailCta {product} {cleanModelName} />

@@ -139,3 +139,12 @@ export function matchesCategory(p: FormattedProduct, catId: string): boolean {
       return catSlug.includes(catId) || catName.includes(catId) || pName.includes(catId);
   }
 }
+
+export function getProductCategoryId(p: FormattedProduct): string {
+  for (const cat of CATEGORIES) {
+    if (matchesCategory(p, cat.id)) {
+      return cat.id;
+    }
+  }
+  return 'uv';
+}

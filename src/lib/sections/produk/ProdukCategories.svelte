@@ -11,7 +11,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-12 lg:gap-16">
       {#each CATEGORIES as cat}
         <a
-          href="/produk/kategori/{cat.id}"
+          href="/produk/{cat.id}"
           class="group block flex flex-col focus:outline-none cursor-pointer"
         >
           <!-- Category Machine Image Box (Uniform pure white studio box across all cards) -->

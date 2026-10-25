@@ -18,13 +18,13 @@
 
   // Kategori produk terurut berdasarkan mesin terbanyak di database
   const productCategories = [
-    { title: 'Laser Cutting', desc: 'Akrilik, Kayu, MDF, ACP', href: '/produk/kategori/laser' },
-    { title: 'Indoor Printing', desc: 'Sticker, Banner, Display', href: '/produk/kategori/indoor' },
-    { title: 'UV Printing', desc: 'Flatbed & Cylinder', href: '/produk/kategori/uv' },
-    { title: 'Sublimasi', desc: 'Textile & Fashion', href: '/produk/kategori/sublimasi' },
-    { title: 'CNC Router', desc: 'Fabrikasi & Woodworking', href: '/produk/kategori/cnc' },
-    { title: 'DTF', desc: 'Custom Apparel', href: '/produk/kategori/dtf' },
-    { title: 'Outdoor Printing', desc: 'Spanduk, Baliho, Billboard', href: '/produk/kategori/outdoor' }
+    { title: 'Laser Cutting', desc: 'Akrilik, Kayu, MDF, ACP', href: '/produk/laser' },
+    { title: 'Indoor Printing', desc: 'Sticker, Banner, Display', href: '/produk/indoor' },
+    { title: 'UV Printing', desc: 'Flatbed & Cylinder', href: '/produk/uv' },
+    { title: 'Sublimasi', desc: 'Textile & Fashion', href: '/produk/sublimasi' },
+    { title: 'CNC Router', desc: 'Fabrikasi & Woodworking', href: '/produk/cnc' },
+    { title: 'DTF', desc: 'Custom Apparel', href: '/produk/dtf' },
+    { title: 'Outdoor Printing', desc: 'Spanduk, Baliho, Billboard', href: '/produk/outdoor' }
   ];
 
   const secondaryNavLinks = [
@@ -36,7 +36,8 @@
 
   let isTentang = $derived(page.url.pathname === '/tentang');
   let isProductDetail = $derived(
-    page.url.pathname.startsWith('/produk/') && !page.url.pathname.startsWith('/produk/kategori')
+    page.url.pathname.startsWith('/produk/') &&
+    page.url.pathname.split('/').filter(Boolean).length >= 3
   );
   let hasSubNav = $derived(isTentang || isProductDetail);
 

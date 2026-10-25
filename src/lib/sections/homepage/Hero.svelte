@@ -10,7 +10,7 @@
       desc1: 'Standar Baru Digital Printing Outdoor Skala Industri.',
       desc2: 'Kecepatan Cetak Tinggi, Presisi, dan Tahan Cuaca Ekstrem.',
       ctaText: 'DISCOVER',
-      ctaHref: '/produk/oria-outdoor-3204-st',
+      ctaHref: '/produk/outdoor/oria-outdoor-3204-st',
       desktopImage: '/images/hero/outdoor-oria-desktop.png',
       mobileImage: '/images/hero/outdoor-oria-mobile.png',
       alt: 'Mesin Digital Printing Outdoor ORIA 3204 ST'
@@ -22,7 +22,7 @@
       desc1: 'Inovasi Percetakan Tekstil & Apparel Masa Depan.',
       desc2: 'Gradasi Warna Tajam, Efisiensi Tinta, dan Konsistensi Produksi Massal.',
       ctaText: 'DISCOVER',
-      ctaHref: '/produk/oria-sublim-1902',
+      ctaHref: '/produk/sublimasi/oria-sublim-1902',
       desktopImage: '/images/hero/sublim-oria-desktop.png',
       mobileImage: '/images/hero/sublim-oria-mobile.png',
       alt: 'Mesin Textile Printing Sublimasi ORIA 1902'

@@ -5,11 +5,13 @@
   let {
     product,
     cleanModelName,
-    specs
+    specs,
+    categoryId
   }: {
     product: FormattedProduct;
     cleanModelName: string;
     specs: ProductKeySpec[];
+    categoryId?: string;
   } = $props();
 </script>
 
@@ -45,7 +47,11 @@
         <svg class="w-3 h-3 text-neutral-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
         </svg>
-        <span class="text-neutral-400">{product.categoryName}</span>
+        {#if categoryId}
+          <a href="/produk/{categoryId}" class="text-neutral-400 hover:text-[#FFE500] transition-colors">{product.categoryName}</a>
+        {:else}
+          <span class="text-neutral-400">{product.categoryName}</span>
+        {/if}
         <svg class="w-3 h-3 text-neutral-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
         </svg>

@@ -13,7 +13,7 @@
 </svelte:head>
 
 <!-- ======================================================================= -->
-<!-- SECTION 1: Category Hero (Identical to Main Produk Hero, Custom Category)-->
+<!-- SECTION 1: Category Hero (Lotus Style - Custom Category)               -->
 <!-- ======================================================================= -->
 <section class="relative w-full h-[100svh] min-h-[640px] bg-black text-white overflow-hidden select-none flex flex-col justify-end">
   <!-- Hero Background Image -->
@@ -66,7 +66,7 @@
         >
           <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
-        <span>SEMUA KATEGORI</span>
+        <span>ALL CATEGORIES</span>
       </a>
     </div>
 
@@ -75,7 +75,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-12 lg:gap-16">
         {#each products as product (product.id)}
           <a
-            href="/produk/{product.slug}"
+            href="/produk/{category.id}/{product.slug}"
             class="group block flex flex-col focus:outline-none cursor-pointer"
           >
             <!-- 1:1 Ratio Studio Box (Hanya gambar produk ukuran 1:1, tidak terpotong) -->
@@ -97,7 +97,7 @@
 
               <!-- Tombol Lihat Detail dengan Chevron (Strict Rule: Chevron only, no arrows) -->
               <div class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-white/80 group-hover:text-[#FFE500] transition-colors">
-                <span>LIHAT DETAIL</span>
+                <span>VIEW SPECIFICATIONS</span>
                 <svg
                   class="w-4 h-4 stroke-current transition-transform duration-300 group-hover:translate-x-1"
                   fill="none"
@@ -114,18 +114,24 @@
       </div>
     {:else}
       <!-- Empty State -->
-      <div class="py-24 text-center space-y-6 max-w-xl mx-auto border border-white/10 p-10 bg-neutral-950">
-        <p class="font-sans text-base text-neutral-300">
-          Belum ada unit mesin yang ditampilkan dalam kategori ini saat ini. Hubungi konsultan teknis kami untuk ketersediaan katalog khusus.
+      <div class="text-center py-20 space-y-4">
+        <p class="font-heading text-lg sm:text-xl uppercase tracking-wider text-neutral-400">
+          Belum ada produk terdaftar di kategori ini.
         </p>
         <a
           href="/produk"
-          class="inline-flex items-center gap-2 border border-white px-8 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white hover:bg-white hover:text-black transition-all"
+          class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#FFE500] hover:underline"
         >
-          <svg class="w-4 h-4 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2.5" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          <span>LIHAT KATEGORI LAINNYA</span>
+          <svg
+            class="w-4 h-4 stroke-current"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2.5"
+            aria-hidden="true"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
           </svg>
-          <span>KEMBALI KE SEMUA KATEGORI</span>
         </a>
       </div>
     {/if}

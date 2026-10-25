@@ -19,7 +19,7 @@
       tagline: 'ORIA UV Flatbed A3',
       desc: 'The high-precision ORIA UV Flatbed A3. An industrial multi-material printing platform that defines a new standard of micron accuracy across rigid, flexible, and cylindrical media — redefining your production standards.',
       image: '/images/showcase-products.png',
-      href: '/produk/oria-uv-flatbed-a3'
+      href: '/produk/uv/oria-uv-flatbed-a3'
     },
     {
       id: 'sublimasi',
@@ -27,7 +27,7 @@
       tagline: 'ORIA Sublim 1902',
       desc: 'The continuous-speed ORIA Sublim 1902. An industrial dye-sublimation powerhouse engineered for maximum ink efficiency, vivid saturation, and relentless 24/7 roll-to-roll textile manufacturing.',
       image: '/images/hero/sublim-oria-desktop.png',
-      href: '/produk/oria-sublim-1902'
+      href: '/produk/sublimasi/oria-sublim-1902'
     },
     {
       id: 'outdoor',
@@ -35,7 +35,7 @@
       tagline: 'ORIA Outdoor 3204 ST',
       desc: 'The heavy-duty ORIA Outdoor 3204 ST. Engineered on a reinforced anti-vibration steel chassis for high-speed large format printing with unyielding all-weather durability.',
       image: '/images/hero/outdoor-oria-desktop.png',
-      href: '/produk/oria-outdoor-3204-st'
+      href: '/produk/outdoor/oria-outdoor-3204-st'
     }
   ];
 
