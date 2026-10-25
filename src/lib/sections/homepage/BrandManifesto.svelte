@@ -2,7 +2,7 @@
   // Section Manifesto Brand ORIA (Lotus Style - Solid Black, Wide Tracking, 2 Columns)
 </script>
 
-<section class="w-full bg-black text-white py-20 sm:py-28 lg:py-36 px-6 sm:px-12 lg:px-20 border-t border-white/10 select-none">
+<section class="w-full bg-black text-white py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 border-t border-white/10 select-none">
   <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
     <!-- Left Column: Big elegant uppercase tracked heading -->
     <div class="lg:col-span-5 space-y-1">

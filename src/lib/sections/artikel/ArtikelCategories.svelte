@@ -67,10 +67,10 @@
 <!-- ======================================================================= -->
 <!-- SECTION: Artikel Categories (Lotus Press Aesthetic - Luxury Dark Grid)  -->
 <!-- ======================================================================= -->
-<section id="categories" class="w-full bg-[#050508] text-white py-16 sm:py-24 lg:py-32 px-6 sm:px-10 lg:px-16 border-t border-neutral-900 select-none">
+<section id="categories" class="w-full bg-[#050508] text-white py-16 sm:py-24 lg:py-32 px-6 sm:px-10 lg:px-16 select-none">
   <div class="max-w-7xl mx-auto space-y-12 sm:space-y-16">
-    <!-- Section Header (Lotus Editorial Typography) -->
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 border-b border-neutral-900 pb-8">
+    <!-- Section Header (Lotus Editorial Typography, Borderless) -->
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-2">
       <div class="space-y-3">
         <div class="font-heading font-black text-xs sm:text-sm uppercase tracking-[0.3em] text-[#FFE500]">
           PRESS & KNOWLEDGE PILLARS
@@ -84,7 +84,7 @@
       </p>
     </div>
 
-    <!-- Category Cards Grid -->
+    <!-- Category Cards Grid (Borderless Luxury Dark Aesthetic) -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
       {#each categories as cat}
         {@const count = getCount(cat.id)}
@@ -92,9 +92,9 @@
         <button
           type="button"
           onclick={() => handleCategoryClick(cat.id)}
-          class="group text-left flex flex-col justify-between bg-[#0b0b10] border transition-all duration-400 ease-out overflow-hidden hover:-translate-y-1 cursor-pointer focus:outline-none {isSelected
-            ? 'border-[#FFE500] shadow-[0_0_25px_rgba(255,229,0,0.15)] ring-1 ring-[#FFE500]'
-            : 'border-white/10 hover:border-[#FFE500]/50 hover:shadow-2xl'}"
+          class="group text-left flex flex-col justify-between bg-[#0c0c12] hover:bg-[#13131c] transition-all duration-400 ease-out overflow-hidden hover:-translate-y-1 cursor-pointer focus:outline-none {isSelected
+            ? 'shadow-[0_0_30px_rgba(255,229,0,0.18)] ring-1 ring-[#FFE500]'
+            : 'hover:shadow-2xl'}"
         >
           <!-- Card Image Header -->
           <div class="relative w-full aspect-[16/10] overflow-hidden bg-neutral-950">
@@ -104,7 +104,7 @@
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               loading="lazy"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0b10] via-black/30 to-black/40"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0c0c12] via-black/30 to-black/40"></div>
 
             <!-- Category Top Tag -->
             <div class="absolute top-4 left-4">
@@ -115,7 +115,7 @@
 
             <!-- Article Count Pill -->
             <div class="absolute top-4 right-4">
-              <span class="inline-block bg-black/75 backdrop-blur-sm text-neutral-300 font-sans text-[11px] font-semibold tracking-wider uppercase px-2.5 py-1 border border-white/15">
+              <span class="inline-block bg-black/75 backdrop-blur-sm text-neutral-300 font-sans text-[11px] font-semibold tracking-wider uppercase px-2.5 py-1">
                 {count} {count === 1 ? 'ARTICLE' : 'ARTICLES'}
               </span>
             </div>
@@ -136,7 +136,7 @@
             </div>
 
             <!-- Card Bottom Action with Chevron (Strict: Chevron only, no arrows) -->
-            <div class="pt-3 border-t border-white/5 flex items-center justify-between">
+            <div class="pt-3 flex items-center justify-between">
               <span class="inline-flex items-center gap-2 font-heading font-bold text-xs uppercase tracking-[0.22em] text-white/90 group-hover:text-[#FFE500] transition-colors">
                 <span>VIEW {cat.id.toUpperCase()}</span>
                 <svg

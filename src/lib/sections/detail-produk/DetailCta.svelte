@@ -33,7 +33,7 @@
   </div>
 
   <!-- Left-Aligned Content (Lotus Eletre X Style) -->
-  <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 w-full py-20 sm:py-28">
+  <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full py-20 sm:py-28">
     <div class="max-w-xl lg:max-w-2xl space-y-8 sm:space-y-10">
       <h2 class="font-heading font-light tracking-[0.22em] sm:tracking-[0.32em] text-3xl sm:text-5xl lg:text-6xl uppercase text-white leading-[1.15]">
         ORIA {cleanModelName}

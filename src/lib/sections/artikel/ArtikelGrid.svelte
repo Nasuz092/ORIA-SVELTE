@@ -43,11 +43,11 @@
 <!-- ======================================================================= -->
 <!-- SECTION: Artikel Grid (Lotus Editorial Article Archive & Filter)        -->
 <!-- ======================================================================= -->
-<section id="articles" class="w-full bg-[#050508] text-white py-16 sm:py-24 lg:py-32 px-6 sm:px-10 lg:px-16 border-t border-neutral-900 select-none">
+<section id="articles" class="w-full bg-[#050508] text-white py-16 sm:py-24 lg:py-32 px-6 sm:px-10 lg:px-16 select-none">
   <div class="max-w-7xl mx-auto space-y-10 sm:space-y-12">
-    <!-- Header & Interactive Category Filter Tabs -->
+    <!-- Header & Interactive Category Filter Tabs (Borderless) -->
     <div class="space-y-6 sm:space-y-8">
-      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 border-b border-neutral-900 pb-6">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 pb-2">
         <div>
           <div class="font-heading font-black text-xs sm:text-sm uppercase tracking-[0.3em] text-[#FFE500]">
             ORIA EDITORIAL DESK
@@ -61,7 +61,7 @@
         </div>
       </div>
 
-      <!-- Filter Tabs Bar (Horizontal Scrollable) -->
+      <!-- Filter Tabs Bar (Horizontal Scrollable, Borderless) -->
       <div class="flex items-center gap-2 sm:gap-3 overflow-x-auto no-scrollbar pb-2">
         {#each filterTabs as tab}
           {@const count = getCount(tab)}
@@ -71,7 +71,7 @@
             onclick={() => handleTabClick(tab)}
             class="shrink-0 px-4 sm:px-5 py-2.5 text-xs font-heading font-bold uppercase tracking-[0.16em] transition-all duration-200 cursor-pointer focus:outline-none flex items-center gap-2 {isActive
               ? 'bg-[#FFE500] text-black shadow-lg font-black'
-              : 'bg-[#0c0c12] text-neutral-300 border border-white/10 hover:border-white/30 hover:text-white'}"
+              : 'bg-[#0c0c12] text-neutral-300 hover:bg-[#181824] hover:text-white'}"
           >
             <span>{tab}</span>
             <span
@@ -86,16 +86,16 @@
       </div>
     </div>
 
-    <!-- Articles Grid -->
+    <!-- Articles Grid (Borderless Luxury Dark Cards) -->
     {#if filteredArticles.length > 0}
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
         {#each filteredArticles as a}
-          <article class="group flex flex-col justify-between bg-[#0b0b10] border border-neutral-800/80 hover:border-[#FFE500]/60 transition-all duration-300 pb-6 overflow-hidden">
+          <article class="group flex flex-col justify-between bg-[#0c0c12] hover:bg-[#13131c] transition-all duration-300 pb-6 overflow-hidden">
             <div>
               <!-- Media Image Box -->
               <a
                 href="/artikel/{a.slug}"
-                class="block aspect-[16/10] w-full overflow-hidden bg-neutral-950 relative border-b border-neutral-800"
+                class="block aspect-[16/10] w-full overflow-hidden bg-neutral-950 relative"
               >
                 <img
                   src={a.imageUrl}
@@ -103,7 +103,7 @@
                   class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   loading="lazy"
                 />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#0b0b10] via-transparent to-transparent opacity-60"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0c0c12] via-transparent to-transparent opacity-60"></div>
                 <!-- Yellow Category Tag -->
                 <div class="absolute top-3.5 left-3.5">
                   <span class="inline-block bg-[#FFE500] text-black font-heading font-black text-[10px] tracking-[0.2em] uppercase px-2 py-0.5">
@@ -152,7 +152,7 @@
       </div>
     {:else}
       <!-- Empty State -->
-      <div class="py-20 text-center bg-[#0b0b10] border border-neutral-800 p-8 space-y-4">
+      <div class="py-20 text-center bg-[#0c0c12] p-8 space-y-4">
         <p class="font-heading font-medium text-lg text-neutral-400 uppercase tracking-widest">
           Belum ada artikel dalam kategori ini
         </p>

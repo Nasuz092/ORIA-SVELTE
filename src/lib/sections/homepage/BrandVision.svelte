@@ -17,7 +17,7 @@
   </div>
 
   <!-- Content Container (Left-aligned) -->
-  <div class="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-12 lg:px-20 py-16 sm:py-24">
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-16 sm:py-24">
     <div class="max-w-xl sm:max-w-2xl space-y-4 sm:space-y-6">
       <!-- Title -->
       <h2 class="font-heading font-medium text-2xl sm:text-3xl lg:text-4xl uppercase tracking-[0.25em] text-white leading-tight drop-shadow-md">

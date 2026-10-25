@@ -131,31 +131,33 @@
         <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-transparent pointer-events-none z-10"></div>
 
         <!-- Content Overlay: Menempel langsung di dalam slide, ikut meluncur bersama gambar -->
-        <div class="absolute bottom-14 sm:bottom-16 lg:bottom-20 left-6 sm:left-12 lg:left-16 z-20 max-w-lg pointer-events-auto">
-          <div class="space-y-3 sm:space-y-4">
-            <!-- Headline: Ukuran font proporsional dengan shadow -->
-            <div class="font-heading font-black text-xl sm:text-2xl md:text-3xl lg:text-[2.25rem] tracking-[0.18em] sm:tracking-[0.22em] leading-tight text-[#FFE500] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-              <div>{slide.line1}</div>
-              <div class="mt-0.5 sm:mt-1">{slide.line2}</div>
-            </div>
+        <div class="absolute inset-0 z-20 pointer-events-none">
+          <div class="w-full h-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 flex flex-col justify-end pb-14 sm:pb-16 lg:pb-20">
+            <div class="max-w-lg pointer-events-auto space-y-3 sm:space-y-4">
+              <!-- Headline: Ukuran font proporsional dengan shadow -->
+              <div class="font-heading font-black text-xl sm:text-2xl md:text-3xl lg:text-[2.25rem] tracking-[0.18em] sm:tracking-[0.22em] leading-tight text-[#FFE500] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                <div>{slide.line1}</div>
+                <div class="mt-0.5 sm:mt-1">{slide.line2}</div>
+              </div>
 
-            <!-- Description: 2 lines in crisp white -->
-            <div class="font-sans text-xs sm:text-sm text-white/95 leading-relaxed max-w-md font-medium drop-shadow-[0_1px_6px_rgba(0,0,0,0.95)]">
-              <p>{slide.desc1}</p>
-              <p>{slide.desc2}</p>
-            </div>
+              <!-- Description: 2 lines in crisp white -->
+              <div class="font-sans text-xs sm:text-sm text-white/95 leading-relaxed max-w-md font-medium drop-shadow-[0_1px_6px_rgba(0,0,0,0.95)]">
+                <p>{slide.desc1}</p>
+                <p>{slide.desc2}</p>
+              </div>
 
-            <!-- CTA Button (Yellow solid rectangle, Chevron rule respected) -->
-            <div class="pt-1.5 sm:pt-2">
-              <a
-                href={slide.ctaHref}
-                class="inline-flex items-center gap-2 bg-[#FFE500] hover:bg-[#ffe500]/90 text-black font-heading font-black text-[11px] sm:text-xs uppercase tracking-widest px-6 sm:px-8 py-2.5 sm:py-3 transition-all shadow-xl cursor-pointer"
-              >
-                <span>{slide.ctaText}</span>
-                <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24">
-                  <polyline points="9 18 15 12 9 6" />
-                </svg>
-              </a>
+              <!-- CTA Button (Yellow solid rectangle, Chevron rule respected) -->
+              <div class="pt-1.5 sm:pt-2">
+                <a
+                  href={slide.ctaHref}
+                  class="inline-flex items-center gap-2 bg-[#FFE500] hover:bg-[#ffe500]/90 text-black font-heading font-black text-[11px] sm:text-xs uppercase tracking-widest px-6 sm:px-8 py-2.5 sm:py-3 transition-all shadow-xl cursor-pointer"
+                >
+                  <span>{slide.ctaText}</span>
+                  <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24">
+                    <polyline points="9 18 15 12 9 6" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
         </div>

@@ -38,7 +38,7 @@
   </div>
 
   <!-- KONTEN TEKS KIRI: Breadcrumbs & Judul (Agak Diturunkan), dan 4 Spesifikasi (Mepet ke Bawah) -->
-  <div class="relative z-20 w-full h-full px-6 sm:px-10 lg:px-16 xl:px-20 pt-28 sm:pt-32 lg:pt-36 pb-12 sm:pb-14 lg:pb-16 flex flex-col justify-between pointer-events-none">
+  <div class="relative z-20 w-full h-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-28 sm:pt-32 lg:pt-36 pb-12 sm:pb-14 lg:pb-16 flex flex-col justify-between pointer-events-none">
     <!-- ATAS: Breadcrumbs & Model Title (Agak Diturunkan) -->
     <div class="max-w-xl lg:max-w-2xl xl:max-w-3xl pointer-events-auto">
       <!-- Breadcrumbs & Category Bar (Menggunakan Chevron, Bukan '/') -->
