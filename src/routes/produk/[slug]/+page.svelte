@@ -203,6 +203,50 @@
     ];
   }
 
+  function parseSpecMetric(rawVal: string) {
+    if (!rawVal) return { prefix: '', main: '', suffix: '' };
+    let rest = rawVal.trim();
+    let prefix = '';
+
+    // Match prefix: 4x, 2x, 3x, Dual, Garansi, ±
+    const prefixMatch = rest.match(/^(\d+x|dual|garansi|±)\s+(.+)$/i);
+    if (prefixMatch) {
+      prefix = prefixMatch[1].trim();
+      rest = prefixMatch[2].trim();
+    }
+
+    // Match suffix: m²/h, m2/h, m/min, mm/s, cm/s, tahun, th, rpm, dpi, warna, min, kw, w, cm, mm, m
+    let suffix = '';
+    let main = rest;
+
+    const suffixMatch = rest.match(/^(.*?)(?:\s+(m|w|cm|mm|kw|rpm|dpi|min|tahun|th|warna)|\s*(m²\/h|m2\/h|m\/min|mm\/s|cm\/s))$/i);
+    if (suffixMatch && suffixMatch[1].trim() !== '') {
+      main = suffixMatch[1].trim();
+      suffix = (suffixMatch[2] || suffixMatch[3] || '').trim();
+    }
+
+    return { prefix, main, suffix };
+  }
+
+  function isSizeMetric(s: { val: string; unit: string; desc?: string }): boolean {
+    const u = (s.unit || '').toLowerCase();
+    const d = (s.desc || '').toLowerCase();
+    const v = (s.val || '').toLowerCase();
+    return (
+      u.includes('lebar') ||
+      u.includes('area') ||
+      u.includes('meja') ||
+      u.includes('bed') ||
+      u.includes('ukuran') ||
+      d.includes('lebar') ||
+      d.includes('area') ||
+      v.endsWith(' m') ||
+      v.endsWith(' cm') ||
+      v.endsWith(' mm') ||
+      (v.includes('x') && (v.includes('cm') || v.includes('mm') || v.includes('m')))
+    );
+  }
+
   let cleanModelName = $derived(getCleanModelTitle(product.name));
   let specs = $derived(getProductSpecs(product));
 </script>
@@ -221,7 +265,7 @@
 <!-- ========================================================================= -->
 <!-- HERO SECTION: FULL WIDTH, 100VH, GRADIENT HITAM DARI KIRI KE KANAN, TEKS PUTIH -->
 <!-- ========================================================================= -->
-<section class="relative w-full h-[100svh] min-h-[640px] bg-black text-white overflow-hidden flex flex-col justify-center select-none">
+<section class="relative w-full h-[100svh] min-h-[640px] bg-black text-white overflow-hidden flex flex-col justify-start sm:justify-center select-none">
   <!-- GAMBAR MESIN: Full width & 100vh (Desktop / Mobile dari Strapi) -->
   <div class="absolute inset-0 w-full h-full pointer-events-none">
     <picture class="w-full h-full">
@@ -240,39 +284,51 @@
     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/60"></div>
   </div>
 
-  <!-- KONTEN TEKS KIRI (WARNA TULISAN PUTIH): Breadcrumbs, ORIA & Nama Mesin, dan 4 Poin Spesifikasi -->
-  <div class="relative z-20 w-full px-6 sm:px-10 lg:px-16 xl:px-20 pt-16 sm:pt-20">
-    <div class="max-w-xl lg:max-w-2xl xl:max-w-3xl space-y-6 sm:space-y-8">
-      <!-- Breadcrumbs & Category Bar -->
-      <nav class="flex flex-wrap items-center gap-2 font-mono text-xs uppercase tracking-[0.22em] text-neutral-300" aria-label="Breadcrumb">
-        <a href="/produk" class="hover:text-white hover:underline">KATALOG</a>
-        <span class="text-neutral-400">/</span>
+  <!-- KONTEN TEKS KIRI: Breadcrumbs, ORIA & Nama Mesin, dan 4 Poin Spesifikasi (Mepet ke Atas di Mobile) -->
+  <div class="relative z-20 w-full px-6 sm:px-10 lg:px-16 xl:px-20 pt-20 sm:pt-20 lg:pt-0">
+    <div class="max-w-xl lg:max-w-2xl xl:max-w-3xl">
+      <!-- Breadcrumbs & Category Bar (Menggunakan Chevron, Bukan '/') -->
+      <nav class="flex flex-wrap items-center gap-1.5 sm:gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-[0.22em] text-neutral-300" aria-label="Breadcrumb">
+        <a href="/produk" class="hover:text-[#FFE500] transition-colors">KATALOG</a>
+        <svg class="w-3 h-3 text-neutral-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
         <span class="text-white font-semibold">{product.categoryName}</span>
-        <span class="text-neutral-400">/</span>
+        <svg class="w-3 h-3 text-neutral-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
         <span class="text-neutral-300 font-sans">{product.sku}</span>
       </nav>
 
-      <!-- Model Title (ORIA Putih, Nama Tipe/Model Kuning Lotus, Ukuran Disesuaikan) -->
-      <div class="space-y-1.5 sm:space-y-2">
-        <div class="font-heading font-extrabold text-xl sm:text-3xl lg:text-4xl uppercase tracking-[0.24em] text-white leading-none drop-shadow-md">
+      <!-- Model Title (Diperbesar di Mobile, ORIA Putih, Nama Tipe Kuning Lotus) -->
+      <div class="mt-3 sm:mt-4 space-y-1 sm:space-y-1.5">
+        <div class="font-heading font-extrabold text-lg sm:text-2xl lg:text-3xl uppercase tracking-[0.24em] text-white leading-none drop-shadow-md">
           ORIA
         </div>
-        <h1 class="font-heading font-black text-2xl sm:text-4xl lg:text-5xl uppercase tracking-[0.1em] text-[#FFE500] leading-[1.12] drop-shadow-lg">
+        <h1 class="font-heading font-black text-3xl sm:text-4xl lg:text-5xl xl:text-6xl uppercase tracking-[0.08em] sm:tracking-[0.1em] text-[#FFE500] leading-[1.08] drop-shadow-lg">
           {cleanModelName}
         </h1>
       </div>
 
-      <!-- 4 SPESIFIKASI UTAMA (UKURAN LEBIH COMPACT & RAPI, WARNA PUTIH) -->
-      <div class="grid grid-cols-2 gap-x-6 sm:gap-x-10 gap-y-4 sm:gap-y-5 pt-2 sm:pt-4">
+      <!-- 4 SPESIFIKASI UTAMA (MOBILE: 1 BARIS KE BAWAH, DESKTOP: 2 KOLOM, DENGAN JARAK LEGA DARI JUDUL) -->
+      <div class="mt-8 sm:mt-10 lg:mt-12 grid grid-cols-1 sm:grid-cols-2 gap-x-6 sm:gap-x-10 gap-y-3.5 sm:gap-y-5">
         {#each specs.slice(0, 4) as s}
+          {@const parsed = parseSpecMetric(s.val)}
+          {@const isSize = isSizeMetric(s)}
           <div class="flex items-baseline gap-2.5 sm:gap-3">
-            <!-- Metric Number (Ukuran lebih kecil dan proporsional) -->
-            <div class="font-heading font-medium text-xl sm:text-2xl lg:text-3xl text-white tracking-tight shrink-0 drop-shadow-md">
-              {s.val}
+            <!-- Metric Value (Ukuran: Kuning #FFE500; Lainnya: Putih. Prefix & Unit/Suffix: Lebih Kecil) -->
+            <div class="font-heading font-medium tracking-tight shrink-0 drop-shadow-md flex items-baseline gap-1 {isSize ? 'text-[#FFE500]' : 'text-white'}">
+              {#if parsed.prefix}
+                <span class="text-xs sm:text-sm font-normal {isSize ? 'text-[#FFE500]/80' : 'text-white/80'}">{parsed.prefix}</span>
+              {/if}
+              <span class="text-xl sm:text-2xl lg:text-3xl {isSize ? 'text-[#FFE500]' : 'text-white'}">{parsed.main}</span>
+              {#if parsed.suffix}
+                <span class="text-xs sm:text-sm font-normal {isSize ? 'text-[#FFE500]/80' : 'text-white/80'} ml-0.5">{parsed.suffix}</span>
+              {/if}
             </div>
             <!-- Metric Unit & Subtitle -->
             <div class="space-y-0.5 min-w-0">
-              <div class="font-sans font-bold text-[10px] sm:text-xs uppercase tracking-wider text-white drop-shadow-sm truncate">
+              <div class="font-sans font-bold text-[10px] sm:text-xs uppercase tracking-wider {isSize ? 'text-[#FFE500]' : 'text-white'} drop-shadow-sm truncate">
                 {s.unit}
               </div>
               <div class="font-sans text-[10px] sm:text-[11px] text-neutral-300 leading-tight line-clamp-2 drop-shadow-sm">
