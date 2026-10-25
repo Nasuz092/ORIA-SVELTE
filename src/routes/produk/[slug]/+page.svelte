@@ -241,8 +241,8 @@
   </div>
 
   <!-- KONTEN TEKS KIRI (WARNA TULISAN PUTIH): Breadcrumbs, ORIA & Nama Mesin, dan 4 Poin Spesifikasi -->
-  <div class="relative z-20 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-16 sm:pt-20">
-    <div class="max-w-xl lg:max-w-2xl space-y-6 sm:space-y-8">
+  <div class="relative z-20 w-full px-6 sm:px-10 lg:px-16 xl:px-20 pt-16 sm:pt-20">
+    <div class="max-w-xl lg:max-w-2xl xl:max-w-3xl space-y-6 sm:space-y-8">
       <!-- Breadcrumbs & Category Bar -->
       <nav class="flex flex-wrap items-center gap-2 font-mono text-xs uppercase tracking-[0.22em] text-neutral-300" aria-label="Breadcrumb">
         <a href="/produk" class="hover:text-white hover:underline">KATALOG</a>
@@ -262,20 +262,20 @@
         </h1>
       </div>
 
-      <!-- 4 SPESIFIKASI UTAMA (HANYA 4 POIN, DI SEBELAH KIRI DI BAWAH NAMA PRODUK - WARNA PUTIH) -->
-      <div class="grid grid-cols-2 gap-x-8 sm:gap-x-12 gap-y-5 sm:gap-y-7 pt-4 sm:pt-6">
+      <!-- 4 SPESIFIKASI UTAMA (UKURAN LEBIH COMPACT & RAPI, WARNA PUTIH) -->
+      <div class="grid grid-cols-2 gap-x-6 sm:gap-x-10 gap-y-4 sm:gap-y-5 pt-2 sm:pt-4">
         {#each specs.slice(0, 4) as s}
-          <div class="flex items-baseline gap-3 sm:gap-4">
-            <!-- Big Bold Metric Number (Putih) -->
-            <div class="font-heading font-light sm:font-normal text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight shrink-0 drop-shadow-md">
+          <div class="flex items-baseline gap-2.5 sm:gap-3">
+            <!-- Metric Number (Ukuran lebih kecil dan proporsional) -->
+            <div class="font-heading font-medium text-xl sm:text-2xl lg:text-3xl text-white tracking-tight shrink-0 drop-shadow-md">
               {s.val}
             </div>
             <!-- Metric Unit & Subtitle -->
-            <div class="space-y-1 min-w-0">
-              <div class="font-sans font-bold text-xs uppercase tracking-wider text-white drop-shadow-sm">
+            <div class="space-y-0.5 min-w-0">
+              <div class="font-sans font-bold text-[10px] sm:text-xs uppercase tracking-wider text-white drop-shadow-sm truncate">
                 {s.unit}
               </div>
-              <div class="font-sans text-[11px] sm:text-xs text-neutral-300 leading-tight line-clamp-2 drop-shadow-sm">
+              <div class="font-sans text-[10px] sm:text-[11px] text-neutral-300 leading-tight line-clamp-2 drop-shadow-sm">
                 {s.desc}
               </div>
             </div>
