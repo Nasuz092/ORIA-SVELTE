@@ -11,13 +11,14 @@
 
   $effect(() => {
     if (product) {
-      activeImage = product.imageUrl;
+      activeImage = product.mainImageDesktopUrl || product.imageUrl;
     }
   });
 
   const allImages = $derived([
-    product.imageUrl,
-    ...(product.galleryUrls || []).filter((url) => url !== product.imageUrl)
+    product.mainImageDesktopUrl || product.imageUrl,
+    ...(product.mainImageMobileUrl && product.mainImageMobileUrl !== product.mainImageDesktopUrl ? [product.mainImageMobileUrl] : []),
+    ...(product.galleryUrls || []).filter((url) => url !== product.mainImageDesktopUrl && url !== product.mainImageMobileUrl && url !== product.imageUrl)
   ]);
 
   // Ekstrak nama model ringkas untuk header besar bergaya Lotus
@@ -218,26 +219,31 @@
 </svelte:head>
 
 <!-- ========================================================================= -->
-<!-- HERO SECTION GAYA LOTUS ELETRE X (Pure White Background, Teks Hitam, Tanpa Layer Hitam, Tanpa Desc/Harga/Tombol) -->
+<!-- HERO SECTION GAYA LOTUS ELETRE X (Pure White Background, Teks Hitam, 4 Poin di Kiri di Bawah Nama) -->
 <!-- ========================================================================= -->
-<section class="relative w-full h-[calc(100svh-4rem)] sm:h-[calc(100svh-5rem)] min-h-[580px] lg:min-h-[640px] bg-white text-black overflow-hidden flex flex-col justify-between select-none border-b border-neutral-200">
-  <!-- GAMBAR MESIN: Hanya di kanan, terang dan jelas tanpa layer/gradient hitam -->
-  <div class="absolute right-0 top-0 bottom-20 sm:bottom-24 lg:bottom-28 w-full lg:w-[56%] xl:w-[60%] h-full flex items-center justify-center lg:justify-end overflow-hidden z-0">
-    <img
-      src={activeImage || product.imageUrl}
-      alt={product.name}
-      class="h-[75%] sm:h-[82%] lg:h-[90%] w-auto max-w-[94%] lg:max-w-none object-contain lg:object-right-bottom drop-shadow-md transition-all duration-700 ease-out select-none"
-    />
+<section class="relative w-full lg:h-[calc(100svh-5rem)] min-h-[580px] lg:min-h-[640px] bg-white text-black overflow-hidden flex flex-col justify-center select-none py-10 lg:py-0">
+  <!-- GAMBAR MESIN: Desktop / Mobile dari Strapi (Kanan) -->
+  <div class="relative lg:absolute right-0 top-0 bottom-0 w-full lg:w-[54%] xl:w-[58%] h-[320px] sm:h-[400px] lg:h-full flex items-center justify-center lg:justify-end overflow-hidden z-0 pointer-events-none order-last lg:order-none mt-6 lg:mt-0">
+    <picture class="h-[85%] sm:h-[90%] lg:h-[88%] w-auto max-w-[94%] lg:max-w-none flex items-center justify-center lg:justify-end">
+      {#if !activeImage || activeImage === product.mainImageDesktopUrl}
+        <source media="(max-width: 640px)" srcset={product.mainImageMobileUrl} />
+      {/if}
+      <img
+        src={activeImage || product.mainImageDesktopUrl || product.imageUrl}
+        alt={product.name}
+        class="h-full w-auto max-w-full object-contain lg:object-right-bottom drop-shadow-md transition-all duration-700 ease-out select-none"
+      />
+    </picture>
   </div>
 
-  <!-- KONTEN TEKS KIRI: Breadcrumbs, ORIA & Nama Mesin Hitam (Tanpa Short Desc, Tanpa Harga, Tanpa Tombol) -->
-  <div class="relative z-20 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-8 sm:pt-12 lg:pt-16 flex-1 flex flex-col justify-center">
-    <div class="max-w-xl lg:max-w-2xl space-y-4 sm:space-y-6">
+  <!-- KONTEN TEKS KIRI: Breadcrumbs, ORIA & Nama Mesin, dan 4 Poin Spesifikasi di Bawahnya -->
+  <div class="relative z-20 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 flex flex-col justify-center">
+    <div class="max-w-xl lg:max-w-2xl space-y-5 sm:space-y-6">
       <!-- Breadcrumbs & Category Bar -->
-      <nav class="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.22em] text-neutral-500" aria-label="Breadcrumb">
+      <nav class="flex flex-wrap items-center gap-2 font-mono text-xs uppercase tracking-[0.22em] text-neutral-500" aria-label="Breadcrumb">
         <a href="/produk" class="hover:text-black hover:underline">KATALOG</a>
         <span class="text-neutral-400">/</span>
-        <a href="/produk?cat={product.categorySlug}" class="text-neutral-800 hover:text-black hover:underline">{product.categoryName}</a>
+        <span class="text-neutral-800 font-semibold">{product.categoryName}</span>
         <span class="text-neutral-400">/</span>
         <span class="text-neutral-500 font-sans">{product.sku}</span>
       </nav>
@@ -251,25 +257,21 @@
           {cleanModelName}
         </h1>
       </div>
-    </div>
-  </div>
 
-  <!-- 4 SPESIFIKASI UTAMA (Membentang Horizontal di Bawah Layar Gaya Lotus, Angka & Teks Hitam) -->
-  <div class="relative z-20 w-full border-t border-neutral-200 bg-white">
-    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-6 sm:py-8">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10">
-        {#each specs as s}
-          <div class="flex items-baseline gap-3 sm:gap-4">
+      <!-- 4 SPESIFIKASI UTAMA (HANYA 4 POIN, DI SEBELAH KIRI DI BAWAH NAMA PRODUK) -->
+      <div class="grid grid-cols-2 gap-x-6 sm:gap-x-10 gap-y-4 sm:gap-y-6 pt-2 sm:pt-4">
+        {#each specs.slice(0, 4) as s}
+          <div class="flex items-baseline gap-2.5 sm:gap-3.5">
             <!-- Big Bold Metric Number (Hitam) -->
-            <div class="font-heading font-light sm:font-normal text-3xl sm:text-4xl lg:text-5xl text-black tracking-tight shrink-0">
+            <div class="font-heading font-light sm:font-normal text-2xl sm:text-3xl lg:text-4xl text-black tracking-tight shrink-0">
               {s.val}
             </div>
             <!-- Metric Unit & Subtitle -->
             <div class="space-y-0.5 min-w-0">
-              <div class="font-sans font-bold text-xs uppercase tracking-wider text-black truncate">
+              <div class="font-sans font-bold text-[10px] sm:text-xs uppercase tracking-wider text-black">
                 {s.unit}
               </div>
-              <div class="font-sans text-[11px] sm:text-xs text-neutral-500 leading-tight line-clamp-2">
+              <div class="font-sans text-[10px] sm:text-[11px] text-neutral-500 leading-tight line-clamp-2">
                 {s.desc}
               </div>
             </div>

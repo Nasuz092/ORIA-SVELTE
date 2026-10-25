@@ -35,6 +35,9 @@ export interface StrapiProduct {
   seo_description?: string | null;
   category?: ProductCategory | null;
   main_image?: StrapiMedia | null;
+  main_image_desktop?: StrapiMedia | null;
+  main_image_mobile?: StrapiMedia | null;
+  card_image?: StrapiMedia | null;
   gallery_images?: StrapiMedia[] | null;
 }
 
@@ -51,6 +54,9 @@ export interface FormattedProduct {
   descriptionHtml: string;
   priceText: string;
   imageUrl: string;
+  mainImageDesktopUrl: string;
+  mainImageMobileUrl: string;
+  cardImageUrl: string;
   galleryUrls: string[];
   isFeatured: boolean;
   whatsappMessage: string;

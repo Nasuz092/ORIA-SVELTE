@@ -36,7 +36,6 @@ export function transformProduct(p: StrapiProduct): FormattedProduct {
   const categoryName = p.category?.name || 'Mesin Percetakan';
   const categorySlug = p.category?.slug || 'mesin';
 
-  let imageUrl = getStrapiMediaUrl(p.main_image?.url);
   const galleryUrls: string[] = [];
   if (p.gallery_images && Array.isArray(p.gallery_images)) {
     for (const g of p.gallery_images) {
@@ -46,10 +45,24 @@ export function transformProduct(p: StrapiProduct): FormattedProduct {
     }
   }
 
-  // If no main image but gallery exists, use first gallery image
-  if ((!p.main_image || !p.main_image.url) && galleryUrls.length > 0) {
-    imageUrl = galleryUrls[0];
-  }
+  // Extract raw media paths
+  const desktopPath = p.main_image_desktop?.url || null;
+  const mobilePath = p.main_image_mobile?.url || null;
+  const cardPath = p.card_image?.url || null;
+  const mainPath = p.main_image?.url || null;
+  const firstGalleryPath = galleryUrls.length > 0 ? galleryUrls[0] : null;
+
+  // General fallback if a specific field is not set
+  const fallbackPath = desktopPath || mobilePath || cardPath || mainPath || firstGalleryPath || '/images/showcase-products.png';
+
+  // Rule: kalau hanya ada salah satu, langsung gunakan salah satunya untuk desktop & mobile
+  const effectiveDesktopPath = desktopPath || mobilePath || fallbackPath;
+  const effectiveMobilePath = mobilePath || desktopPath || fallbackPath;
+
+  const mainImageDesktopUrl = getStrapiMediaUrl(effectiveDesktopPath);
+  const mainImageMobileUrl = getStrapiMediaUrl(effectiveMobilePath);
+  const cardImageUrl = getStrapiMediaUrl(cardPath || fallbackPath);
+  const imageUrl = mainImageDesktopUrl;
 
   return {
     id: p.id,
@@ -64,6 +77,9 @@ export function transformProduct(p: StrapiProduct): FormattedProduct {
     descriptionHtml: p.description || '',
     priceText: formatPrice(p.regular_price, p.sale_price, p.price_label),
     imageUrl,
+    mainImageDesktopUrl,
+    mainImageMobileUrl,
+    cardImageUrl,
     galleryUrls,
     isFeatured: Boolean(p.is_featured),
     whatsappMessage: p.whatsapp_message || `Halo ORIA, saya ingin konsultasi mengenai unit: ${p.name}`
