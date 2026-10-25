@@ -683,22 +683,26 @@
       </h2>
     </div>
 
-    <!-- Main Narrative Paragraphs -->
-    <div class="space-y-6 sm:space-y-8 font-sans text-neutral-300 text-sm sm:text-base lg:text-lg leading-relaxed font-light tracking-wide max-w-3xl mx-auto">
-      <p class="text-white font-normal text-base sm:text-xl lg:text-2xl leading-relaxed">
-        Sebagian mesin menuntut Anda berkompromi dengan batas kemampuan mereka.<br class="hidden sm:inline" />
-        <span class="text-[#FFE500] font-medium font-heading">ORIA {cleanModelName}</span> direkayasa agar Anda dapat sepenuhnya terlarut dalam proses produksi tanpa batasan.
-      </p>
-
-      <p class="text-neutral-400 max-w-2xl mx-auto leading-relaxed">
-        Tanpa interupsi. Tanpa keraguan stabilitas warna. Tanpa rasa cemas akan waktu henti produksi.
-        Hanya performa industri presisi tinggi yang konsisten, selalu siap menghasilkan dalam kecepatan penuh—karena keunggulan rekayasa sejati baru bermakna ketika Anda dapat mengandalkannya setiap detik.
-      </p>
-
-      {#if product.shortDescription}
-        <p class="text-neutral-400/90 text-xs sm:text-sm max-w-2xl mx-auto pt-2 italic border-t border-white/10">
-          "{product.shortDescription}"
+    <!-- Main Narrative Paragraphs (Direct from Database with Lotus Aesthetic) -->
+    <div class="story-narrative font-sans text-neutral-300 text-sm sm:text-base lg:text-lg leading-relaxed font-light tracking-wide max-w-3xl mx-auto">
+      {#if product.descriptionHtml && product.descriptionHtml.trim() !== ''}
+        {@html product.descriptionHtml}
+      {:else}
+        <p class="story-lead">
+          Sebagian mesin menuntut Anda berkompromi dengan batas kemampuan mereka.<br class="hidden sm:inline" />
+          <strong>ORIA {cleanModelName}</strong> direkayasa agar Anda dapat sepenuhnya terlarut dalam proses produksi tanpa batasan.
         </p>
+
+        <p>
+          Tanpa interupsi. Tanpa keraguan stabilitas warna dan akurasi mekanik. Tanpa rasa cemas akan waktu henti produksi.
+          Hanya performa industri presisi tinggi yang konsisten, selalu siap menghasilkan dalam kecepatan penuh—karena keunggulan rekayasa sejati baru bermakna ketika Anda dapat mengandalkannya setiap detik.
+        </p>
+
+        {#if product.shortDescription}
+          <p class="story-highlight">
+            {product.shortDescription}
+          </p>
+        {/if}
       {/if}
     </div>
 
@@ -957,6 +961,60 @@
 </section>
 
 <style>
+  :global(.story-narrative) {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  :global(.story-narrative p) {
+    margin: 0;
+    line-height: 1.85;
+    color: #a3a3a3; /* neutral-400 */
+    max-width: 44rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  :global(.story-narrative .story-lead) {
+    font-size: 1.15rem;
+    line-height: 1.65;
+    color: #ffffff;
+    font-weight: 300;
+    max-width: 48rem;
+  }
+
+  @media (min-width: 640px) {
+    :global(.story-narrative .story-lead) {
+      font-size: 1.35rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    :global(.story-narrative .story-lead) {
+      font-size: 1.5rem;
+    }
+  }
+
+  :global(.story-narrative .story-lead strong) {
+    color: #FFE500;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    letter-spacing: 0.02em;
+  }
+
+  :global(.story-narrative .story-highlight) {
+    color: #e5e5e5;
+    font-size: 0.925rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    font-style: italic;
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.75;
+  }
+
   :global(.oria-content) {
     font-family: var(--font-sans);
     font-size: 0.95rem;
