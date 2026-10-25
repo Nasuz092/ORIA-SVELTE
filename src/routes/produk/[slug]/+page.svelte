@@ -219,59 +219,63 @@
 </svelte:head>
 
 <!-- ========================================================================= -->
-<!-- HERO SECTION GAYA LOTUS ELETRE X (Pure White Background, Teks Hitam, 4 Poin di Kiri di Bawah Nama) -->
+<!-- HERO SECTION: FULL WIDTH, 100VH, GRADIENT HITAM DARI KIRI KE KANAN, TEKS PUTIH -->
 <!-- ========================================================================= -->
-<section class="relative w-full lg:h-[calc(100svh-5rem)] min-h-[580px] lg:min-h-[640px] bg-white text-black overflow-hidden flex flex-col justify-center select-none py-10 lg:py-0">
-  <!-- GAMBAR MESIN: Desktop / Mobile dari Strapi (Kanan) -->
-  <div class="relative lg:absolute right-0 top-0 bottom-0 w-full lg:w-[54%] xl:w-[58%] h-[320px] sm:h-[400px] lg:h-full flex items-center justify-center lg:justify-end overflow-hidden z-0 pointer-events-none order-last lg:order-none mt-6 lg:mt-0">
-    <picture class="h-[85%] sm:h-[90%] lg:h-[88%] w-auto max-w-[94%] lg:max-w-none flex items-center justify-center lg:justify-end">
+<section class="relative w-full h-[100svh] min-h-[640px] bg-black text-white overflow-hidden flex flex-col justify-center select-none">
+  <!-- GAMBAR MESIN: Full width & 100vh (Desktop / Mobile dari Strapi) -->
+  <div class="absolute inset-0 w-full h-full pointer-events-none">
+    <picture class="w-full h-full">
       {#if !activeImage || activeImage === product.mainImageDesktopUrl}
         <source media="(max-width: 640px)" srcset={product.mainImageMobileUrl} />
       {/if}
       <img
         src={activeImage || product.mainImageDesktopUrl || product.imageUrl}
         alt={product.name}
-        class="h-full w-auto max-w-full object-contain lg:object-right-bottom drop-shadow-md transition-all duration-700 ease-out select-none"
+        class="w-full h-full object-cover object-center lg:object-[center_right] select-none"
+        loading="eager"
       />
     </picture>
+    <!-- Layer gradient hitam dari kiri ke kanan transparan -->
+    <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/60"></div>
   </div>
 
-  <!-- KONTEN TEKS KIRI: Breadcrumbs, ORIA & Nama Mesin, dan 4 Poin Spesifikasi di Bawahnya -->
-  <div class="relative z-20 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 flex flex-col justify-center">
-    <div class="max-w-xl lg:max-w-2xl space-y-5 sm:space-y-6">
+  <!-- KONTEN TEKS KIRI (WARNA TULISAN PUTIH): Breadcrumbs, ORIA & Nama Mesin, dan 4 Poin Spesifikasi -->
+  <div class="relative z-20 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-16 sm:pt-20">
+    <div class="max-w-xl lg:max-w-2xl space-y-6 sm:space-y-8">
       <!-- Breadcrumbs & Category Bar -->
-      <nav class="flex flex-wrap items-center gap-2 font-mono text-xs uppercase tracking-[0.22em] text-neutral-500" aria-label="Breadcrumb">
-        <a href="/produk" class="hover:text-black hover:underline">KATALOG</a>
+      <nav class="flex flex-wrap items-center gap-2 font-mono text-xs uppercase tracking-[0.22em] text-neutral-300" aria-label="Breadcrumb">
+        <a href="/produk" class="hover:text-white hover:underline">KATALOG</a>
         <span class="text-neutral-400">/</span>
-        <span class="text-neutral-800 font-semibold">{product.categoryName}</span>
+        <span class="text-white font-semibold">{product.categoryName}</span>
         <span class="text-neutral-400">/</span>
-        <span class="text-neutral-500 font-sans">{product.sku}</span>
+        <span class="text-neutral-300 font-sans">{product.sku}</span>
       </nav>
 
-      <!-- Model Title (Gaya Lotus: ORIA Hitam, Nama Model Hitam) -->
-      <div class="space-y-1 sm:space-y-2">
-        <div class="font-heading font-extrabold text-2xl sm:text-4xl lg:text-5xl uppercase tracking-[0.24em] text-black leading-none">
+      <!-- Model Title (Warna Putih) -->
+      <div class="space-y-2 sm:space-y-3">
+        <div class="font-heading font-extrabold text-2xl sm:text-4xl lg:text-5xl uppercase tracking-[0.24em] text-white leading-none drop-shadow-md">
           ORIA
         </div>
-        <h1 class="font-heading font-black text-3xl sm:text-5xl lg:text-6xl uppercase tracking-[0.12em] text-black leading-[1.06]">
+        <h1 class="font-heading font-black text-3xl sm:text-5xl lg:text-6xl uppercase tracking-[0.12em] text-white leading-[1.06] drop-shadow-lg">
           {cleanModelName}
         </h1>
       </div>
 
-      <!-- 4 SPESIFIKASI UTAMA (HANYA 4 POIN, DI SEBELAH KIRI DI BAWAH NAMA PRODUK) -->
-      <div class="grid grid-cols-2 gap-x-6 sm:gap-x-10 gap-y-4 sm:gap-y-6 pt-2 sm:pt-4">
+      <!-- 4 SPESIFIKASI UTAMA (HANYA 4 POIN, DI SEBELAH KIRI DI BAWAH NAMA PRODUK - WARNA PUTIH) -->
+      <div class="grid grid-cols-2 gap-x-8 sm:gap-x-12 gap-y-5 sm:gap-y-7 pt-4 sm:pt-6">
         {#each specs.slice(0, 4) as s}
-          <div class="flex items-baseline gap-2.5 sm:gap-3.5">
-            <!-- Big Bold Metric Number (Hitam) -->
-            <div class="font-heading font-light sm:font-normal text-2xl sm:text-3xl lg:text-4xl text-black tracking-tight shrink-0">
+          <div class="flex items-baseline gap-3 sm:gap-4">
+            <!-- Big Bold Metric Number (Putih) -->
+            <div class="font-heading font-light sm:font-normal text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight shrink-0 drop-shadow-md">
               {s.val}
             </div>
             <!-- Metric Unit & Subtitle -->
-            <div class="space-y-0.5 min-w-0">
-              <div class="font-sans font-bold text-[10px] sm:text-xs uppercase tracking-wider text-black">
+            <div class="space-y-1 min-w-0">
+              <div class="font-sans font-bold text-xs uppercase tracking-wider text-white drop-shadow-sm">
                 {s.unit}
               </div>
-              <div class="font-sans text-[10px] sm:text-[11px] text-neutral-500 leading-tight line-clamp-2">
+              <div class="font-sans text-[11px] sm:text-xs text-neutral-300 leading-tight line-clamp-2 drop-shadow-sm">
                 {s.desc}
               </div>
             </div>
