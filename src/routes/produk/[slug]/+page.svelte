@@ -822,107 +822,61 @@
       </div>
     </div>
 
-    <!-- CTA Box at the bottom with Chevron (Strict: Chevron only) -->
-    <div class="p-8 sm:p-12 lg:p-14 bg-neutral-950 border border-white/10 relative overflow-hidden">
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(255,229,0,0.08)_0%,_transparent_60%)] pointer-events-none"></div>
+  </div>
+</section>
 
-      <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 sm:gap-8">
-        <div class="space-y-2 max-w-2xl">
-          <div class="font-mono text-xs uppercase tracking-[0.25em] text-[#FFE500] font-bold">
-            LAYANAN SPESIALIS ORIA
-          </div>
-          <h3 class="font-heading font-black text-xl sm:text-3xl text-white">
-            Ingin Uji Coba Sample Cetak atau Demo Unit Ini?
-          </h3>
-          <p class="font-sans text-xs sm:text-sm text-neutral-300 leading-relaxed">
-            Konsultasikan kebutuhan produksi Anda dengan spesialis teknis kami. Kami menyediakan layanan demo mesin dan pengujian sampel cetak langsung di showroom ORIA.
-          </p>
-        </div>
+<!-- ========================================================================= -->
+<!-- SECTION 4: CINEMATIC CTA BANNER (LOTUS ELETRE X STYLE)                   -->
+<!-- ========================================================================= -->
+<section class="relative w-full min-h-[500px] sm:min-h-[580px] lg:min-h-[640px] bg-black text-white overflow-hidden flex items-center select-none">
+  <!-- Background Machine Image -->
+  <div class="absolute inset-0 w-full h-full pointer-events-none">
+    <picture class="w-full h-full">
+      {#if product.mainImageMobileUrl}
+        <source media="(max-width: 640px)" srcset={product.mainImageMobileUrl} />
+      {/if}
+      <img
+        src={product.mainImageDesktopUrl || product.imageUrl}
+        alt="{product.name} Showcase"
+        class="w-full h-full object-cover object-center lg:object-[center_right] select-none"
+        loading="lazy"
+      />
+    </picture>
+    <!-- Cinematic Dark Gradient (Left solid dark for text clarity, right reveals machine) -->
+    <div class="absolute inset-0 bg-gradient-to-r from-black via-black/85 lg:via-black/70 to-black/30"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/60"></div>
+  </div>
 
-        <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
-          <a
-            href="https://wa.me/6281807090888?text={encodeURIComponent(`Halo ORIA, saya ingin konsultasi teknis dan demo mesin ${product.name}`)}"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#FFE500] hover:bg-[#fff04d] text-black font-heading font-bold text-xs uppercase tracking-[0.22em] transition-all duration-300 group shadow-lg"
+  <!-- Left-Aligned Content (Lotus Eletre X Style) -->
+  <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 w-full py-20 sm:py-28">
+    <div class="max-w-xl lg:max-w-2xl space-y-8 sm:space-y-10">
+      <h2 class="font-heading font-light tracking-[0.22em] sm:tracking-[0.32em] text-3xl sm:text-5xl lg:text-6xl uppercase text-white leading-[1.15]">
+        ORIA {cleanModelName}
+        <span class="block font-thin tracking-[0.2em] sm:tracking-[0.28em] text-neutral-300 text-2xl sm:text-4xl lg:text-5xl pt-2">
+          EXPERIENCE
+        </span>
+      </h2>
+
+      <div>
+        <a
+          href="https://wa.me/6281807090888?text={encodeURIComponent(`Halo ORIA, saya ingin konsultasi teknis dan demo mesin ${product.name}`)}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 bg-transparent hover:bg-white hover:text-black text-white border border-white font-heading font-bold text-xs sm:text-sm uppercase tracking-[0.28em] transition-all duration-300 group select-none cursor-pointer"
+        >
+          <span>EXPLORE NOW</span>
+          <svg
+            class="w-4 h-4 stroke-current transition-transform duration-300 group-hover:translate-x-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2.5"
+            aria-hidden="true"
           >
-            <span>KONSULTASI TEKNIS</span>
-            <svg
-              class="w-4 h-4 stroke-current transition-transform duration-300 group-hover:translate-x-1"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="2.5"
-              aria-hidden="true"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-
-          <a
-            href="/kontak?unit={encodeURIComponent(product.name)}"
-            class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white/5 hover:bg-white/10 text-white border border-white/20 hover:border-white/40 font-heading font-medium text-xs uppercase tracking-[0.22em] transition-all duration-300 group"
-          >
-            <span>SHOWROOM & DEMO</span>
-            <svg
-              class="w-4 h-4 stroke-current transition-transform duration-300 group-hover:translate-x-1"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="2.5"
-              aria-hidden="true"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
       </div>
     </div>
-
-    <!-- Rekomendasi Mesin Terkait (Dark Luxury Grid) -->
-    {#if relatedProducts.length > 0}
-      <div class="pt-8 space-y-8">
-        <div class="flex items-center justify-between">
-          <div class="space-y-1">
-            <div class="font-mono text-xs uppercase tracking-widest text-[#FFE500]">
-              REKOMENDASI TERKAIT
-            </div>
-            <h3 class="font-heading font-bold text-xl sm:text-2xl text-white">
-              PILIHAN MESIN INDUSTRI LAINNYA
-            </h3>
-          </div>
-          <a href="/produk" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest hover:text-[#FFE500] text-neutral-300 transition-colors group">
-            <span>SEMUA MESIN</span>
-            <svg class="w-3.5 h-3.5 stroke-current transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-          {#each relatedProducts as rel}
-            <a
-              href="/produk/{rel.slug}"
-              class="group block bg-neutral-950 border border-white/10 hover:border-[#FFE500]/60 transition-colors p-5 space-y-4"
-            >
-              <div class="aspect-[4/3] bg-black flex items-center justify-center p-3 overflow-hidden">
-                <img
-                  src={rel.imageUrl}
-                  alt={rel.name}
-                  class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                  loading="lazy"
-                />
-              </div>
-              <div class="space-y-1.5">
-                <div class="text-[10px] font-mono uppercase text-neutral-400">{rel.sku}</div>
-                <div class="font-heading font-bold text-sm sm:text-base text-white group-hover:text-[#FFE500] transition-colors line-clamp-2">
-                  {rel.name}
-                </div>
-                <div class="text-xs font-semibold text-[#FFE500] pt-1">{rel.priceText}</div>
-              </div>
-            </a>
-          {/each}
-        </div>
-      </div>
-    {/if}
   </div>
 </section>
 
