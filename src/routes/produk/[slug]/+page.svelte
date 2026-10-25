@@ -7,19 +7,6 @@
   const product = $derived(data.product);
   const relatedProducts = $derived(data.relatedProducts || []);
 
-  let activeImage = $state('');
-
-  $effect(() => {
-    if (product) {
-      activeImage = product.mainImageDesktopUrl || product.imageUrl;
-    }
-  });
-
-  const allImages = $derived([
-    product.mainImageDesktopUrl || product.imageUrl,
-    ...(product.mainImageMobileUrl && product.mainImageMobileUrl !== product.mainImageDesktopUrl ? [product.mainImageMobileUrl] : []),
-    ...(product.galleryUrls || []).filter((url) => url !== product.mainImageDesktopUrl && url !== product.mainImageMobileUrl && url !== product.imageUrl)
-  ]);
 
   // Ekstrak nama model ringkas untuk header besar bergaya Lotus
   function getCleanModelTitle(fullName: string): string {
@@ -589,11 +576,11 @@
   <!-- GAMBAR MESIN: Full width & 100vh (Desktop / Mobile dari Strapi) -->
   <div class="absolute inset-0 w-full h-full pointer-events-none">
     <picture class="w-full h-full">
-      {#if !activeImage || activeImage === product.mainImageDesktopUrl}
+      {#if product.mainImageMobileUrl}
         <source media="(max-width: 640px)" srcset={product.mainImageMobileUrl} />
       {/if}
       <img
-        src={activeImage || product.mainImageDesktopUrl || product.imageUrl}
+        src={product.mainImageDesktopUrl || product.imageUrl}
         alt={product.name}
         class="w-full h-full object-cover object-center lg:object-[center_right] select-none"
         loading="eager"
@@ -744,27 +731,6 @@
         Parameter teknis resmi dan spesifikasi operasional untuk unit <span class="text-white font-medium">{product.name}</span>.
       </p>
     </div>
-
-    <!-- Gallery Thumbnails (Jika ada lebih dari 1 gambar) -->
-    {#if allImages.length > 1}
-      <div class="space-y-3 p-6 bg-neutral-950 border border-white/10">
-        <div class="font-mono text-[11px] uppercase tracking-widest text-neutral-400">
-          SUDUT PANDANG MESIN & DETAIL FISIK
-        </div>
-        <div class="flex items-center gap-4 overflow-x-auto pb-2">
-          {#each allImages as img, idx}
-            <button
-              type="button"
-              onclick={() => (activeImage = img)}
-              class="relative w-24 h-24 sm:w-28 sm:h-28 shrink-0 bg-black border-2 transition-all p-2 flex items-center justify-center cursor-pointer {activeImage === img ? 'border-[#FFE500] ring-1 ring-[#FFE500]' : 'border-white/20 opacity-60 hover:opacity-100'}"
-              aria-label="Tampilkan gambar ke-{idx + 1}"
-            >
-              <img src={img} alt="{product.name} view {idx + 1}" class="w-full h-full object-contain" />
-            </button>
-          {/each}
-        </div>
-      </div>
-    {/if}
 
     <!-- 2-Column Grid of Categorized Groups (mesinprintingjersey.id Style) -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-12 lg:gap-x-16 gap-y-12 lg:gap-y-16">
