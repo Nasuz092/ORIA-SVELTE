@@ -118,10 +118,10 @@
         </p>
         <div>
           <a
-            href="/artikel/semua"
+            href="/artikel/digital-print"
             class="inline-flex items-center gap-2 px-6 py-3 bg-[#FFE500] text-black font-heading font-bold text-xs uppercase tracking-[0.2em] hover:bg-[#fff04d] transition-colors cursor-pointer"
           >
-            <span>TAMPILKAN SEMUA ARTIKEL</span>
+            <span>JELAJAHI DIGITAL PRINT</span>
             <svg class="w-4 h-4 stroke-black stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
             </svg>

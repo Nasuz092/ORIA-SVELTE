@@ -60,8 +60,6 @@
   ];
 
   const artikelSubNavItems = [
-    { id: 'overview', label: 'OVERVIEW', href: '/artikel' },
-    { id: 'semua', label: 'SEMUA', href: '/artikel/semua' },
     { id: 'digital-print', label: 'DIGITAL PRINT', href: '/artikel/digital-print' },
     { id: 'business', label: 'BUSINESS', href: '/artikel/business' },
     { id: 'insight', label: 'INSIGHT', href: '/artikel/insight' },
@@ -201,11 +199,7 @@
           >
             {#if isArtikel}
               {#each artikelSubNavItems as item}
-                {@const isActive =
-                  item.id === 'overview'
-                    ? page.url.pathname === '/artikel'
-                    : page.url.pathname.startsWith(item.href) ||
-                      (item.id === 'semua' && page.url.pathname === '/artikel/all')}
+                {@const isActive = page.url.pathname.startsWith(item.href)}
                 <a
                   href={item.href}
                   class="flex items-center text-[11px] sm:text-xs md:text-[13px] font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none py-1 {isActive
@@ -239,7 +233,7 @@
   <!-- 100% ORIGINAL: Tinggi, padding, logo, dan hamburger asli           -->
   <!-- ================================================================= -->
   <header
-    class="w-full fixed top-0 left-0 z-40 transition-all duration-300 {isScrolled || (page.url.pathname !== '/' && !page.url.pathname.startsWith('/produk'))
+    class="w-full fixed top-0 left-0 z-40 transition-all duration-300 {isScrolled || (page.url.pathname !== '/' && !page.url.pathname.startsWith('/produk') && page.url.pathname !== '/kontak')
       ? 'bg-black/95 shadow-lg border-b border-white/10 py-3.5 sm:py-4'
       : 'bg-transparent border-b border-transparent py-4 sm:py-5'}"
   >

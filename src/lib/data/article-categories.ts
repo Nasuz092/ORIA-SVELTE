@@ -8,12 +8,6 @@ export interface ArticleCategoryMeta {
 
 export const ARTICLE_CATEGORIES: ArticleCategoryMeta[] = [
   {
-    id: 'semua',
-    label: 'SEMUA',
-    spacedTitle: 'A L L &nbsp; A R T I C L E S',
-    subtitle: 'ARSIP LENGKAP PANDUAN TEKNOLOGI, ANALISIS BISNIS, DAN PUBLIKASI RESMI ORIA.'
-  },
-  {
     id: 'digital-print',
     label: 'DIGITAL PRINT',
     spacedTitle: 'D I G I T A L &nbsp; P R I N T',

@@ -129,10 +129,10 @@
             Artikel Terkait
           </h2>
           <a
-            href="/artikel/semua"
+            href="/artikel/digital-print"
             class="font-sans font-bold text-xs uppercase tracking-widest text-black hover:underline inline-flex items-center gap-1.5"
           >
-            <span>Semua Artikel</span>
+            <span>Artikel Lainnya</span>
             <svg class="w-3.5 h-3.5 stroke-black" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
             </svg>
