@@ -89,22 +89,85 @@ export const CATEGORIES: CategoryInfo[] = [
     cardImage: '/images/categories/indoor.webp',
     alt: 'Mesin Printing Indoor Eco-Solvent ORIA',
     description: 'Mesin digital printing indoor eco-solvent ORIA dengan resolusi fotografi untuk stiker ritel, banner indoor, wallcovering estetis, dan pameran.'
+  },
+  {
+    id: 'single-pass',
+    name: 'Single Pass Packaging',
+    heroLine1: 'ORIA',
+    heroLine2: 'SINGLE PASS',
+    heroSubtitle: 'HIGH-SPEED CORRUGATED PACKAGING PRINTING',
+    heroImage: '/images/showcase-products.png',
+    cardImage: '/images/showcase-products.png',
+    alt: 'Mesin Single Pass Packaging Corrugated Box ORIA',
+    description: 'Mesin cetak digital packaging single-pass berkecepatan tinggi hingga 50m/menit untuk kemasan karton box, pizza box, dan paper bag.'
+  },
+  {
+    id: 'consumables',
+    name: 'Consumables & Ink',
+    heroLine1: 'ORIA',
+    heroLine2: 'CONSUMABLES',
+    heroSubtitle: 'ORIGINAL INK & HIGH-QUALITY SUBLIMATION MEDIA',
+    heroImage: '/images/hero/sublim-oria-desktop.png',
+    cardImage: '/images/categories/sublimasi.webp',
+    alt: 'Tinta & Media Percetakan Asli ORIA',
+    description: 'Tinta ecosolvent, sublimasi, solvent, dan kertas sublim roll berkualitas tinggi bersertifikasi untuk menjaga performa optimal mesin cetak Anda.'
   }
 ];
 
 export function getCategoryById(id: string): CategoryInfo | undefined {
   const cleanId = id.trim().toLowerCase();
-  return CATEGORIES.find(c => c.id === cleanId);
+  const direct = CATEGORIES.find(c => c.id === cleanId);
+  if (direct) return direct;
+
+  // Support Strapi category slug aliases & plural forms
+  const aliasMap: Record<string, string> = {
+    'mesin-indoor': 'indoor',
+    'mesin-outdoor': 'outdoor',
+    'mesin-sublim': 'sublimasi',
+    'sublim': 'sublimasi',
+    'mesin-heat-press': 'sublimasi',
+    'heat-press': 'sublimasi',
+    'mesin-laser-engrave-cnc': 'laser',
+    'laser-cutting': 'laser',
+    'cnc-router': 'cnc',
+    'mesin-uv-flatbed': 'uv',
+    'mesin-uv-cylinder': 'uv',
+    'mesin-uv-dtf': 'uv',
+    'uv-flatbed': 'uv',
+    'uv-cylinder': 'uv',
+    'uv-dtf': 'uv',
+    'mesin-dtf': 'dtf',
+    'mesin-dtg': 'dtf',
+    'dtg': 'dtf',
+    'mesin-single-pass': 'single-pass',
+    'one-pass': 'single-pass',
+    'packaging': 'single-pass',
+    'consumable-printing': 'consumables',
+    'consumable': 'consumables',
+    'tinta': 'consumables'
+  };
+
+  const mapped = aliasMap[cleanId];
+  if (mapped) {
+    return CATEGORIES.find(c => c.id === mapped);
+  }
+
+  return undefined;
 }
 
 export function matchesCategory(p: FormattedProduct, catId: string): boolean {
   if (catId === 'all') return true;
+  const targetCat = getCategoryById(catId)?.id || catId.toLowerCase();
   const slug = (p.slug || '').toLowerCase();
   const catSlug = (p.categorySlug || '').toLowerCase();
   const catName = (p.categoryName || '').toLowerCase();
   const pName = (p.name || '').toLowerCase();
 
-  switch (catId) {
+  switch (targetCat) {
+    case 'single-pass':
+      return catSlug.includes('single-pass') || pName.includes('one pass') || pName.includes('single pass');
+    case 'consumables':
+      return catSlug.includes('consumable') || pName.includes('tinta') || pName.includes('kertas');
     case 'laser':
       return pName.includes('laser');
     case 'cnc':
@@ -136,7 +199,7 @@ export function matchesCategory(p: FormattedProduct, catId: string): boolean {
     case 'dtf':
       return catSlug.includes('dtf') || pName.includes('dtf') || pName.includes('dtg');
     default:
-      return catSlug.includes(catId) || catName.includes(catId) || pName.includes(catId);
+      return catSlug.includes(targetCat) || catName.includes(targetCat) || pName.includes(targetCat);
   }
 }
 

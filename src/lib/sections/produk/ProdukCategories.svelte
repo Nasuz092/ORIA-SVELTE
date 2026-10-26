@@ -1,5 +1,8 @@
 <script lang="ts">
-  import { CATEGORIES } from '$lib/data/categories';
+  import type { FormattedProduct } from '$lib/types/product';
+  import { CATEGORIES, matchesCategory } from '$lib/data/categories';
+
+  let { products = [] }: { products?: FormattedProduct[] } = $props();
 </script>
 
 <!-- ======================================================================= -->
@@ -10,6 +13,7 @@
     <!-- 3-Column Borderless Grid (Lotus Heritage Style) -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-12 lg:gap-16">
       {#each CATEGORIES as cat}
+        {@const unitCount = products.filter(p => matchesCategory(p, cat.id)).length}
         <a
           href="/produk/{cat.id}"
           class="group block flex flex-col focus:outline-none cursor-pointer"
@@ -33,7 +37,7 @@
 
             <!-- Button with Chevron (Strict Rule from AGENTS.md: Chevron only, no arrows) -->
             <div class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-white/80 group-hover:text-[#FFE500] transition-colors">
-              <span>EXPLORE MACHINES</span>
+              <span>EXPLORE {unitCount > 0 ? `(${unitCount})` : 'MACHINES'}</span>
               <svg
                 class="w-4 h-4 stroke-current transition-transform duration-300 group-hover:translate-x-1"
                 fill="none"

@@ -82,13 +82,17 @@ export function transformProduct(p: StrapiProduct): FormattedProduct {
     cardImageUrl,
     galleryUrls,
     isFeatured: Boolean(p.is_featured),
-    whatsappMessage: p.whatsapp_message || `Halo ORIA, saya ingin konsultasi mengenai unit: ${p.name}`
+    whatsappMessage: p.whatsapp_message || `Halo ORIA, saya ingin konsultasi mengenai unit: ${p.name}`,
+    specificationsHtml: p.specifications || '',
+    brochureUrl: p.brochure_url || null,
+    youtubeUrl: p.youtube_url || null
   };
 }
 
 export async function fetchOriaProducts(fetchFn: typeof fetch = fetch): Promise<FormattedProduct[]> {
   try {
-    const url = `${STRAPI_URL}/api/products?filters[brand][$containsi]=oria&populate=*&pagination[pageSize]=100&sort=name:asc`;
+    // Fetch all published products from Strapi (all brands and categories registered in Strapi)
+    const url = `${STRAPI_URL}/api/products?populate=*&pagination[pageSize]=100&sort=name:asc`;
     const res = await fetchFn(url);
     if (!res.ok) {
       console.warn(`[Strapi] Failed to fetch products: HTTP ${res.status}`);

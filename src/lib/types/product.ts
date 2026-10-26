@@ -39,6 +39,9 @@ export interface StrapiProduct {
   main_image_mobile?: StrapiMedia | null;
   card_image?: StrapiMedia | null;
   gallery_images?: StrapiMedia[] | null;
+  specifications?: string | null;
+  brochure_url?: string | null;
+  youtube_url?: string | null;
 }
 
 export interface FormattedProduct {
@@ -60,4 +63,7 @@ export interface FormattedProduct {
   galleryUrls: string[];
   isFeatured: boolean;
   whatsappMessage: string;
+  specificationsHtml?: string;
+  brochureUrl?: string | null;
+  youtubeUrl?: string | null;
 }

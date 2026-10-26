@@ -1,15 +1,20 @@
 <script lang="ts">
+  import type { PageData } from './$types';
   import ProdukHero from '$lib/sections/produk/ProdukHero.svelte';
   import ProdukOverview from '$lib/sections/produk/ProdukOverview.svelte';
   import ProdukCategories from '$lib/sections/produk/ProdukCategories.svelte';
+  import ProdukCatalog from '$lib/sections/produk/ProdukCatalog.svelte';
   import ProdukFlagship from '$lib/sections/produk/ProdukFlagship.svelte';
+
+  let { data }: { data: PageData } = $props();
+  const products = $derived(data.products || []);
 </script>
 
 <svelte:head>
-  <title>ORIA Heritage - Industrial Machinery &amp; Digital Printing Portfolio</title>
+  <title>ORIA Industrial Machinery - Seluruh Portofolio Mesin Digital Printing</title>
   <meta
     name="description"
-    content="Jelajahi seluruh kategori mesin industri ORIA: UV Flatbed, Sublimasi, Laser Cutting, CNC Router, DTF, dan Outdoor Printing berstandar presisi manufaktur."
+    content="Jelajahi portofolio lengkap mesin industri ORIA: UV Flatbed, Sublimasi, Laser Cutting, CNC Router, DTF, Outdoor Solvent, dan Single Pass langsung dari distributor resmi."
   />
 </svelte:head>
 
@@ -26,9 +31,14 @@
 <!-- ======================================================================= -->
 <!-- SECTION 3: Category Cards (Lotus Heritage Cars Style - Borderless 3-Col)-->
 <!-- ======================================================================= -->
-<ProdukCategories />
+<ProdukCategories {products} />
 
 <!-- ======================================================================= -->
-<!-- SECTION 4: Flagship Model Switcher (Lotus Eletre / Emira / Emeya Style)-->
+<!-- SECTION 4: Live Catalog & All Products (Dynamic Strapi Portfolio)       -->
 <!-- ======================================================================= -->
-<ProdukFlagship />
+<ProdukCatalog {products} />
+
+<!-- ======================================================================= -->
+<!-- SECTION 5: Flagship Model Switcher (Lotus Eletre / Emira / Emeya Style)-->
+<!-- ======================================================================= -->
+<ProdukFlagship {products} />

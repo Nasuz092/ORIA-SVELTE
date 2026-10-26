@@ -1,5 +1,7 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
+  import type { FormattedProduct } from '$lib/types/product';
+  import { getProductCategoryId } from '$lib/data/categories';
 
   interface FlagshipModel {
     id: string;
@@ -10,14 +12,15 @@
     href: string;
   }
 
-  let { activeIndex = $bindable(0) }: { activeIndex?: number } = $props();
+  let { products = [], activeIndex = $bindable(0) }: { products?: FormattedProduct[]; activeIndex?: number } = $props();
 
-  const models: FlagshipModel[] = [
+  // Dynamically resolve flagship machines from Strapi products
+  const defaultModels: FlagshipModel[] = [
     {
       id: 'uv',
       name: 'UV FLATBED',
       tagline: 'ORIA UV Flatbed A3',
-      desc: 'The high-precision ORIA UV Flatbed A3. An industrial multi-material printing platform that defines a new standard of micron accuracy across rigid, flexible, and cylindrical media — redefining your production standards.',
+      desc: 'The high-precision ORIA UV Flatbed A3. An industrial multi-material printing platform that defines a new standard of micron accuracy across rigid, flexible, and cylindrical media.',
       image: '/images/showcase-products.png',
       href: '/produk/uv/oria-uv-flatbed-a3'
     },
@@ -38,6 +41,64 @@
       href: '/produk/outdoor/oria-outdoor-3204-st'
     }
   ];
+
+  const models = $derived.by(() => {
+    if (products.length === 0) return defaultModels;
+
+    // Pick top flagship models from Strapi if available
+    const uvProd = products.find(p => p.slug === 'oria-uv-flatbed-a3') || products.find(p => p.slug.includes('uv'));
+    const sublimProd = products.find(p => p.slug === 'oria-sublim-1902' || p.slug === 'oria-sublim-1804') || products.find(p => p.slug.includes('sublim'));
+    const outdoorProd = products.find(p => p.slug === 'oria-outdoor-3204-st') || products.find(p => p.slug.includes('outdoor'));
+    const laserProd = products.find(p => p.slug === 'oria-fiber-laser-3015' || p.slug === 'oria-laser-cutting-6040') || products.find(p => p.slug.includes('laser'));
+
+    const list: FlagshipModel[] = [];
+
+    if (uvProd) {
+      list.push({
+        id: 'uv',
+        name: 'UV FLATBED',
+        tagline: uvProd.name,
+        desc: uvProd.shortDescription || 'An industrial multi-material printing platform with micron accuracy across rigid, flexible, and cylindrical media.',
+        image: uvProd.mainImageDesktopUrl || uvProd.imageUrl || '/images/showcase-products.png',
+        href: `/produk/${getProductCategoryId(uvProd)}/${uvProd.slug}`
+      });
+    }
+
+    if (sublimProd) {
+      list.push({
+        id: 'sublimasi',
+        name: 'SUBLIMASI',
+        tagline: sublimProd.name,
+        desc: sublimProd.shortDescription || 'Industrial dye-sublimation powerhouse engineered for maximum ink efficiency, vivid saturation, and 24/7 roll-to-roll manufacturing.',
+        image: sublimProd.mainImageDesktopUrl || sublimProd.imageUrl || '/images/hero/sublim-oria-desktop.png',
+        href: `/produk/${getProductCategoryId(sublimProd)}/${sublimProd.slug}`
+      });
+    }
+
+    if (outdoorProd) {
+      list.push({
+        id: 'outdoor',
+        name: 'OUTDOOR',
+        tagline: outdoorProd.name,
+        desc: outdoorProd.shortDescription || 'Heavy-duty large format printing on reinforced anti-vibration steel chassis for all-weather durability.',
+        image: outdoorProd.mainImageDesktopUrl || outdoorProd.imageUrl || '/images/hero/outdoor-oria-desktop.png',
+        href: `/produk/${getProductCategoryId(outdoorProd)}/${outdoorProd.slug}`
+      });
+    }
+
+    if (laserProd) {
+      list.push({
+        id: 'laser',
+        name: 'FIBER LASER',
+        tagline: laserProd.name,
+        desc: laserProd.shortDescription || 'High-power optical fiber laser cutting system for micron-level metal fabrication.',
+        image: laserProd.mainImageDesktopUrl || laserProd.imageUrl || '/images/core-precision.jpg',
+        href: `/produk/${getProductCategoryId(laserProd)}/${laserProd.slug}`
+      });
+    }
+
+    return list.length >= 3 ? list : defaultModels;
+  });
 
   let isUserInteracted = $state(false);
   let autoplayTimer: ReturnType<typeof setInterval> | null = null;

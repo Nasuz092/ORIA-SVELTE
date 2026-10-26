@@ -20,7 +20,7 @@
 <BrandManifesto />
 <BrandVision />
 <DualShowcase />
-<CategoryPreview />
+<CategoryPreview products={data.products} />
 <EngineeringExcellence />
 <LatestArticles articles={data.articles} />
 

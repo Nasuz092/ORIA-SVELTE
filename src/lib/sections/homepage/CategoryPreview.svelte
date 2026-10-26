@@ -1,14 +1,18 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
   import Siema from 'siema';
+  import type { FormattedProduct } from '$lib/types/product';
+  import { matchesCategory, getProductCategoryId } from '$lib/data/categories';
 
-  const categories = [
+  let { products = [] }: { products?: FormattedProduct[] } = $props();
+
+  const baseCategories = [
     {
       id: 'uv',
       title: 'UV Printing',
-      tagline: 'ORIA UV FLATBED A3',
-      desc: 'Presisi cetak tinggi untuk media datar akrilik, kayu, kaca, dan merchandise.',
-      href: '/produk/uv/oria-uv-flatbed-a3',
+      defaultTagline: 'ORIA UV FLATBED A3',
+      defaultDesc: 'Presisi cetak tinggi untuk media datar akrilik, kayu, kaca, dan merchandise.',
+      defaultHref: '/produk/uv/oria-uv-flatbed-a3',
       image: '/images/categories/uv.webp',
       imgClass: 'max-h-[175px] sm:max-h-[220px] md:max-h-[255px] lg:max-h-[275px] max-w-[85%]',
       ctaText: 'DISCOVER'
@@ -16,9 +20,9 @@
     {
       id: 'sublimasi',
       title: 'Sublimasi Textile',
-      tagline: 'ORIA SUBLIM 1902',
-      desc: 'Inovasi cetak tekstil berkecepatan tinggi untuk apparel, jersey, dan fashion.',
-      href: '/produk/sublimasi/oria-sublim-1902',
+      defaultTagline: 'ORIA SUBLIM 1902',
+      defaultDesc: 'Inovasi cetak tekstil berkecepatan tinggi untuk apparel, jersey, dan fashion.',
+      defaultHref: '/produk/sublimasi/oria-sublim-1902',
       image: '/images/categories/sublimasi.webp',
       imgClass: 'max-h-[170px] sm:max-h-[215px] md:max-h-[250px] lg:max-h-[270px] max-w-[95%]',
       ctaText: 'DISCOVER'
@@ -26,9 +30,9 @@
     {
       id: 'laser',
       title: 'Laser Cutting',
-      tagline: 'ORIA LASER CUTTING 6040',
-      desc: 'Potong dan grafir akrilik, kayu, MDF, dan souvenir dengan presisi tabung CO2 stabil.',
-      href: '/produk/laser/oria-laser-cutting-6040',
+      defaultTagline: 'ORIA LASER CUTTING 6040',
+      defaultDesc: 'Potong dan grafir akrilik, kayu, MDF, dan souvenir dengan presisi tabung CO2 stabil.',
+      defaultHref: '/produk/laser/oria-laser-cutting-6040',
       image: '/images/categories/laser.webp',
       imgClass: 'max-h-[170px] sm:max-h-[215px] md:max-h-[250px] lg:max-h-[270px] max-w-[85%]',
       ctaText: 'DISCOVER'
@@ -36,9 +40,9 @@
     {
       id: 'dtf',
       title: 'DTF Printing',
-      tagline: 'ORIA DTF 6004',
-      desc: 'Solusi transfer film otomatis untuk custom apparel dan sablon kaos massal.',
-      href: '/produk/dtf/oria-dtf-6004',
+      defaultTagline: 'ORIA DTF 6004',
+      defaultDesc: 'Solusi transfer film otomatis untuk custom apparel dan sablon kaos massal.',
+      defaultHref: '/produk/dtf/oria-dtf-6004',
       image: '/images/categories/dtf.webp',
       imgClass: 'max-h-[175px] sm:max-h-[220px] md:max-h-[255px] lg:max-h-[275px] max-w-[85%]',
       ctaText: 'DISCOVER'
@@ -46,9 +50,9 @@
     {
       id: 'outdoor',
       title: 'Outdoor Printing',
-      tagline: 'ORIA OUTDOOR 3204 ST',
-      desc: 'Mesin cetak spanduk flexi, baliho, dan billboard heavy-duty tahan cuaca ekstrem.',
-      href: '/produk/outdoor/oria-outdoor-3204-st',
+      defaultTagline: 'ORIA OUTDOOR 3204 ST',
+      defaultDesc: 'Mesin cetak spanduk flexi, baliho, dan billboard heavy-duty tahan cuaca ekstrem.',
+      defaultHref: '/produk/outdoor/oria-outdoor-3204-st',
       image: '/images/categories/outdoor.webp',
       imgClass: 'max-h-[160px] sm:max-h-[200px] md:max-h-[235px] lg:max-h-[255px] max-w-[98%]',
       ctaText: 'DISCOVER'
@@ -56,9 +60,9 @@
     {
       id: 'indoor',
       title: 'Indoor Printing',
-      tagline: 'ORIA INDOOR 3202',
-      desc: 'Hasil cetak foto, poster, sticker, dan POSM display beresolusi tajam hingga lebar 3,2 meter.',
-      href: '/produk/indoor/oria-indoor-3202',
+      defaultTagline: 'ORIA INDOOR 3202',
+      defaultDesc: 'Hasil cetak foto, poster, sticker, dan POSM display beresolusi tajam hingga lebar 3,2 meter.',
+      defaultHref: '/produk/indoor/oria-indoor-3202',
       image: '/images/categories/indoor.webp',
       imgClass: 'max-h-[170px] sm:max-h-[215px] md:max-h-[250px] lg:max-h-[270px] max-w-[95%]',
       ctaText: 'DISCOVER'
@@ -66,17 +70,45 @@
     {
       id: 'cnc',
       title: 'CNC Router',
-      tagline: 'ORIA CNC 6090',
-      desc: 'Fabrikasi presisi logam, akrilik, reklame huruf timbul, dan panel dengan area kerja 60x90cm.',
-      href: '/produk/cnc/oria-cnc-metal-6090',
+      defaultTagline: 'ORIA CNC 6090',
+      defaultDesc: 'Fabrikasi presisi logam, akrilik, reklame huruf timbul, dan panel dengan area kerja 60x90cm.',
+      defaultHref: '/produk/cnc/oria-cnc-metal-6090',
       image: '/images/categories/cnc.webp',
       imgClass: 'max-h-[175px] sm:max-h-[220px] md:max-h-[255px] lg:max-h-[275px] max-w-[75%]',
+      ctaText: 'DISCOVER'
+    },
+    {
+      id: 'single-pass',
+      title: 'Single Pass Packaging',
+      defaultTagline: 'ORIA ONE PASS DC800SP',
+      defaultDesc: 'Cetak digital kemasan karton box, pizza box, dan paper bag berkecepatan tinggi tanpa film.',
+      defaultHref: '/produk/single-pass/oria-one-pass-dc800sp',
+      image: '/images/showcase-products.png',
+      imgClass: 'max-h-[175px] sm:max-h-[220px] md:max-h-[255px] lg:max-h-[275px] max-w-[85%]',
       ctaText: 'DISCOVER'
     }
   ];
 
+  const categories = $derived.by(() => {
+    return baseCategories.map(cat => {
+      const match = products.find(p => matchesCategory(p, cat.id));
+      const count = products.filter(p => matchesCategory(p, cat.id)).length;
+      return {
+        id: cat.id,
+        title: cat.title,
+        tagline: match ? match.name : cat.defaultTagline,
+        desc: match?.shortDescription ? match.shortDescription : cat.defaultDesc,
+        href: match ? `/produk/${getProductCategoryId(match)}/${match.slug}` : cat.defaultHref,
+        image: cat.image,
+        imgClass: cat.imgClass,
+        ctaText: 'DISCOVER',
+        count
+      };
+    });
+  });
+
   // Duplikasi kategori agar Siema dapat melakukan infinite loop mulus tanpa celah
-  const carouselSlides = [...categories, ...categories, ...categories];
+  const carouselSlides = $derived([...categories, ...categories, ...categories]);
 
   let siemaEl: HTMLDivElement | null = $state(null);
   let controller: Siema | null = null;
