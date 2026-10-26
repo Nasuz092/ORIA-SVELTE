@@ -43,10 +43,10 @@
         <!-- Solid Yellow CTA Button with Chevron (Strict: Chevron only, no arrows) -->
         <div class="pt-2 sm:pt-4">
           <a
-            href="#categories"
+            href="/artikel/semua"
             class="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 bg-[#FFE500] hover:bg-[#fff04d] text-black font-heading font-black text-xs sm:text-sm uppercase tracking-[0.25em] transition-all duration-300 shadow-xl group cursor-pointer"
           >
-            <span>EXPLORE CATEGORIES</span>
+            <span>EXPLORE ARTICLES</span>
             <svg
               class="w-4 h-4 stroke-black stroke-[3] transition-transform duration-300 group-hover:translate-x-1"
               fill="none"

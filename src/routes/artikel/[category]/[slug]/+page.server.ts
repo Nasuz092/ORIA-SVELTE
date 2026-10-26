@@ -13,7 +13,7 @@ export const load: PageServerLoad = async ({ params, fetch }) => {
   }
 
   const allArticles = await fetchArticles(4, fetch);
-  const relatedArticles = allArticles.filter(a => a.slug !== article.slug).slice(0, 3);
+  const relatedArticles = allArticles.filter((a) => a.slug !== article.slug).slice(0, 3);
 
   return {
     article,

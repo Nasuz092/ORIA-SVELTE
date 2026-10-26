@@ -38,9 +38,9 @@
   bind:viewportRef={viewportEl}
   onscroll={handleScroll}
 >
-  <div class="min-h-screen flex flex-col bg-white text-black font-sans relative">
+  <div class="min-h-screen flex flex-col {page.url.pathname.startsWith('/artikel') ? 'bg-[#050508] text-white' : 'bg-white text-black'} font-sans relative">
     <Navbar />
-    <main class="flex-1 w-full bg-white text-black {page.url.pathname === '/' || page.url.pathname === '/tentang' || page.url.pathname.startsWith('/produk') || page.url.pathname === '/artikel' || (page.status && page.status >= 400) ? '' : 'pt-16 sm:pt-20'}">
+    <main class="flex-1 w-full {page.url.pathname.startsWith('/artikel') ? 'bg-[#050508] text-white' : 'bg-white text-black'} {page.url.pathname === '/' || page.url.pathname === '/tentang' || page.url.pathname.startsWith('/produk') || page.url.pathname.startsWith('/artikel') || (page.status && page.status >= 400) ? '' : 'pt-16 sm:pt-20'}">
       {@render children()}
     </main>
     <Footer />

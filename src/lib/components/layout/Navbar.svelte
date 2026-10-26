@@ -39,7 +39,7 @@
     page.url.pathname.startsWith('/produk/') &&
     page.url.pathname.split('/').filter(Boolean).length >= 3
   );
-  let isArtikel = $derived(page.url.pathname === '/artikel');
+  let isArtikel = $derived(page.url.pathname.startsWith('/artikel'));
   let hasSubNav = $derived(isTentang || isProductDetail || isArtikel);
 
   const tentangSubNavItems = [
@@ -60,13 +60,17 @@
   ];
 
   const artikelSubNavItems = [
-    { id: 'overview', label: 'OVERVIEW' },
-    { id: 'categories', label: 'CATEGORIES' },
-    { id: 'articles', label: 'ARTICLES' }
+    { id: 'overview', label: 'OVERVIEW', href: '/artikel' },
+    { id: 'semua', label: 'SEMUA', href: '/artikel/semua' },
+    { id: 'digital-print', label: 'DIGITAL PRINT', href: '/artikel/digital-print' },
+    { id: 'business', label: 'BUSINESS', href: '/artikel/business' },
+    { id: 'insight', label: 'INSIGHT', href: '/artikel/insight' },
+    { id: 'product', label: 'PRODUCT', href: '/artikel/product' },
+    { id: 'trivia', label: 'TRIVIA', href: '/artikel/trivia' }
   ];
 
   let currentSubNavItems = $derived(
-    isProductDetail ? productSubNavItems : isArtikel ? artikelSubNavItems : isTentang ? tentangSubNavItems : []
+    isProductDetail ? productSubNavItems : isTentang ? tentangSubNavItems : []
   );
 
   let activeSection = $state('overview');
@@ -81,8 +85,8 @@
   }
 
   $effect(() => {
-    if (typeof window !== 'undefined' && hasSubNav) {
-      if (isProductDetail || isArtikel) {
+    if (typeof window !== 'undefined' && hasSubNav && !isArtikel) {
+      if (isProductDetail) {
         activeSection = 'overview';
       } else if (isTentang) {
         activeSection = 'oria-story';
@@ -190,22 +194,40 @@
       <div
         class="w-full h-14 sm:h-16 transition-all duration-300 bg-transparent border-none flex items-center justify-center pointer-events-none"
       >
-        <div class="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 overflow-x-auto no-scrollbar flex items-center justify-center pointer-events-none">
+        <div class="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 overflow-x-auto no-scrollbar flex items-center {isArtikel ? 'justify-start md:justify-center' : 'justify-center'} pointer-events-none">
           <nav
             aria-label={isProductDetail ? 'Navigasi Detail Produk' : isArtikel ? 'Navigasi Halaman Artikel' : 'Navigasi Halaman Tentang'}
             class="mx-auto flex items-center justify-center gap-6 sm:gap-8 md:gap-10 shrink-0 border-none pointer-events-auto"
           >
-            {#each currentSubNavItems as item}
-              <a
-                href="#{item.id}"
-                onclick={(e) => scrollToSection(item.id, e)}
-                class="flex items-center text-[11px] sm:text-xs md:text-[13px] font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none py-1 {activeSection === item.id
-                  ? 'text-[#FFE500] font-bold'
-                  : 'text-white/75 hover:text-[#FFE500]'}"
-              >
-                <span>{item.label}</span>
-              </a>
-            {/each}
+            {#if isArtikel}
+              {#each artikelSubNavItems as item}
+                {@const isActive =
+                  item.id === 'overview'
+                    ? page.url.pathname === '/artikel'
+                    : page.url.pathname.startsWith(item.href) ||
+                      (item.id === 'semua' && page.url.pathname === '/artikel/all')}
+                <a
+                  href={item.href}
+                  class="flex items-center text-[11px] sm:text-xs md:text-[13px] font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none py-1 {isActive
+                    ? 'text-[#FFE500] font-bold'
+                    : 'text-white/75 hover:text-[#FFE500]'}"
+                >
+                  <span>{item.label}</span>
+                </a>
+              {/each}
+            {:else}
+              {#each currentSubNavItems as item}
+                <a
+                  href="#{item.id}"
+                  onclick={(e) => scrollToSection(item.id, e)}
+                  class="flex items-center text-[11px] sm:text-xs md:text-[13px] font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none py-1 {activeSection === item.id
+                    ? 'text-[#FFE500] font-bold'
+                    : 'text-white/75 hover:text-[#FFE500]'}"
+                >
+                  <span>{item.label}</span>
+                </a>
+              {/each}
+            {/if}
           </nav>
         </div>
       </div>

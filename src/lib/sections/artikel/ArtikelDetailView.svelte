@@ -1,9 +1,12 @@
 <script lang="ts">
-  import type { PageData } from './$types';
+  import type { FormattedArticle } from '$lib/types/article';
 
-  let { data }: { data: PageData } = $props();
-  let article = $derived(data.article);
-  let related = $derived(data.relatedArticles || []);
+  interface Props {
+    article: FormattedArticle;
+    relatedArticles?: FormattedArticle[];
+  }
+
+  let { article, relatedArticles = [] }: Props = $props();
 </script>
 
 <svelte:head>
@@ -14,7 +17,7 @@
   <meta property="og:image" content={article.imageUrl} />
 </svelte:head>
 
-<article class="w-full bg-white text-black py-12 lg:py-20 px-6 sm:px-8">
+<article class="w-full min-h-screen bg-white text-black pt-28 sm:pt-36 lg:pt-40 pb-16 sm:pb-24 px-6 sm:px-8">
   <div class="max-w-4xl mx-auto space-y-10">
     <!-- Back Button (Strict rule: Chevron only) -->
     <div>
@@ -31,7 +34,7 @@
         >
           <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
-        <span>Kembali ke Daftar Artikel</span>
+        <span>Kembali ke Editorial</span>
       </a>
     </div>
 
@@ -41,7 +44,7 @@
         <span class="bg-black text-white px-2.5 py-1 text-[10px] tracking-widest uppercase">
           {article.category}
         </span>
-        <span>•</span>
+        <span>&bull;</span>
         <span>{article.readingTime} BACA</span>
       </div>
 
@@ -51,7 +54,7 @@
 
       <div class="font-sans text-xs text-neutral-500 flex flex-wrap items-center gap-2 pt-1">
         <span>Dipublikasikan pada {article.publishedDate}</span>
-        <span>•</span>
+        <span>&bull;</span>
         <span class="font-semibold text-neutral-800">{article.author}</span>
       </div>
     </header>
@@ -119,14 +122,14 @@
     </div>
 
     <!-- Related Articles -->
-    {#if related && related.length > 0}
+    {#if relatedArticles && relatedArticles.length > 0}
       <div class="pt-16 border-t border-neutral-200 space-y-8">
         <div class="flex items-center justify-between">
           <h2 class="font-heading font-black text-2xl uppercase tracking-wider text-black">
             Artikel Terkait
           </h2>
           <a
-            href="/artikel"
+            href="/artikel/semua"
             class="font-sans font-bold text-xs uppercase tracking-widest text-black hover:underline inline-flex items-center gap-1.5"
           >
             <span>Semua Artikel</span>
@@ -137,7 +140,7 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {#each related as r}
+          {#each relatedArticles as r}
             <a
               href="/artikel/{r.slug}"
               class="group block space-y-3"
