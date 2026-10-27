@@ -554,22 +554,22 @@
   </section>
 
   <!-- ======================================================================= -->
-  <!-- 5. "HOW CAN WE DO BETTER?" BANNER SECTION (Lotus-Inspired Aesthetic)    -->
+  <!-- 5. "HOW CAN WE DO BETTER?" BANNER SECTION (Industrial Machinery Aesthetic)-->
   <!-- ======================================================================= -->
   <section class="relative w-full bg-[#050508] text-white overflow-hidden py-24 sm:py-32 lg:py-36 min-h-[440px] flex items-center">
-    <!-- Background Image with Fade (Pristine clean visual from reference) -->
+    <!-- Background Image with Fade (New Industrial Printing Machinery) -->
     <div class="absolute inset-0 w-full h-full pointer-events-none">
       <picture>
-        <source srcset="/images/contact/how-can-we-do-better-clean.webp" type="image/webp" />
+        <source srcset="/images/contact/how-can-we-do-better-industrial.webp" type="image/webp" />
         <img
-          src="/images/contact/how-can-we-do-better-clean.png"
-          alt="Innovation & Precision"
+          src="/images/contact/how-can-we-do-better-industrial.jpg"
+          alt="Inovasi & Presisi Mesin Industri ORIA"
           class="w-full h-full object-cover object-right md:object-center"
           loading="lazy"
         />
       </picture>
       <!-- Dark Cinematic Gradient Overlay on Left to ensure seamless contrast -->
-      <div class="absolute inset-0 bg-gradient-to-r from-[#050508] via-[#050508]/85 to-transparent md:via-[#050508]/40 md:to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-[#050508] via-[#050508]/90 to-transparent md:via-[#050508]/50 md:to-transparent"></div>
     </div>
 
     <!-- Content on Left Side (Pure Lotus Minimalist Aesthetic) -->
@@ -580,10 +580,10 @@
         </h2>
         <div class="space-y-4 font-sans text-xs sm:text-sm md:text-base text-neutral-300 leading-relaxed">
           <p>
-            At ORIA we continuously strive to deliver an exceptional experience to all of our customers.
+            Di ORIA, kami berdedikasi untuk terus memberikan pengalaman terbaik dan solusi manufaktur presisi bagi setiap mitra percetakan kami di seluruh Indonesia.
           </p>
           <p>
-            If you feel there is more we can do, or want to discuss any issues you are experiencing, please reach out to us and we will endeavour to resolve your query as quickly as possible.
+            Jika ada saran, masukan, atau kendala teknis yang ingin Anda diskusikan, hubungi kami secara langsung dan tim engineering kami siap membantu menyelesaikannya secepat mungkin.
           </p>
         </div>
       </div>

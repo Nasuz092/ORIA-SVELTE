@@ -123,6 +123,25 @@
       </div>
     </div>
 
+    <!-- Action Button: Download Full Spec & Brochure (Below Spec Tables) -->
+    <div class="flex flex-col sm:flex-row items-center justify-center pt-2 sm:pt-4">
+      <a
+        href={product.brochureUrl || `https://wa.me/6281252086455?text=${encodeURIComponent(`Halo tim ORIA, mohon kirimkan e-katalog brosur dan full spesifikasi PDF untuk unit ${product.name}. Terima kasih.`)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        download={product.brochureUrl ? `${product.slug}-brochure.pdf` : undefined}
+        class="inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 bg-[#FFE500] hover:bg-[#fff04d] text-black font-heading font-black text-xs sm:text-sm uppercase tracking-[0.2em] transition-all duration-300 shadow-md group cursor-pointer"
+      >
+        <svg class="w-4 h-4 stroke-black stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M7.5 12L12 16.5m0 0L16.5 12M12 16.5V3" />
+        </svg>
+        <span>DOWNLOAD BROCHURE &amp; FULL SPEC</span>
+        <svg class="w-4 h-4 stroke-black stroke-[3] transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+
     <!-- Section Warranty & Services: Lotus "Our Capacity" Minimalist Style -->
     <div bind:this={warrantySectionEl} class="pt-16 sm:pt-24 border-t border-white/10 space-y-12 sm:space-y-16">
       <div class="space-y-3 max-w-2xl">
