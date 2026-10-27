@@ -8,15 +8,30 @@
   import KapasitasLayanan from '$lib/sections/tentang/KapasitasLayanan.svelte';
   import VisiDedikasi from '$lib/sections/tentang/VisiDedikasi.svelte';
   import ShowroomCta from '$lib/sections/tentang/ShowroomCta.svelte';
+  import SEO from '$lib/components/seo/SEO.svelte';
+
+  const aboutSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    '@id': 'https://oria.co.id/tentang#webpage',
+    url: 'https://oria.co.id/tentang',
+    name: 'Tentang ORIA — Dedikasi Rekayasa Presisi & Standar Industri',
+    description: 'Pelajari visi, filosofi rekayasa presisi, dan kapasitas layanan mesin printing industrial serta manufaktur ORIA di Indonesia.',
+    inLanguage: 'id-ID'
+  };
 </script>
 
-<svelte:head>
-  <title>About Us - Rekayasa Presisi & Standar Industri ORIA</title>
-  <meta
-    name="description"
-    content="Pelajari visi, filosofi rekayasa presisi, dan kapasitas layanan mesin printing industrial serta manufaktur ORIA di Indonesia."
-  />
-</svelte:head>
+<SEO
+  title="Tentang ORIA | Dedikasi Rekayasa Presisi & Standar Mesin Industri Indonesia"
+  description="Pelajari visi, filosofi rekayasa presisi, dan kapasitas layanan mesin printing industrial serta manufaktur ORIA di Indonesia sejak 2001."
+  keywords="tentang oria, profil oria indonesia, distributor mesin percetakan, rekayasa mesin printing, kapasitas layanan oria, anugrah supply mandiri"
+  canonical="/tentang"
+  breadcrumbs={[
+    { name: 'Beranda', url: '/' },
+    { name: 'Tentang Kami', url: '/tentang' }
+  ]}
+  customSchemas={[aboutSchema]}
+/>
 
 <TentangHero />
 <OriaStory />

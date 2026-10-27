@@ -1,16 +1,40 @@
 <script lang="ts">
   import type { PageData } from './$types';
+  import SEO from '$lib/components/seo/SEO.svelte';
 
   let { data }: { data: PageData } = $props();
 
   const category = $derived(data.category);
   const products = $derived(data.products || []);
+
+  const categoryItemListSchema = $derived({
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: `Lini Mesin ${category.name} ORIA`,
+    description: category.description,
+    numberOfItems: products.length,
+    itemListElement: products.map((p, idx) => ({
+      '@type': 'ListItem',
+      position: idx + 1,
+      name: p.name,
+      url: `https://oria.co.id/produk/${category.id}/${p.slug}`
+    }))
+  });
 </script>
 
-<svelte:head>
-  <title>ORIA {category.heroLine2} - {category.name} | Portofolio Mesin Industri</title>
-  <meta name="description" content={category.description} />
-</svelte:head>
+<SEO
+  title="Mesin {category.name} ORIA | Spesifikasi, Harga & Garansi Resmi"
+  description={category.description}
+  keywords="mesin {category.name.toLowerCase()}, jual mesin {category.heroLine2.toLowerCase()}, spesifikasi mesin {category.name.toLowerCase()} oria, distributor mesin percetakan"
+  canonical="/produk/{category.id}"
+  image={category.heroImage}
+  breadcrumbs={[
+    { name: 'Beranda', url: '/' },
+    { name: 'Produk', url: '/produk' },
+    { name: category.name, url: `/produk/${category.id}` }
+  ]}
+  customSchemas={[categoryItemListSchema]}
+/>
 
 <!-- ======================================================================= -->
 <!-- SECTION 1: Category Hero (Lotus Style - Custom Category)               -->

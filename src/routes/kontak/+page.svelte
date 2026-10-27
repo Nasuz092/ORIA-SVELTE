@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { PageData } from './$types';
+  import SEO from '$lib/components/seo/SEO.svelte';
 
   let { data }: { data: PageData } = $props();
 
@@ -144,13 +145,27 @@
 
 <svelte:window onclick={onWindowClick} />
 
-<svelte:head>
-  <title>Contact Us & Showroom - ORIA Industrial Printing</title>
-  <meta
-    name="description"
-    content="Hubungi tim penjualan dan engineering ORIA. Kunjungi Flagship Showroom Surabaya untuk demo langsung mesin UV, DTF, Laser, dan CNC."
-  />
-</svelte:head>
+<SEO
+  title="Hubungi Kami & Flagship Showroom Surabaya | ORIA Indonesia"
+  description="Hubungi tim penjualan dan engineering ORIA. Kunjungi Flagship Showroom Surabaya untuk live demo operasional dan uji cetak mesin UV, DTF, Laser, dan Sublimasi."
+  keywords="kontak oria, showroom mesin printing surabaya, demo mesin digital printing, alamat oria surabaya, call center oria, anugrah supply mandiri"
+  canonical="/kontak"
+  breadcrumbs={[
+    { name: 'Beranda', url: '/' },
+    { name: 'Hubungi Kami', url: '/kontak' }
+  ]}
+  customSchemas={[
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ContactPage',
+      '@id': 'https://oria.co.id/kontak#webpage',
+      url: 'https://oria.co.id/kontak',
+      name: 'Hubungi Kami & Flagship Showroom ORIA Surabaya',
+      description: 'Pusat layanan konsultasi, pemesanan mesin industri, dan jadwal demo langsung di showroom Surabaya.',
+      inLanguage: 'id-ID'
+    }
+  ]}
+/>
 
 <div class="w-full bg-[#050508] text-white select-none">
   <!-- ======================================================================= -->

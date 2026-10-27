@@ -1,4 +1,7 @@
 <script lang="ts">
+  import SEO from '$lib/components/seo/SEO.svelte';
+  import { SITE_URL } from '$lib/constants/seo';
+  import { getArticleCategory } from '$lib/data/article-categories';
   import type { FormattedArticle } from '$lib/types/article';
 
   interface Props {
@@ -9,6 +12,42 @@
   let { article, relatedArticles = [] }: Props = $props();
 
   let isCopied = $state(false);
+
+  const catMeta = $derived(getArticleCategory(article.category || 'digital-print'));
+  const catSlug = $derived(catMeta?.id || 'digital-print');
+  const catLabel = $derived(catMeta?.label || article.category || 'DIGITAL PRINT');
+  const canonicalUrl = $derived(`/artikel/${catSlug}/${article.slug}`);
+
+  const articleJsonLd = $derived({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': `${SITE_URL}${canonicalUrl}#article`,
+    headline: article.title,
+    description: article.seoDescription || article.excerpt,
+    image: [
+      article.imageUrl?.startsWith('http')
+        ? article.imageUrl
+        : `${SITE_URL}${article.imageUrl || '/images/oria-hero-banner.png'}`
+    ],
+    datePublished: article.publishedDate || '2026-01-01',
+    dateModified: article.publishedDate || '2026-01-01',
+    author: {
+      '@type': 'Person',
+      name: article.author || 'Tim Redaksi ORIA'
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'ORIA - PT. Anugrah Supply Mandiri',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_URL}/images/oria-logo.png`
+      }
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${SITE_URL}${canonicalUrl}`
+    }
+  });
 
   async function copyPageUrl() {
     if (typeof window === 'undefined') return;
@@ -83,22 +122,20 @@
   });
 </script>
 
-<svelte:head>
-  <title>{article.seoTitle || article.title}</title>
-  <meta name="description" content={article.seoDescription || article.excerpt} />
-
-  <!-- OpenGraph -->
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content={article.title} />
-  <meta property="og:description" content={article.excerpt} />
-  <meta property="og:image" content={article.imageUrl} />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={article.title} />
-  <meta name="twitter:description" content={article.excerpt} />
-  <meta name="twitter:image" content={article.imageUrl} />
-</svelte:head>
+<SEO
+  title={article.seoTitle || `${article.title} | ORIA Editorial`}
+  description={article.seoDescription || article.excerpt}
+  canonical={canonicalUrl}
+  image={article.imageUrl}
+  type="article"
+  breadcrumbs={[
+    { name: 'Beranda', url: '/' },
+    { name: 'Editorial & Wawasan', url: '/artikel' },
+    { name: catLabel, url: `/artikel/${catSlug}` },
+    { name: article.title, url: canonicalUrl }
+  ]}
+  articleSchema={articleJsonLd}
+/>
 
 <div class="bg-white min-h-screen font-sans text-black select-text">
   <!-- ======================================================================= -->

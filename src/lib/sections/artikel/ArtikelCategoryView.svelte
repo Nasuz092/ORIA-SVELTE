@@ -1,19 +1,44 @@
 <script lang="ts">
+  import SEO from '$lib/components/seo/SEO.svelte';
   import type { FormattedArticle } from '$lib/types/article';
   import type { ArticleCategoryMeta } from '$lib/data/article-categories';
 
   interface Props {
     category: ArticleCategoryMeta;
-    articles: FormattedArticle[];
+    articles?: FormattedArticle[];
   }
 
   let { category, articles = [] }: Props = $props();
+
+  const seoTitle = $derived(`${category.label} - Editorial & Wawasan | ORIA Indonesia`);
+  const seoDesc = $derived(
+    category.subtitle ||
+      `Arsip publikasi dan panduan mendalam kategori ${category.label} dari ORIA Indonesia.`
+  );
+  const canonicalPath = $derived(`/artikel/${category.id}`);
 </script>
 
-<svelte:head>
-  <title>{category.label} - ORIA Editorial & Press Archive</title>
-  <meta name="description" content={category.subtitle} />
-</svelte:head>
+<SEO
+  title={seoTitle}
+  description={seoDesc}
+  canonical={canonicalPath}
+  image="/images/oria-hero-banner.png"
+  breadcrumbs={[
+    { name: 'Beranda', url: '/' },
+    { name: 'Editorial & Wawasan', url: '/artikel' },
+    { name: category.label, url: canonicalPath }
+  ]}
+  customSchemas={[
+    {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      '@id': `https://oria.co.id${canonicalPath}#collection`,
+      url: `https://oria.co.id${canonicalPath}`,
+      name: category.label,
+      description: seoDesc
+    }
+  ]}
+/>
 
 <!-- ======================================================================= -->
 <!-- SECTION: Lotus Editorial Category Archive & Articles Showcase           -->
