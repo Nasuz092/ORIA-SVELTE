@@ -62,6 +62,33 @@
         <h1 class="mt-3 sm:mt-4 font-heading font-medium tracking-[0.16em] sm:tracking-[0.2em] text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase text-[#FFE500] leading-tight drop-shadow-[0_4px_30px_rgba(0,0,0,0.95)]">
           {cleanModelName}
         </h1>
+
+        <!-- Product Price / Investment Estimate -->
+        {#if product.priceText}
+          <div class="mt-3 sm:mt-4 flex flex-wrap items-baseline gap-2.5 sm:gap-3 drop-shadow-md">
+            {#if product.priceText.startsWith('Rp')}
+              <span class="font-mono text-[11px] sm:text-xs uppercase tracking-[0.25em] text-neutral-400">
+                STARTING FROM
+              </span>
+              <span class="font-heading font-medium text-xl sm:text-2xl lg:text-3xl text-white tracking-tight tabular-nums">
+                {product.priceText}
+              </span>
+            {:else}
+              <a
+                href="https://wa.me/6281252086455?text={encodeURIComponent(`Halo ORIA, saya ingin menanyakan informasi harga dan penawaran resmi untuk unit ${product.name}.`)}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-[0.22em] text-neutral-300 hover:text-[#FFE500] transition-colors group cursor-pointer"
+              >
+                <span>ESTIMASI HARGA:</span>
+                <span class="text-[#FFE500] font-semibold underline underline-offset-4">{product.priceText}</span>
+                <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5] transition-transform duration-200 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            {/if}
+          </div>
+        {/if}
       </div>
 
       <!-- BAWAH: 4 Spesifikasi Utama (2x2 di Desktop, 1 Kolom di Mobile, Nilai font-medium, Tanpa Garis) -->
