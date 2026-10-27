@@ -9,6 +9,49 @@
     product: FormattedProduct;
     detailedSpecs: { left: SpecGroup[]; right: SpecGroup[] };
   } = $props();
+
+  let warrantySectionEl: HTMLElement | null = $state(null);
+  let hasAnimated = $state(false);
+
+  let count100 = $state(0);
+  let count24 = $state(0);
+
+  function animateCount(target: number, duration: number, callback: (v: number) => void) {
+    const start = performance.now();
+    function step(now: number) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      callback(Math.round(ease * target));
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  $effect(() => {
+    if (!warrantySectionEl) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            hasAnimated = true;
+            animateCount(100, 1500, (v) => (count100 = v));
+            animateCount(24, 1200, (v) => (count24 = v));
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(warrantySectionEl);
+
+    return () => {
+      observer.disconnect();
+    };
+  });
 </script>
 
 <!-- ========================================================================= -->
@@ -80,42 +123,57 @@
       </div>
     </div>
 
-    <!-- Official Warranty & Service Cards (Dark Luxury Style) -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
-      <div class="border border-white/10 p-6 space-y-2 bg-neutral-950">
-        <div class="font-heading font-bold text-sm sm:text-base text-white flex items-center gap-2">
-          <svg class="w-5 h-5 text-[#FFE500] stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-          </svg>
-          1-Year Official Warranty
-        </div>
-        <p class="font-sans text-xs text-neutral-400 leading-relaxed">
-          Jaminan perlindungan penuh untuk sparepart non-consumable dan servis berkala oleh teknisi resmi pabrikan ORIA.
+    <!-- Section Warranty & Services: Lotus "Our Capacity" Minimalist Style -->
+    <div bind:this={warrantySectionEl} class="pt-16 sm:pt-24 border-t border-white/10 space-y-12 sm:space-y-16">
+      <div class="space-y-3 max-w-2xl">
+        <h3 class="font-heading font-light text-2xl sm:text-3xl lg:text-4xl tracking-[0.2em] sm:tracking-[0.25em] uppercase text-white">
+          WARRANTY &amp; SERVICES
+        </h3>
+        <p class="font-sans text-xs sm:text-sm text-neutral-400 max-w-xl leading-relaxed pt-1">
+          Standar proteksi investasi dan dukungan operasional resmi dari teknisi pabrikan ORIA.
         </p>
       </div>
 
-      <div class="border border-white/10 p-6 space-y-2 bg-neutral-950">
-        <div class="font-heading font-bold text-sm sm:text-base text-white flex items-center gap-2">
-          <svg class="w-5 h-5 text-[#FFE500] stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-          </svg>
-          On-Site Installation &amp; Training
+      <!-- 3 Clean Borderless Stats Columns with Animated Counters (Like Our Capacity) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 lg:gap-16">
+        <!-- Stat 1: 1-Year Official Warranty -->
+        <div class="space-y-3">
+          <div class="font-heading font-light text-5xl sm:text-6xl lg:text-7xl text-white tracking-tight tabular-nums">
+            1<span class="text-[#FFE500] font-normal"> YEAR</span>
+          </div>
+          <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
+            OFFICIAL WARRANTY
+          </div>
+          <p class="text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed">
+            Jaminan perlindungan penuh untuk sparepart non-consumable dan servis berkala oleh teknisi resmi pabrikan ORIA.
+          </p>
         </div>
-        <p class="font-sans text-xs text-neutral-400 leading-relaxed">
-          Tim teknisi kami hadir langsung di workshop Anda untuk setting mesin, kalibrasi warna, dan pelatihan operator hingga mahir.
-        </p>
-      </div>
 
-      <div class="border border-white/10 p-6 space-y-2 bg-neutral-950">
-        <div class="font-heading font-bold text-sm sm:text-base text-white flex items-center gap-2">
-          <svg class="w-5 h-5 text-[#FFE500] stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-          </svg>
-          Genuine Consumables &amp; Spare Parts
+        <!-- Stat 2: On-Site Training -->
+        <div class="space-y-3">
+          <div class="font-heading font-light text-5xl sm:text-6xl lg:text-7xl text-white tracking-tight tabular-nums">
+            {count100}<span class="text-[#FFE500] font-normal">%</span>
+          </div>
+          <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
+            ON-SITE INSTALLATION &amp; TRAINING
+          </div>
+          <p class="text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed">
+            Tim teknisi kami hadir langsung di workshop Anda untuk setting mesin, kalibrasi warna, dan pelatihan operator hingga mahir.
+          </p>
         </div>
-        <p class="font-sans text-xs text-neutral-400 leading-relaxed">
-          Ketersediaan consumable original terjamin berkesinambungan agar jadwal produksi bisnis Anda tidak pernah terhenti.
-        </p>
+
+        <!-- Stat 3: Genuine Spare Parts -->
+        <div class="space-y-3">
+          <div class="font-heading font-light text-5xl sm:text-6xl lg:text-7xl text-white tracking-tight tabular-nums">
+            {count24}<span class="text-[#FFE500] font-normal">/7</span>
+          </div>
+          <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
+            GENUINE CONSUMABLES &amp; SPARE PARTS
+          </div>
+          <p class="text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed">
+            Ketersediaan consumable original terjamin berkesinambungan agar jadwal produksi bisnis Anda tidak pernah terhenti.
+          </p>
+        </div>
       </div>
     </div>
   </div>

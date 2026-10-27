@@ -2,6 +2,7 @@ export interface StrapiMedia {
   id: number;
   url: string;
   alternativeText?: string | null;
+  caption?: string | null;
   name?: string;
   width?: number;
   height?: number;
@@ -61,6 +62,7 @@ export interface FormattedProduct {
   mainImageMobileUrl: string;
   cardImageUrl: string;
   galleryUrls: string[];
+  galleryItems?: { url: string; title?: string; caption?: string }[];
   isFeatured: boolean;
   whatsappMessage: string;
   specificationsHtml?: string;

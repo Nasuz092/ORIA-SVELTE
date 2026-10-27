@@ -83,11 +83,11 @@
   });
 </script>
 
-<section class="w-full bg-black text-white pt-14 pb-20 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-28 border-t border-neutral-900 select-none px-6 sm:px-10 lg:px-16">
+<section class="w-full bg-white text-black pt-14 pb-20 sm:pt-16 sm:pb-24 lg:pt-20 lg:pb-28 border-t border-neutral-200 select-none px-6 sm:px-10 lg:px-16">
   <div class="max-w-7xl mx-auto">
     <!-- Header Title (Lotus Style: MORE LOTUS -> MORE ORIA) -->
     <div class="mb-8 sm:mb-10 lg:mb-12">
-      <h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl uppercase tracking-[0.22em] text-white">
+      <h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl uppercase tracking-[0.22em] text-black">
         MORE ORIA
       </h2>
     </div>
@@ -100,7 +100,7 @@
             <!-- Media Box -->
             <a
               href={a.href}
-              class="block aspect-[16/10] w-full overflow-hidden bg-neutral-900 border border-neutral-800 transition-colors duration-300 group-hover:border-neutral-600"
+              class="block aspect-[16/10] w-full overflow-hidden bg-neutral-100 border border-neutral-200 transition-colors duration-300 group-hover:border-neutral-400 shadow-sm"
             >
               <img
                 src={a.imageUrl}
@@ -112,12 +112,12 @@
 
             <!-- Text Content -->
             <div class="pt-6 space-y-3">
-              <h3 class="font-heading font-bold text-lg sm:text-xl lg:text-2xl text-white group-hover:underline leading-snug line-clamp-2">
+              <h3 class="font-heading font-bold text-lg sm:text-xl lg:text-2xl text-black group-hover:underline leading-snug line-clamp-2">
                 <a href={a.href}>
                   {a.title}
                 </a>
               </h3>
-              <p class="font-sans text-sm sm:text-base text-neutral-400 font-normal leading-relaxed line-clamp-3">
+              <p class="font-sans text-sm sm:text-base text-neutral-600 font-normal leading-relaxed line-clamp-3">
                 {a.desc}
               </p>
             </div>
@@ -127,7 +127,7 @@
           <div class="pt-5 sm:pt-6">
             <a
               href={a.href}
-              class="inline-flex items-center gap-2 font-sans font-bold text-xs sm:text-sm uppercase tracking-[0.22em] text-white hover:text-[#FFE500] transition-colors group/cta"
+              class="inline-flex items-center gap-2 font-sans font-bold text-xs sm:text-sm uppercase tracking-[0.22em] text-black hover:opacity-75 transition-opacity group/cta"
             >
               <span>{a.ctaText}</span>
               <svg

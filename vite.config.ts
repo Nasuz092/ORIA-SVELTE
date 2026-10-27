@@ -17,7 +17,17 @@ export default defineConfig({
 	],
 	server: {
 		port: 5173,
-		strictPort: true
+		strictPort: true,
+		proxy: {
+			'/uploads': {
+				target: 'http://127.0.0.1:1338',
+				changeOrigin: true
+			},
+			'/api': {
+				target: 'http://127.0.0.1:1338',
+				changeOrigin: true
+			}
+		}
 	},
 	test: {
 		expect: { requireAssertions: true },

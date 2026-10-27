@@ -128,7 +128,7 @@
         </picture>
 
         <!-- Layer Gradient Hitam ke Transparan (Dari kiri hitam ke kanan transparan) -->
-        <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-transparent pointer-events-none z-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent sm:from-black/85 sm:via-black/40 sm:to-transparent pointer-events-none z-10"></div>
 
         <!-- Content Overlay: Menempel langsung di dalam slide, ikut meluncur bersama gambar -->
         <div class="absolute inset-0 z-20 pointer-events-none px-6 sm:px-10 lg:px-16">

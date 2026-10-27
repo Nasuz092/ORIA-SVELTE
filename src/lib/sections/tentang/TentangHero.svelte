@@ -8,9 +8,8 @@
       class="w-full h-full object-cover object-center lg:object-[center_35%]"
       loading="eager"
     />
-    <!-- Cinematic Dark Gradient Overlays (Lotus High-End Aesthetics) -->
-    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/70"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/35 to-transparent"></div>
+    <!-- Cinematic Dark Gradient Overlay (Gradasi hitam ke transparan) -->
+    <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent sm:from-black/85 sm:via-black/35 sm:to-transparent"></div>
   </div>
 
   <!-- Bottom Left Area: Lotus-Style Hero Typography -->

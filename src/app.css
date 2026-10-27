@@ -11,11 +11,74 @@ html, body {
 }
 
 body {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #000000;
+  color: #ffffff;
   font-family: var(--font-sans);
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
 }
+
+/* Google Translate Clean Integration - Hide default floating bar, banner frame, and tooltip */
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+iframe.goog-te-banner-frame,
+iframe.skiptranslate,
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf,
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf-ti6hGc,
+.VIpgJd-ZVi9od-xl07Ob-OEVmcd,
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+body {
+  top: 0px !important;
+  position: static !important;
+}
+.goog-text-highlight {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+#google_translate_element {
+  display: none !important;
+}
+
+/* Allow text selection and blocking everywhere */
+p, h1, h2, h3, h4, h5, h6, span, article, section, div, font {
+  user-select: text !important;
+  -webkit-user-select: text !important;
+}
+
+button, a, img, svg {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+::selection {
+  background-color: #FFE500 !important;
+  color: #000000 !important;
+}
+
+::-moz-selection {
+  background-color: #FFE500 !important;
+  color: #000000 !important;
+}
+
+/* Hide scrollbar across all browsers */
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+

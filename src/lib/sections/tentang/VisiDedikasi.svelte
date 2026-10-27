@@ -15,7 +15,7 @@
         class="absolute inset-0 w-full h-full object-cover object-center"
         loading="lazy"
       />
-      <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/55 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent sm:from-black/90 sm:via-black/55 sm:to-transparent"></div>
 
       <div class="relative z-10 max-w-xl p-8 sm:p-12 lg:p-16 space-y-5">
         <div class="font-heading font-bold text-xs uppercase tracking-[0.28em] text-[#FFE500]">

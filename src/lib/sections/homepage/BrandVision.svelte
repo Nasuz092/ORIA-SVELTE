@@ -11,9 +11,8 @@
       class="w-full h-full object-cover object-center lg:object-[center_40%]"
       loading="lazy"
     />
-    <!-- Subtle Gradient Overlay for Text Legibility -->
-    <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-transparent sm:via-black/30"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20"></div>
+    <!-- Subtle Gradient Overlay for Text Legibility (Gradasi hitam ke transparan) -->
+    <div class="absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-transparent sm:from-black/80 sm:via-black/30 sm:to-transparent"></div>
   </div>
 
   <!-- Content Container (Left-aligned) -->

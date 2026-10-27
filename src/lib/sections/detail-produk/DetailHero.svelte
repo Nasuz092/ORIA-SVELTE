@@ -33,8 +33,7 @@
       />
     </picture>
     <!-- Layer gradient hitam dari kiri ke kanan transparan -->
-    <div class="absolute inset-0 bg-gradient-to-r from-black via-black/85 lg:via-black/70 to-transparent"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/60"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent sm:from-black sm:via-black/85 lg:via-black/70 lg:to-transparent"></div>
   </div>
 
   <!-- KONTEN TEKS KIRI: Breadcrumbs & Judul, dan 4 Spesifikasi (2x2 di Desktop, 1 Kolom di Mobile, Tanpa Garis) -->

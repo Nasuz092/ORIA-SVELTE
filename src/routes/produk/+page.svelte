@@ -3,11 +3,11 @@
   import ProdukHero from '$lib/sections/produk/ProdukHero.svelte';
   import ProdukOverview from '$lib/sections/produk/ProdukOverview.svelte';
   import ProdukCategories from '$lib/sections/produk/ProdukCategories.svelte';
-  import ProdukCatalog from '$lib/sections/produk/ProdukCatalog.svelte';
   import ProdukFlagship from '$lib/sections/produk/ProdukFlagship.svelte';
+  import { matchesCategory } from '$lib/data/categories';
 
   let { data }: { data: PageData } = $props();
-  const products = $derived(data.products || []);
+  const products = $derived((data.products || []).filter(p => !matchesCategory(p, 'consumables')));
 </script>
 
 <svelte:head>
@@ -34,11 +34,6 @@
 <ProdukCategories {products} />
 
 <!-- ======================================================================= -->
-<!-- SECTION 4: Live Catalog & All Products (Dynamic Strapi Portfolio)       -->
-<!-- ======================================================================= -->
-<ProdukCatalog {products} />
-
-<!-- ======================================================================= -->
-<!-- SECTION 5: Flagship Model Switcher (Lotus Eletre / Emira / Emeya Style)-->
+<!-- SECTION 4: Flagship Model Switcher (Lotus Eletre / Emira / Emeya Style)-->
 <!-- ======================================================================= -->
 <ProdukFlagship {products} />

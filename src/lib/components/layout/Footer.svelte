@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
+
   function scrollToTop() {
     if (typeof window !== 'undefined') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -15,9 +17,143 @@
       scrollToTop();
     }
   }
+
+  interface LanguageOption {
+    code: string;
+    label: string;
+    flag: string;
+  }
+
+  const languages: LanguageOption[] = [
+    { code: 'id', label: 'Indonesia (ID)', flag: '🇮🇩' },
+    { code: 'en', label: 'English (EN)', flag: '🇬🇧' },
+    { code: 'zh-CN', label: 'Chinese (ZH)', flag: '🇨🇳' },
+    { code: 'ja', label: 'Japanese (JA)', flag: '🇯🇵' },
+    { code: 'ar', label: 'Arabic (AR)', flag: '🇸🇦' }
+  ];
+
+  let isLangOpen = $state(false);
+  let selectedLang = $state('Indonesia (ID)');
+  let selectedCode = $state('id');
+
+  function toggleLang() {
+    isLangOpen = !isLangOpen;
+  }
+
+  function closeLang() {
+    isLangOpen = false;
+  }
+
+  function changeLanguage(lang: LanguageOption) {
+    selectedLang = lang.label;
+    selectedCode = lang.code;
+    isLangOpen = false;
+
+    if (typeof window === 'undefined') return;
+
+    const host = window.location.hostname;
+    if (lang.code === 'id') {
+      const expire = 'expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+      document.cookie = `googtrans=; ${expire}`;
+      document.cookie = `googtrans=; ${expire} domain=${host};`;
+      document.cookie = `googtrans=; ${expire} domain=.${host};`;
+      if (!/^\d+\.\d+\.\d+\.\d+$/.test(host)) {
+        const rootDomain = host.replace(/^www\./, '');
+        document.cookie = `googtrans=; ${expire} domain=.${rootDomain};`;
+      }
+      const select = document.querySelector<HTMLSelectElement>('.goog-te-combo');
+      if (select) {
+        select.value = '';
+        select.dispatchEvent(new Event('change'));
+      }
+      window.dispatchEvent(new CustomEvent('language-change', { detail: 'id' }));
+      window.location.reload();
+      return;
+    } else {
+      document.cookie = `googtrans=/id/${lang.code}; path=/;`;
+      document.cookie = `googtrans=/id/${lang.code}; path=/; domain=${host};`;
+      if (!/^\d+\.\d+\.\d+\.\d+$/.test(host)) {
+        document.cookie = `googtrans=/id/${lang.code}; path=/; domain=.${host.replace(/^www\./, '')};`;
+      }
+      const select = document.querySelector<HTMLSelectElement>('.goog-te-combo');
+      if (select) {
+        select.value = lang.code;
+        select.dispatchEvent(new Event('change'));
+      } else {
+        window.location.reload();
+      }
+    }
+    window.dispatchEvent(new CustomEvent('language-change', { detail: lang.code }));
+  }
+
+  onMount(() => {
+    if (typeof document !== 'undefined') {
+      const match = document.cookie.match(/googtrans=\/id\/([a-zA-Z-]+)/);
+      if (match && match[1]) {
+        const found = languages.find((l) => l.code === match[1]);
+        if (found) {
+          selectedLang = found.label;
+          selectedCode = found.code;
+        }
+      }
+
+      function onGlobalLang(e: Event) {
+        const ce = e as CustomEvent<string>;
+        if (ce.detail) {
+          const found = languages.find((l) => l.code === ce.detail);
+          if (found) {
+            selectedLang = found.label;
+            selectedCode = found.code;
+          }
+        }
+      }
+      window.addEventListener('language-change', onGlobalLang);
+
+      (window as any).googleTranslateElementInit = function () {
+        new (window as any).google.translate.TranslateElement(
+          {
+            pageLanguage: 'id',
+            includedLanguages: 'id,en,zh-CN,ja,ar',
+            autoDisplay: false
+          },
+          'google_translate_element'
+        );
+      };
+
+      if (!document.getElementById('google-translate-script')) {
+        const script = document.createElement('script');
+        script.id = 'google-translate-script';
+        script.type = 'text/javascript';
+        script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+        document.body.appendChild(script);
+      }
+
+      // Aggressively suppress Google Translate banner and body push
+      const killBanner = () => {
+        const banners = document.querySelectorAll<HTMLElement>(
+          '.goog-te-banner-frame, iframe.skiptranslate, .VIpgJd-ZVi9od-aZ2wEe-wOHMyf, .VIpgJd-ZVi9od-xl07Ob-OEVmcd, [id*=":1.container"], [id*=":2.container"]'
+        );
+        banners.forEach((b) => {
+          b.style.setProperty('display', 'none', 'important');
+          b.style.setProperty('visibility', 'hidden', 'important');
+          b.style.setProperty('height', '0px', 'important');
+        });
+        if (document.body.style.top && document.body.style.top !== '0px') {
+          document.body.style.setProperty('top', '0px', 'important');
+        }
+      };
+
+      killBanner();
+      const observer = new MutationObserver(killBanner);
+      observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style'] });
+      observer.observe(document.documentElement, { attributes: true, attributeFilter: ['style', 'class'] });
+
+      return () => observer.disconnect();
+    }
+  });
 </script>
 
-<footer class="w-full bg-black text-white pt-16 sm:pt-20 lg:pt-24 pb-10 select-none px-6 sm:px-10 lg:px-16">
+<footer class="w-full bg-black text-white pt-16 sm:pt-20 lg:pt-24 pb-0 select-none px-6 sm:px-10 lg:px-16">
   <!-- Top Center Yellow CTA Logo Badge Intersecting Yellow Horizontal Divider -->
   <div class="relative w-full max-w-7xl mx-auto mb-16 sm:mb-20 lg:mb-24">
     <!-- Thin Yellow Divider Line -->
@@ -107,37 +243,37 @@
         </h4>
         <ul class="space-y-2.5 font-sans text-sm sm:text-[15px] text-neutral-300">
           <li>
-            <a href="/produk?cat=uv" class="hover:text-[#FFE500] transition-colors">
-              ORIA UV Flatbed 4062
+            <a href="/produk/uv/oria-uv-flatbed-a3" class="hover:text-[#FFE500] transition-colors">
+              ORIA UV Flatbed A3
             </a>
           </li>
           <li>
-            <a href="/produk?cat=sublimasi" class="hover:text-[#FFE500] transition-colors">
+            <a href="/produk/sublimasi/oria-sublim-1902" class="hover:text-[#FFE500] transition-colors">
               ORIA Sublimasi 1902
             </a>
           </li>
           <li>
-            <a href="/produk?cat=laser" class="hover:text-[#FFE500] transition-colors">
+            <a href="/produk/laser/oria-laser-cutting-6040" class="hover:text-[#FFE500] transition-colors">
               ORIA Laser Cutting 6040
             </a>
           </li>
           <li>
-            <a href="/produk?cat=dtf" class="hover:text-[#FFE500] transition-colors">
+            <a href="/produk/dtf/oria-dtf-6004" class="hover:text-[#FFE500] transition-colors">
               ORIA DTF 6004 Industrial
             </a>
           </li>
           <li>
-            <a href="/produk?cat=outdoor" class="hover:text-[#FFE500] transition-colors">
+            <a href="/produk/outdoor/oria-outdoor-3204-st" class="hover:text-[#FFE500] transition-colors">
               ORIA Outdoor 3204
             </a>
           </li>
           <li>
-            <a href="/produk?cat=indoor" class="hover:text-[#FFE500] transition-colors">
+            <a href="/produk/indoor/oria-indoor-3202" class="hover:text-[#FFE500] transition-colors">
               ORIA Indoor 3202
             </a>
           </li>
           <li>
-            <a href="/produk?cat=cnc" class="hover:text-[#FFE500] transition-colors">
+            <a href="/produk/cnc/oria-cnc-router-1325" class="hover:text-[#FFE500] transition-colors">
               ORIA CNC Router 1325
             </a>
           </li>
@@ -182,7 +318,7 @@
 
   <!-- Bottom Bar with Yellow Divider Line -->
   <div class="max-w-7xl mx-auto">
-    <div class="border-t border-[#FFE500] pt-6 pb-2 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-sans text-neutral-400">
+    <div class="border-t border-[#FFE500] py-5 sm:py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-sans text-neutral-400">
       <!-- Legal Links -->
       <div class="flex flex-wrap items-center justify-center sm:justify-start gap-6 sm:gap-8">
         <a href="/tentang" class="hover:text-white transition-colors">
@@ -197,14 +333,70 @@
       </div>
 
       <!-- Country / Region Selector with Chevron (STRICT RULE: Chevrons Only, No Arrows) -->
-      <div class="flex items-center gap-2 text-neutral-400 hover:text-white transition-colors cursor-pointer group">
-        <span class="text-xs">Indonesia (ID)</span>
-        <div class="w-6 h-6 border border-[#FFE500] flex items-center justify-center text-[#FFE500] group-hover:bg-[#FFE500] group-hover:text-black transition-colors">
-          <svg class="w-3.5 h-3.5 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2.5" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        </div>
+      <div class="relative">
+        <button
+          type="button"
+          onclick={toggleLang}
+          class="flex items-center gap-2 text-neutral-400 hover:text-white transition-colors cursor-pointer group focus:outline-none"
+          aria-haspopup="listbox"
+          aria-expanded={isLangOpen}
+          aria-label="Pilih Bahasa"
+        >
+          <span class="text-xs">{selectedLang}</span>
+          <div class="w-6 h-6 border border-[#FFE500] flex items-center justify-center text-[#FFE500] group-hover:bg-[#FFE500] group-hover:text-black transition-colors">
+            <svg
+              class="w-3.5 h-3.5 stroke-current transition-transform duration-200 {isLangOpen ? 'rotate-180' : ''}"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2.5"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </button>
+
+        {#if isLangOpen}
+          <!-- Backdrop to close on click outside -->
+          <!-- svelte-ignore a11y_click_events_have_key_events -->
+          <!-- svelte-ignore a11y_no_static_element_interactions -->
+          <div
+            class="fixed inset-0 z-40 bg-transparent"
+            onclick={closeLang}
+          ></div>
+
+          <!-- Dropdown Menu (Opens Upward with Lotus/ORIA Premium Dark Style) -->
+          <div
+            class="absolute bottom-full right-0 mb-3 z-50 min-w-[170px] bg-neutral-950 border border-white/15 shadow-2xl py-1.5 rounded-none backdrop-blur-md animate-in fade-in slide-in-from-bottom-2 duration-200"
+            role="listbox"
+          >
+            {#each languages as lang}
+              <button
+                type="button"
+                onclick={() => changeLanguage(lang)}
+                class="w-full text-left px-4 py-2.5 text-xs flex items-center justify-between gap-3 transition-colors cursor-pointer {selectedCode === lang.code
+                  ? 'bg-[#FFE500] text-black font-bold'
+                  : 'text-neutral-300 hover:bg-white/10 hover:text-[#FFE500]'}"
+                role="option"
+                aria-selected={selectedCode === lang.code}
+              >
+                <span class="flex items-center gap-2.5">
+                  <span class="text-sm">{lang.flag}</span>
+                  <span>{lang.label}</span>
+                </span>
+                {#if selectedCode === lang.code}
+                  <svg class="w-3.5 h-3.5 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                {/if}
+              </button>
+            {/each}
+          </div>
+        {/if}
       </div>
     </div>
   </div>
+
+  <!-- Hidden Google Translate Element Container -->
+  <div id="google_translate_element" class="hidden" style="display:none;" aria-hidden="true"></div>
 </footer>

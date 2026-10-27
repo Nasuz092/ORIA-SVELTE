@@ -14,9 +14,8 @@
     />
   </picture>
 
-  <!-- Cinematic Contrast Gradients (Deep dark left for text legibility, smooth falloff to metal details) -->
-  <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/55 to-black/25 pointer-events-none"></div>
-  <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30 pointer-events-none"></div>
+  <!-- Cinematic Contrast Gradient (Gradasi hitam ke transparan) -->
+  <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent sm:from-black/90 sm:via-black/55 sm:to-black/25 pointer-events-none"></div>
 
   <!-- Content Container (Lotus Layout: Left-aligned, generous padding, pristine typography) -->
   <div class="relative z-10 w-full max-w-7xl mx-auto py-16 sm:py-20 lg:py-24">

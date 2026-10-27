@@ -1,7 +1,7 @@
 <!-- ======================================================================= -->
 <!-- SECTION: Artikel Hero (Authentic ORIA Editorial Press - Dark Cinematic) -->
 <!-- ======================================================================= -->
-<section id="overview" class="relative w-full min-h-[85svh] lg:min-h-[92svh] bg-[#050508] text-white overflow-hidden flex flex-col justify-end select-none pb-16 sm:pb-20 lg:pb-24 pt-28 sm:pt-32 lg:pt-36">
+<section id="overview" class="relative w-full h-[100svh] min-h-[640px] bg-[#050508] text-white overflow-hidden flex flex-col justify-end select-none pb-16 sm:pb-20 lg:pb-24 pt-28 sm:pt-32 lg:pt-36">
   <!-- Cinematic Background Visual with Purple / Dark Indigo Gradient Aura -->
   <div class="absolute inset-0 w-full h-full pointer-events-none">
     <img
@@ -10,9 +10,8 @@
       class="w-full h-full object-cover object-center lg:object-[center_right] opacity-55"
       loading="eager"
     />
-    <!-- Purple/Indigo Cinematic Tint -->
-    <div class="absolute inset-0 bg-gradient-to-r from-[#05020a] via-[#090214]/90 lg:via-[#090214]/75 to-transparent"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-[#050508] via-transparent to-black/70"></div>
+    <!-- Purple/Indigo Cinematic Tint (Gradasi hitam ke transparan) -->
+    <div class="absolute inset-0 bg-gradient-to-r from-[#05020a]/70 via-[#090214]/40 to-transparent sm:from-[#05020a] sm:via-[#090214]/90 lg:via-[#090214]/75 sm:to-transparent"></div>
     <!-- Ambient glow -->
     <div class="absolute -top-32 -left-32 w-96 h-96 bg-[#FFE500]/5 rounded-full blur-3xl"></div>
     <div class="absolute top-1/2 right-1/4 w-[500px] h-[500px] bg-purple-900/10 rounded-full blur-[120px]"></div>

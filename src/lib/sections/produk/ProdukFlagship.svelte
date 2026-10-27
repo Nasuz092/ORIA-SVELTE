@@ -14,13 +14,13 @@
 
   let { products = [], activeIndex = $bindable(0) }: { products?: FormattedProduct[]; activeIndex?: number } = $props();
 
-  // Dynamically resolve flagship machines from Strapi products
+  // Flagship curated model info (Short, elegant Lotus editorial copy - tidak mengambil paragraf panjang dari Strapi)
   const defaultModels: FlagshipModel[] = [
     {
       id: 'uv',
       name: 'UV FLATBED',
       tagline: 'ORIA UV Flatbed A3',
-      desc: 'The high-precision ORIA UV Flatbed A3. An industrial multi-material printing platform that defines a new standard of micron accuracy across rigid, flexible, and cylindrical media.',
+      desc: 'Presisi cetak mikron pada media datar akrilik, kayu, kaca, dan silinder.',
       image: '/images/showcase-products.png',
       href: '/produk/uv/oria-uv-flatbed-a3'
     },
@@ -28,7 +28,7 @@
       id: 'sublimasi',
       name: 'SUBLIMASI',
       tagline: 'ORIA Sublim 1902',
-      desc: 'The continuous-speed ORIA Sublim 1902. An industrial dye-sublimation powerhouse engineered for maximum ink efficiency, vivid saturation, and relentless 24/7 roll-to-roll textile manufacturing.',
+      desc: 'Produksi massal jersey dan tekstil berkecepatan tinggi dengan saturasi warna pekat.',
       image: '/images/hero/sublim-oria-desktop.png',
       href: '/produk/sublimasi/oria-sublim-1902'
     },
@@ -36,9 +36,17 @@
       id: 'outdoor',
       name: 'OUTDOOR',
       tagline: 'ORIA Outdoor 3204 ST',
-      desc: 'The heavy-duty ORIA Outdoor 3204 ST. Engineered on a reinforced anti-vibration steel chassis for high-speed large format printing with unyielding all-weather durability.',
+      desc: 'Cetak billboard dan baliho tahan cuaca ekstrem dengan sasis baja anti-vibrasi.',
       image: '/images/hero/outdoor-oria-desktop.png',
       href: '/produk/outdoor/oria-outdoor-3204-st'
+    },
+    {
+      id: 'laser',
+      name: 'FIBER LASER',
+      tagline: 'ORIA Fiber Laser 3015',
+      desc: 'Pemotongan plat logam dan fabrikasi industri berdaya tinggi dengan akurasi presisi.',
+      image: '/images/core-precision.jpg',
+      href: '/produk/laser/oria-fiber-laser-3015'
     }
   ];
 
@@ -58,7 +66,7 @@
         id: 'uv',
         name: 'UV FLATBED',
         tagline: uvProd.name,
-        desc: uvProd.shortDescription || 'An industrial multi-material printing platform with micron accuracy across rigid, flexible, and cylindrical media.',
+        desc: 'Presisi cetak mikron pada media datar akrilik, kayu, kaca, dan silinder.',
         image: uvProd.mainImageDesktopUrl || uvProd.imageUrl || '/images/showcase-products.png',
         href: `/produk/${getProductCategoryId(uvProd)}/${uvProd.slug}`
       });
@@ -69,7 +77,7 @@
         id: 'sublimasi',
         name: 'SUBLIMASI',
         tagline: sublimProd.name,
-        desc: sublimProd.shortDescription || 'Industrial dye-sublimation powerhouse engineered for maximum ink efficiency, vivid saturation, and 24/7 roll-to-roll manufacturing.',
+        desc: 'Produksi massal jersey dan tekstil berkecepatan tinggi dengan saturasi warna pekat.',
         image: sublimProd.mainImageDesktopUrl || sublimProd.imageUrl || '/images/hero/sublim-oria-desktop.png',
         href: `/produk/${getProductCategoryId(sublimProd)}/${sublimProd.slug}`
       });
@@ -80,7 +88,7 @@
         id: 'outdoor',
         name: 'OUTDOOR',
         tagline: outdoorProd.name,
-        desc: outdoorProd.shortDescription || 'Heavy-duty large format printing on reinforced anti-vibration steel chassis for all-weather durability.',
+        desc: 'Cetak billboard dan baliho tahan cuaca ekstrem dengan sasis baja anti-vibrasi.',
         image: outdoorProd.mainImageDesktopUrl || outdoorProd.imageUrl || '/images/hero/outdoor-oria-desktop.png',
         href: `/produk/${getProductCategoryId(outdoorProd)}/${outdoorProd.slug}`
       });
@@ -91,7 +99,7 @@
         id: 'laser',
         name: 'FIBER LASER',
         tagline: laserProd.name,
-        desc: laserProd.shortDescription || 'High-power optical fiber laser cutting system for micron-level metal fabrication.',
+        desc: 'Pemotongan plat logam dan fabrikasi industri berdaya tinggi dengan akurasi presisi.',
         image: laserProd.mainImageDesktopUrl || laserProd.imageUrl || '/images/core-precision.jpg',
         href: `/produk/${getProductCategoryId(laserProd)}/${laserProd.slug}`
       });
@@ -146,9 +154,8 @@
       </div>
     {/each}
 
-    <!-- Atmospheric Dark Cinematic Gradient Overlays (Lotus Luxury Aesthetics) -->
-    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-black/70"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-black/20"></div>
+    <!-- Atmospheric Dark Cinematic Gradient Overlay (Gradasi hitam ke transparan) -->
+    <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent sm:from-black/85 sm:via-black/40 sm:to-black/20"></div>
   </div>
 
   <!-- Top-Left: Model Selector Tabs (Lotus Vertical Switcher) -->

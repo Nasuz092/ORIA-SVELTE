@@ -1,6 +1,108 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import { page } from '$app/state';
   import { ScrollArea } from '$lib/components/ui/scroll-area';
+
+  interface LanguageOption {
+    code: string;
+    label: string;
+    shortLabel: string;
+    flag: string;
+  }
+
+  const languages: LanguageOption[] = [
+    { code: 'id', label: 'Indonesia (ID)', shortLabel: 'ID', flag: '🇮🇩' },
+    { code: 'en', label: 'English (EN)', shortLabel: 'EN', flag: '🇬🇧' },
+    { code: 'zh-CN', label: 'Chinese (ZH)', shortLabel: 'ZH', flag: '🇨🇳' },
+    { code: 'ja', label: 'Japanese (JA)', shortLabel: 'JA', flag: '🇯🇵' },
+    { code: 'ar', label: 'Arabic (AR)', shortLabel: 'AR', flag: '🇸🇦' }
+  ];
+
+  let isLangOpen = $state(false);
+  let selectedLang = $state('Indonesia (ID)');
+  let selectedShort = $state('ID');
+  let selectedCode = $state('id');
+
+  function toggleLang() {
+    isLangOpen = !isLangOpen;
+  }
+
+  function closeLang() {
+    isLangOpen = false;
+  }
+
+  function changeLanguage(lang: LanguageOption) {
+    selectedLang = lang.label;
+    selectedShort = lang.shortLabel;
+    selectedCode = lang.code;
+    isLangOpen = false;
+
+    if (typeof window === 'undefined') return;
+
+    const host = window.location.hostname;
+    if (lang.code === 'id') {
+      const expire = 'expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+      document.cookie = `googtrans=; ${expire}`;
+      document.cookie = `googtrans=; ${expire} domain=${host};`;
+      document.cookie = `googtrans=; ${expire} domain=.${host};`;
+      if (!/^\d+\.\d+\.\d+\.\d+$/.test(host)) {
+        const rootDomain = host.replace(/^www\./, '');
+        document.cookie = `googtrans=; ${expire} domain=.${rootDomain};`;
+      }
+      const select = document.querySelector<HTMLSelectElement>('.goog-te-combo');
+      if (select) {
+        select.value = '';
+        select.dispatchEvent(new Event('change'));
+      }
+      window.dispatchEvent(new CustomEvent('language-change', { detail: 'id' }));
+      window.location.reload();
+      return;
+    } else {
+      document.cookie = `googtrans=/id/${lang.code}; path=/;`;
+      document.cookie = `googtrans=/id/${lang.code}; path=/; domain=${host};`;
+      if (!/^\d+\.\d+\.\d+\.\d+$/.test(host)) {
+        document.cookie = `googtrans=/id/${lang.code}; path=/; domain=.${host.replace(/^www\./, '')};`;
+      }
+      const select = document.querySelector<HTMLSelectElement>('.goog-te-combo');
+      if (select) {
+        select.value = lang.code;
+        select.dispatchEvent(new Event('change'));
+      } else {
+        window.location.reload();
+      }
+    }
+    window.dispatchEvent(new CustomEvent('language-change', { detail: lang.code }));
+  }
+
+  onMount(() => {
+    if (typeof document !== 'undefined') {
+      const match = document.cookie.match(/googtrans=\/id\/([a-zA-Z-]+)/);
+      if (match && match[1]) {
+        const found = languages.find((l) => l.code === match[1]);
+        if (found) {
+          selectedLang = found.label;
+          selectedShort = found.shortLabel;
+          selectedCode = found.code;
+        }
+      }
+
+      function onGlobalLang(e: Event) {
+        const ce = e as CustomEvent<string>;
+        if (ce.detail) {
+          const found = languages.find((l) => l.code === ce.detail);
+          if (found) {
+            selectedLang = found.label;
+            selectedShort = found.shortLabel;
+            selectedCode = found.code;
+          }
+        }
+      }
+      window.addEventListener('language-change', onGlobalLang);
+      return () => {
+        window.removeEventListener('language-change', onGlobalLang);
+      };
+    }
+  });
 
   let drawerOpen = $state(false);
   let scrollY = $state(0);
@@ -39,8 +141,11 @@
     page.url.pathname.startsWith('/produk/') &&
     page.url.pathname.split('/').filter(Boolean).length >= 3
   );
-  let isArtikel = $derived(page.url.pathname.startsWith('/artikel'));
-  let hasSubNav = $derived(isTentang || isProductDetail || isArtikel);
+  let isArtikelCategory = $derived(
+    page.url.pathname.startsWith('/artikel/') &&
+    page.url.pathname.replace(/\/+$/, '') !== '/artikel'
+  );
+  let hasSubNav = $derived(isTentang || isProductDetail || isArtikelCategory);
 
   const tentangSubNavItems = [
     { id: 'oria-story', label: 'STORY' },
@@ -53,11 +158,22 @@
     { id: 'showroom', label: 'SHOWROOM' }
   ];
 
-  const productSubNavItems = [
-    { id: 'overview', label: 'OVERVIEW' },
-    { id: 'story', label: 'STORY' },
-    { id: 'spec', label: 'SPEC' }
-  ];
+  let currentProductSubNavItems = $derived.by(() => {
+    const hasGallery = Boolean(page.data?.product?.galleryUrls && page.data.product.galleryUrls.length > 0);
+    if (hasGallery) {
+      return [
+        { id: 'overview', label: 'OVERVIEW' },
+        { id: 'story', label: 'STORY' },
+        { id: 'gallery', label: 'GALLERY' },
+        { id: 'spec', label: 'SPEC' }
+      ];
+    }
+    return [
+      { id: 'overview', label: 'OVERVIEW' },
+      { id: 'story', label: 'STORY' },
+      { id: 'spec', label: 'SPEC' }
+    ];
+  });
 
   const artikelSubNavItems = [
     { id: 'digital-print', label: 'DIGITAL PRINT', href: '/artikel/digital-print' },
@@ -68,7 +184,7 @@
   ];
 
   let currentSubNavItems = $derived(
-    isProductDetail ? productSubNavItems : isTentang ? tentangSubNavItems : []
+    isProductDetail ? currentProductSubNavItems : isTentang ? tentangSubNavItems : []
   );
 
   let activeSection = $state('overview');
@@ -83,7 +199,7 @@
   }
 
   $effect(() => {
-    if (typeof window !== 'undefined' && hasSubNav && !isArtikel) {
+    if (typeof window !== 'undefined' && hasSubNav && !isArtikelCategory) {
       if (isProductDetail) {
         activeSection = 'overview';
       } else if (isTentang) {
@@ -146,39 +262,84 @@
 
 {#if hasSubNav}
   <!-- ================================================================= -->
-  <!-- DUAL-ROW NAVBAR WITH SUBNAV (Tentang & Detail Produk)             -->
+  <!-- 2-TIER SUBNAV NAVBAR (Produk Detail, Tentang, Kategori Artikel)  -->
   <!-- ================================================================= -->
   <header
-    class="w-full fixed top-0 left-0 z-40 overflow-hidden transition-colors duration-300 {isScrolled
-      ? 'bg-black shadow-lg border-b border-white/10 pointer-events-auto'
-      : 'bg-transparent border-b border-transparent pointer-events-none'}"
+    class="w-full fixed top-0 left-0 z-40 transition-colors duration-300 pointer-events-auto {isScrolled
+      ? 'bg-black/95 shadow-lg border-b border-white/10 backdrop-blur-md'
+      : 'bg-transparent border-b border-transparent'}"
   >
-    <!-- Hamburger Button (Fixed in Top Right, full size, optically leveled with menu) -->
-    <div class="absolute top-0 right-0 z-50 h-14 sm:h-16 flex items-center justify-end px-6 sm:px-10 lg:px-16 pointer-events-auto">
-      <button
-        type="button"
-        onclick={openDrawer}
-        class="text-white p-2 hover:text-[#FFE500] focus:outline-none cursor-pointer transition-colors group flex items-center justify-center drop-shadow-md -translate-y-0.5 sm:-translate-y-1"
-        aria-label="Buka Menu Navigasi"
-      >
-        <div class="flex flex-col items-end gap-1.5 w-6 sm:w-7">
-          <span class="block w-full h-[2px] bg-white group-hover:bg-[#FFE500] transition-colors"></span>
-          <span class="block w-4/5 h-[2px] bg-white group-hover:w-full group-hover:bg-[#FFE500] transition-all"></span>
-          <span class="block w-full h-[2px] bg-white group-hover:bg-[#FFE500] transition-colors"></span>
-        </div>
-      </button>
-    </div>
+    <!-- ROW 1: Controls (Language on Left, Centered Logo, Hamburger on Right) -->
+    <div class="relative w-full h-14 sm:h-16 flex items-center justify-between px-4 sm:px-10 lg:px-16 transition-colors duration-300 {isScrolled ? 'border-b border-white/5' : 'border-b border-white/10'}">
+      <!-- Left: Language Translate Selector Button -->
+      <div class="relative z-50">
+        <button
+          type="button"
+          onclick={toggleLang}
+          class="flex items-center gap-2 text-white/80 hover:text-white transition-colors cursor-pointer group focus:outline-none"
+          aria-haspopup="listbox"
+          aria-expanded={isLangOpen}
+          aria-label="Pilih Bahasa"
+        >
+          <span class="text-xs font-semibold tracking-wider hidden sm:inline">{selectedLang}</span>
+          <span class="text-xs font-semibold tracking-wider sm:hidden">{selectedShort}</span>
+          <div class="w-6 h-6 border border-[#FFE500] flex items-center justify-center text-[#FFE500] group-hover:bg-[#FFE500] group-hover:text-black transition-colors">
+            <svg
+              class="w-3.5 h-3.5 stroke-current transition-transform duration-200 {isLangOpen ? 'rotate-180' : ''}"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2.5"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </button>
 
-    <div class="w-full flex flex-col">
-      <!-- ROW 1: Centered Logo Row (Smooth glide with exact negative margin, no max-height bouncing) -->
-      <div
-        class="w-full h-14 sm:h-16 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-center {isScrolled
-          ? '-mt-14 sm:-mt-16 opacity-0 pointer-events-none'
-          : 'mt-0 opacity-100 pointer-events-auto'}"
-      >
+        {#if isLangOpen}
+          <!-- Backdrop to close on click outside -->
+          <!-- svelte-ignore a11y_click_events_have_key_events -->
+          <!-- svelte-ignore a11y_no_static_element_interactions -->
+          <div
+            class="fixed inset-0 z-40 bg-transparent"
+            onclick={closeLang}
+          ></div>
+
+          <!-- Dropdown Menu -->
+          <div
+            class="absolute top-full left-0 mt-2 z-50 min-w-[170px] bg-neutral-950 border border-white/15 shadow-2xl py-1.5 rounded-none backdrop-blur-md animate-in fade-in slide-in-from-top-2 duration-200"
+            role="listbox"
+          >
+            {#each languages as lang}
+              <button
+                type="button"
+                onclick={() => changeLanguage(lang)}
+                class="w-full text-left px-4 py-2.5 text-xs flex items-center justify-between gap-3 transition-colors cursor-pointer {selectedCode === lang.code
+                  ? 'bg-[#FFE500] text-black font-bold'
+                  : 'text-neutral-300 hover:bg-white/10 hover:text-[#FFE500]'}"
+                role="option"
+                aria-selected={selectedCode === lang.code}
+              >
+                <span class="flex items-center gap-2.5">
+                  <span class="text-sm">{lang.flag}</span>
+                  <span>{lang.label}</span>
+                </span>
+                {#if selectedCode === lang.code}
+                  <svg class="w-3.5 h-3.5 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                {/if}
+              </button>
+            {/each}
+          </div>
+        {/if}
+      </div>
+
+      <!-- Center: ORIA Logo (Persistent, stays visible on scroll) -->
+      <div class="absolute left-1/2 -translate-x-1/2 flex items-center justify-center">
         <a
           href="/"
-          class="flex items-center justify-center hover:opacity-90 transition-opacity select-none focus:outline-none py-1 pointer-events-auto"
+          class="flex items-center justify-center hover:opacity-90 transition-opacity select-none focus:outline-none py-1"
         >
           <img
             src="/images/oria-logo-hd.png"
@@ -188,64 +349,142 @@
         </a>
       </div>
 
-      <!-- ROW 2: Subnav Row (Horizontally centered, transparent, no borders, no underline, yellow hover/active) -->
-      <div
-        class="w-full h-14 sm:h-16 transition-all duration-300 bg-transparent border-none flex items-center justify-center pointer-events-none"
-      >
-        <div class="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 overflow-x-auto no-scrollbar flex items-center {isArtikel ? 'justify-start md:justify-center' : 'justify-center'} pointer-events-none">
-          <nav
-            aria-label={isProductDetail ? 'Navigasi Detail Produk' : isArtikel ? 'Navigasi Halaman Artikel' : 'Navigasi Halaman Tentang'}
-            class="mx-auto flex items-center justify-center gap-6 sm:gap-8 md:gap-10 shrink-0 border-none pointer-events-auto"
-          >
-            {#if isArtikel}
-              {#each artikelSubNavItems as item}
-                {@const isActive = page.url.pathname.startsWith(item.href)}
-                <a
-                  href={item.href}
-                  class="flex items-center text-[11px] sm:text-xs md:text-[13px] font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none py-1 {isActive
-                    ? 'text-[#FFE500] font-bold'
-                    : 'text-white/75 hover:text-[#FFE500]'}"
-                >
-                  <span>{item.label}</span>
-                </a>
-              {/each}
-            {:else}
-              {#each currentSubNavItems as item}
-                <a
-                  href="#{item.id}"
-                  onclick={(e) => scrollToSection(item.id, e)}
-                  class="flex items-center text-[11px] sm:text-xs md:text-[13px] font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none py-1 {activeSection === item.id
-                    ? 'text-[#FFE500] font-bold'
-                    : 'text-white/75 hover:text-[#FFE500]'}"
-                >
-                  <span>{item.label}</span>
-                </a>
-              {/each}
-            {/if}
-          </nav>
-        </div>
+      <!-- Right: Hamburger Button (In Row 1) -->
+      <div class="relative z-50">
+        <button
+          type="button"
+          onclick={openDrawer}
+          class="text-white p-2 hover:text-[#FFE500] focus:outline-none cursor-pointer transition-colors group flex items-center justify-center drop-shadow-md"
+          aria-label="Buka Menu Navigasi"
+        >
+          <div class="flex flex-col items-end gap-1.5 w-6 sm:w-7">
+            <span class="block w-full h-[2px] bg-white group-hover:bg-[#FFE500] transition-colors"></span>
+            <span class="block w-4/5 h-[2px] bg-white group-hover:w-full group-hover:bg-[#FFE500] transition-all"></span>
+            <span class="block w-full h-[2px] bg-white group-hover:bg-[#FFE500] transition-colors"></span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- ROW 2: Subnav Row (Dedicated row below Row 1, smooth horizontal slide on mobile without any collision) -->
+    <div
+      class="w-full h-11 sm:h-12 flex items-center overflow-x-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden overscroll-x-contain transition-colors duration-300 {isScrolled ? 'bg-black/60' : 'bg-black/35 backdrop-blur-sm'}"
+    >
+      <div class="min-w-full w-max flex items-center px-4 sm:px-10 lg:px-16 md:justify-center">
+        <nav
+          aria-label={isProductDetail ? 'Navigasi Detail Produk' : isArtikelCategory ? 'Navigasi Kategori Artikel' : 'Navigasi Halaman Tentang'}
+          class="flex items-center gap-6 sm:gap-8 md:gap-10 shrink-0"
+        >
+          {#if isArtikelCategory}
+            {#each artikelSubNavItems as item}
+              {@const isActive = page.url.pathname.startsWith(item.href)}
+              <a
+                href={item.href}
+                class="flex items-center text-[11px] sm:text-xs md:text-[13px] font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none py-1 {isActive
+                  ? 'text-[#FFE500] font-bold'
+                  : 'text-white/75 hover:text-[#FFE500]'}"
+              >
+                <span>{item.label}</span>
+              </a>
+            {/each}
+          {:else}
+            {#each currentSubNavItems as item}
+              <a
+                href="#{item.id}"
+                onclick={(e) => scrollToSection(item.id, e)}
+                class="flex items-center text-[11px] sm:text-xs md:text-[13px] font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none py-1 {activeSection === item.id
+                  ? 'text-[#FFE500] font-bold'
+                  : 'text-white/75 hover:text-[#FFE500]'}"
+              >
+                <span>{item.label}</span>
+              </a>
+            {/each}
+          {/if}
+          <!-- Spacer presisi ~8px agar aman dari scrollbar tanpa terlalu renggang -->
+          <span class="w-2 md:hidden shrink-0 inline-block pointer-events-none" aria-hidden="true"></span>
+        </nav>
       </div>
     </div>
   </header>
 {:else}
   <!-- ================================================================= -->
   <!-- NORMAL PAGES NAVBAR (Homepage, Katalog, Artikel, Kontak, dll.)    -->
-  <!-- 100% ORIGINAL: Tinggi, padding, logo, dan hamburger asli           -->
   <!-- ================================================================= -->
   <header
-    class="w-full fixed top-0 left-0 z-40 transition-all duration-300 {isScrolled || (page.url.pathname !== '/' && !page.url.pathname.startsWith('/produk') && page.url.pathname !== '/kontak')
-      ? 'bg-black/95 shadow-lg border-b border-white/10 py-3.5 sm:py-4'
-      : 'bg-transparent border-b border-transparent py-4 sm:py-5'}"
+    class="w-full fixed top-0 left-0 z-40 transition-colors duration-300 pointer-events-auto {isScrolled
+      ? 'bg-black/95 shadow-lg border-b border-white/10 backdrop-blur-md'
+      : 'bg-transparent border-b border-transparent'}"
   >
-    <div class="relative w-full px-6 sm:px-10 lg:px-16 flex items-center justify-between">
-      <!-- Left Spacer -->
-      <div class="w-12 sm:w-16"></div>
+    <div class="relative w-full h-14 sm:h-16 flex items-center justify-between px-4 sm:px-10 lg:px-16">
+      <!-- Left: Language Translate Selector Button -->
+      <div class="relative z-50">
+        <button
+          type="button"
+          onclick={toggleLang}
+          class="flex items-center gap-2 text-white/80 hover:text-white transition-colors cursor-pointer group focus:outline-none"
+          aria-haspopup="listbox"
+          aria-expanded={isLangOpen}
+          aria-label="Pilih Bahasa"
+        >
+          <span class="text-xs font-semibold tracking-wider hidden sm:inline">{selectedLang}</span>
+          <span class="text-xs font-semibold tracking-wider sm:hidden">{selectedShort}</span>
+          <div class="w-6 h-6 border border-[#FFE500] flex items-center justify-center text-[#FFE500] group-hover:bg-[#FFE500] group-hover:text-black transition-colors">
+            <svg
+              class="w-3.5 h-3.5 stroke-current transition-transform duration-200 {isLangOpen ? 'rotate-180' : ''}"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2.5"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </button>
+
+        {#if isLangOpen}
+          <!-- Backdrop to close on click outside -->
+          <!-- svelte-ignore a11y_click_events_have_key_events -->
+          <!-- svelte-ignore a11y_no_static_element_interactions -->
+          <div
+            class="fixed inset-0 z-40 bg-transparent"
+            onclick={closeLang}
+          ></div>
+
+          <!-- Dropdown Menu -->
+          <div
+            class="absolute top-full left-0 mt-2 z-50 min-w-[170px] bg-neutral-950 border border-white/15 shadow-2xl py-1.5 rounded-none backdrop-blur-md animate-in fade-in slide-in-from-top-2 duration-200"
+            role="listbox"
+          >
+            {#each languages as lang}
+              <button
+                type="button"
+                onclick={() => changeLanguage(lang)}
+                class="w-full text-left px-4 py-2.5 text-xs flex items-center justify-between gap-3 transition-colors cursor-pointer {selectedCode === lang.code
+                  ? 'bg-[#FFE500] text-black font-bold'
+                  : 'text-neutral-300 hover:bg-white/10 hover:text-[#FFE500]'}"
+                role="option"
+                aria-selected={selectedCode === lang.code}
+              >
+                <span class="flex items-center gap-2.5">
+                  <span class="text-sm">{lang.flag}</span>
+                  <span>{lang.label}</span>
+                </span>
+                {#if selectedCode === lang.code}
+                  <svg class="w-3.5 h-3.5 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                {/if}
+              </button>
+            {/each}
+          </div>
+        {/if}
+      </div>
 
       <!-- Centered Brand Logo (100% Persis di Tengah Layar Secara Mutlak) -->
-      <div class="absolute left-1/2 -translate-x-1/2 flex items-center justify-center pointer-events-auto">
+      <div class="absolute left-1/2 -translate-x-1/2 flex items-center justify-center">
         <a
           href="/"
-          class="flex items-center justify-center hover:opacity-90 transition-opacity select-none py-1"
+          class="flex items-center justify-center hover:opacity-90 transition-opacity select-none focus:outline-none py-1"
         >
           <img
             src="/images/oria-logo-hd.png"
@@ -255,12 +494,12 @@
         </a>
       </div>
 
-      <!-- Right Hamburger Menu Button (Asli, sesuai desain awal) -->
-      <div class="w-12 sm:w-16 flex items-center justify-end">
+      <!-- Right Hamburger Menu Button -->
+      <div class="relative z-50">
         <button
           type="button"
           onclick={openDrawer}
-          class="text-white p-2.5 hover:text-[#FFE500] focus:outline-none cursor-pointer transition-colors group flex items-center justify-center drop-shadow-md"
+          class="text-white p-2 hover:text-[#FFE500] focus:outline-none cursor-pointer transition-colors group flex items-center justify-center drop-shadow-md"
           aria-label="Buka Menu Navigasi"
         >
           <div class="flex flex-col items-end gap-1.5 w-6 sm:w-7">
@@ -286,14 +525,14 @@
   ></div>
 {/if}
 
-<!-- SLIDE-IN DRAWER DARI KANAN KE KIRI (Setengah layar, warna hitam solid, scrollbar shadcn-svelte) -->
+<!-- SLIDE-IN DRAWER DARI KANAN KE KIRI (Warna Kuning #FFE500, teks dan ikon hitam solid) -->
 <aside
-  class="fixed top-0 right-0 h-full z-50 w-full sm:w-[85vw] md:w-[65vw] lg:w-[48vw] xl:w-[40vw] bg-[#09090b] text-white flex flex-col justify-between transform transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-2xl border-l border-white/10 p-6 sm:p-10 lg:p-12 {drawerOpen ? 'translate-x-0' : 'translate-x-full'}"
+  class="fixed top-0 right-0 h-full z-50 w-full sm:w-[85vw] md:w-[65vw] lg:w-[48vw] xl:w-[40vw] bg-[#FFE500] text-black flex flex-col justify-between transform transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-2xl border-l border-black/15 p-6 sm:p-10 lg:p-12 {drawerOpen ? 'translate-x-0' : 'translate-x-full'}"
   aria-label="Menu Navigasi Utama"
   aria-hidden={!drawerOpen}
 >
-  <!-- Drawer Top: Brand Logo oria-logo-hd.png & Close Button -->
-  <div class="flex items-center justify-between pb-5 border-b border-white/10 flex-shrink-0">
+  <!-- Drawer Top: Brand Logo oria-logo-hd.png (Hitam) & Close Button (Hitam) -->
+  <div class="flex items-center justify-between pb-5 border-b border-black/15 flex-shrink-0">
     <a
       href="/"
       onclick={closeDrawer}
@@ -302,14 +541,14 @@
       <img
         src="/images/oria-logo-hd.png"
         alt="Logo ORIA"
-        class="h-6 sm:h-7 w-auto object-contain brightness-0 invert"
+        class="h-6 sm:h-7 w-auto object-contain brightness-0"
       />
     </a>
 
     <button
       type="button"
       onclick={closeDrawer}
-      class="w-10 h-10 rounded-full flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 transition-colors cursor-pointer focus:outline-none"
+      class="w-10 h-10 rounded-full flex items-center justify-center text-black/70 hover:text-black hover:bg-black/10 transition-colors cursor-pointer focus:outline-none"
       aria-label="Tutup Menu"
     >
       <svg class="w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
@@ -322,11 +561,11 @@
   <div class="flex-1 my-4 overflow-hidden">
     <ScrollArea
       class="h-full w-full pr-3 sm:pr-4"
-      scrollbarClass="bg-white/10"
-      thumbClass="bg-white/30 hover:bg-white/50"
+      scrollbarClass="bg-black/10"
+      thumbClass="bg-black/25 hover:bg-black/45"
     >
       <div class="py-4 flex flex-col gap-3 sm:gap-4">
-        <div class="font-sans font-bold text-[10px] uppercase tracking-[0.25em] text-[#FFE500] mb-1">
+        <div class="font-sans font-bold text-[10px] uppercase tracking-[0.25em] text-black/60 mb-1">
           Lini Mesin Industrial
         </div>
 
@@ -334,7 +573,7 @@
           <a
             href={cat.href}
             onclick={closeDrawer}
-            class="group flex items-center justify-between text-lg sm:text-2xl lg:text-[1.55rem] font-heading font-black uppercase tracking-[0.14em] text-white hover:text-[#FFE500] transition-colors py-1 sm:py-1.5"
+            class="group flex items-center justify-between text-lg sm:text-2xl lg:text-[1.55rem] font-heading font-black uppercase tracking-[0.14em] text-black hover:text-black/60 transition-colors py-1 sm:py-1.5"
           >
             <span class="group-hover:translate-x-1 transition-transform duration-300">{cat.title}</span>
             <svg class="w-4 h-4 sm:w-5 sm:h-5 stroke-current transition-transform duration-300 group-hover:translate-x-1.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
@@ -344,7 +583,7 @@
         {/each}
 
         <!-- Divider -->
-        <div class="h-px bg-white/10 my-4 sm:my-5"></div>
+        <div class="h-px bg-black/15 my-4 sm:my-5"></div>
 
         <!-- Secondary Links (Discover ORIA, Artikel, Showroom) -->
         <div class="flex flex-col gap-2 sm:gap-2.5">
@@ -352,7 +591,7 @@
             <a
               href={link.href}
               onclick={closeDrawer}
-              class="group flex items-center justify-between text-xs sm:text-sm font-heading font-bold uppercase tracking-widest text-white/70 hover:text-white transition-colors py-1"
+              class="group flex items-center justify-between text-xs sm:text-sm font-heading font-bold uppercase tracking-widest text-black/80 hover:text-black transition-colors py-1"
             >
               <span class="group-hover:translate-x-1 transition-transform duration-300">{link.name}</span>
               <svg class="w-3.5 h-3.5 stroke-current transition-transform duration-300 group-hover:translate-x-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
@@ -366,11 +605,11 @@
   </div>
 
   <!-- Drawer Bottom: Showroom & WhatsApp Support -->
-  <div class="border-t border-white/10 pt-5 flex flex-col gap-2.5 text-xs tracking-wider text-white/70 font-sans flex-shrink-0">
+  <div class="border-t border-black/15 pt-5 flex flex-col gap-2.5 text-xs tracking-wider text-black/80 font-sans flex-shrink-0">
     <a
       href="/kontak"
       onclick={closeDrawer}
-      class="flex items-center gap-2.5 text-white/80 hover:text-[#FFE500] transition-colors uppercase font-semibold"
+      class="flex items-center gap-2.5 text-black hover:text-black/60 transition-colors uppercase font-semibold"
     >
       <svg class="w-4 h-4 stroke-current flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -382,7 +621,7 @@
       href="https://wa.me/6281252086455"
       target="_blank"
       rel="noopener noreferrer"
-      class="flex items-center gap-2.5 text-white/80 hover:text-[#FFE500] transition-colors uppercase font-semibold"
+      class="flex items-center gap-2.5 text-black hover:text-black/60 transition-colors uppercase font-semibold"
     >
       <svg class="w-4 h-4 stroke-current flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />

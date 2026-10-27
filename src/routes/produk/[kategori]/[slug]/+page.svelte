@@ -3,6 +3,7 @@
   import { getCleanModelTitle, getProductSpecs, getDetailedSpecColumns } from '$lib/utils/product-specs';
   import DetailHero from '$lib/sections/detail-produk/DetailHero.svelte';
   import DetailStory from '$lib/sections/detail-produk/DetailStory.svelte';
+  import DetailGallery from '$lib/sections/detail-produk/DetailGallery.svelte';
   import DetailSpec from '$lib/sections/detail-produk/DetailSpec.svelte';
   import DetailCta from '$lib/sections/detail-produk/DetailCta.svelte';
 
@@ -28,5 +29,6 @@
 
 <DetailHero {product} {cleanModelName} {specs} categoryId={kategori} />
 <DetailStory {product} {cleanModelName} />
+<DetailGallery {product} {cleanModelName} />
 <DetailSpec {product} {detailedSpecs} />
 <DetailCta {product} {cleanModelName} />

@@ -1,20 +1,31 @@
 import type { StrapiProduct, FormattedProduct } from '$lib/types/product';
 
-let envUrl = (typeof import.meta !== 'undefined' && import.meta.env?.PUBLIC_STRAPI_URL) || 'http://127.0.0.1:1338';
-if (envUrl.includes('localhost:1338')) {
-  envUrl = envUrl.replace('localhost:1338', '127.0.0.1:1338');
+let defaultStrapiUrl = (typeof import.meta !== 'undefined' && import.meta.env?.PUBLIC_STRAPI_URL) || 'http://127.0.0.1:1338';
+if (defaultStrapiUrl.includes('localhost:1338')) {
+  defaultStrapiUrl = defaultStrapiUrl.replace('localhost:1338', '127.0.0.1:1338');
 }
-export const STRAPI_URL = envUrl;
+
+// In the browser, use relative path so requests work seamlessly from any host (e.g. mobile IP 192.168.x.x)
+export const STRAPI_URL = typeof window !== 'undefined' ? '' : defaultStrapiUrl;
 
 export function getStrapiMediaUrl(path: string | null | undefined): string {
   if (!path) {
     return '/images/hero/slide-outdoor.webp';
   }
+  // If it's already an absolute URL pointing to 127.0.0.1:1338 or localhost:1338, convert to relative /uploads/...
+  if (path.includes(':1338/uploads/')) {
+    const idx = path.indexOf('/uploads/');
+    return path.substring(idx);
+  }
   if (path.startsWith('http://') || path.startsWith('https://')) {
     return path;
   }
   const cleanPath = path.startsWith('/') ? path : `/${path}`;
-  return `${STRAPI_URL}${cleanPath}`;
+  // Strapi upload path is served locally via proxy on both desktop and mobile
+  if (cleanPath.startsWith('/uploads/')) {
+    return cleanPath;
+  }
+  return `${defaultStrapiUrl}${cleanPath}`;
 }
 
 export function formatPrice(
@@ -37,10 +48,17 @@ export function transformProduct(p: StrapiProduct): FormattedProduct {
   const categorySlug = p.category?.slug || 'mesin';
 
   const galleryUrls: string[] = [];
+  const galleryItems: { url: string; title?: string; caption?: string }[] = [];
   if (p.gallery_images && Array.isArray(p.gallery_images)) {
     for (const g of p.gallery_images) {
       if (g?.url) {
-        galleryUrls.push(getStrapiMediaUrl(g.url));
+        const fullUrl = getStrapiMediaUrl(g.url);
+        galleryUrls.push(fullUrl);
+        galleryItems.push({
+          url: fullUrl,
+          title: g.caption || g.alternativeText || p.name,
+          caption: g.alternativeText || g.caption || `Visualisasi unit presisi ${p.name}`
+        });
       }
     }
   }
@@ -81,6 +99,7 @@ export function transformProduct(p: StrapiProduct): FormattedProduct {
     mainImageMobileUrl,
     cardImageUrl,
     galleryUrls,
+    galleryItems,
     isFeatured: Boolean(p.is_featured),
     whatsappMessage: p.whatsapp_message || `Halo ORIA, saya ingin konsultasi mengenai unit: ${p.name}`,
     specificationsHtml: p.specifications || '',
