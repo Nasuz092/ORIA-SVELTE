@@ -37,7 +37,7 @@
     },
     publisher: {
       '@type': 'Organization',
-      name: 'ORIA - PT. Anugrah Supply Mandiri',
+      name: 'ORIA Indonesia',
       logo: {
         '@type': 'ImageObject',
         url: `${SITE_URL}/images/oria-logo.png`

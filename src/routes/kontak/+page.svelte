@@ -148,7 +148,7 @@
 <SEO
   title="Hubungi Kami & Flagship Showroom Surabaya | ORIA Indonesia"
   description="Hubungi tim penjualan dan engineering ORIA. Kunjungi Flagship Showroom Surabaya untuk live demo operasional dan uji cetak mesin UV, DTF, Laser, dan Sublimasi."
-  keywords="kontak oria, showroom mesin printing surabaya, demo mesin digital printing, alamat oria surabaya, call center oria, anugrah supply mandiri"
+  keywords="kontak oria, showroom mesin printing surabaya, demo mesin digital printing, alamat oria surabaya, call center oria, whatsapp oria indonesia"
   canonical="/kontak"
   breadcrumbs={[
     { name: 'Beranda', url: '/' },

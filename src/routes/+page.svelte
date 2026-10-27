@@ -27,9 +27,9 @@
 </script>
 
 <SEO
-  title="Distributor Mesin Digital Printing No. 1 di Indonesia | ORIA Industrial Precision"
-  description="Distributor mesin digital printing bergaransi resmi di Indonesia sejak 2001. Tersedia printer outdoor, ecosolvent, UV flatbed, DTF apparel, laser cutting, CNC router, dan sublimasi tekstil."
-  keywords="mesin digital printing, jual mesin digital printing, distributor mesin digital printing, UV flatbed, DTF apparel, printer sublim, laser cutting, CNC router, ecosolvent, oria indonesia, mesin printing surabaya"
+  title="ORIA Indonesia — Mesin Digital Printing Industrial Presisi & Solusi Cetak Modern"
+  description="Pusat teknologi dan rekayasa mesin digital printing industrial di Indonesia. Solusi terdepan printer UV flatbed, DTF apparel, laser cutting, CNC router, dan sublimasi tekstil bergaransi resmi."
+  keywords="mesin digital printing, jual mesin digital printing, mesin digital printing oria, UV flatbed, DTF apparel, printer sublim, laser cutting, CNC router, ecosolvent, oria indonesia, mesin printing surabaya"
   canonical="/"
   customSchemas={[featuredItemListSchema]}
 />

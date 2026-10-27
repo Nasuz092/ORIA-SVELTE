@@ -30,13 +30,13 @@
     image: product.imageUrl?.startsWith('http') ? product.imageUrl : `https://oria.co.id${product.imageUrl}`,
     sku: product.sku || `ORIA-${product.id}`,
     mpn: product.sku || `ORIA-${product.id}`,
-    description: product.shortDescription || `Spesifikasi lengkap, harga resmi distributor, dan fitur ${product.name} merk ORIA.`,
+    description: product.shortDescription || `Spesifikasi lengkap, harga resmi, dan fitur ${product.name} merk ORIA.`,
     brand: {
       '@type': 'Brand',
       name: 'ORIA'
     },
     additionalProperty: [
-      { '@type': 'PropertyValue', name: 'Distributor Resmi', value: 'ORIA Indonesia — CV. Anugrah Supply Mandiri' },
+      { '@type': 'PropertyValue', name: 'Brand Resmi', value: 'ORIA Indonesia' },
       { '@type': 'PropertyValue', name: 'Kategori', value: product.categoryName },
       { '@type': 'PropertyValue', name: 'Garansi', value: '1 Tahun Garansi Resmi Pabrikan' },
       { '@type': 'PropertyValue', name: 'Layanan Purna Jual', value: 'Free Training, On-Site Teknisi Lokal, Sparepart Lengkap' },
@@ -80,7 +80,7 @@
 
 <SEO
   title="Jual {product.name} Resmi ORIA | Harga &amp; Spesifikasi Lengkap"
-  description={product.shortDescription || `Spesifikasi lengkap, harga resmi, dan fitur canggih ${product.name} merk ORIA bergaransi resmi distributor di Indonesia.`}
+  description={product.shortDescription || `Spesifikasi lengkap, harga resmi, dan fitur canggih ${product.name} merk ORIA bergaransi resmi di Indonesia.`}
   keywords="jual {product.name.toLowerCase()}, harga {product.name.toLowerCase()}, spesifikasi {product.name.toLowerCase()}, mesin {product.categoryName.toLowerCase()}, oria indonesia"
   canonical="/produk/{kategori}/{product.slug}"
   image={product.imageUrl}

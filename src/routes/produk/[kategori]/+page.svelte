@@ -25,7 +25,7 @@
 <SEO
   title="Mesin {category.name} ORIA | Spesifikasi, Harga & Garansi Resmi"
   description={category.description}
-  keywords="mesin {category.name.toLowerCase()}, jual mesin {category.heroLine2.toLowerCase()}, spesifikasi mesin {category.name.toLowerCase()} oria, distributor mesin percetakan"
+  keywords="mesin {category.name.toLowerCase()}, jual mesin {category.heroLine2.toLowerCase()}, spesifikasi mesin {category.name.toLowerCase()} oria, mesin percetakan industri oria"
   canonical="/produk/{category.id}"
   image={category.heroImage}
   breadcrumbs={[

@@ -2,11 +2,11 @@ export const SITE_URL = 'https://oria.co.id';
 
 export const DEFAULT_SEO = {
   siteName: 'oria.co.id — ORIA Industrial Printing',
-  title: 'Distributor Mesin Digital Printing No. 1 di Indonesia | ORIA Industrial Precision',
+  title: 'ORIA Indonesia — Mesin Digital Printing Industrial Presisi & Solusi Cetak Modern',
   description:
-    'Distributor resmi mesin digital printing industrial di Indonesia sejak 2001. Tersedia printer outdoor, UV flatbed, DTF apparel, laser cutting, CNC router, dan sublimasi tekstil bergaransi resmi.',
+    'Pusat teknologi dan rekayasa mesin digital printing industrial di Indonesia. Solusi terdepan printer UV flatbed, DTF apparel, laser cutting, CNC router, dan sublimasi tekstil bergaransi resmi.',
   keywords:
-    'mesin digital printing, jual mesin digital printing, distributor mesin digital printing, UV flatbed, DTF apparel, printer sublimasi, fiber laser cutting, CNC router, ecosolvent, oria indonesia, mesin percetakan surabaya',
+    'mesin digital printing, jual mesin digital printing, mesin digital printing oria, UV flatbed, DTF apparel, printer sublimasi, fiber laser cutting, CNC router, ecosolvent, oria indonesia, mesin percetakan surabaya',
   defaultImage: 'https://oria.co.id/images/contact/hero-desktop.png',
   locale: 'id_ID',
   robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
@@ -16,9 +16,9 @@ export const COMPANY_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': ['LocalBusiness', 'Corporation', 'ElectronicsStore'],
   '@id': `${SITE_URL}/#Organization`,
-  name: 'ORIA Industrial Printing — CV. Anugrah Supply Mandiri',
+  name: 'ORIA Industrial Printing',
   alternateName: 'ORIA Indonesia',
-  legalName: 'CV. Anugrah Supply Mandiri',
+  legalName: 'ORIA Indonesia',
   url: SITE_URL,
   email: 'sales@oria.co.id',
   telephone: '+6281252086455',
@@ -73,7 +73,6 @@ export const COMPANY_SCHEMA = {
     longitude: 112.766708
   },
   sameAs: [
-    'https://www.youtube.com/@anugrahsupplymandiri',
     'https://www.instagram.com/oria.co.id/',
     'https://maps.google.com/?q=Ruko+Royal+Town+Gunung+Anyar+Surabaya'
   ]

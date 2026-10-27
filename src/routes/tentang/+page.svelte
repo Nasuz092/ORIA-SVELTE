@@ -24,7 +24,7 @@
 <SEO
   title="Tentang ORIA | Dedikasi Rekayasa Presisi & Standar Mesin Industri Indonesia"
   description="Pelajari visi, filosofi rekayasa presisi, dan kapasitas layanan mesin printing industrial serta manufaktur ORIA di Indonesia sejak 2001."
-  keywords="tentang oria, profil oria indonesia, distributor mesin percetakan, rekayasa mesin printing, kapasitas layanan oria, anugrah supply mandiri"
+  keywords="tentang oria, profil oria indonesia, rekayasa mesin printing, kapasitas layanan oria, inovasi mesin cetak industri"
   canonical="/tentang"
   breadcrumbs={[
     { name: 'Beranda', url: '/' },
