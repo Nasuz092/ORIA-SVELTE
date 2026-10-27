@@ -1,4 +1,6 @@
 <script lang="ts">
+  let { id = 'kapasitas-layanan' }: { id?: string } = $props();
+
   let sectionEl: HTMLElement | null = $state(null);
   let hasAnimated = $state(false);
 
@@ -50,7 +52,7 @@
 <!-- SECTION: Our Capacity (3 Statistics: 500+, 100%, 24/7 - Borderless)    -->
 <!-- ======================================================================= -->
 <section
-  id="kapasitas-layanan"
+  {id}
   bind:this={sectionEl}
   class="w-full bg-neutral-950 text-white py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 border-b border-white/10 select-none scroll-mt-14 sm:scroll-mt-16"
 >
