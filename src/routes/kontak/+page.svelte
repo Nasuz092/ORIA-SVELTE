@@ -243,74 +243,33 @@
   </section>
 
   <!-- ======================================================================= -->
-  <!-- 3. ORIA CENTRES: FLAGSHIP SHOWROOM (Surabaya Headquarters)               -->
+  <!-- 3. ORIA CENTRES: FLAGSHIP SHOWROOM (3-Value Editorial Layout - Unboxed)  -->
   <!-- ======================================================================= -->
-  <section class="w-full py-16 sm:py-24 lg:py-28 px-6 sm:px-10 lg:px-16 bg-[#050508] text-white">
-    <div class="max-w-7xl mx-auto space-y-12">
-      <!-- Section Heading -->
-      <div class="space-y-3 max-w-3xl">
-        <div class="font-heading font-black text-xs uppercase tracking-[0.25em] text-[#FFE500]">
-          ORIA CENTRES
-        </div>
-        <h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white uppercase tracking-tight">
-          FLAGSHIP SHOWROOM LOCATION
-        </h2>
-        <p class="font-sans text-xs sm:text-sm md:text-base text-neutral-400 leading-relaxed">
-          Saksikan langsung demo operasional, uji cetak bahan Anda sendiri, dan diskusikan kalkulasi ROI bersama insinyur aplikasi ORIA.
-        </p>
-      </div>
-
-      <!-- Centre Card: Surabaya (Ruko Royal Town Blok RB8, Gunung Anyar) - Borderless -->
-      <div class="bg-[#0c0c12] p-8 sm:p-10 lg:p-12 space-y-8 max-w-5xl">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-white/5">
-          <div>
-            <span class="inline-block bg-[#FFE500] text-black font-heading font-black text-[10px] tracking-widest uppercase px-2.5 py-1 mb-2">
-              HEADQUARTERS &amp; SHOWROOM
-            </span>
-            <h3 class="font-heading font-black text-xl sm:text-2xl lg:text-3xl text-white uppercase tracking-wide">
-              Showroom Surabaya
-            </h3>
+  <section class="w-full py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 bg-[#050508] text-white">
+    <div class="max-w-7xl mx-auto space-y-16">
+      <!-- Section Heading & Actions (Unboxed, Lotus Style) -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-4 border-b border-white/10">
+        <div class="space-y-3 max-w-2xl">
+          <div class="font-heading font-black text-xs uppercase tracking-[0.25em] text-[#FFE500]">
+            ORIA CENTRES
           </div>
-          <div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-[#FFE500] shrink-0">
-            <svg class="w-6 h-6 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-          </div>
+          <h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white uppercase tracking-tight">
+            FLAGSHIP SHOWROOM &amp; EXPERIENCE
+          </h2>
+          <p class="font-sans text-xs sm:text-sm md:text-base text-neutral-400 leading-relaxed">
+            Saksikan langsung demo operasional, uji cetak bahan Anda sendiri, dan diskusikan kalkulasi ROI bersama insinyur aplikasi ORIA.
+          </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 font-sans text-xs sm:text-sm text-neutral-300 leading-relaxed">
-          <div class="space-y-6">
-            <div>
-              <strong class="text-white block font-heading uppercase tracking-wider text-xs mb-1.5 text-neutral-400">Alamat Showroom:</strong>
-              <p class="text-white text-sm sm:text-base font-medium">Ruko Royal Town Blok RB8, Gunung Anyar, Surabaya, Jawa Timur 60294</p>
-            </div>
-            <div>
-              <strong class="text-white block font-heading uppercase tracking-wider text-xs mb-1.5 text-neutral-400">Kontak &amp; WhatsApp:</strong>
-              <p class="text-[#FFE500] text-base sm:text-lg font-bold tracking-wide">+62 812-5208-6455</p>
-            </div>
-          </div>
-          <div class="space-y-6">
-            <div>
-              <strong class="text-white block font-heading uppercase tracking-wider text-xs mb-1.5 text-neutral-400">Fasilitas Demo Unit:</strong>
-              <p class="text-neutral-300">UV Flatbed 2513 &amp; 3220, DTF Apparel 60cm, Fiber &amp; CO2 Laser, Heavy CNC 1325, Sublimasi Tekstil</p>
-            </div>
-            <div>
-              <strong class="text-white block font-heading uppercase tracking-wider text-xs mb-1.5 text-neutral-400">Jam Operasional:</strong>
-              <p class="text-neutral-300">Senin – Jumat: 08.30 – 17.00 WIB<br />Sabtu: 08.30 – 15.00 WIB (Minggu: By Appointment)</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Actions with Chevron (Strict rule: Chevron only) -->
-        <div class="pt-4 flex flex-wrap items-center gap-4 border-t border-white/5">
+        <!-- Action CTAs (Strict rule: Chevron only) -->
+        <div class="flex flex-wrap items-center gap-3 shrink-0">
           <button
             type="button"
             onclick={handleScheduleVisit}
-            class="inline-flex items-center gap-3 px-6 py-4 bg-[#FFE500] text-black font-heading font-bold text-xs uppercase tracking-wider hover:bg-[#fff04d] transition-colors cursor-pointer"
+            class="inline-flex items-center gap-2.5 px-6 py-3.5 bg-[#FFE500] text-black font-heading font-bold text-xs uppercase tracking-wider hover:bg-[#fff04d] transition-colors cursor-pointer"
           >
             <span>Jadwalkan Kunjungan</span>
-            <svg class="w-4 h-4 stroke-black stroke-[3]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+            <svg class="w-3.5 h-3.5 stroke-black stroke-[3]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -318,13 +277,124 @@
             href="https://maps.google.com/?q=Ruko+Royal+Town+Gunung+Anyar+Surabaya"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2.5 px-6 py-4 bg-white/5 text-neutral-200 hover:text-white hover:bg-white/10 font-heading font-bold text-xs uppercase tracking-wider transition-colors"
+            class="inline-flex items-center gap-2 px-6 py-3.5 bg-white/5 text-neutral-200 hover:text-white hover:bg-white/10 font-heading font-bold text-xs uppercase tracking-wider transition-colors"
           >
             <span>Google Maps</span>
-            <svg class="w-4 h-4 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+            <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </a>
+        </div>
+      </div>
+
+      <!-- 3 Value Columns (Exact layout like OurCore in Tentang - Unboxed & Editorial) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+        <!-- Value 1: Location -->
+        <div class="flex flex-col group space-y-4">
+          <div class="w-full aspect-[4/3] overflow-hidden bg-neutral-900 relative">
+            <img
+              src="/images/our-drive-showroom.png"
+              alt="Fasilitas Showroom Surabaya ORIA"
+              class="w-full h-full object-cover object-center scale-100 transition-transform duration-700 ease-out group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+          <div class="space-y-2">
+            <div class="font-heading font-bold text-xs uppercase tracking-[0.2em] text-[#FFE500]">
+              HEADQUARTERS &amp; SHOWROOM
+            </div>
+            <h3 class="font-heading font-bold text-xl sm:text-2xl text-white tracking-wide">
+              Showroom Surabaya
+            </h3>
+            <p class="font-sans text-xs sm:text-sm text-neutral-300 leading-relaxed font-normal">
+              Ruko Royal Town Blok RB8, Gunung Anyar, Surabaya, Jawa Timur 60294. Lokasi strategis dengan display unit mesin industri lengkap.
+            </p>
+          </div>
+          <div class="pt-1">
+            <a
+              href="https://maps.google.com/?q=Ruko+Royal+Town+Gunung+Anyar+Surabaya"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-widest text-[#FFE500] hover:underline"
+            >
+              <span>Petunjuk Rute Maps</span>
+              <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Value 2: Live Demo Facilities -->
+        <div class="flex flex-col group space-y-4">
+          <div class="w-full aspect-[4/3] overflow-hidden bg-neutral-900 relative">
+            <img
+              src="/images/contact/hero-desktop.png"
+              alt="Live Machine Demo & Testing ORIA"
+              class="w-full h-full object-cover object-center scale-100 transition-transform duration-700 ease-out group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+          <div class="space-y-2">
+            <div class="font-heading font-bold text-xs uppercase tracking-[0.2em] text-[#FFE500]">
+              LIVE DEMO &amp; TESTING
+            </div>
+            <h3 class="font-heading font-bold text-xl sm:text-2xl text-white tracking-wide">
+              Uji Cetak Material Nyata
+            </h3>
+            <p class="font-sans text-xs sm:text-sm text-neutral-300 leading-relaxed font-normal">
+              Unit aktif siap uji: UV Flatbed 2513 &amp; 3220, DTF Apparel 60cm, Fiber Laser, Heavy CNC 1325, dan Sublimasi Tekstil.
+            </p>
+          </div>
+          <div class="pt-1">
+            <button
+              type="button"
+              onclick={handleScheduleVisit}
+              class="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-widest text-[#FFE500] hover:underline cursor-pointer"
+            >
+              <span>Jadwalkan Live Demo</span>
+              <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Value 3: Technical Support & Hours -->
+        <div class="flex flex-col group space-y-4">
+          <div class="w-full aspect-[4/3] overflow-hidden bg-neutral-900 relative">
+            <img
+              src="/images/our-legacy.jpg"
+              alt="Konsultasi & Jam Operasional Showroom ORIA"
+              class="w-full h-full object-cover object-center scale-100 transition-transform duration-700 ease-out group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+          <div class="space-y-2">
+            <div class="font-heading font-bold text-xs uppercase tracking-[0.2em] text-[#FFE500]">
+              KONSULTASI &amp; OPERASIONAL
+            </div>
+            <h3 class="font-heading font-bold text-xl sm:text-2xl text-[#FFE500] tracking-wide">
+              +62 812-5208-6455
+            </h3>
+            <p class="font-sans text-xs sm:text-sm text-neutral-300 leading-relaxed font-normal">
+              Senin – Jumat: 08.30 – 17.00 WIB<br />
+              Sabtu: 08.30 – 15.00 WIB (Minggu: By Appointment). Konsultasi teknis dan kalkulasi ROI workshop Anda.
+            </p>
+          </div>
+          <div class="pt-1">
+            <a
+              href="https://wa.me/6281252086455"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-widest text-[#FFE500] hover:underline"
+            >
+              <span>Hubungi Hotline Langsung</span>
+              <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>
