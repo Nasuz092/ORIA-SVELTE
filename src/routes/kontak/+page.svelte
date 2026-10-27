@@ -291,13 +291,26 @@
           </p>
         </div>
 
-        <!-- Column 3: Hotline & Hours -->
+        <!-- Column 3: WhatsApp Consultation & Hours -->
         <div class="space-y-3">
-          <div class="font-heading font-light text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-white tracking-tight tabular-nums">
-            +62 812-5208-6455<span class="text-[#FFE500] font-normal">.</span>
-          </div>
+          <a
+            href="https://wa.me/6281252086455?text={encodeURIComponent('Halo tim ORIA, saya ingin berkonsultasi mengenai spesifikasi mesin industri dan penawaran resmi.')}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex items-center justify-between w-full font-heading font-light text-4xl sm:text-5xl lg:text-6xl text-white hover:text-[#FFE500] transition-colors tracking-tight uppercase"
+          >
+            <span>WHATSAPP<span class="text-[#FFE500] font-normal">.</span></span>
+            <svg
+              class="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 stroke-current stroke-[2] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 shrink-0 text-white group-hover:text-[#FFE500]"
+              fill="none"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg>
+          </a>
           <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
-            KONSULTASI &amp; OPERASIONAL
+            +62 812-5208-6455 &middot; KONSULTASI RESMI
           </div>
           <p class="text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed">
             Senin – Jumat: 08.30 – 17.00 WIB<br />
