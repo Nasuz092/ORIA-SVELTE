@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { PageData } from './$types';
-  import KapasitasLayanan from '$lib/sections/tentang/KapasitasLayanan.svelte';
 
   let { data }: { data: PageData } = $props();
 
@@ -141,6 +140,13 @@
     );
     window.open(`https://wa.me/6281252086455?text=${text}`, '_blank');
   }
+
+  function handleScheduleVisit() {
+    const text = encodeURIComponent(
+      `Halo tim ORIA, saya ingin menjadwalkan kunjungan demo ke Showroom Surabaya (Ruko Royal Town Blok RB8, Gunung Anyar). Mohon informasi jadwal ketersediaan teknisi demo.`
+    );
+    window.open(`https://wa.me/6281252086455?text=${text}`, '_blank');
+  }
 </script>
 
 <svelte:window onclick={onWindowClick} />
@@ -237,9 +243,129 @@
   </section>
 
   <!-- ======================================================================= -->
-  <!-- 3. OUR CAPACITY (3 Stats: 500+, 100%, 24/7)                            -->
+  <!-- 3. ORIA CENTRES: FLAGSHIP SHOWROOM (OUR CAPACITY Layout - Typographic)   -->
   <!-- ======================================================================= -->
-  <KapasitasLayanan id="our-capacity" />
+  <section class="w-full py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 bg-[#050508] text-white border-b border-white/10 select-none">
+    <div class="max-w-7xl mx-auto space-y-16">
+      <!-- Section Heading (Exact OUR CAPACITY Lotus Style) -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+        <div class="space-y-3 max-w-2xl">
+          <h2 class="font-heading font-light text-3xl sm:text-4xl lg:text-5xl tracking-[0.2em] sm:tracking-[0.25em] uppercase text-white">
+            FLAGSHIP SHOWROOM &amp; EXPERIENCE
+          </h2>
+          <p class="font-sans text-sm sm:text-base text-neutral-400 max-w-xl leading-relaxed pt-1">
+            Saksikan langsung demo operasional, uji cetak bahan Anda sendiri, dan diskusikan kalkulasi ROI bersama insinyur aplikasi ORIA.
+          </p>
+        </div>
+
+        <!-- Action CTAs (Strict rule: Chevron only) -->
+        <div class="flex flex-wrap items-center gap-3 shrink-0">
+          <button
+            type="button"
+            onclick={handleScheduleVisit}
+            class="inline-flex items-center gap-2.5 px-6 py-3.5 bg-[#FFE500] text-black font-heading font-bold text-xs uppercase tracking-wider hover:bg-[#fff04d] transition-colors cursor-pointer"
+          >
+            <span>Jadwalkan Kunjungan</span>
+            <svg class="w-3.5 h-3.5 stroke-black stroke-[3]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          <a
+            href="https://maps.google.com/?q=Ruko+Royal+Town+Gunung+Anyar+Surabaya"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-6 py-3.5 bg-white/5 text-neutral-200 hover:text-white hover:bg-white/10 font-heading font-bold text-xs uppercase tracking-wider transition-colors"
+          >
+            <span>Google Maps</span>
+            <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- 3 Clean Borderless Columns (Exact OUR CAPACITY Layout) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 lg:gap-16">
+        <!-- Column 1: Surabaya Location -->
+        <div class="space-y-3">
+          <div class="font-heading font-light text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight uppercase">
+            SURABAYA<span class="text-[#FFE500] font-normal">.</span>
+          </div>
+          <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
+            HEADQUARTERS &amp; SHOWROOM
+          </div>
+          <p class="text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed">
+            Ruko Royal Town Blok RB8, Gunung Anyar, Surabaya, Jawa Timur 60294. Lokasi strategis dengan display unit mesin industri lengkap.
+          </p>
+          <div class="pt-2">
+            <a
+              href="https://maps.google.com/?q=Ruko+Royal+Town+Gunung+Anyar+Surabaya"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-widest text-[#FFE500] hover:underline"
+            >
+              <span>Petunjuk Rute Maps</span>
+              <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2: Live Demo & Testing -->
+        <div class="space-y-3">
+          <div class="font-heading font-light text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight uppercase">
+            LIVE DEMO<span class="text-[#FFE500] font-normal">.</span>
+          </div>
+          <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
+            LIVE DEMO &amp; TESTING
+          </div>
+          <p class="text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed">
+            Unit aktif siap uji: UV Flatbed 2513 &amp; 3220, DTF Apparel 60cm, Fiber Laser, Heavy CNC 1325, dan Sublimasi Tekstil.
+          </p>
+          <div class="pt-2">
+            <button
+              type="button"
+              onclick={handleScheduleVisit}
+              class="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-widest text-[#FFE500] hover:underline cursor-pointer"
+            >
+              <span>Jadwalkan Live Demo</span>
+              <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Column 3: Hotline & Hours -->
+        <div class="space-y-3">
+          <div class="font-heading font-light text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight tabular-nums">
+            <span class="text-white">+62 812</span><span class="text-[#FFE500] font-normal">-5208-6455</span>
+          </div>
+          <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
+            KONSULTASI &amp; OPERASIONAL
+          </div>
+          <p class="text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed">
+            Senin – Jumat: 08.30 – 17.00 WIB<br />
+            Sabtu: 08.30 – 15.00 WIB (Minggu: By Appointment). Konsultasi teknis dan kalkulasi ROI workshop Anda.
+          </p>
+          <div class="pt-2">
+            <a
+              href="https://wa.me/6281252086455"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-widest text-[#FFE500] hover:underline"
+            >
+              <span>Hubungi Hotline Langsung</span>
+              <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ======================================================================= -->
   <!-- 4. CONSULTATION FORM SECTION (Separate Section with Clean White BG)     -->
