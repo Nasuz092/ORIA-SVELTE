@@ -1,7 +1,8 @@
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vitest/config';
 import { playwright } from '@vitest/browser-playwright';
-import adapter from '@sveltejs/adapter-node';
+import adapterNode from '@sveltejs/adapter-node';
+import adapterVercel from '@sveltejs/adapter-vercel';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { loadEnv } from 'vite';
 
@@ -16,6 +17,8 @@ for (const [k, v] of Object.entries(env)) {
 	if (v) process.env[k] = v;
 }
 
+const isVercel = Boolean(process.env.VERCEL);
+
 export default defineConfig({
 	plugins: [
 		tailwindcss(),
@@ -24,7 +27,7 @@ export default defineConfig({
 				// Force runes mode for the project, except for libraries. Can be removed in svelte 6.
 				runes: ({ filename }) => filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
-			adapter: adapter()
+			adapter: isVercel ? adapterVercel() : adapterNode()
 		})
 	],
 	server: {
