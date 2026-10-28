@@ -20,7 +20,7 @@ export const COMPANY_SCHEMA = {
   alternateName: 'ORIA Indonesia',
   legalName: 'ORIA Indonesia',
   url: SITE_URL,
-  email: 'sales@oria.co.id',
+  email: 'info@oria.co.id',
   telephone: '+6281252086455',
   priceRange: 'Rp 20.000.000 - Rp 2.500.000.000',
   openingHours: ['Mo Tu We Th Fr 08:30-17:00', 'Sa 08:30-15:00'],

@@ -79,6 +79,10 @@
   let formattedContent = $derived.by(() => {
     if (!article?.contentHtml) return '';
     let html = article.contentHtml;
+    // Rewrite any inline strapi uploads to use /api/img proxy so Strapi URL remains hidden
+    html = html.replace(/(?:https?:\/\/[^\s"'<>]*)?\/uploads\/([^\s"'<>]+)/gi, (_m: string, path: string) => {
+      return `/api/img?url=${encodeURIComponent('/uploads/' + path)}`;
+    });
     // Wrap standalone tables in responsive table container
     html = html.replace(/<table([\s\S]*?)<\/table>/gi, (match: string) => {
       return `<div class="article-table-container">${match}</div>`;

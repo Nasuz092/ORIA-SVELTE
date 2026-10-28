@@ -4,14 +4,14 @@
   let selectedVersion = $state('v1.0');
   let isVersionOpen = $state(false);
 
-  const versions = ['v1.0 (Terbaru)', 'v0.9 (Arsip)'];
+  const versions = ['v1.0'];
 
   function toggleVersion() {
     isVersionOpen = !isVersionOpen;
   }
 
   function selectVersion(v: string) {
-    selectedVersion = v.replace(' (Terbaru)', '').replace(' (Arsip)', '');
+    selectedVersion = v;
     isVersionOpen = false;
   }
 </script>
@@ -228,7 +228,7 @@
             <p><strong>Entitas Penyedia:</strong> ORIA Industrial Printing</p>
             <p><strong>Showroom &amp; Technical Center:</strong> Ruko Royal Town Blok RB8, Gunung Anyar, Surabaya, Jawa Timur 60294</p>
             <p><strong>Hotline Sales &amp; Service:</strong> +62 812-5208-6455</p>
-            <p><strong>Email:</strong> sales@oria.co.id / legal@oria.co.id</p>
+            <p><strong>Email:</strong> <a href="mailto:info@oria.co.id" class="text-black font-semibold hover:underline">info@oria.co.id</a></p>
             <p><strong>Website:</strong> oria.co.id</p>
           </div>
         </section>

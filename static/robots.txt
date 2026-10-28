@@ -1,12 +1,5 @@
 # robots.txt for https://oria.co.id
 User-agent: *
 Allow: /
-Allow: /uploads/
-Allow: /images/
 
-# Disallow internal or staging paths
-Disallow: /admin
-Disallow: /staging
-
-# Sitemap index
 Sitemap: https://oria.co.id/sitemap.xml

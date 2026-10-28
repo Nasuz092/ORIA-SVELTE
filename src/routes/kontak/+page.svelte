@@ -238,10 +238,10 @@
           </svg>
         </a>
         <a
-          href="mailto:sales@oria.co.id"
+          href="mailto:info@oria.co.id"
           class="inline-flex items-center justify-center gap-3 px-6 py-4 bg-neutral-100 hover:bg-neutral-200 text-black border-0 font-heading font-bold text-xs uppercase tracking-[0.2em] transition-colors"
         >
-          <span>EMAIL SALES</span>
+          <span>EMAIL RESMI</span>
           <svg class="w-4 h-4 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
           </svg>

@@ -12,20 +12,33 @@ export function getStrapiMediaUrl(path: string | null | undefined): string {
   if (!path) {
     return '/images/hero/slide-outdoor.webp';
   }
-  // If it's already an absolute URL pointing to 127.0.0.1:1338 or localhost:1338, convert to relative /uploads/...
-  if (path.includes(':1338/uploads/')) {
-    const idx = path.indexOf('/uploads/');
-    return path.substring(idx);
-  }
-  if (path.startsWith('http://') || path.startsWith('https://')) {
+  // If already proxied
+  if (path.startsWith('/api/img')) {
     return path;
   }
-  const cleanPath = path.startsWith('/') ? path : `/${path}`;
-  // Strapi upload path is served locally via proxy on both desktop and mobile
-  if (cleanPath.startsWith('/uploads/')) {
+  // Static local assets
+  if (path.startsWith('/images/') || path.startsWith('/icons/') || path.startsWith('/fonts/')) {
+    return path;
+  }
+
+  let cleanPath = path;
+  // Strip Strapi domain if present to keep CMS URL hidden
+  if (defaultStrapiUrl) {
+    cleanPath = cleanPath.replace(new RegExp(`^${defaultStrapiUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`), '');
+  }
+  cleanPath = cleanPath.replace(/^https?:\/\/[^\/]+/, '');
+
+  // If external non-strapi URL
+  if (cleanPath.startsWith('http://') || cleanPath.startsWith('https://')) {
     return cleanPath;
   }
-  return `${defaultStrapiUrl}${cleanPath}`;
+
+  if (!cleanPath.startsWith('/')) {
+    cleanPath = `/${cleanPath}`;
+  }
+
+  // Proxy via /api/img exactly like mesinprinting.id to hide Strapi URL
+  return `/api/img?url=${encodeURIComponent(cleanPath)}`;
 }
 
 export function formatPrice(

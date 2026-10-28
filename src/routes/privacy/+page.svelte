@@ -1,17 +1,17 @@
 <script lang="ts">
   import SEO from '$lib/components/seo/SEO.svelte';
 
-  let selectedVersion = $state('v3.0');
+  let selectedVersion = $state('v1.0');
   let isVersionOpen = $state(false);
 
-  const versions = ['v3.0 (Terbaru)', 'v2.1 (Arsip)', 'v1.0 (Arsip)'];
+  const versions = ['v1.0'];
 
   function toggleVersion() {
     isVersionOpen = !isVersionOpen;
   }
 
   function selectVersion(v: string) {
-    selectedVersion = v.replace(' (Terbaru)', '').replace(' (Arsip)', '');
+    selectedVersion = v;
     isVersionOpen = false;
   }
 </script>
@@ -223,7 +223,7 @@
             <p><strong>Entitas:</strong> ORIA Industrial Printing</p>
             <p><strong>Alamat Showroom &amp; Operasional:</strong> Ruko Royal Town Blok RB8, Gunung Anyar, Surabaya, Jawa Timur 60294</p>
             <p><strong>WhatsApp / Hotline:</strong> +62 812-5208-6455</p>
-            <p><strong>Email Legal:</strong> legal@oria.co.id / info@oria.co.id</p>
+            <p><strong>Email:</strong> <a href="mailto:info@oria.co.id" class="text-black font-semibold hover:underline">info@oria.co.id</a></p>
             <p><strong>Website Resmi:</strong> oria.co.id</p>
           </div>
         </section>
