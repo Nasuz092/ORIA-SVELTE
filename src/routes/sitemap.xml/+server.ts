@@ -20,7 +20,10 @@ export const GET: RequestHandler = async ({ fetch }) => {
     { path: '/produk', priority: '0.9', changefreq: 'weekly' },
     { path: '/tentang', priority: '0.8', changefreq: 'monthly' },
     { path: '/artikel', priority: '0.85', changefreq: 'daily' },
-    { path: '/kontak', priority: '0.8', changefreq: 'monthly' }
+    { path: '/kontak', priority: '0.8', changefreq: 'monthly' },
+    { path: '/terms-conditions', priority: '0.6', changefreq: 'monthly' },
+    { path: '/privacy', priority: '0.6', changefreq: 'monthly' },
+    { path: '/cookie-statement', priority: '0.6', changefreq: 'monthly' }
   ];
 
   const categoryRoutes: SitemapItem[] = CATEGORIES.map((c) => ({

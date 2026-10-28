@@ -321,13 +321,13 @@
     <div class="border-t border-[#FFE500] py-5 sm:py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-sans text-neutral-400">
       <!-- Legal Links -->
       <div class="flex flex-wrap items-center justify-center sm:justify-start gap-6 sm:gap-8">
-        <a href="/tentang" class="hover:text-white transition-colors">
+        <a href="/terms-conditions" class="hover:text-white transition-colors">
           Terms and Conditions
         </a>
-        <a href="/tentang" class="hover:text-white transition-colors">
+        <a href="/privacy" class="hover:text-white transition-colors">
           Privacy Notice
         </a>
-        <a href="/tentang" class="hover:text-white transition-colors">
+        <a href="/cookie-statement" class="hover:text-white transition-colors">
           Cookie Statement
         </a>
       </div>
