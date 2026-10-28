@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://oria.co.id';
+export const SITE_URL = (process.env.SITE_URL || 'https://oria.co.id').replace(/\/$/, '');
 
 export const DEFAULT_SEO = {
   siteName: 'oria.co.id — ORIA Industrial Printing',

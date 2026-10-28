@@ -1,6 +1,6 @@
 import type { StrapiProduct, FormattedProduct } from '$lib/types/product';
 
-let defaultStrapiUrl = (typeof import.meta !== 'undefined' && import.meta.env?.PUBLIC_STRAPI_URL) || 'http://127.0.0.1:1338';
+let defaultStrapiUrl = process.env.STRAPI_URL || 'http://127.0.0.1:1338';
 if (defaultStrapiUrl.includes('localhost:1338')) {
   defaultStrapiUrl = defaultStrapiUrl.replace('localhost:1338', '127.0.0.1:1338');
 }

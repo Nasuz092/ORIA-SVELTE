@@ -1,11 +1,6 @@
 import type { RequestHandler } from './$types';
 
-const STRAPI_URL = (
-  process.env.STRAPI_URL ||
-  process.env.PUBLIC_STRAPI_URL ||
-  (typeof import.meta !== 'undefined' && import.meta.env?.PUBLIC_STRAPI_URL) ||
-  'http://127.0.0.1:1338'
-)
+const STRAPI_URL = (process.env.STRAPI_URL || 'http://127.0.0.1:1338')
   .replace(/\/$/, '')
   .replace('localhost:1338', '127.0.0.1:1338');
 

@@ -3,6 +3,18 @@ import { defineConfig } from 'vitest/config';
 import { playwright } from '@vitest/browser-playwright';
 import adapter from '@sveltejs/adapter-node';
 import { sveltekit } from '@sveltejs/kit/vite';
+import { loadEnv } from 'vite';
+
+const rawEnv = loadEnv(process.env.NODE_ENV || 'development', process.cwd(), '');
+const env: Record<string, string> = {};
+for (const [k, v] of Object.entries(rawEnv)) {
+	env[k.replace(/^\uFEFF/, '').trim()] = v;
+}
+
+// Populate Node.js process.env for server-side execution (SSR and API handlers)
+for (const [k, v] of Object.entries(env)) {
+	if (v) process.env[k] = v;
+}
 
 export default defineConfig({
 	plugins: [
@@ -20,11 +32,11 @@ export default defineConfig({
 		strictPort: true,
 		proxy: {
 			'/uploads': {
-				target: 'http://127.0.0.1:1338',
+				target: env.STRAPI_URL || 'http://127.0.0.1:1338',
 				changeOrigin: true
 			},
 			'/api': {
-				target: 'http://127.0.0.1:1338',
+				target: env.STRAPI_URL || 'http://127.0.0.1:1338',
 				changeOrigin: true,
 				bypass: (req) => {
 					if (req.url?.startsWith('/api/img')) {
@@ -33,6 +45,11 @@ export default defineConfig({
 				}
 			}
 		}
+	},
+	define: {
+		'process.env.STRAPI_URL': JSON.stringify(env.STRAPI_URL || 'http://127.0.0.1:1338'),
+		'process.env.SITE_URL': JSON.stringify(env.SITE_URL || 'https://oria.co.id'),
+		'process.env.WA_NUMBER': JSON.stringify(env.WA_NUMBER || '6281252086455')
 	},
 	test: {
 		expect: { requireAssertions: true },
