@@ -25,7 +25,12 @@ export default defineConfig({
 			},
 			'/api': {
 				target: 'http://127.0.0.1:1338',
-				changeOrigin: true
+				changeOrigin: true,
+				bypass: (req) => {
+					if (req.url?.startsWith('/api/img')) {
+						return req.url;
+					}
+				}
 			}
 		}
 	},
