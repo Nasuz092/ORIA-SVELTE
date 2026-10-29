@@ -145,10 +145,10 @@
   <!-- ======================================================================= -->
   <!-- 1. HEADER (Breadcrumb, Pill Badge, Date, Huge Headline, Wide Image)     -->
   <!-- ======================================================================= -->
-  <header class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 sm:pt-40 lg:pt-44">
+  <header class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 lg:pt-32">
     <!-- Integrated Breadcrumbs Nav -->
     <nav
-      class="flex items-center gap-2.5 text-[11px] lg:text-xs font-sans tracking-[0.2em] text-slate-400 mb-4 sm:mb-6 flex-wrap"
+      class="flex items-center gap-2 text-[11px] lg:text-xs font-sans tracking-[0.2em] text-slate-400 mb-4 sm:mb-6 flex-wrap"
       aria-label="Breadcrumb"
     >
       <a
@@ -160,7 +160,9 @@
           <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
         </svg>
       </a>
-      <span class="text-slate-300 text-xs">/</span>
+      <svg class="w-3 h-3 text-slate-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
       <a
         href="/artikel"
         class="text-slate-500 hover:text-black transition-colors uppercase font-medium"
@@ -168,12 +170,19 @@
         EDITORIAL &amp; WAWASAN
       </a>
       {#if article.category}
-        <span class="text-slate-300 text-xs">/</span>
-        <span class="text-slate-500 uppercase font-medium">
+        <svg class="w-3 h-3 text-slate-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+        <a
+          href="/artikel/{catSlug}"
+          class="text-slate-500 hover:text-black transition-colors uppercase font-medium"
+        >
           {article.category}
-        </span>
+        </a>
       {/if}
-      <span class="text-slate-300 text-xs">/</span>
+      <svg class="w-3 h-3 text-slate-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
       <span
         class="text-slate-900 uppercase font-bold tracking-wider truncate max-w-[200px] sm:max-w-xs md:max-w-md lg:max-w-lg"
       >
@@ -220,7 +229,7 @@
   <!-- 2. TLDR SECTION (Jakarta/Surabaya Editorial Lead)                       -->
   <!-- ======================================================================= -->
   {#if article.excerpt}
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-8 border-b border-slate-200 font-sans">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-8 font-sans">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 items-baseline">
         <div class="lg:col-span-3 text-sm font-bold uppercase tracking-wider text-black">
           SURABAYA / JAKARTA, ID
@@ -331,7 +340,7 @@
   <!-- ======================================================================= -->
   <!-- 4. INLINE TOPIC-BASED CTA BANNER                                        -->
   <!-- ======================================================================= -->
-  <section class="w-full bg-slate-900 border-t border-b border-slate-200 overflow-hidden relative select-none font-sans">
+  <section class="w-full bg-slate-900 overflow-hidden relative select-none font-sans">
     <div class="relative w-full min-h-[380px] sm:min-h-[440px] flex items-center">
       <!-- Background Image -->
       <img
@@ -394,7 +403,7 @@
   <!-- 5. READ MORE RELATED ARTICLES GRID                                      -->
   <!-- ======================================================================= -->
   {#if relatedArticles && relatedArticles.length > 0}
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 border-t border-slate-200 font-sans">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 font-sans">
       <h2
         class="text-2xl sm:text-3xl lg:text-4xl font-heading font-bold uppercase text-black tracking-wider mb-8 sm:mb-12"
       >

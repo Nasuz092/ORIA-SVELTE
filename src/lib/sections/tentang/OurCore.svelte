@@ -63,7 +63,7 @@
 <section
   id="our-core"
   bind:this={containerEl}
-  class="w-full bg-white text-black py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 border-b border-neutral-200 select-none overflow-hidden scroll-mt-14 sm:scroll-mt-16"
+  class="w-full bg-white text-black py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 select-none overflow-hidden scroll-mt-14 sm:scroll-mt-16"
 >
   <div class="max-w-7xl mx-auto">
     <!-- Center-Aligned Editorial Narrative (Lotus "OUR CORE" Style) -->

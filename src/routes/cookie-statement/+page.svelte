@@ -91,7 +91,7 @@
         </section>
 
         <!-- 1. What are cookies -->
-        <section class="border-t border-neutral-200 pt-8 space-y-3">
+        <section class="pt-8 space-y-3">
           <h2 class="font-heading font-bold text-lg sm:text-xl text-black uppercase tracking-wider">
             1. APA ITU COOKIES?
           </h2>
@@ -104,7 +104,7 @@
         </section>
 
         <!-- 2. Categories of Cookies -->
-        <section class="border-t border-neutral-200 pt-8 space-y-4">
+        <section class="pt-8 space-y-4">
           <h2 class="font-heading font-bold text-lg sm:text-xl text-black uppercase tracking-wider">
             2. KATEGORI COOKIES YANG KAMI GUNAKAN
           </h2>
@@ -139,7 +139,7 @@
         </section>
 
         <!-- 3. Third Party Cookies -->
-        <section class="border-t border-neutral-200 pt-8 space-y-3">
+        <section class="pt-8 space-y-3">
           <h2 class="font-heading font-bold text-lg sm:text-xl text-black uppercase tracking-wider">
             3. COOKIES PIHAK KETIGA (THIRD-PARTY COOKIES)
           </h2>
@@ -152,7 +152,7 @@
         </section>
 
         <!-- 4. Managing Cookies -->
-        <section class="border-t border-neutral-200 pt-8 space-y-3">
+        <section class="pt-8 space-y-3">
           <h2 class="font-heading font-bold text-lg sm:text-xl text-black uppercase tracking-wider">
             4. PENGELOLAAN &amp; PENONAKTIFAN COOKIES
           </h2>
@@ -165,7 +165,7 @@
         </section>
 
         <!-- 5. Contact -->
-        <section class="border-t border-neutral-200 pt-8 space-y-3">
+        <section class="pt-8 space-y-3">
           <h2 class="font-heading font-bold text-lg sm:text-xl text-black uppercase tracking-wider">
             5. HUBUNGI KAMI
           </h2>

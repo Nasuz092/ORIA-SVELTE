@@ -176,7 +176,7 @@
   let activeCategory = $derived(categories[currentCategoryIndex]);
 </script>
 
-<section class="relative w-full bg-white text-black pt-10 pb-14 sm:pt-12 sm:pb-16 lg:pt-14 lg:pb-20 overflow-hidden select-none border-t border-neutral-100">
+<section class="relative w-full bg-white text-black pt-10 pb-14 sm:pt-12 sm:pb-16 lg:pt-14 lg:pb-20 overflow-hidden select-none">
   <!-- Top Center Header (Lotus Style: OUR MODELS) -->
   <div class="text-center mb-6 sm:mb-8">
     <h2 class="font-heading font-bold text-base sm:text-lg lg:text-xl uppercase tracking-[0.3em] text-neutral-800">

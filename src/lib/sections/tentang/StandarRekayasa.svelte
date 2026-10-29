@@ -1,5 +1,5 @@
 <!-- SECTION 3: #standar-rekayasa (Engineering Excellence Showcase) -->
-<section id="standar-rekayasa" class="relative w-full bg-black text-white py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 border-b border-white/10 select-none scroll-mt-14 sm:scroll-mt-16 overflow-hidden">
+<section id="standar-rekayasa" class="relative w-full bg-black text-white py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 select-none scroll-mt-14 sm:scroll-mt-16 overflow-hidden">
   <div class="max-w-7xl mx-auto space-y-12">
     <div class="max-w-2xl space-y-3">
       <h2 class="font-heading font-light text-3xl sm:text-4xl lg:text-5xl tracking-[0.2em] sm:tracking-[0.25em] uppercase text-white leading-tight">

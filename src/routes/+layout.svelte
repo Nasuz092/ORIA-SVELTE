@@ -3,6 +3,7 @@
   import { page } from '$app/state';
   import Navbar from '$lib/components/layout/Navbar.svelte';
   import Footer from '$lib/components/layout/Footer.svelte';
+  import PageTransition from '$lib/components/layout/PageTransition.svelte';
   import favicon from '$lib/assets/favicon.png';
   import { ScrollArea } from '$lib/components/ui/scroll-area';
 
@@ -31,6 +32,8 @@
   <link rel="icon" type="image/png" href={favicon} />
   <link rel="apple-touch-icon" href="/images/oria-logo-hd.png" />
 </svelte:head>
+
+<PageTransition />
 
 <ScrollArea
   class="h-[100svh] w-full"

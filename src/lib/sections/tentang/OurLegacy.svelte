@@ -1,7 +1,36 @@
+<script lang="ts">
+  let sectionEl = $state<HTMLElement | null>(null);
+  let parallaxY = $state(0);
+
+  $effect(() => {
+    function updateParallax() {
+      if (!sectionEl || typeof window === 'undefined') return;
+      const rect = sectionEl.getBoundingClientRect();
+      const vh = window.innerHeight || 800;
+      const centerOffset = (rect.top + rect.height / 2 - vh / 2) / vh;
+      const clamped = Math.max(-1, Math.min(1, centerOffset));
+      // Parallax halus (maks ±20px) pada kolom teks kanan
+      parallaxY = clamped * 20;
+    }
+
+    if (typeof window !== 'undefined') {
+      updateParallax();
+      window.addEventListener('layout-scroll', updateParallax, { passive: true });
+      window.addEventListener('scroll', updateParallax, { passive: true });
+      window.addEventListener('resize', updateParallax, { passive: true });
+      return () => {
+        window.removeEventListener('layout-scroll', updateParallax);
+        window.removeEventListener('scroll', updateParallax);
+        window.removeEventListener('resize', updateParallax);
+      };
+    }
+  });
+</script>
+
 <!-- ======================================================================= -->
 <!-- SECTION: Our Legacy (Lotus Style Editorial Heritage - Black Section)    -->
 <!-- ======================================================================= -->
-<section id="our-legacy" class="w-full bg-black text-white py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 border-b border-white/10 select-none scroll-mt-14 sm:scroll-mt-16">
+<section bind:this={sectionEl} id="our-legacy" class="w-full bg-black text-white py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 select-none scroll-mt-14 sm:scroll-mt-16 overflow-hidden">
   <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
     <!-- Left Column: Legacy Photograph -->
     <div class="lg:col-span-6 w-full overflow-hidden bg-neutral-900 border border-neutral-800 shadow-2xl">
@@ -13,8 +42,11 @@
       />
     </div>
 
-    <!-- Right Column: Editorial Narrative & Legacy Ethos -->
-    <div class="lg:col-span-6 space-y-6 sm:space-y-7 max-w-xl">
+    <!-- Right Column: Editorial Narrative & Legacy Ethos (Subtle Parallax) -->
+    <div
+      class="lg:col-span-6 space-y-6 sm:space-y-7 max-w-xl transition-transform duration-150 ease-out will-change-transform"
+      style="transform: translate3d(0, {parallaxY}px, 0);"
+    >
       <!-- Section Tag / Accent Title -->
       <h2 class="font-heading font-light text-2xl sm:text-3xl lg:text-4xl tracking-[0.25em] sm:tracking-[0.3em] uppercase text-[#FFE500]">
         OUR LEGACY

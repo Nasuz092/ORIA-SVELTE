@@ -148,9 +148,13 @@
     page.url.pathname.startsWith('/produk/') &&
     page.url.pathname.split('/').filter(Boolean).length >= 3
   );
+  let isArticleDetail = $derived(
+    page.data?.mode === 'article' || Boolean(page.data?.article)
+  );
   let isArtikelCategory = $derived(
     page.url.pathname.startsWith('/artikel/') &&
-    page.url.pathname.replace(/\/+$/, '') !== '/artikel'
+    page.url.pathname.replace(/\/+$/, '') !== '/artikel' &&
+    !isArticleDetail
   );
   let hasSubNav = $derived(isTentang || isProductDetail || isArtikelCategory);
 
@@ -267,17 +271,15 @@
   }}
 />
 
-  {#if hasSubNav}
+{#if hasSubNav}
   <!-- ================================================================= -->
   <!-- 2-TIER SUBNAV NAVBAR (Produk Detail, Tentang, Kategori Artikel)  -->
   <!-- ================================================================= -->
   <header
-    class="w-full fixed top-0 left-0 z-40 transition-colors duration-300 pointer-events-auto {isScrolled
-      ? 'bg-black shadow-lg border-b border-white/10'
-      : 'bg-transparent border-b border-transparent'}"
+    class="w-full fixed top-0 left-0 z-40 pointer-events-auto bg-transparent"
   >
     <!-- ROW 1: Controls (Language on Left, Centered Logo, Hamburger on Right) -->
-    <div class="relative w-full h-14 sm:h-16 flex items-center justify-between px-4 sm:px-10 lg:px-16 transition-colors duration-300 {isScrolled ? 'border-b border-white/10' : 'border-b border-white/10'}">
+    <div class="relative w-full h-14 sm:h-16 flex items-center justify-between px-4 sm:px-10 lg:px-16 transition-colors duration-300 {isScrolled ? 'bg-black shadow-lg' : 'bg-transparent'}">
       <!-- Left: Language Translate Selector Button -->
       <div class="relative z-50">
         <button
@@ -373,11 +375,11 @@
       </div>
     </div>
 
-    <!-- ROW 2: Subnav Row (Dedicated row below Row 1, smooth horizontal slide on mobile without any collision) -->
+    <!-- ROW 2: Subnav Row (Transparent when at top, solid black when scrolled or hovered, no blur) -->
     <div
-      class="w-full h-11 sm:h-12 flex items-center overflow-x-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden overscroll-x-contain transition-colors duration-300 {isScrolled ? 'bg-black border-t border-white/10' : 'bg-black/80 backdrop-blur-md border-t border-white/10'}"
+      class="w-full h-11 sm:h-12 flex items-center overflow-x-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden overscroll-x-contain transition-colors duration-300 {isScrolled ? 'bg-black' : 'bg-transparent hover:bg-black'}"
     >
-      <div class="min-w-full w-max flex items-center px-4 sm:px-10 lg:px-16 md:justify-center">
+      <div class="min-w-full w-max flex items-center px-4 sm:px-10 lg:px-16 {isProductDetail ? 'justify-center' : 'md:justify-center'}">
         <nav
           aria-label={isProductDetail ? 'Navigasi Detail Produk' : isArtikelCategory ? 'Navigasi Kategori Artikel' : 'Navigasi Halaman Tentang'}
           class="flex items-center gap-6 sm:gap-8 md:gap-10 shrink-0"
@@ -388,7 +390,7 @@
               {@const isActive = page.url.pathname.startsWith(item.href) || activeCatSlug === item.id}
               <a
                 href={item.href}
-                class="flex items-center text-[11px] sm:text-xs md:text-[13px] font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none py-1 {isActive
+                class="flex items-center text-[11px] sm:text-xs md:text-[13px] font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none bg-transparent hover:bg-transparent py-1 drop-shadow-[0_2px_6px_rgba(0,0,0,0.85)] {isActive
                   ? 'text-[#FFE500] font-bold'
                   : 'text-white hover:text-[#FFE500]'}"
               >
@@ -400,7 +402,7 @@
               <a
                 href="#{item.id}"
                 onclick={(e) => scrollToSection(item.id, e)}
-                class="flex items-center text-[11px] sm:text-xs md:text-[13px] font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none py-1 {activeSection === item.id
+                class="flex items-center text-[11px] sm:text-xs md:text-[13px] font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none bg-transparent hover:bg-transparent py-1 drop-shadow-[0_2px_6px_rgba(0,0,0,0.85)] {activeSection === item.id
                   ? 'text-[#FFE500] font-bold'
                   : 'text-white hover:text-[#FFE500]'}"
               >
@@ -408,8 +410,10 @@
               </a>
             {/each}
           {/if}
-          <!-- Spacer presisi ~8px agar aman dari scrollbar tanpa terlalu renggang -->
-          <span class="w-2 md:hidden shrink-0 inline-block pointer-events-none" aria-hidden="true"></span>
+          <!-- Spacer presisi ~8px agar aman dari scrollbar tanpa terlalu renggang (hanya untuk non-detail produk) -->
+          {#if !isProductDetail}
+            <span class="w-2 md:hidden shrink-0 inline-block pointer-events-none" aria-hidden="true"></span>
+          {/if}
         </nav>
       </div>
     </div>

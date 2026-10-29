@@ -78,7 +78,7 @@
   <!-- ========================================================================= -->
   <section
     id="gallery"
-    class="relative w-full bg-white text-black py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 overflow-hidden select-none border-t border-neutral-200"
+    class="relative w-full bg-white text-black py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 overflow-hidden select-none"
   >
     <div class="max-w-7xl mx-auto space-y-8 sm:space-y-10">
       <!-- Top Header (English Section Title & Brief Editorial Description) -->

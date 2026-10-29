@@ -54,7 +54,7 @@
 <section
   {id}
   bind:this={sectionEl}
-  class="w-full bg-neutral-950 text-white py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 border-b border-white/10 select-none scroll-mt-14 sm:scroll-mt-16"
+  class="w-full bg-neutral-950 text-white py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 select-none scroll-mt-14 sm:scroll-mt-16"
 >
   <div class="max-w-7xl mx-auto space-y-16">
     <!-- Header: Clean Title in English (Lotus Style) -->

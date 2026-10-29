@@ -1,5 +1,5 @@
 <!-- SECTION 2: #about-oria (3 Pilar Keunggulan ORIA) -->
-<section id="about-oria" class="w-full bg-neutral-950 text-white py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 border-b border-white/10 select-none scroll-mt-14 sm:scroll-mt-16">
+<section id="about-oria" class="w-full bg-neutral-950 text-white py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 select-none scroll-mt-14 sm:scroll-mt-16">
   <div class="max-w-7xl mx-auto space-y-16">
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-neutral-800 pb-8">
       <div class="space-y-2">

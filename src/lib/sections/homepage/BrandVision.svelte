@@ -1,8 +1,34 @@
 <script lang="ts">
   // Section Our Drive / Visi Misi ORIA (Lotus Inspired Panoramic Showroom)
+  let sectionEl = $state<HTMLElement | null>(null);
+  let parallaxY = $state(0);
+
+  $effect(() => {
+    function updateParallax() {
+      if (!sectionEl || typeof window === 'undefined') return;
+      const rect = sectionEl.getBoundingClientRect();
+      const vh = window.innerHeight || 800;
+      const centerOffset = (rect.top + rect.height / 2 - vh / 2) / vh;
+      const clamped = Math.max(-1, Math.min(1, centerOffset));
+      // Parallax halus (maks ±22px) untuk blok teks OUR DEDICATION
+      parallaxY = clamped * 22;
+    }
+
+    if (typeof window !== 'undefined') {
+      updateParallax();
+      window.addEventListener('layout-scroll', updateParallax, { passive: true });
+      window.addEventListener('scroll', updateParallax, { passive: true });
+      window.addEventListener('resize', updateParallax, { passive: true });
+      return () => {
+        window.removeEventListener('layout-scroll', updateParallax);
+        window.removeEventListener('scroll', updateParallax);
+        window.removeEventListener('resize', updateParallax);
+      };
+    }
+  });
 </script>
 
-<section class="relative w-full min-h-[580px] sm:min-h-[640px] lg:min-h-[750px] flex items-center overflow-hidden bg-black select-none px-6 sm:px-10 lg:px-16">
+<section bind:this={sectionEl} class="relative w-full min-h-[580px] sm:min-h-[640px] lg:min-h-[750px] flex items-center overflow-hidden bg-black select-none px-6 sm:px-10 lg:px-16">
   <!-- Panoramic Background Image -->
   <div class="absolute inset-0 w-full h-full">
     <img
@@ -15,9 +41,12 @@
     <div class="absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-transparent sm:from-black/80 sm:via-black/30 sm:to-transparent"></div>
   </div>
 
-  <!-- Content Container (Left-aligned) -->
+  <!-- Content Container (Left-aligned with subtle text parallax) -->
   <div class="relative z-10 w-full max-w-7xl mx-auto py-16 sm:py-24">
-    <div class="max-w-xl sm:max-w-2xl space-y-4 sm:space-y-6">
+    <div
+      class="max-w-xl sm:max-w-2xl space-y-4 sm:space-y-6 transition-transform duration-150 ease-out will-change-transform"
+      style="transform: translate3d(0, {parallaxY}px, 0);"
+    >
       <!-- Title -->
       <h2 class="font-heading font-medium text-2xl sm:text-3xl lg:text-4xl uppercase tracking-[0.25em] text-white leading-tight drop-shadow-md">
         OUR DEDICATION

@@ -92,7 +92,7 @@
         </section>
 
         <!-- 1. Penerimaan Ketentuan -->
-        <section class="border-t border-neutral-200 pt-8 space-y-3">
+        <section class="pt-8 space-y-3">
           <h2 class="font-heading font-bold text-lg sm:text-xl text-black uppercase tracking-wider">
             1. PENERIMAAN KETENTUAN (ACCEPTANCE OF TERMS)
           </h2>
@@ -109,7 +109,7 @@
         </section>
 
         <!-- 2. Informasi Produk & Spesifikasi Mesin -->
-        <section class="border-t border-neutral-200 pt-8 space-y-3">
+        <section class="pt-8 space-y-3">
           <h2 class="font-heading font-bold text-lg sm:text-xl text-black uppercase tracking-wider">
             2. SPESIFIKASI MESIN &amp; KETERSEDIAAN UNIT
           </h2>
@@ -122,7 +122,7 @@
         </section>
 
         <!-- 3. Ketentuan Penawaran Harga & Pemesanan -->
-        <section class="border-t border-neutral-200 pt-8 space-y-3">
+        <section class="pt-8 space-y-3">
           <h2 class="font-heading font-bold text-lg sm:text-xl text-black uppercase tracking-wider">
             3. PENAWARAN HARGA (QUOTATION) &amp; SISTEM PEMBAYARAN
           </h2>
@@ -137,7 +137,7 @@
         </section>
 
         <!-- 4. Pengiriman & Pengemasan Peti Kayu -->
-        <section class="border-t border-neutral-200 pt-8 space-y-3">
+        <section class="pt-8 space-y-3">
           <h2 class="font-heading font-bold text-lg sm:text-xl text-black uppercase tracking-wider">
             4. PENGIRIMAN, ASURANSI &amp; LOGISTIK KARGO
           </h2>
@@ -152,7 +152,7 @@
         </section>
 
         <!-- 5. Instalasi Onsite, Kalibrasi & Pelatihan Teknisi -->
-        <section class="border-t border-neutral-200 pt-8 space-y-3">
+        <section class="pt-8 space-y-3">
           <h2 class="font-heading font-bold text-lg sm:text-xl text-black uppercase tracking-wider">
             5. INSTALASI ONSITE &amp; PELATIHAN OPERATOR
           </h2>
@@ -167,7 +167,7 @@
         </section>
 
         <!-- 6. Garansi Resmi & Kebijakan Purna Jual -->
-        <section class="border-t border-neutral-200 pt-8 space-y-3">
+        <section class="pt-8 space-y-3">
           <h2 class="font-heading font-bold text-lg sm:text-xl text-black uppercase tracking-wider">
             6. GARANSI RESMI &amp; LAYANAN PURNA JUAL (WARRANTY)
           </h2>
@@ -181,7 +181,7 @@
         </section>
 
         <!-- 7. Hak Kekayaan Intelektual -->
-        <section class="border-t border-neutral-200 pt-8 space-y-3">
+        <section class="pt-8 space-y-3">
           <h2 class="font-heading font-bold text-lg sm:text-xl text-black uppercase tracking-wider">
             7. HAK KEKAYAAN INTELEKTUAL (INTELLECTUAL PROPERTY)
           </h2>
@@ -194,7 +194,7 @@
         </section>
 
         <!-- 8. Batasan Tanggung Jawab & Force Majeure -->
-        <section class="border-t border-neutral-200 pt-8 space-y-3">
+        <section class="pt-8 space-y-3">
           <h2 class="font-heading font-bold text-lg sm:text-xl text-black uppercase tracking-wider">
             8. BATASAN TANGGUNG JAWAB &amp; KEADAAN KAHAR (FORCE MAJEURE)
           </h2>
@@ -204,7 +204,7 @@
         </section>
 
         <!-- 9. Hukum yang Berlaku & Yurisdiksi Sengketa -->
-        <section class="border-t border-neutral-200 pt-8 space-y-3">
+        <section class="pt-8 space-y-3">
           <h2 class="font-heading font-bold text-lg sm:text-xl text-black uppercase tracking-wider">
             9. HUKUM YANG BERLAKU &amp; PENYELESAIAN SENGKETA
           </h2>
@@ -217,7 +217,7 @@
         </section>
 
         <!-- 10. Kontak Resmi -->
-        <section class="border-t border-neutral-200 pt-8 space-y-4">
+        <section class="pt-8 space-y-4">
           <h2 class="font-heading font-bold text-lg sm:text-xl text-black uppercase tracking-wider">
             10. LAYANAN KONSULTASI &amp; DUKUNGAN LEGAL
           </h2>

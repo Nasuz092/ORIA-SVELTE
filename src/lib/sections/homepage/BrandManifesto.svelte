@@ -1,11 +1,40 @@
 <script lang="ts">
   // Section Manifesto Brand ORIA (Industrial Precision - Solid Black, Wide Tracking, 2 Columns)
+  let sectionEl = $state<HTMLElement | null>(null);
+  let parallaxY = $state(0);
+
+  $effect(() => {
+    function updateParallax() {
+      if (!sectionEl || typeof window === 'undefined') return;
+      const rect = sectionEl.getBoundingClientRect();
+      const vh = window.innerHeight || 800;
+      // Hitung jarak relatif terhadap tengah layar (-1 s/d 1), dibatasi agar halus dan tidak berlebihan (maks ±18px)
+      const centerOffset = (rect.top + rect.height / 2 - vh / 2) / vh;
+      const clamped = Math.max(-1, Math.min(1, centerOffset));
+      parallaxY = clamped * 18;
+    }
+
+    if (typeof window !== 'undefined') {
+      updateParallax();
+      window.addEventListener('layout-scroll', updateParallax, { passive: true });
+      window.addEventListener('scroll', updateParallax, { passive: true });
+      window.addEventListener('resize', updateParallax, { passive: true });
+      return () => {
+        window.removeEventListener('layout-scroll', updateParallax);
+        window.removeEventListener('scroll', updateParallax);
+        window.removeEventListener('resize', updateParallax);
+      };
+    }
+  });
 </script>
 
-<section class="w-full bg-black text-white py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 border-t border-white/10 select-none">
+<section bind:this={sectionEl} class="w-full bg-black text-white py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 select-none overflow-hidden">
   <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-    <!-- Left Column: Big elegant uppercase tracked heading -->
-    <div class="lg:col-span-5 space-y-1">
+    <!-- Left Column: Big elegant uppercase tracked heading (Subtle Parallax) -->
+    <div
+      class="lg:col-span-5 space-y-1 transition-transform duration-150 ease-out will-change-transform"
+      style="transform: translate3d(0, {parallaxY}px, 0);"
+    >
       <h2 class="font-heading font-light text-3xl sm:text-4xl lg:text-5xl tracking-[0.22em] sm:tracking-[0.26em] uppercase leading-[1.15] text-white">
         <span class="block">ENGINEERED</span>
         <span class="block mt-1 sm:mt-2">FOR INDUSTRY</span>

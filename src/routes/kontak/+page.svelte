@@ -209,7 +209,7 @@
   <!-- ======================================================================= -->
   <!-- 2. DIRECT CONTACT INFO & CHANNELS (Clean White & Minimal Section)       -->
   <!-- ======================================================================= -->
-  <section class="w-full bg-white text-black border-b border-neutral-200 py-12 sm:py-16 lg:py-20 px-6 sm:px-10 lg:px-16">
+  <section class="w-full bg-white text-black py-12 sm:py-16 lg:py-20 px-6 sm:px-10 lg:px-16">
     <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center justify-between gap-8 lg:gap-12">
       <!-- Left: Simple, Direct Narrative -->
       <div class="space-y-3 max-w-2xl">
@@ -253,7 +253,7 @@
   <!-- ======================================================================= -->
   <!-- 3. ORIA CENTRES: FLAGSHIP SHOWROOM (OUR CAPACITY Layout - Typographic)   -->
   <!-- ======================================================================= -->
-  <section class="w-full py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 bg-[#050508] text-white border-b border-white/10 select-none">
+  <section class="w-full py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 bg-[#050508] text-white select-none">
     <div class="max-w-7xl mx-auto space-y-16">
       <!-- Section Heading (Exact OUR CAPACITY Lotus Style) -->
       <div class="space-y-3 max-w-2xl">
@@ -339,7 +339,7 @@
   <!-- ======================================================================= -->
   <!-- 4. CONSULTATION FORM SECTION (Separate Section with Clean White BG)     -->
   <!-- ======================================================================= -->
-  <section class="w-full bg-white text-black border-t border-neutral-200 py-16 sm:py-24 lg:py-32 px-6 sm:px-10 lg:px-16">
+  <section class="w-full bg-white text-black py-16 sm:py-24 lg:py-32 px-6 sm:px-10 lg:px-16">
     <div class="max-w-4xl mx-auto space-y-10">
       <div class="space-y-3">
         <div class="font-heading font-black text-xs uppercase tracking-[0.25em] text-neutral-500">

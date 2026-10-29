@@ -96,7 +96,7 @@
         </section>
 
         <!-- 2. Penerapan Pemberitahuan Privasi -->
-        <section class="border-t border-neutral-200 pt-8 space-y-3">
+        <section class="pt-8 space-y-3">
           <h2 class="font-heading font-bold text-lg sm:text-xl text-black uppercase tracking-wider">
             2. CAKUPAN &amp; PENERAPAN (APPLICATION OF THIS PRIVACY NOTICE)
           </h2>
@@ -113,7 +113,7 @@
         </section>
 
         <!-- 3. Data Pribadi yang Kami Kumpulkan -->
-        <section class="border-t border-neutral-200 pt-8 space-y-4">
+        <section class="pt-8 space-y-4">
           <h2 class="font-heading font-bold text-lg sm:text-xl text-black uppercase tracking-wider">
             3. DATA APA YANG KAMI KUMPULKAN? (DATA WE COLLECT)
           </h2>
@@ -149,7 +149,7 @@
         </section>
 
         <!-- 4. Tujuan & Dasar Hukum Pemrosesan -->
-        <section class="border-t border-neutral-200 pt-8 space-y-3">
+        <section class="pt-8 space-y-3">
           <h2 class="font-heading font-bold text-lg sm:text-xl text-black uppercase tracking-wider">
             4. TUJUAN PEMROSESAN DATA (PURPOSE &amp; LEGAL BASIS)
           </h2>
@@ -166,7 +166,7 @@
         </section>
 
         <!-- 5. Berbagi Data dengan Pihak Ketiga -->
-        <section class="border-t border-neutral-200 pt-8 space-y-3">
+        <section class="pt-8 space-y-3">
           <h2 class="font-heading font-bold text-lg sm:text-xl text-black uppercase tracking-wider">
             5. PENGUNGKAPAN TERBATAS KEPADA PIHAK KETIGA (DATA SHARING)
           </h2>
@@ -181,7 +181,7 @@
         </section>
 
         <!-- 6. Keamanan & Retensi Data -->
-        <section class="border-t border-neutral-200 pt-8 space-y-3">
+        <section class="pt-8 space-y-3">
           <h2 class="font-heading font-bold text-lg sm:text-xl text-black uppercase tracking-wider">
             6. KEAMANAN &amp; RETENSI DATA (DATA SECURITY &amp; STORAGE)
           </h2>
@@ -196,7 +196,7 @@
         </section>
 
         <!-- 7. Hak Pemilik Data -->
-        <section class="border-t border-neutral-200 pt-8 space-y-3">
+        <section class="pt-8 space-y-3">
           <h2 class="font-heading font-bold text-lg sm:text-xl text-black uppercase tracking-wider">
             7. HAK ANDA SEBAGAI PEMILIK DATA (YOUR RIGHTS)
           </h2>
@@ -212,7 +212,7 @@
         </section>
 
         <!-- 8. Kontak Resmi Pengendali Data -->
-        <section class="border-t border-neutral-200 pt-8 space-y-4">
+        <section class="pt-8 space-y-4">
           <h2 class="font-heading font-bold text-lg sm:text-xl text-black uppercase tracking-wider">
             8. HUBUNGI KAMI (CONTACT US)
           </h2>
