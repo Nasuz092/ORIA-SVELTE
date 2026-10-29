@@ -107,8 +107,15 @@
   let drawerOpen = $state(false);
   let scrollY = $state(0);
 
-  // Background transparan saat di atas Hero slider, dan gelap ber-blur saat di-scroll
-  let isScrolled = $derived(scrollY > 20);
+  // Background solid hitam untuk halaman dengan latar terang (Detail Artikel, Legal) atau saat di-scroll
+  let isLightTopPage = $derived(
+    page.data?.mode === 'article' ||
+    Boolean(page.data?.article) ||
+    page.url.pathname.startsWith('/cookie-statement') ||
+    page.url.pathname.startsWith('/privacy') ||
+    page.url.pathname.startsWith('/terms-conditions')
+  );
+  let isScrolled = $derived(scrollY > 20 || isLightTopPage);
 
   function openDrawer() {
     drawerOpen = true;
@@ -260,23 +267,23 @@
   }}
 />
 
-{#if hasSubNav}
+  {#if hasSubNav}
   <!-- ================================================================= -->
   <!-- 2-TIER SUBNAV NAVBAR (Produk Detail, Tentang, Kategori Artikel)  -->
   <!-- ================================================================= -->
   <header
     class="w-full fixed top-0 left-0 z-40 transition-colors duration-300 pointer-events-auto {isScrolled
-      ? 'bg-black/95 shadow-lg border-b border-white/10 backdrop-blur-md'
+      ? 'bg-black shadow-lg border-b border-white/10'
       : 'bg-transparent border-b border-transparent'}"
   >
     <!-- ROW 1: Controls (Language on Left, Centered Logo, Hamburger on Right) -->
-    <div class="relative w-full h-14 sm:h-16 flex items-center justify-between px-4 sm:px-10 lg:px-16 transition-colors duration-300 {isScrolled ? 'border-b border-white/5' : 'border-b border-white/10'}">
+    <div class="relative w-full h-14 sm:h-16 flex items-center justify-between px-4 sm:px-10 lg:px-16 transition-colors duration-300 {isScrolled ? 'border-b border-white/10' : 'border-b border-white/10'}">
       <!-- Left: Language Translate Selector Button -->
       <div class="relative z-50">
         <button
           type="button"
           onclick={toggleLang}
-          class="flex items-center gap-2 text-white/80 hover:text-white transition-colors cursor-pointer group focus:outline-none"
+          class="flex items-center gap-2 text-white hover:text-[#FFE500] transition-colors cursor-pointer group focus:outline-none"
           aria-haspopup="listbox"
           aria-expanded={isLangOpen}
           aria-label="Pilih Bahasa"
@@ -368,7 +375,7 @@
 
     <!-- ROW 2: Subnav Row (Dedicated row below Row 1, smooth horizontal slide on mobile without any collision) -->
     <div
-      class="w-full h-11 sm:h-12 flex items-center overflow-x-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden overscroll-x-contain transition-colors duration-300 {isScrolled ? 'bg-black/60' : 'bg-black/35 backdrop-blur-sm'}"
+      class="w-full h-11 sm:h-12 flex items-center overflow-x-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden overscroll-x-contain transition-colors duration-300 {isScrolled ? 'bg-black border-t border-white/10' : 'bg-black/80 backdrop-blur-md border-t border-white/10'}"
     >
       <div class="min-w-full w-max flex items-center px-4 sm:px-10 lg:px-16 md:justify-center">
         <nav
@@ -377,12 +384,13 @@
         >
           {#if isArtikelCategory}
             {#each artikelSubNavItems as item}
-              {@const isActive = page.url.pathname.startsWith(item.href)}
+              {@const activeCatSlug = page.data?.category?.id || (page.data?.article?.category ? page.data.article.category.toLowerCase().trim().replace(/\s+/g, '-') : '')}
+              {@const isActive = page.url.pathname.startsWith(item.href) || activeCatSlug === item.id}
               <a
                 href={item.href}
                 class="flex items-center text-[11px] sm:text-xs md:text-[13px] font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none py-1 {isActive
                   ? 'text-[#FFE500] font-bold'
-                  : 'text-white/75 hover:text-[#FFE500]'}"
+                  : 'text-white hover:text-[#FFE500]'}"
               >
                 <span>{item.label}</span>
               </a>
@@ -394,7 +402,7 @@
                 onclick={(e) => scrollToSection(item.id, e)}
                 class="flex items-center text-[11px] sm:text-xs md:text-[13px] font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none py-1 {activeSection === item.id
                   ? 'text-[#FFE500] font-bold'
-                  : 'text-white/75 hover:text-[#FFE500]'}"
+                  : 'text-white hover:text-[#FFE500]'}"
               >
                 <span>{item.label}</span>
               </a>
@@ -412,7 +420,7 @@
   <!-- ================================================================= -->
   <header
     class="w-full fixed top-0 left-0 z-40 transition-colors duration-300 pointer-events-auto {isScrolled
-      ? 'bg-black/95 shadow-lg border-b border-white/10 backdrop-blur-md'
+      ? 'bg-black shadow-lg border-b border-white/10'
       : 'bg-transparent border-b border-transparent'}"
   >
     <div class="relative w-full h-14 sm:h-16 flex items-center justify-between px-4 sm:px-10 lg:px-16">
@@ -421,7 +429,7 @@
         <button
           type="button"
           onclick={toggleLang}
-          class="flex items-center gap-2 text-white/80 hover:text-white transition-colors cursor-pointer group focus:outline-none"
+          class="flex items-center gap-2 text-white hover:text-[#FFE500] transition-colors cursor-pointer group focus:outline-none"
           aria-haspopup="listbox"
           aria-expanded={isLangOpen}
           aria-label="Pilih Bahasa"
