@@ -109,7 +109,7 @@
         image: '/images/showcase-products.png',
         headline: 'PILIH MESIN TERBAIK.<br />UJI KUALITAS DI SHOWROOM.',
         subtitle:
-          'Bandingkan performa printhead, kecepatan cetak, dan presisi mekanik langsung bersama tim spesialis kami di demo lab showroom Surabaya & Jakarta.',
+          'Bandingkan performa printhead, kecepatan cetak, dan presisi mekanik langsung bersama tim spesialis kami di Showroom Surabaya.',
         buttonText: 'Jadwalkan Demo Mesin',
         message: `Halo Tim ORIA, saya ingin jadwalkan demo unit mesin setelah membaca artikel: ${article.title}`
       };
@@ -226,13 +226,13 @@
   </header>
 
   <!-- ======================================================================= -->
-  <!-- 2. TLDR SECTION (Jakarta/Surabaya Editorial Lead)                       -->
+  <!-- 2. TLDR SECTION (Surabaya Editorial Lead)                               -->
   <!-- ======================================================================= -->
   {#if article.excerpt}
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-8 font-sans">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 items-baseline">
         <div class="lg:col-span-3 text-sm font-bold uppercase tracking-wider text-black">
-          SURABAYA / JAKARTA, ID
+          SURABAYA, INDONESIA
         </div>
         <div class="lg:col-span-9">
           <p class="text-lg sm:text-xl lg:text-2xl text-slate-900 leading-relaxed font-normal">

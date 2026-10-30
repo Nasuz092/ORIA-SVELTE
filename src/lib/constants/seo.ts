@@ -6,7 +6,7 @@ export const DEFAULT_SEO = {
   description:
     'Pusat teknologi dan rekayasa mesin digital printing industrial di Indonesia. Solusi terdepan printer UV flatbed, DTF apparel, laser cutting, CNC router, dan sublimasi tekstil bergaransi resmi.',
   keywords:
-    'mesin digital printing, jual mesin digital printing, mesin digital printing oria, UV flatbed, DTF apparel, printer sublimasi, fiber laser cutting, CNC router, ecosolvent, oria indonesia, mesin percetakan surabaya',
+    'oria, mesin digital printing oria, oria industrial printing, printer uv flatbed oria, mesin dtf oria, printer sublimasi oria, fiber laser cutting oria, cnc router oria, mesin ecosolvent oria, oria indonesia',
   defaultImage: 'https://oria.co.id/images/contact/hero-desktop.png',
   locale: 'id_ID',
   robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
@@ -14,16 +14,21 @@ export const DEFAULT_SEO = {
 
 export const COMPANY_SCHEMA = {
   '@context': 'https://schema.org',
-  '@type': ['LocalBusiness', 'Corporation', 'ElectronicsStore'],
+  '@type': 'Organization',
   '@id': `${SITE_URL}/#Organization`,
   name: 'ORIA Industrial Printing',
   alternateName: 'ORIA Indonesia',
-  legalName: 'ORIA Indonesia',
   url: SITE_URL,
   email: 'info@oria.co.id',
   telephone: '+6281252086455',
-  priceRange: 'Rp 20.000.000 - Rp 2.500.000.000',
-  openingHours: ['Mo Tu We Th Fr 08:30-17:00', 'Sa 08:30-15:00'],
+  brand: {
+    '@type': 'Brand',
+    '@id': `${SITE_URL}/#brand`,
+    name: 'ORIA',
+    url: SITE_URL,
+    logo: `${SITE_URL}/images/oria-logo-hd.png`,
+    description: 'Brand mesin digital printing industrial presisi.'
+  },
   logo: {
     '@type': 'ImageObject',
     '@id': `${SITE_URL}/#logo`,
@@ -37,7 +42,7 @@ export const COMPANY_SCHEMA = {
     '@id': `${SITE_URL}/#primaryImage`,
     url: `${SITE_URL}/images/contact/hero-desktop.png`,
     contentUrl: `${SITE_URL}/images/contact/hero-desktop.png`,
-    caption: 'ORIA Flagship Showroom & Precision Machinery',
+    caption: 'ORIA Showroom & Precision Machinery',
     inLanguage: 'id-ID'
   },
   contactPoint: {
