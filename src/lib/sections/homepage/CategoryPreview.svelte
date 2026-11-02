@@ -58,6 +58,16 @@
       ctaText: 'DISCOVER'
     },
     {
+      id: 'dtg',
+      title: 'DTG Garment',
+      defaultTagline: 'ORIA DTG OR-DTG02',
+      defaultDesc: 'Cetak langsung ke kaos katun dan garmen tanpa transfer paper dengan tinta pigment tekstil.',
+      defaultHref: '/produk/dtg/oria-dtg-or-dtg02',
+      image: '/images/categories/dtg.webp',
+      imgClass: 'max-h-[175px] sm:max-h-[220px] md:max-h-[255px] lg:max-h-[275px] max-w-[85%]',
+      ctaText: 'DISCOVER'
+    },
+    {
       id: 'indoor',
       title: 'Indoor Printing',
       defaultTagline: 'ORIA INDOOR 3202',

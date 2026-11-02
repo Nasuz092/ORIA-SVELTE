@@ -263,6 +263,11 @@
             </a>
           </li>
           <li>
+            <a href="/produk/dtg/oria-dtg-or-dtg02" class="hover:text-[#FFE500] transition-colors">
+              ORIA DTG OR-DTG02
+            </a>
+          </li>
+          <li>
             <a href="/produk/outdoor/oria-outdoor-3204-st" class="hover:text-[#FFE500] transition-colors">
               ORIA Outdoor 3204
             </a>

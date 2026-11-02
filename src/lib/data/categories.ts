@@ -64,15 +64,27 @@ export const CATEGORIES: CategoryInfo[] = [
   },
   {
     id: 'dtf',
-    name: 'DTF Apparel Printing',
+    name: 'DTF Film Printing',
     heroLine1: 'ORIA',
-    heroLine2: 'DTF APPAREL',
-    heroSubtitle: 'DIRECT TO FILM & GARMENT PRINTING',
+    heroLine2: 'DTF FILM',
+    heroSubtitle: 'DIRECT TO FILM PRODUCTION SYSTEMS',
     heroImage: '/images/categories/card-dtf.webp',
     heroImageMobile: '/images/categories/mobile/dtf.webp',
     cardImage: '/images/categories/dtf.webp',
     alt: 'Mesin DTF Digital Transfer Film ORIA',
-    description: 'Sistem cetak DTF (Direct to Film) dan DTG industri ORIA beresolusi tajam untuk sablon kaos distro, apparel custom, topi, dan merchandise.'
+    description: 'Sistem cetak DTF (Direct to Film) ORIA berkecepatan tinggi dengan shaker powder otomatis untuk sablon kaos distro, apparel custom, topi, dan merchandise.'
+  },
+  {
+    id: 'dtg',
+    name: 'DTG Direct to Garment',
+    heroLine1: 'ORIA',
+    heroLine2: 'DTG APPAREL',
+    heroSubtitle: 'DIRECT TO GARMENT PRECISION SYSTEMS',
+    heroImage: '/images/categories/card-dtg.webp',
+    heroImageMobile: '/images/categories/mobile/dtg.webp',
+    cardImage: '/images/categories/dtg.webp',
+    alt: 'Mesin DTG Direct to Garment ORIA',
+    description: 'Mesin cetak kaos langsung DTG (Direct to Garment) ORIA beresolusi fotografi untuk cetak kaos katun distro, hoodie, dan kain garmen tanpa transfer paper.'
   },
   {
     id: 'outdoor',
@@ -134,8 +146,9 @@ export function getCategoryById(id: string): CategoryInfo | undefined {
     'uv-cylinder': 'uv',
     'uv-dtf': 'uv',
     'mesin-dtf': 'dtf',
-    'mesin-dtg': 'dtf',
-    'dtg': 'dtf',
+    'dtf': 'dtf',
+    'mesin-dtg': 'dtg',
+    'dtg': 'dtg',
     'mesin-single-pass': 'single-pass',
     'one-pass': 'single-pass',
     'packaging': 'single-pass',
@@ -194,7 +207,9 @@ export function matchesCategory(p: FormattedProduct, catId: string): boolean {
         !pName.includes('kertas')
       );
     case 'dtf':
-      return catSlug.includes('dtf') || pName.includes('dtf') || pName.includes('dtg');
+      return (catSlug === 'mesin-dtf' || catSlug === 'dtf' || pName.includes('dtf')) && !pName.includes('uv dtf') && !catSlug.includes('uv-dtf') && !pName.includes('dtg');
+    case 'dtg':
+      return catSlug === 'mesin-dtg' || catSlug === 'dtg' || pName.includes('dtg');
     default:
       return catSlug.includes(targetCat) || catName.includes(targetCat) || pName.includes(targetCat);
   }

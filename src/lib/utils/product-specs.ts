@@ -140,18 +140,29 @@ export function getProductSpecs(p: FormattedProduct): ProductKeySpec[] {
     ];
   }
 
-  // 5. DTF / DTG GARMENT
-  if (name.includes('dtf') || name.includes('dtg') || cat.includes('dtf') || cat.includes('dtg')) {
+  // 5. DTF APPAREL / DIRECT TO FILM
+  if ((name.includes('dtf') || cat.includes('dtf')) && !name.includes('dtg') && !cat.includes('dtg')) {
     let head = '3x XP600';
     if (name.includes('6004')) head = '4x i3200';
-    else if (name.includes('dtg02')) head = 'Dual i3200';
-    else if (name.includes('dtg a3')) head = 'Industrial Head';
 
     return [
-      { val: name.includes('6004') ? '60 cm' : (name.includes('a3') ? 'Format A3' : 'Format Roll'), unit: 'Format Bidang', desc: 'Film / Garmen' },
-      { val: head, unit: 'Printhead', desc: 'CMYK + White + Glue' },
+      { val: name.includes('6004') ? '60 cm' : 'Format Roll', unit: 'Lebar Film', desc: 'Transfer Roll' },
+      { val: head, unit: 'Printhead', desc: 'CMYK + White' },
       { val: name.includes('6004') ? '22 m²/h' : 'Presisi Tinggi', unit: 'Kecepatan', desc: 'Shaker & Dryer' },
       { val: 'Anti-Crack', unit: 'Daya Rekat', desc: 'Lentur Tahan Cuci' }
+    ];
+  }
+
+  // 5b. DTG GARMENT / DIRECT TO GARMENT
+  if (name.includes('dtg') || cat.includes('dtg')) {
+    let head = 'Industrial Head';
+    if (name.includes('dtg02') || name.includes('or-dtg02')) head = 'Dual i3200';
+
+    return [
+      { val: '40 x 50 cm', unit: 'Area Cetak', desc: 'Platen Kaos' },
+      { val: head, unit: 'Printhead', desc: 'Pigment Tekstil' },
+      { val: '1,440 DPI', unit: 'Resolusi', desc: 'Gradasi Fotografi' },
+      { val: 'Kaos & Tekstil', unit: 'Media Utama', desc: 'Katun & Kanvas' }
     ];
   }
 

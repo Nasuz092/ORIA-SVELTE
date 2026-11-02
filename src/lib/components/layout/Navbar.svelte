@@ -132,7 +132,8 @@
     { title: 'UV Printing', desc: 'Flatbed & Cylinder', href: '/produk/uv' },
     { title: 'Sublimasi', desc: 'Textile & Fashion', href: '/produk/sublimasi' },
     { title: 'CNC Router', desc: 'Fabrikasi & Woodworking', href: '/produk/cnc' },
-    { title: 'DTF', desc: 'Custom Apparel', href: '/produk/dtf' },
+    { title: 'DTF', desc: 'Custom Apparel & Film', href: '/produk/dtf' },
+    { title: 'DTG', desc: 'Direct to Kaos & Kain', href: '/produk/dtg' },
     { title: 'Outdoor Printing', desc: 'Spanduk, Baliho, Billboard', href: '/produk/outdoor' }
   ];
 
