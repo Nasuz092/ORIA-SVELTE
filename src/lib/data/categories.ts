@@ -116,7 +116,8 @@ export const CATEGORIES: CategoryInfo[] = [
     heroLine1: 'ORIA',
     heroLine2: 'SINGLE PASS',
     heroSubtitle: 'HIGH-SPEED CORRUGATED PACKAGING PRINTING',
-    heroImage: '/images/showcase-products.png',
+    heroImage: '/images/categories/card-single-pass.webp',
+    heroImageMobile: '/images/categories/mobile/single-pass.webp',
     cardImage: '/images/categories/single-pass.webp',
     alt: 'Mesin Single Pass Packaging Corrugated Box ORIA',
     description: 'Mesin cetak digital packaging single-pass berkecepatan tinggi hingga 50m/menit untuk kemasan karton box, pizza box, dan paper bag.'
