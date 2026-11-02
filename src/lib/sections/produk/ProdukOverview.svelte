@@ -5,7 +5,7 @@
   <div class="max-w-4xl mx-auto text-center space-y-8 sm:space-y-10">
     <!-- Big Tracked Lotus-Style Title -->
     <h2 class="font-heading font-light text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-[0.25em] sm:tracking-[0.3em] uppercase text-white leading-tight">
-      PORTFOLIO MESIN<br />PRESISI INDUSTRI
+      INDUSTRIAL PRECISION<br />MACHINERY
     </h2>
 
     <!-- Centered Editorial Narrative (Adapted to Industrial Printing Machinery) -->
