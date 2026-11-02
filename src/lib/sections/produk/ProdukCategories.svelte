@@ -18,8 +18,8 @@
           href="/produk/{cat.id}"
           class="group block flex flex-col focus:outline-none cursor-pointer"
         >
-          <!-- Category Machine Image Box (Uniform pure white studio box with subtle border) -->
-          <div class="w-full aspect-[4/3] overflow-hidden bg-white border border-neutral-200/80 shadow-xs flex items-center justify-center p-5 sm:p-6 lg:p-7 relative">
+          <!-- Category Machine Image Box (Seamless borderless pure white studio box) -->
+          <div class="w-full aspect-[4/3] overflow-hidden bg-white flex items-center justify-center p-5 sm:p-6 lg:p-7 relative">
             <img
               src={cat.cardImage}
               alt={cat.alt}
