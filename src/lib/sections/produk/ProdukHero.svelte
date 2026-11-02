@@ -21,7 +21,7 @@
       <!-- Tag / Category in Yellow Tracked Heading (Ukuran font seimbang & elegan) -->
       <h1 class="font-heading font-medium text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-[0.16em] sm:tracking-[0.2em] uppercase text-[#FFE500] leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
         <span class="block">ORIA</span>
-        <span class="block mt-1 sm:mt-1.5">HERITAGE</span>
+        <span class="block mt-1 sm:mt-1.5">MACHINERY</span>
       </h1>
 
       <!-- Subtitle in White Tracked Uppercase -->

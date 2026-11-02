@@ -37,10 +37,10 @@
   </div>
 
   <!-- KONTEN TEKS KIRI: Breadcrumbs & Judul, dan 4 Spesifikasi (2x2 di Desktop, 1 Kolom di Mobile, Tanpa Garis) -->
-  <div class="relative z-20 w-full h-full px-6 sm:px-10 lg:px-16 pb-12 sm:pb-14 lg:pb-16 pointer-events-none">
+  <div class="relative z-20 w-full h-full px-6 sm:px-10 lg:px-16 pb-6 sm:pb-10 lg:pb-12 pointer-events-none">
     <div class="w-full h-full max-w-7xl mx-auto flex flex-col justify-between">
       <!-- ATAS: Breadcrumbs & Model Title Langsung (Diturunkan di bawah navbar row story & spec agar breadcrumb bisa diklik) -->
-      <div class="max-w-xl lg:max-w-3xl xl:max-w-4xl pointer-events-auto pt-36 sm:pt-44 lg:pt-48">
+      <div class="max-w-xl lg:max-w-3xl xl:max-w-4xl pointer-events-auto pt-28 sm:pt-36 lg:pt-40">
         <!-- Breadcrumbs & Category Bar -->
         <nav class="flex flex-wrap items-center gap-1.5 sm:gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-[0.22em] text-neutral-300 font-medium" aria-label="Breadcrumb">
           <a href="/produk" class="hover:text-[#FFE500] transition-colors cursor-pointer">CATALOG</a>
@@ -93,7 +93,7 @@
 
       <!-- BAWAH: 4 Spesifikasi Utama (2x2 di Desktop, 1 Kolom di Mobile, Nilai font-medium, Tanpa Garis) -->
       <div class="pointer-events-auto w-full pt-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-20 gap-y-6 sm:gap-y-8 max-w-3xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-20 gap-y-3.5 sm:gap-y-6 lg:gap-y-8 max-w-3xl">
           {#each specs.slice(0, 4) as s}
             {@const isSize = s.val.includes('x') || s.val.endsWith('m') || s.val.endsWith('cm') || s.val.endsWith('mm')}
             <div class="flex sm:flex-col items-center sm:items-start justify-between sm:justify-start gap-3 sm:gap-2">
@@ -101,14 +101,14 @@
               <div class="font-heading font-medium tracking-tight text-white drop-shadow-lg flex items-baseline gap-2 shrink-0">
                 {#if isSize && s.val.includes(' ')}
                   {@const parts = s.val.split(' ')}
-                  <span class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-[#FFE500] leading-none">{parts[0]}</span>
+                  <span class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-[#FFE500] leading-none">{parts[0]}</span>
                   <span class="text-sm sm:text-base lg:text-xl font-medium text-[#FFE500] tracking-normal">{parts.slice(1).join(' ')}</span>
                 {:else if s.val.includes(' ')}
                   {@const parts = s.val.split(' ')}
                   <span class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium leading-none">{parts[0]}</span>
                   <span class="text-sm sm:text-base lg:text-xl font-medium text-neutral-300 tracking-normal">{parts.slice(1).join(' ')}</span>
                 {:else}
-                  <span class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium leading-none">{s.val}</span>
+                  <span class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-medium leading-none">{s.val}</span>
                 {/if}
               </div>
               <!-- Metric Unit & Subtitle -->

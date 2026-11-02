@@ -38,7 +38,7 @@
         <h2 class="font-heading font-light tracking-[0.22em] sm:tracking-[0.32em] text-3xl sm:text-5xl lg:text-6xl uppercase text-white leading-[1.15]">
           ORIA {cleanModelName}
           <span class="block font-thin tracking-[0.2em] sm:tracking-[0.28em] text-neutral-300 text-2xl sm:text-4xl lg:text-5xl pt-2">
-            EXPERIENCE
+            INSPECTION & LIVE DEMO
           </span>
         </h2>
 

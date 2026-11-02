@@ -62,6 +62,8 @@ export function getProductSpecs(p: FormattedProduct): ProductKeySpec[] {
     else if (name.includes('1490')) power = '100-130 W';
 
     let area = '130 x 250 cm';
+    if (name.includes('5w') || name.includes('uv laser marking') || desc.includes('150x150') || desc.includes('150*150') || desc.includes('150×150')) area = '15 x 15 cm';
+    else if (name.includes('2020') || desc.includes('200x200') || desc.includes('200*200')) area = '20 x 20 cm';
     if (name.includes('6040') || desc.includes('60x40') || desc.includes('600x400')) area = '60 x 40 cm';
     else if (name.includes('6090') || desc.includes('60x90') || desc.includes('600x900')) area = '60 x 90 cm';
     else if (name.includes('1490') || desc.includes('1400x900')) area = '140 x 90 cm';
@@ -81,7 +83,7 @@ export function getProductSpecs(p: FormattedProduct): ProductKeySpec[] {
     if (name.includes('fiber') || name.includes('3015') || name.includes('6015')) precision = '±0.02 mm';
 
     return [
-      { val: power, unit: 'Laser Power', desc: name.includes('fiber') ? 'Raycus Fiber' : 'CO2 Glass Tube' },
+      { val: power, unit: 'Laser Power', desc: name.includes('5w') ? 'JPT UV Cold Laser' : (name.includes('fiber') ? 'Raycus Fiber' : 'CO2 Glass Tube') },
       { val: area, unit: 'Working Bed', desc: 'Area Efektif' },
       { val: speed, unit: 'Max Speed', desc: 'Kecepatan Proses' },
       { val: precision, unit: 'Akurasi', desc: 'Presisi Optik' }

@@ -21,10 +21,10 @@
     <!-- Header: Wide letter spacing (Lotus Freedom style) -->
     <div class="space-y-3 sm:space-y-4">
       <div class="font-mono text-[10px] sm:text-xs uppercase tracking-[0.35em] text-[#FFE500]">
-        THE ENGINEERING PHILOSOPHY
+        ENGINEERING & PERFORMANCE
       </div>
       <h2 class="font-heading font-light tracking-[0.22em] sm:tracking-[0.32em] text-2xl sm:text-4xl lg:text-5xl uppercase text-white leading-tight">
-        FREEDOM TO CREATE
+        BUILT FOR MARATHON PRODUCTION
       </h2>
     </div>
 
