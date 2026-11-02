@@ -16,6 +16,18 @@
       alt: 'Mesin Digital Printing Outdoor ORIA 3204 ST'
     },
     {
+      id: 'indoor',
+      line1: 'ORIA',
+      line2: 'INDOOR 3202',
+      desc1: 'Mesin Cetak Indoor Resolusi Tinggi & Detail Tajam.',
+      desc2: 'Kualitas Cetak Halus, Warna Akurat, dan Efisiensi Maksimal.',
+      ctaText: 'DISCOVER',
+      ctaHref: '/produk/indoor/oria-indoor-3202',
+      desktopImage: '/images/hero/indoor-oria.png',
+      mobileImage: '/images/hero/indoor-oria-mobile.png',
+      alt: 'Mesin Digital Printing Indoor ORIA 3202'
+    },
+    {
       id: 'sublimasi',
       line1: 'ORIA',
       line2: 'SUBLIM 1902',
