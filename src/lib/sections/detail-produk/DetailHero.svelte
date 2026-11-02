@@ -96,9 +96,9 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-20 gap-y-6 sm:gap-y-8 max-w-3xl">
           {#each specs.slice(0, 4) as s}
             {@const isSize = s.val.includes('x') || s.val.endsWith('m') || s.val.endsWith('cm') || s.val.endsWith('mm')}
-            <div class="flex sm:flex-col items-baseline sm:items-start justify-between sm:justify-start gap-1.5 sm:gap-2">
+            <div class="flex sm:flex-col items-center sm:items-start justify-between sm:justify-start gap-3 sm:gap-2">
               <!-- Metric Primary Value (font-medium, bukan bold/black) -->
-              <div class="font-heading font-medium tracking-tight text-white drop-shadow-lg flex items-baseline gap-2">
+              <div class="font-heading font-medium tracking-tight text-white drop-shadow-lg flex items-baseline gap-2 shrink-0">
                 {#if isSize && s.val.includes(' ')}
                   {@const parts = s.val.split(' ')}
                   <span class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-[#FFE500] leading-none">{parts[0]}</span>
@@ -112,7 +112,7 @@
                 {/if}
               </div>
               <!-- Metric Unit & Subtitle -->
-              <div class="space-y-1 min-w-0">
+              <div class="space-y-0.5 sm:space-y-1 min-w-0 text-right sm:text-left">
                 <div class="font-sans font-medium text-xs sm:text-sm uppercase tracking-wider {isSize ? 'text-[#FFE500]' : 'text-white'} drop-shadow-sm truncate">
                   {s.unit}
                 </div>
