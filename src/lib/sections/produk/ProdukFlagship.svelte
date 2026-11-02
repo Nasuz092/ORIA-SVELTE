@@ -29,7 +29,7 @@
       name: 'SUBLIMASI',
       tagline: 'ORIA Sublim 1902',
       desc: 'Produksi massal jersey dan tekstil berkecepatan tinggi dengan saturasi warna pekat.',
-      image: '/images/hero/sublim-oria-desktop.png',
+      image: '/images/hero/sublim-oria-desktop.webp',
       href: '/produk/sublimasi/oria-sublim-1902'
     },
     {
@@ -37,7 +37,7 @@
       name: 'OUTDOOR',
       tagline: 'ORIA Outdoor 3204 ST',
       desc: 'Cetak billboard dan baliho tahan cuaca ekstrem dengan sasis baja anti-vibrasi.',
-      image: '/images/hero/outdoor-oria-desktop.png',
+      image: '/images/hero/outdoor-oria-desktop.webp',
       href: '/produk/outdoor/oria-outdoor-3204-st'
     },
     {
@@ -78,7 +78,7 @@
         name: 'SUBLIMASI',
         tagline: sublimProd.name,
         desc: 'Produksi massal jersey dan tekstil berkecepatan tinggi dengan saturasi warna pekat.',
-        image: sublimProd.mainImageDesktopUrl || sublimProd.imageUrl || '/images/hero/sublim-oria-desktop.png',
+        image: sublimProd.mainImageDesktopUrl || sublimProd.imageUrl || '/images/hero/sublim-oria-desktop.webp',
         href: `/produk/${getProductCategoryId(sublimProd)}/${sublimProd.slug}`
       });
     }
@@ -89,7 +89,7 @@
         name: 'OUTDOOR',
         tagline: outdoorProd.name,
         desc: 'Cetak billboard dan baliho tahan cuaca ekstrem dengan sasis baja anti-vibrasi.',
-        image: outdoorProd.mainImageDesktopUrl || outdoorProd.imageUrl || '/images/hero/outdoor-oria-desktop.png',
+        image: outdoorProd.mainImageDesktopUrl || outdoorProd.imageUrl || '/images/hero/outdoor-oria-desktop.webp',
         href: `/produk/${getProductCategoryId(outdoorProd)}/${outdoorProd.slug}`
       });
     }

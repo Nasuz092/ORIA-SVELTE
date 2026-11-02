@@ -36,7 +36,7 @@
       name: 'Product & Machine',
       tagline: 'BEDAH MESIN & FITUR',
       description: 'Review mendalam keunggulan teknis lini mesin ORIA, komparasi fitur, dan performa produksi.',
-      image: '/images/hero/outdoor-oria-desktop.png'
+      image: '/images/hero/outdoor-oria-desktop.webp'
     },
     {
       id: 'Trivia',

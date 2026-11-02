@@ -11,8 +11,8 @@
       desc2: 'Kecepatan Cetak Tinggi, Presisi, dan Tahan Cuaca Ekstrem.',
       ctaText: 'DISCOVER',
       ctaHref: '/produk/outdoor/oria-outdoor-3204-st',
-      desktopImage: '/images/hero/outdoor-oria-desktop.png',
-      mobileImage: '/images/hero/outdoor-oria-mobile.png',
+      desktopImage: '/images/hero/outdoor-oria-desktop.webp',
+      mobileImage: '/images/hero/outdoor-oria-mobile.webp',
       alt: 'Mesin Digital Printing Outdoor ORIA 3204 ST'
     },
     {
@@ -23,8 +23,8 @@
       desc2: 'Kualitas Cetak Halus, Warna Akurat, dan Efisiensi Maksimal.',
       ctaText: 'DISCOVER',
       ctaHref: '/produk/indoor/oria-indoor-3202',
-      desktopImage: '/images/hero/indoor-oria.png',
-      mobileImage: '/images/hero/indoor-oria-mobile.png',
+      desktopImage: '/images/hero/indoor-oria.webp',
+      mobileImage: '/images/hero/indoor-oria-mobile.webp',
       alt: 'Mesin Digital Printing Indoor ORIA 3202'
     },
     {
@@ -35,8 +35,8 @@
       desc2: 'Gradasi Warna Tajam, Efisiensi Tinta, dan Konsistensi Produksi Massal.',
       ctaText: 'DISCOVER',
       ctaHref: '/produk/sublimasi/oria-sublim-1902',
-      desktopImage: '/images/hero/sublim-oria-desktop.png',
-      mobileImage: '/images/hero/sublim-oria-mobile.png',
+      desktopImage: '/images/hero/sublim-oria-desktop.webp',
+      mobileImage: '/images/hero/sublim-oria-mobile.webp',
       alt: 'Mesin Textile Printing Sublimasi ORIA 1902'
     }
   ];
