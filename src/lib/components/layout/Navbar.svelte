@@ -530,7 +530,7 @@
   <!-- svelte-ignore a11y_no_static_element_interactions -->
   <!-- svelte-ignore a11y_click_events_have_key_events -->
   <div
-    class="fixed inset-0 bg-black/50 z-50 transition-opacity duration-300 animate-in fade-in"
+    class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 transition-opacity duration-300 animate-in fade-in"
     onclick={closeDrawer}
     onwheel={(e) => e.preventDefault()}
     ontouchmove={(e) => e.preventDefault()}
@@ -539,7 +539,7 @@
 
 <!-- SLIDE-IN DRAWER DARI KANAN KE KIRI (Warna Kuning #FFE500, teks dan ikon hitam solid) -->
 <aside
-  class="fixed top-0 right-0 h-full z-50 w-full sm:w-[85vw] md:w-[65vw] lg:w-[48vw] xl:w-[40vw] bg-[#FFE500] text-black flex flex-col justify-between transform transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-2xl border-l border-black/15 p-6 sm:p-10 lg:p-12 {drawerOpen ? 'translate-x-0' : 'translate-x-full'}"
+  class="fixed top-0 right-0 h-full z-50 w-[75vw] sm:w-[65vw] md:w-[65vw] lg:w-[48vw] xl:w-[40vw] bg-[#FFE500] text-black flex flex-col justify-between transform transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-2xl border-l border-black/15 p-6 sm:p-10 lg:p-12 {drawerOpen ? 'translate-x-0' : 'translate-x-full'}"
   aria-label="Menu Navigasi Utama"
   aria-hidden={!drawerOpen}
 >
