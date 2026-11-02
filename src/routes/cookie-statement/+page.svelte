@@ -176,7 +176,7 @@
             <p><strong class="text-black">ORIA Industrial Printing</strong></p>
             <p>Alamat: Ruko Royal Town Blok RB8, Gunung Anyar, Surabaya, Jawa Timur 60294</p>
             <p>Hotline &amp; WhatsApp: +62 812-5208-6455</p>
-            <p><strong class="text-black">Email:</strong> <a href="mailto:info@oria.co.id" class="text-black font-semibold hover:underline">info@oria.co.id</a></p>
+            <p><strong class="text-black">Email:</strong> <a href="mailto:info@oria.co.id" class="text-black font-semibold animated-underline">info@oria.co.id</a></p>
           </div>
         </section>
       </div>

@@ -82,3 +82,20 @@ button, a, img, svg {
 }
 
 
+
+/* Animated underline from left to right on hover */
+.animated-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition: background-size 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none !important;
+}
+
+.group:hover .animated-underline,
+.group:focus-visible .animated-underline,
+.animated-underline:hover,
+.animated-underline:focus-visible {
+  background-size: 100% 2px;
+}

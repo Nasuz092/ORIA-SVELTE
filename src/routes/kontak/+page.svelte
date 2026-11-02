@@ -283,7 +283,7 @@
               href="https://maps.google.com/?q=Ruko+Royal+Town+Gunung+Anyar+Surabaya"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-widest text-[#FFE500] hover:underline"
+              class="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-widest text-[#FFE500] animated-underline"
             >
               <span>Petunjuk Rute Maps</span>
               <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24">
@@ -375,7 +375,7 @@
           <button
             type="button"
             onclick={() => (submitted = false)}
-            class="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-widest text-black hover:underline pt-2 cursor-pointer"
+            class="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-widest text-black animated-underline pt-2 cursor-pointer"
           >
             <span>Kirim Formulir Lain</span>
             <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">

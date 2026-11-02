@@ -112,8 +112,8 @@
 
             <!-- Text Content -->
             <div class="pt-6 space-y-3">
-              <h3 class="font-heading font-bold text-lg sm:text-xl lg:text-2xl text-black group-hover:underline leading-snug line-clamp-2">
-                <a href={a.href}>
+              <h3 class="font-heading font-bold text-lg sm:text-xl lg:text-2xl text-black  leading-snug line-clamp-2">
+                <a href={a.href} class='animated-underline inline'>
                   {a.title}
                 </a>
               </h3>

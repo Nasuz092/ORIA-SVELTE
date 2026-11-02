@@ -121,8 +121,8 @@
             <!-- Nama Produk & Tombol Lihat Detail -->
             <div class="mt-5 space-y-2.5">
               <!-- Nama Produk -->
-              <h2 class="font-heading font-medium text-base sm:text-lg lg:text-xl text-black uppercase tracking-[0.16em] group-hover:underline transition-colors leading-snug">
-                {product.name}
+              <h2 class="font-heading font-medium text-base sm:text-lg lg:text-xl text-black uppercase tracking-[0.16em]  transition-colors leading-snug">
+                <span class="animated-underline inline">{product.name}</span>
               </h2>
 
               <!-- Tombol Lihat Detail dengan Chevron (Strict Rule: Chevron only, no arrows) -->
@@ -150,7 +150,7 @@
         </p>
         <a
           href="/produk"
-          class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-black hover:underline"
+          class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-black animated-underline"
         >
           <span>LIHAT KATEGORI LAINNYA</span>
           <svg

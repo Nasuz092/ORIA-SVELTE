@@ -529,7 +529,12 @@
 
   :global(.article-body a) {
     color: #000000;
-    text-decoration: underline;
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s;
     text-underline-offset: 4px;
     font-weight: 600;
     transition: color 0.2s;
