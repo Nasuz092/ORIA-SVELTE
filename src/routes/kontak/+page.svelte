@@ -241,7 +241,7 @@
           href="mailto:info@oria.co.id"
           class="inline-flex items-center justify-center gap-3 px-6 py-4 bg-neutral-100 hover:bg-neutral-200 text-black border-0 font-heading font-bold text-xs uppercase tracking-[0.2em] transition-colors"
         >
-          <span>EMAIL RESMI</span>
+          <span>EMAIL: INFO@ORIA.CO.ID</span>
           <svg class="w-4 h-4 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
           </svg>
@@ -321,7 +321,7 @@
               viewBox="0 0 24 24"
               aria-hidden="true"
             >
-              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </a>
           <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
@@ -331,6 +331,17 @@
             Senin – Jumat: 08.30 – 17.00 WIB<br />
             Sabtu: 08.30 – 15.00 WIB (Minggu: By Appointment). Konsultasi teknis dan kalkulasi ROI workshop Anda.
           </p>
+          <div class="pt-2">
+            <a
+              href="mailto:info@oria.co.id"
+              class="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-widest text-[#FFE500] hover:text-white transition-colors"
+            >
+              <span>info@oria.co.id</span>
+              <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>
