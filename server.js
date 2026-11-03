@@ -75,6 +75,8 @@ if (fs.existsSync(dotenvPath)) {
 const STRAPI_URL = (process.env.STRAPI_URL || '').replace(/\/$/, '');
 const LOCAL_BASE_DIRS = [
   path.join(__dirname, 'static'),
+  '/home/mesinpri/domains/cms.oria.co.id/public_html/public',
+  '/home/mesinpri/domains/cms.oria.com/public_html/public',
   '/home/markomas/domains/cms.oria.co.id/public_html/public',
   path.resolve(process.env.HOME || '/home', 'domains/cms.oria.co.id/public_html/public'),
   path.resolve(__dirname, '../cms.oria.co.id/public_html/public'),
