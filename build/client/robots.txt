@@ -1,0 +1,5 @@
+# robots.txt for https://oria.co.id
+User-agent: *
+Allow: /
+
+Sitemap: https://oria.co.id/sitemap.xml
