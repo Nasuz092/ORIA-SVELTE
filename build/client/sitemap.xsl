@@ -8,85 +8,100 @@
 	<xsl:template match="/">
 		<html xmlns="http://www.w3.org/1999/xhtml">
 			<head>
-				<title>XML Sitemap - oria.co.id</title>
+				<title>XML Sitemap — ORIA Industrial Printing</title>
 				<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" type="image/png" href="/favicon.png" />
 				<style type="text/css">
 					body {
-						font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-						color: #222;
-						background-color: #f7f9fa;
+						font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Plus Jakarta Sans", Inter, sans-serif;
+						color: #e4e4e7;
+						background-color: #050508;
 						margin: 0;
 						padding: 40px 20px;
 					}
 					.container {
-						max-width: 1080px;
+						max-width: 1100px;
 						margin: 0 auto;
-						background: #fff;
-						padding: 32px;
-						border-radius: 8px;
-						box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+						background: #0d0d12;
+						padding: 36px 40px;
+						border-radius: 12px;
+						border: 1px solid #1c1c26;
+						box-shadow: 0 20px 48px rgba(0, 0, 0, 0.7);
 					}
-					.header-title {
+					.header-wrap {
+						display: flex;
+						align-items: center;
+						justify-content: space-between;
+						border-bottom: 1px solid #1c1c26;
+						padding-bottom: 22px;
+						margin-bottom: 24px;
+					}
+					.brand-title {
 						display: flex;
 						align-items: center;
 						gap: 12px;
-						margin-bottom: 8px;
 					}
 					h1 {
-						color: #0A0A0C;
-						font-size: 28px;
-						margin: 0;
+						color: #ffffff;
+						font-size: 26px;
 						font-weight: 800;
-						letter-spacing: -0.02em;
+						letter-spacing: 0.08em;
+						text-transform: uppercase;
+						margin: 0;
+					}
+					h1 span.gold {
+						color: #FFE500;
 					}
 					.badge {
-						background: #0A0A0C;
+						background: rgba(255, 229, 0, 0.08);
 						color: #FFE500;
+						border: 1px solid rgba(255, 229, 0, 0.3);
 						font-size: 11px;
 						font-weight: 700;
-						padding: 4px 10px;
+						padding: 5px 12px;
 						border-radius: 4px;
 						text-transform: uppercase;
-						letter-spacing: 0.1em;
-					}
-					p {
-						font-size: 14px;
-						line-height: 1.6;
-						color: #555;
-						margin-bottom: 24px;
+						letter-spacing: 0.15em;
 					}
 					p.expl {
-						background: #fafafa;
+						background: #12121a;
 						padding: 16px 20px;
-						border-left: 4px solid #FFE500;
-						border-radius: 4px;
-						color: #444;
+						border-left: 3px solid #FFE500;
+						border-radius: 6px;
+						color: #a1a1aa;
+						font-size: 13.5px;
+						line-height: 1.6;
+						margin-bottom: 26px;
 					}
-					a {
-						color: #0A0A0C;
-						font-weight: 500;
-						text-decoration: none;
+					p.count {
+						font-size: 13.5px;
+						color: #a1a1aa;
+						margin-bottom: 14px;
 					}
-					a:hover {
-						color: #d1b800;
-						text-decoration: underline;
+					p.count strong {
+						color: #FFE500;
+						font-weight: 700;
 					}
 					table {
 						width: 100%;
-						border-collapse: collapse;
-						margin-top: 20px;
+						border-collapse: separate;
+						border-spacing: 0;
+						margin-top: 12px;
+						border: 1px solid #1f1f2d;
+						border-radius: 8px;
+						overflow: hidden;
 					}
 					th {
-						background-color: #0A0A0C;
-						color: #fff;
+						background-color: #14141e;
+						color: #ffffff;
 						text-align: left;
-						padding: 12px 16px;
-						font-size: 13px;
+						padding: 14px 18px;
+						font-size: 12px;
 						font-weight: 700;
 						text-transform: uppercase;
-						letter-spacing: 0.05em;
+						letter-spacing: 0.1em;
+						border-bottom: 2px solid #FFE500;
 					}
 					th.text-center, td.text-center {
 						text-align: center;
@@ -96,50 +111,86 @@
 						white-space: nowrap;
 					}
 					td {
-						padding: 12px 16px;
-						border-bottom: 1px solid #eee;
-						font-size: 13.5px;
+						padding: 13px 18px;
+						border-bottom: 1px solid #181824;
+						font-size: 13px;
 						word-break: break-all;
+						color: #d4d4d8;
+					}
+					tr:last-child td {
+						border-bottom: none;
 					}
 					tr:hover td {
-						background-color: #fdfdfd;
+						background-color: #171724;
 					}
 					tr:nth-child(even) td {
-						background-color: #fafbfc;
+						background-color: #0f0f17;
 					}
 					tr:nth-child(even):hover td {
-						background-color: #f5f7f9;
+						background-color: #171724;
+					}
+					a {
+						color: #ffffff;
+						font-weight: 500;
+						text-decoration: none;
+						transition: color 0.15s ease;
+					}
+					a:hover {
+						color: #FFE500;
+						text-decoration: underline;
 					}
 					.priority-tag {
 						display: inline-block;
-						background: #f0f0f0;
+						background: #181824;
+						color: #FFE500;
+						border: 1px solid rgba(255, 229, 0, 0.25);
 						padding: 2px 8px;
-						border-radius: 3px;
-						font-size: 12px;
-						font-weight: 600;
+						border-radius: 4px;
+						font-size: 11px;
+						font-weight: 700;
+						font-family: monospace;
+					}
+					.freq-tag {
+						display: inline-block;
+						background: #14141e;
+						color: #a1a1aa;
+						border: 1px solid #222232;
+						padding: 2px 8px;
+						border-radius: 4px;
+						font-size: 11px;
+						text-transform: uppercase;
+						letter-spacing: 0.05em;
 					}
 					.footer {
-						margin-top: 36px;
-						padding-top: 18px;
-						border-top: 1px solid #eee;
+						margin-top: 32px;
+						padding-top: 20px;
+						border-top: 1px solid #1c1c26;
 						font-size: 12px;
-						color: #888;
+						color: #71717a;
 						text-align: center;
+						letter-spacing: 0.05em;
+					}
+					.footer span {
+						color: #FFE500;
+						font-weight: 600;
 					}
 				</style>
 			</head>
 			<body>
 				<div class="container">
-					<div class="header-title">
-						<h1>XML Sitemap</h1>
+					<div class="header-wrap">
+						<div class="brand-title">
+							<h1>ORIA<span class="gold">.</span> XML SITEMAP</h1>
+						</div>
 						<span class="badge">oria.co.id</span>
 					</div>
+					
 					<p class="expl">
-						Sitemap XML ini dihasilkan secara dinamis untuk mengoptimalkan pengindeksan oleh mesin pencari seperti Google. Format ini diselaraskan sepenuhnya dengan standar sitemap XML global untuk memaksimalkan performa SERP dan perayapan halaman produk maupun artikel.
+						Sitemap XML ini dihasilkan secara dinamis untuk mengoptimalkan perayapan oleh mesin pencari Google. Diselaraskan khusus dengan struktur arsitektur <strong>ORIA Industrial Printing</strong> agar seluruh katalog mesin industri, spesifikasi teknis, serta artikel edukasi terindeks dengan cepat dan presisi.
 					</p>
 					
 					<xsl:if test="count(sitemap:sitemapindex/sitemap:sitemap) &gt; 0">
-						<p>Sitemap indeks ini merujuk ke sub-sitemap berikut:</p>
+						<p class="count">Sitemap indeks ini merujuk ke <strong><xsl:value-of select="count(sitemap:sitemapindex/sitemap:sitemap)"/></strong> sub-sitemap:</p>
 						<table>
 							<thead>
 								<tr>
@@ -163,7 +214,7 @@
 					</xsl:if>
 					
 					<xsl:if test="count(sitemap:urlset/sitemap:url) &gt; 0">
-						<p>Jumlah URL dalam sitemap ini: <strong><xsl:value-of select="count(sitemap:urlset/sitemap:url)"/></strong></p>
+						<p class="count">Total URL terindeks dalam sitemap ini: <strong><xsl:value-of select="count(sitemap:urlset/sitemap:url)"/></strong></p>
 						<table>
 							<thead>
 								<tr>
@@ -183,7 +234,7 @@
 											<span class="priority-tag"><xsl:value-of select="sitemap:priority"/></span>
 										</td>
 										<td class="text-center">
-											<xsl:value-of select="sitemap:changefreq"/>
+											<span class="freq-tag"><xsl:value-of select="sitemap:changefreq"/></span>
 										</td>
 										<td class="text-right">
 											<xsl:value-of select="sitemap:lastmod"/>
@@ -195,7 +246,7 @@
 					</xsl:if>
 					
 					<div class="footer">
-						oria.co.id — Headless SvelteKit &amp; Strapi XML Sitemap
+						oria.co.id — <span>ORIA Industrial Printing</span> &middot; Precision Engineering SEO Sitemap
 					</div>
 				</div>
 			</body>
