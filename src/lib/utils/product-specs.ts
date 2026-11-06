@@ -392,12 +392,13 @@ export function getDetailedSpecColumns(prod: FormattedProduct): { left: SpecGrou
       ];
     } else if (name.includes('laser') || cat.includes('laser') || name.includes('marking')) {
       const isFiber = name.includes('fiber') || name.includes('3015') || name.includes('6015');
+      const isUvMarking = name.includes('uv') && (name.includes('marking') || name.includes('5w'));
       groupsDict['PRINT SYSTEM & PERFORMANCE'] = [
-        { label: 'Tipe Sumber Laser', value: isFiber ? 'Raycus / Maxphotonics Continuous Fiber Laser' : 'Sealed CO2 Glass Laser Tube Reci / Yongli' },
-        { label: 'Daya Output Laser', value: isFiber ? (name.includes('6015') ? '6,000 Watt' : '1,500 - 3,000 Watt') : '80 Watt - 150 Watt High Peak' },
+        { label: 'Tipe Sumber Laser', value: isUvMarking ? 'JPT 355nm UV Cold Laser Source' : (isFiber ? 'Raycus / Maxphotonics Continuous Fiber Laser' : 'Sealed CO2 Glass Laser Tube Reci / Yongli') },
+        { label: 'Daya Output Laser', value: isUvMarking ? '5 Watt UV Cold Laser High-Precision' : (isFiber ? (name.includes('6015') ? '6,000 Watt' : '1,500 - 3,000 Watt') : '80 Watt - 150 Watt High Peak') },
         { label: 'Kecepatan Grafir / Potong', value: name.includes('marking') ? 'Hingga 7,000 - 8,000 mm/s' : 'Hingga 600 - 1,000 mm/s' },
-        { label: 'Akurasi Pengulangan', value: '±0.01 mm Presisi Mikron Optik' },
-        { label: 'Ketebalan Potong Maksimal', value: isFiber ? 'Mild Steel s/d 20 mm, Stainless s/d 10 mm' : 'Akrilik s/d 20 mm, Kayu s/d 15 mm' }
+        { label: 'Akurasi Pengulangan', value: '±0.003 - 0.01 mm Presisi Mikron Optik' },
+        { label: 'Karakteristik Proses', value: isUvMarking ? 'Cold Laser Processing (Bebas Efek Terbakar / Thermal Damage)' : (isFiber ? 'High Speed Metal Cutting' : 'CO2 Thermal Cutting & Engraving') }
       ];
       groupsDict['WORKING AREA & MEDIA'] = [
         { label: 'Area Efektif Meja', value: name.includes('6040') ? '600 mm x 400 mm' : (name.includes('6090') ? '600 mm x 900 mm' : (name.includes('1490') ? '1,400 mm x 900 mm' : (name.includes('1325') ? '1,300 mm x 2,500 mm' : (name.includes('3015') ? '3,000 mm x 1,500 mm' : '6,000 mm x 1,500 mm')))) },

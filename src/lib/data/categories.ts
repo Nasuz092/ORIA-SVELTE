@@ -180,7 +180,7 @@ export function matchesCategory(p: FormattedProduct, catId: string): boolean {
     case 'consumables':
       return catSlug.includes('consumable') || pName.includes('tinta') || pName.includes('kertas');
     case 'laser':
-      return pName.includes('laser');
+      return (pName.includes('laser') || catSlug.includes('laser')) && !pName.includes('uv') && !slug.includes('uv');
     case 'cnc':
       return (pName.includes('cnc') || pName.includes('router') || pName.includes('plasma')) && !pName.includes('laser');
     case 'indoor':

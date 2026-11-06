@@ -41,8 +41,7 @@
       'ORIA Laser Cutting 6040',
       'ORIA Laser Cutting 6090',
       'ORIA Laser Galvo 1615',
-      'ORIA Laser Marking 2020',
-      'ORIA UV Laser Marking 5W'
+      'ORIA Laser Marking 2020'
     ],
     'CNC Router & Fabrication': [
       'ORIA CNC Metal 6090',

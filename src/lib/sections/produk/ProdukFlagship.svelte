@@ -57,7 +57,7 @@
     const uvProd = products.find(p => p.slug === 'oria-uv-flatbed-a3') || products.find(p => p.slug.includes('uv'));
     const sublimProd = products.find(p => p.slug === 'oria-sublim-1902' || p.slug === 'oria-sublim-1804') || products.find(p => p.slug.includes('sublim'));
     const outdoorProd = products.find(p => p.slug === 'oria-outdoor-3204-st') || products.find(p => p.slug.includes('outdoor'));
-    const laserProd = products.find(p => p.slug === 'oria-fiber-laser-3015' || p.slug === 'oria-laser-cutting-6040') || products.find(p => p.slug.includes('laser'));
+    const laserProd = products.find(p => p.slug === 'oria-fiber-laser-3015' || p.slug === 'oria-laser-cutting-6040') || products.find(p => p.slug.includes('laser') && !p.slug.includes('uv'));
 
     const list: FlagshipModel[] = [];
 
