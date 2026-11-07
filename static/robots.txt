@@ -1,5 +1,21 @@
 # robots.txt for https://oria.co.id
 User-agent: *
+Disallow: /api/
+Disallow: /health
+Disallow: /_app/
+
+# AI & LLM Search Engine Crawlers (AIO, GEO & Live AI Search Optimization)
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: PerplexityBot
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Google-Extended
+User-agent: Bytespider
+User-agent: Applebot-Extended
+User-agent: cohere-ai
 Allow: /
 
 Sitemap: https://oria.co.id/sitemap.xml
+Sitemap: https://oria.co.id/sitemap_index.xml

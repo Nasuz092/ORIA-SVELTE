@@ -378,7 +378,7 @@
 
     <!-- ROW 2: Subnav Row (Transparent when at top, solid black when scrolled or hovered, no blur) -->
     <div
-      class="w-full h-11 sm:h-12 flex items-center overflow-x-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden overscroll-x-contain transition-colors duration-300 {isScrolled ? 'bg-black' : 'bg-transparent hover:bg-black'}"
+      class="w-full h-11 sm:h-12 flex items-center overflow-x-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden overscroll-x-contain transition-colors duration-300 {isScrolled ? 'bg-black' : 'bg-transparent'}"
     >
       <div class="min-w-full w-max flex items-center px-4 sm:px-10 lg:px-16 {isProductDetail ? 'justify-center' : 'md:justify-center'}">
         <nav

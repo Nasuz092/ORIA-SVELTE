@@ -21,13 +21,13 @@
 						padding: 40px 20px;
 					}
 					.container {
-						max-width: 1100px;
+						max-width: 1140px;
 						margin: 0 auto;
 						background: #0d0d12;
 						padding: 36px 40px;
 						border-radius: 12px;
 						border: 1px solid #1c1c26;
-						box-shadow: 0 20px 48px rgba(0, 0, 0, 0.7);
+						box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
 					}
 					.header-wrap {
 						display: flex;
@@ -44,7 +44,7 @@
 					}
 					h1 {
 						color: #ffffff;
-						font-size: 26px;
+						font-size: 24px;
 						font-weight: 800;
 						letter-spacing: 0.08em;
 						text-transform: uppercase;
@@ -64,6 +64,29 @@
 						text-transform: uppercase;
 						letter-spacing: 0.15em;
 					}
+					.back-bar {
+						margin-bottom: 20px;
+					}
+					.back-btn {
+						display: inline-flex;
+						align-items: center;
+						gap: 6px;
+						background: #14141e;
+						color: #FFE500;
+						border: 1px solid #222232;
+						padding: 6px 14px;
+						border-radius: 6px;
+						font-size: 12px;
+						font-weight: 700;
+						text-decoration: none;
+						letter-spacing: 0.05em;
+						transition: all 0.2s ease;
+					}
+					.back-btn:hover {
+						background: #FFE500;
+						color: #000000;
+						border-color: #FFE500;
+					}
 					p.expl {
 						background: #12121a;
 						padding: 16px 20px;
@@ -72,7 +95,7 @@
 						color: #a1a1aa;
 						font-size: 13.5px;
 						line-height: 1.6;
-						margin-bottom: 26px;
+						margin-bottom: 24px;
 					}
 					p.count {
 						font-size: 13.5px;
@@ -87,7 +110,7 @@
 						width: 100%;
 						border-collapse: separate;
 						border-spacing: 0;
-						margin-top: 12px;
+						margin-top: 10px;
 						border: 1px solid #1f1f2d;
 						border-radius: 8px;
 						overflow: hidden;
@@ -96,8 +119,8 @@
 						background-color: #14141e;
 						color: #ffffff;
 						text-align: left;
-						padding: 14px 18px;
-						font-size: 12px;
+						padding: 13px 18px;
+						font-size: 11.5px;
 						font-weight: 700;
 						text-transform: uppercase;
 						letter-spacing: 0.1em;
@@ -139,6 +162,17 @@
 						color: #FFE500;
 						text-decoration: underline;
 					}
+					.type-badge {
+						display: inline-block;
+						background: #181824;
+						color: #ffffff;
+						border: 1px solid #282838;
+						padding: 3px 10px;
+						border-radius: 4px;
+						font-size: 11px;
+						font-weight: 600;
+						letter-spacing: 0.05em;
+					}
 					.priority-tag {
 						display: inline-block;
 						background: #181824;
@@ -160,6 +194,16 @@
 						font-size: 11px;
 						text-transform: uppercase;
 						letter-spacing: 0.05em;
+					}
+					.img-count {
+						display: inline-block;
+						background: rgba(255, 229, 0, 0.08);
+						color: #FFE500;
+						border: 1px solid rgba(255, 229, 0, 0.25);
+						padding: 2px 10px;
+						border-radius: 4px;
+						font-size: 11px;
+						font-weight: 700;
 					}
 					.footer {
 						margin-top: 32px;
@@ -184,25 +228,40 @@
 						</div>
 						<span class="badge">oria.co.id</span>
 					</div>
-					
-					<p class="expl">
-						Sitemap XML ini dihasilkan secara dinamis untuk mengoptimalkan perayapan oleh mesin pencari Google. Diselaraskan khusus dengan struktur arsitektur <strong>ORIA Industrial Printing</strong> agar seluruh katalog mesin industri, spesifikasi teknis, serta artikel edukasi terindeks dengan cepat dan presisi.
-					</p>
-					
+
+					<!-- SITEMAP INDEX VIEW -->
 					<xsl:if test="count(sitemap:sitemapindex/sitemap:sitemap) &gt; 0">
-						<p class="count">Sitemap indeks ini merujuk ke <strong><xsl:value-of select="count(sitemap:sitemapindex/sitemap:sitemap)"/></strong> sub-sitemap:</p>
+						<p class="expl">
+							Sitemap Indeks resmi <strong>ORIA Industrial Printing</strong>. Menghubungkan seluruh sub-sitemap dinamis untuk mengoptimalkan perayapan Googlebot, mencakup katalog mesin industri, publikasi editorial, kategori spesifikasi, dan halaman utama yang selalu tersinkronisasi otomatis dengan Strapi CMS.
+						</p>
+
+						<p class="count">Total sub-sitemap terdaftar: <strong><xsl:value-of select="count(sitemap:sitemapindex/sitemap:sitemap)"/></strong> bagian</p>
 						<table>
 							<thead>
 								<tr>
+									<th>Tipe Konten</th>
 									<th>Sitemap URL</th>
-									<th class="text-right">Waktu Modifikasi Terakhir</th>
+									<th class="text-right">Terakhir Dimodifikasi</th>
 								</tr>
 							</thead>
 							<tbody>
 								<xsl:for-each select="sitemap:sitemapindex/sitemap:sitemap">
 									<tr>
 										<td>
-											<a href="{sitemap:loc}"><xsl:value-of select="sitemap:loc"/></a>
+											<span class="type-badge">
+												<xsl:choose>
+													<xsl:when test="contains(sitemap:loc, 'product-sitemap')">PRODUK MESIN</xsl:when>
+													<xsl:when test="contains(sitemap:loc, 'post-sitemap')">ARTIKEL EDITORIAL</xsl:when>
+													<xsl:when test="contains(sitemap:loc, 'category-sitemap')">KATEGORI MESIN</xsl:when>
+													<xsl:when test="contains(sitemap:loc, 'page-sitemap')">HALAMAN UTAMA</xsl:when>
+													<xsl:otherwise>SITEMAP</xsl:otherwise>
+												</xsl:choose>
+											</span>
+										</td>
+										<td>
+											<a href="{sitemap:loc}">
+												<xsl:value-of select="sitemap:loc"/>
+											</a>
 										</td>
 										<td class="text-right">
 											<xsl:value-of select="sitemap:lastmod"/>
@@ -212,13 +271,23 @@
 							</tbody>
 						</table>
 					</xsl:if>
-					
+
+					<!-- SUB-SITEMAP URLSET VIEW -->
 					<xsl:if test="count(sitemap:urlset/sitemap:url) &gt; 0">
-						<p class="count">Total URL terindeks dalam sitemap ini: <strong><xsl:value-of select="count(sitemap:urlset/sitemap:url)"/></strong></p>
+						<div class="back-bar">
+							<a href="/sitemap.xml" class="back-btn">&lt; KEMBALI KE INDEKS SITEMAP</a>
+						</div>
+
+						<p class="expl">
+							Daftar URL halaman aktif yang dihasilkan secara dinamis langsung dari sistem database <strong>ORIA Industrial Printing</strong>. Setiap entri dilengkapi atribut prioritas crawling, frekuensi pembaruan, serta referensi gambar terindeks.
+						</p>
+
+						<p class="count">Total URL dalam sitemap ini: <strong><xsl:value-of select="count(sitemap:urlset/sitemap:url)"/></strong> halaman</p>
 						<table>
 							<thead>
 								<tr>
 									<th>URL Halaman</th>
+									<th class="text-center">Gambar</th>
 									<th class="text-center">Prioritas</th>
 									<th class="text-center">Frekuensi</th>
 									<th class="text-right">Terakhir Dimodifikasi</th>
@@ -228,13 +297,24 @@
 								<xsl:for-each select="sitemap:urlset/sitemap:url">
 									<tr>
 										<td>
-											<a href="{sitemap:loc}"><xsl:value-of select="sitemap:loc"/></a>
+											<a href="{sitemap:loc}">
+												<xsl:value-of select="sitemap:loc"/>
+											</a>
 										</td>
 										<td class="text-center">
-											<span class="priority-tag"><xsl:value-of select="sitemap:priority"/></span>
+											<span class="img-count">
+												<xsl:value-of select="count(image:image)"/>
+											</span>
 										</td>
 										<td class="text-center">
-											<span class="freq-tag"><xsl:value-of select="sitemap:changefreq"/></span>
+											<span class="priority-tag">
+												<xsl:value-of select="sitemap:priority"/>
+											</span>
+										</td>
+										<td class="text-center">
+											<span class="freq-tag">
+												<xsl:value-of select="sitemap:changefreq"/>
+											</span>
 										</td>
 										<td class="text-right">
 											<xsl:value-of select="sitemap:lastmod"/>
@@ -244,9 +324,9 @@
 							</tbody>
 						</table>
 					</xsl:if>
-					
+
 					<div class="footer">
-						oria.co.id - <span>ORIA Industrial Printing</span> &#183; Precision Engineering SEO Sitemap
+						oria.co.id - <span>ORIA Industrial Printing</span> &#183; Precision Machinery Dynamic SEO Architecture
 					</div>
 				</div>
 			</body>
