@@ -180,9 +180,29 @@ export function matchesCategory(p: FormattedProduct, catId: string): boolean {
     case 'consumables':
       return catSlug.includes('consumable') || pName.includes('tinta') || pName.includes('kertas');
     case 'laser':
-      return (pName.includes('laser') || catSlug.includes('laser')) && !pName.includes('uv') && !slug.includes('uv');
+      return (
+        (pName.includes('laser') || catSlug.includes('laser')) &&
+        !pName.includes('cnc') &&
+        !pName.includes('router') &&
+        !pName.includes('plasma') &&
+        !slug.includes('cnc') &&
+        !slug.includes('router') &&
+        !slug.includes('plasma') &&
+        !pName.includes('uv') &&
+        !slug.includes('uv')
+      );
     case 'cnc':
-      return (pName.includes('cnc') || pName.includes('router') || pName.includes('plasma')) && !pName.includes('laser');
+      return (
+        (pName.includes('cnc') ||
+          pName.includes('router') ||
+          pName.includes('plasma') ||
+          slug.includes('cnc') ||
+          slug.includes('router') ||
+          slug.includes('plasma') ||
+          catSlug.includes('cnc') ||
+          catSlug.includes('router')) &&
+        !pName.includes('laser')
+      );
     case 'indoor':
       return (
         (catSlug.includes('indoor') || pName.includes('indoor') || pName.includes('ecosolvent') || pName.includes('eco-solvent') || pName.includes('1802') || pName.includes('1902')) &&
