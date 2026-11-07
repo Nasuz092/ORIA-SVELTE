@@ -8,7 +8,7 @@
 	<xsl:template match="/">
 		<html xmlns="http://www.w3.org/1999/xhtml">
 			<head>
-				<title>XML Sitemap — ORIA Industrial Printing</title>
+				<title>XML Sitemap - ORIA Industrial Printing</title>
 				<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" type="image/png" href="/favicon.png" />
@@ -246,7 +246,7 @@
 					</xsl:if>
 					
 					<div class="footer">
-						oria.co.id — <span>ORIA Industrial Printing</span> &middot; Precision Engineering SEO Sitemap
+						oria.co.id - <span>ORIA Industrial Printing</span> &#183; Precision Engineering SEO Sitemap
 					</div>
 				</div>
 			</body>
