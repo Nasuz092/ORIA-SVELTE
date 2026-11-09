@@ -1,0 +1,37 @@
+# oria.co.id
+
+> Produsen & Engineering Brand Mesin Digital Printing, UV Flatbed, Sublimasi, Laser Cutting, dan CNC Router Profesional No.1 di Indonesia.
+
+Selamat datang di oria.co.id, platform resmi penyedia solusi mesin industri percetakan modern berteknologi tinggi dari brand **ORIA**, di bawah naungan **CV. Anugrah Supply Mandiri**. Kami menghadirkan rekayasa mesin berstandar internasional dengan sasis presisi tinggi, komponen industri kelas dunia, dan dukungan purna jual menyeluruh.
+
+## Dokumentasi Lengkap AI & LLM
+- [LLMs Full Documentation](https://oria.co.id/llms-full.txt) - Katalog spesifikasi produk lengkap, standar engineering, teknologi printhead, panduan aplikasi material, dan jaminan purna jual.
+- [Sitemap Index](https://oria.co.id/sitemap.xml) - Indeks peta situs XML untuk navigasi seluruh halaman, produk mesin, artikel edukasi, dan kategori.
+
+## Halaman Utama
+- [Beranda](https://oria.co.id/) - Rekayasa presisi tinggi, teknologi unggulan, dan jajaran mesin industri ORIA.
+- [Katalog Semua Produk](https://oria.co.id/produk) - Seluruh lini produk mesin UV, Sublimasi, Laser Cutting, CNC Router, DTF, DTG, Outdoor, Indoor, dan Single Pass.
+- [Tentang ORIA](https://oria.co.id/tentang) - Visi dedikasi, filosofi rekayasa mesin, standar manufaktur, kapasitas layanan, dan showroom resmi.
+- [Artikel & Wawasan Industri](https://oria.co.id/artikel) - Berita terkini, panduan teknis percetakan, tips bisnis industri grafika, dan inovasi mesin printing.
+- [Hubungi Kami](https://oria.co.id/kontak) - Layanan konsultasi mesin, jadwal demo unit di showroom, dan komunikasi langsung via WhatsApp.
+
+## Kategori Mesin ORIA
+- [UV Flatbed & Cylinder](https://oria.co.id/produk/uv) - Mesin cetak UV flatbed dan silinder rotary presisi untuk akrilik, kaca, kayu, kulit, casing HP, dan tumbler.
+- [Sublimasi Textile](https://oria.co.id/produk/sublimasi) - Mesin printing sublimasi kain berkecepatan tinggi untuk produksi massal jersey olahraga, hijab voal, dan fashion tekstil.
+- [Laser Cutting & Engraving](https://oria.co.id/produk/laser) - Mesin laser cutting CO2 dan fiber laser metal berpresisi tinggi untuk pemotongan akrilik, kayu, dan plat besi/stainless.
+- [CNC Router & Fabrication](https://oria.co.id/produk/cnc) - Mesin CNC router heavy-duty dan plasma cutting untuk pemotongan plat ACP, PVC foam board, kayu solid, dan logam tebal.
+- [DTF Film Printing](https://oria.co.id/produk/dtf) - Mesin cetak sablon digital Direct to Film dengan shaker powder otomatis untuk apparel dan distro.
+- [DTG Direct to Garment](https://oria.co.id/produk/dtg) - Mesin cetak kaos langsung pada bahan katun dengan resolusi fotografi tanpa transfer paper.
+- [Outdoor Solvent Printing](https://oria.co.id/produk/outdoor) - Mesin digital printing billboard dan spanduk format besar 3,2 meter berkecepatan tinggi tahan cuaca ekstrem.
+- [Indoor High Resolution](https://oria.co.id/produk/indoor) - Mesin cetak foto dan stiker decal eco-solvent resolusi tinggi untuk dekorasi interior dan pameran.
+- [Single Pass Packaging](https://oria.co.id/produk/single-pass) - Mesin cetak kemasan digital karton box corrugated dan paper bag otomatis berkecepatan hingga 50m/menit.
+
+## Informasi Kontak & Operasional
+- **Brand:** ORIA
+- **Badan Usaha:** CV. Anugrah Supply Mandiri
+- **Showroom & Kantor Pusat:** Ruko Royal Town Blok RB8, Gunung Anyar, Surabaya, Jawa Timur 60294, Indonesia.
+- **Jam Operasional:** Senin - Jumat (08.30 - 16.30 WIB), Sabtu (08.30 - 13.30 WIB), Minggu & Hari Libur Nasional Tutup.
+- **WhatsApp Layanan:** +6281252086455
+- **Email:** info@oria.co.id
+- **Website Resmi:** https://oria.co.id
+

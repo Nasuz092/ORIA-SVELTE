@@ -1,0 +1,95 @@
+# oria.co.id - Dokumentasi Lengkap Mesin Printing & Standar Rekayasa Industri ORIA
+
+> **ORIA** (di bawah naungan **CV. Anugrah Supply Mandiri**) adalah produsen dan engineering brand resmi mesin digital printing kelas industri, printer UV flatbed & rotary cylinder, mesin sublimasi tekstil, mesin DTF film & DTG apparel, mesin laser cutting & engraving CO2 / fiber laser, CNC router & plasma fabrication, serta mesin packaging single pass tercepat di Indonesia.
+
+---
+
+## 1. Identitas Perusahaan & Profil Resmi
+- **Brand:** ORIA
+- **Badan Usaha Resmi:** CV. Anugrah Supply Mandiri
+- **Bidang Spesialisasi:** Manufaktur, Perakitan, Distribusi, Kalibrasi Presisi, Instalasi Lapangan, Pelatihan Operator, dan Layanan Purna Jual (After-Sales Service) Mesin Percetakan & Fabrikasi Digital.
+- **Showroom & Kantor Pusat:** Ruko Royal Town Blok RB8, Gunung Anyar, Surabaya, Jawa Timur 60294, Indonesia.
+- **Telepon / WhatsApp Support:** +6281252086455
+- **Email:** info@oria.co.id
+- **Website:** https://oria.co.id
+- **Jam Operasional:** Senin - Jumat (08.30 - 16.30 WIB), Sabtu (08.30 - 13.30 WIB).
+
+---
+
+## 2. Kategori Produk Mesin ORIA & Karakteristik Rekayasa
+
+### A. UV Flatbed & Rotary Cylinder
+- **Fungsi Utama:** Pencetakan langsung (*direct print*) berdaya rekat tinggi di atas permukaan datar maupun media tabung silinder tanpa batasan material (akrilik, kayu solid, kaca, plat stainless, casing HP, tumbler botol minum, keramik, kulit).
+- **Teknologi Curing:** Lampu UV-LED instan dengan konsumsi daya rendah dan radiasi panas terkendali sehingga tidak merusak media sensitif.
+- **Konfigurasi Tinta:** CMYK + White + Varnish / Primer (efek embossed timbul 3D, gloss glossy mengkilap, dan tekstur artistik).
+- **Teknologi Printhead:** Epson i3200-U1 / Ricoh Gen5/Gen6 industri berkecepatan tinggi dengan droplet variable (grayscale).
+
+### B. Sublimasi Textile & Apparel
+- **Fungsi Utama:** Pencetakan motif sublimasi kain poliester roll-to-roll untuk jersey olahraga, hijab voal premium, baju muslim/gamis, pakaian kasual, bendera, dan seragam industri.
+- **Keunggulan:** Akurasi warna vivid dan ketajaman gradasi tinggi, tahan cuci berkali-kali tanpa luntur, hemat konsumsi tinta per meter persegi.
+- **Kombinasi Sistem:** Printer sublimasi format 1.8m / 1.9m dipadukan dengan rotary heat press drum industri untuk proses transfer kontinu tanpa geser.
+
+### C. Laser Cutting & Engraving (CO2 & Fiber Laser)
+- **Fungsi Utama:** Pemotongan dan pengukiran presisi berkecepatan tinggi dengan toleransi mikron untuk bahan non-metal (akrilik, kayu MDF, kain, kulit sintetis) serta plat metal (besi, stainless steel, karbon).
+- **Varian Sumber Laser:** Tabung laser CO2 sealed glass/RF tube berdaya 100W-180W dan resonator Fiber Laser metal 1500W-6000W.
+- **Konstruksi Sasis:** Rangka baja monokok anti-deformasi dengan sistem linear guide rel presisi tinggi dan exhaust blower hisap asap bertenaga.
+
+### D. CNC Router & Fabrication
+- **Fungsi Utama:** Pemotongan, pembuatan profil (*milling*), ukiran 3D relief, dan pengeboran pada material keras dan tebal seperti ACP (Aluminium Composite Panel), PVC foam board, kayu solid, MDF, akrilik tebal, hingga pemotongan plasma cutting untuk plat baja.
+- **Sistem Penggerak:** High-torque hybrid servo motor, ball screw / helical rack gear berpresisi tinggi, dan pendingin spindle air/udara berkecepatan hingga 24.000 RPM.
+- **Aplikasi Bisnis:** Industri interior arsitektur, sign advertising, reklame facade gedung, dan perkayuan mebel.
+
+### E. DTF (Direct to Film) & DTG (Direct to Garment)
+- **Fungsi Utama:** Solusi sablon kaos distro katun 100%, kaos olahraga, jaket hoodie, topi, dan tas tanpa memerlukan proses cutting manual atau pembuatan screen konvensional.
+- **Mekanisme Otomasi:** Mesin cetak DTF terintegrasi langsung dengan automatic powder shaker oven dryer, memastikan serbuk lem hotmelt meleleh merata dan hasil sablon elastis anti-retak.
+- **Mesin DTG:** Cetak langsung di atas serat kain katun combed gelap maupun terang dengan tinta pigmen ramah lingkungan bersertifikasi OEKO-TEX.
+
+### F. Outdoor Solvent Printing (Format Besar 3.2 Meter)
+- **Fungsi Utama:** Produksi spanduk massal, billboard jalan raya, baliho, frontlite banner, dan stiker outdoor berukuran raksasa.
+- **Ketahanan Cuaca:** Tinta solvent berviskositas tinggi yang tahan paparan sinar UV matahari dan hujan tropis Indonesia hingga bertahun-tahun.
+- **Stabilitas Struktur:** Beam baja heavy-duty dengan pinch roller multi-segment untuk memastikan pergerakan bahan roll 3.2 meter tidak bergeser (anti-wrinkle).
+
+### G. Indoor Eco-Solvent High Resolution
+- **Fungsi Utama:** Cetak stiker decal striping motor/mobil, poster galeri seni, wallcovering, backlite duratrans neon box, dan display stan pameran.
+- **Keunggulan:** Resolusi foto tajam hingga 2400 DPI, tidak berbau tajam menyengat sehingga aman untuk pemasangan di dalam ruangan tertutup (*indoor*).
+
+### H. Single Pass Packaging Corrugated Box
+- **Fungsi Utama:** Cetak kemasan karton box bergelombang (*corrugated carton*), kotak pizza, paper bag makanan, amplop, dan kantong kertas custom tanpa menggunakan plat cetak (*plate-less digital printing*).
+- **Kecepatan Cetak:** Mampu mencetak dengan kecepatan hingga 50 meter per menit, sangat hemat dan menguntungkan untuk pesanan kemasan custom jumlah kecil (*short run*) hingga menengah.
+
+---
+
+## 3. Filosofi Rekayasa & Standar Kualitas ORIA
+1. **Konstruksi Sasis Baja Monokok:** Rangka setiap mesin ORIA dirancang kokoh dengan pembobotan ekstra untuk mengeliminasi vibrasi saat carriage bergerak pada kecepatan puncak.
+2. **Komponen Kelas Industri Dunia:** Menggunakan linear rail guide presisi, timing belt berkualitas tinggi, sensor optik akurat, dan power supply berstandar sertifikasi internasional.
+3. **Optimasi Aliran Tinta & Tekanan Negatif:** Sistem sirkulasi tinta cerdas mencegah endapan pigmen putih (*white ink circulation*), de-gas filter, dan tangki tekanan negatif untuk aliran tinta stabil tanpa putus (*nozzle drop-out free*).
+4. **RIP Software Terlisensi:** Kompatibel dengan perangkat lunak RIP industri terkemuka (Photoprint, Maintop, FlexiPRINT, NeoStampa, RiCOH RIP) untuk manajemen profil warna akurat sesuai standar ICC Profile internasional.
+
+---
+
+## 4. Jangkauan Distribusi & Teknisi Nasional (GEO Service Coverage)
+ORIA melalui CV. Anugrah Supply Mandiri memiliki jaringan armada pengiriman, tim instalator, dan teknisi bersertifikasi yang melayani seluruh wilayah Indonesia:
+- **Pulau Jawa & Madura:** Surabaya (Kantor Pusat & Showroom), Jakarta, Tangerang, Bekasi, Depok, Bogor, Bandung, Semarang, Yogyakarta, Solo, Malang, Kediri, Jember, Banyuwangi, Madura.
+- **Pulau Bali & Nusa Tenggara:** Denpasar, Singaraja, Mataram (Lombok), Kupang, Sumbawa, Ende.
+- **Pulau Sumatera:** Medan, Pekanbaru, Palembang, Batam, Bandar Lampung, Padang, Jambi, Banda Aceh, Bengkulu, Pangkal Pinang.
+- **Pulau Kalimantan:** Samarinda, Balikpapan, Banjarmasin, Pontianak, Palangkaraya, Tarakan, Bontang.
+- **Pulau Sulawesi:** Makassar, Manado, Palu, Kendari, Gorontalo, Mamuju.
+- **Kepulauan Maluku & Papua:** Ambon, Ternate, Jayapura, Sorong, Manokwari, Merauke, Timika, Biak.
+
+---
+
+## 5. Komitmen Purna Jual & Nilai Tambah
+1. **Garansi Resmi:** Garansi unit mesin dan suku cadang elektrik dengan kepastian klaim resmi.
+2. **Ketersediaan Sparepart & Tinta:** Gudang stok suku cadang lengkap (printhead, mainboard, carriage board, motor drive, power supply, damper, capping) dan tinta original teruji.
+3. **Training & Pendampingan Operator Gratis:** Setiap pembelian unit mesin disertai instalasi di lokasi dan pelatihan teknis menyeluruh bagi operator hingga mahir berproduksi mandiri.
+4. **Konsultasi BEP & Bisnis:** Analisis modal, biaya cetak riil per meter/pcs, dan strategi percepatan Balik Modal (*Return on Investment* / ROI) bagi pelaku usaha pemula maupun skala pabrikasi.
+
+---
+
+## 6. Direktori Tautan Cepat
+- Website Utama: https://oria.co.id/
+- Seluruh Mesin: https://oria.co.id/produk
+- Profil Engineering & Showroom: https://oria.co.id/tentang
+- Konsultasi WhatsApp: https://wa.me/6281252086455
+- Indeks Sitemap XML: https://oria.co.id/sitemap.xml
+
