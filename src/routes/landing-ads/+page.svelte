@@ -53,14 +53,11 @@
     if (activeFilterKey === 'sublim') {
       return allCategories.filter((g) => g.id === 'sublimasi');
     }
-    if (activeFilterKey === 'laser') {
-      return allCategories.filter((g) => g.id === 'laser');
-    }
-    if (activeFilterKey === 'cnc') {
-      return allCategories.filter((g) => g.id === 'cnc');
-    }
     if (activeFilterKey === 'dtf') {
       return allCategories.filter((g) => g.id === 'dtf-dtg');
+    }
+    if (activeFilterKey === 'uv') {
+      return allCategories.filter((g) => g.id === 'uv');
     }
     if (activeFilterKey === 'single-pass') {
       return allCategories.filter((g) => g.id === 'single-pass');
@@ -120,30 +117,6 @@
         waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari Mesin Sublimasi & Heat Press dari iklan Google oria.co.id. Mohon info paket usaha & penawaran promo. Terima kasih.'
       };
     }
-    if (activeFilterKey === 'laser') {
-      return {
-        key: 'laser',
-        label: 'Laser Cutting & Marking',
-        categoryIds: ['laser'],
-        heroBadge: 'PRECISION CO2 & FIBER LASER SYSTEMS',
-        heroTitleMain: 'MESIN LASER CUTTING',
-        heroTitleHighlight: '& FIBER MARKING',
-        heroDescription: 'Pemotongan presisi tinggi akrilik, kayu, MDF, kulit, hingga fiber laser untuk pemotongan plat metal dan grafir barcode perhiasan & souvenir.',
-        waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari Mesin Laser Cutting / Marking dari iklan Google oria.co.id. Mohon info promo harga & spesifikasi teknis. Terima kasih.'
-      };
-    }
-    if (activeFilterKey === 'cnc') {
-      return {
-        key: 'cnc',
-        label: 'CNC Router & Plasma',
-        categoryIds: ['cnc'],
-        heroBadge: 'HEAVY-DUTY CNC ROUTER & PLASMA CUTTING',
-        heroTitleMain: 'MESIN CNC ROUTER',
-        heroTitleHighlight: '& PLASMA FABRIKASI',
-        heroDescription: 'Heavy-duty framing & spindle bertenaga tinggi untuk pemotongan lembaran ACP reklame, ukiran kayu 3D, pembuatan kitchen set, dan pemotongan plat besi tebal.',
-        waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari Mesin CNC Router / Plasma dari iklan Google oria.co.id. Mohon info pricelist dan spesifikasi teknis. Terima kasih.'
-      };
-    }
     if (activeFilterKey === 'dtf') {
       return {
         key: 'dtf',
@@ -151,7 +124,7 @@
         categoryIds: ['dtf-dtg'],
         heroBadge: 'DIRECT TO FILM & DIRECT TO GARMENT',
         heroTitleMain: 'MESIN PRINTER DTF',
-        heroTitleHighlight: '& DIRECT TO GARMENT',
+        heroTitleHighlight: '& SABLON KAOS DISTRO',
         heroDescription: 'Inovasi sablon digital kaos distro katun, jersey, canvas bag, dan topi. Dilengkapi shaker powder otomatis dengan efisiensi tinta maksimal.',
         waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari Mesin DTF / DTG Sablon Kaos dari iklan Google oria.co.id. Mohon info penawaran promo & paket usaha. Terima kasih.'
       };
@@ -162,8 +135,8 @@
         label: 'Single Pass Packaging',
         categoryIds: ['single-pass'],
         heroBadge: 'CORRUGATED BOX & PAPER BAG PRINTING',
-        heroTitleMain: 'MESIN CETAK PACKAGING',
-        heroTitleHighlight: 'SINGLE PASS SYSTEM',
+        heroTitleMain: 'MESIN CETAK KARDUS',
+        heroTitleHighlight: '& SINGLE PASS PACKAGING',
         heroDescription: 'Cetak langsung di atas kardus corrugated box, box pizza, dan paper bag berkecepatan tinggi tanpa minimum order dan tanpa biaya plat film.',
         waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya tertarik dengan Mesin Single Pass Packaging dari iklan Google oria.co.id. Mohon info harga & kapasitas produksi. Terima kasih.'
       };
@@ -171,24 +144,22 @@
 
     return {
       key: 'all',
-      label: 'Semua Kategori',
-      categoryIds: ['outdoor', 'sublimasi', 'laser', 'cnc', 'dtf-dtg', 'single-pass', 'uv', 'indoor'],
-      heroBadge: 'INDUSTRIAL PRINTING & FABRICATION SYSTEMS',
-      heroTitleMain: 'SOLUSI MESIN CETAK',
+      label: 'Semua Mesin Printing',
+      categoryIds: ['outdoor', 'indoor', 'sublimasi', 'dtf-dtg', 'uv', 'single-pass'],
+      heroBadge: 'INDUSTRIAL DIGITAL PRINTING SYSTEMS',
+      heroTitleMain: 'SOLUSI MESIN DIGITAL PRINTING',
       heroTitleHighlight: 'BERGARANSI RESMI',
-      heroDescription: 'Investasi mesin industri presisi tinggi dengan durabilitas komponen kelas dunia, jaminan ketersediaan suku cadang original, dan pendampingan teknisi resmi ke seluruh kota di Indonesia.',
-      waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya tertarik konsultasi penawaran promo mesin industri dari iklan Google oria.co.id. Mohon info lebih detail & brosur harga. Terima kasih.'
+      heroDescription: 'Investasi mesin digital printing industri presisi tinggi dengan durabilitas komponen kelas dunia, jaminan ketersediaan suku cadang original, dan pendampingan teknisi resmi ke seluruh kota di Indonesia.',
+      waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya tertarik konsultasi penawaran promo mesin digital printing dari iklan Google oria.co.id. Mohon info lebih detail & brosur harga. Terima kasih.'
     };
   });
 
   const filterTabs = [
-    { key: 'all', label: 'SEMUA MESIN' },
+    { key: 'all', label: 'SEMUA MESIN PRINTING' },
     { key: 'digital-printing', label: 'DIGITAL PRINTING (OUTDOOR & INDOOR)' },
-    { key: 'uv', label: 'PRINTER UV' },
     { key: 'sublim', label: 'SUBLIMASI & HEAT PRESS' },
-    { key: 'laser', label: 'LASER CUTTING' },
-    { key: 'cnc', label: 'CNC ROUTER' },
     { key: 'dtf', label: 'DTF APPAREL' },
+    { key: 'uv', label: 'PRINTER UV' },
     { key: 'single-pass', label: 'SINGLE PASS' }
   ];
 

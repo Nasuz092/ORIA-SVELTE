@@ -31,7 +31,7 @@ export interface AdIntentConfig {
   waContextMessage: string;
 }
 
-// 8 Kategori spesifik sesuai instruksi pengguna
+// 6 Kategori Mesin Printing Industrial (Tanpa CNC dan Laser Cutting)
 const AD_CATEGORIES: AdCategoryConfig[] = [
   {
     id: 'outdoor',
@@ -40,6 +40,17 @@ const AD_CATEGORIES: AdCategoryConfig[] = [
     description: 'Mesin digital printing outdoor format 3.2 meter dengan sasis baja monokok untuk produksi spanduk dan baliho tahan cuaca ekstrem.',
     heroImage: '/images/categories/outdoor.webp',
     slugs: ['oria-outdoor-3204-st']
+  },
+  {
+    id: 'indoor',
+    name: 'Indoor Eco-Solvent',
+    subtitle: 'HIGH RESOLUTION FINE-ART & DECAL PRINTING',
+    description: 'Mesin digital printing indoor beresolusi fotografi untuk stiker decal kendaraan, wallpaper interior, dan poster pameran.',
+    heroImage: '/images/categories/indoor.webp',
+    slugs: [
+      'oria-indoor-3202',
+      'oria-indoor-1802'
+    ]
   },
   {
     id: 'sublimasi',
@@ -55,30 +66,6 @@ const AD_CATEGORIES: AdCategoryConfig[] = [
     ]
   },
   {
-    id: 'laser',
-    name: 'Laser Cutting & Marking',
-    subtitle: 'PRECISION CO2 & FIBER LASER SYSTEMS',
-    description: 'Koleksi mesin laser presisi dari laser marking souvenir hingga fiber laser pemotong plat metal.',
-    heroImage: '/images/categories/laser.webp',
-    slugs: [
-      'oria-laser-marking-2020',
-      'oria-laser-cutting-6040',
-      'oria-fiber-laser-1325'
-    ]
-  },
-  {
-    id: 'cnc',
-    name: 'CNC Router & Fabrication',
-    subtitle: 'HEAVY-DUTY ROUTER & PLASMA CUTTING',
-    description: 'Mesin CNC router dan plasma cutting berdaya tahan tinggi untuk pemotongan presisi plat besi, ACP, kayu solid, dan aluminium.',
-    heroImage: '/images/categories/cnc.webp',
-    slugs: [
-      'oria-cnc-router-1325',
-      'oria-cnc-metal-6090',
-      'oria-cnc-plasma-1325'
-    ]
-  },
-  {
     id: 'dtf-dtg',
     name: 'DTF & DTG Apparel',
     subtitle: 'DIRECT TO FILM & DIRECT TO GARMENT',
@@ -87,16 +74,6 @@ const AD_CATEGORIES: AdCategoryConfig[] = [
     slugs: [
       'oria-dtf-6004',
       'oria-dtg-or-dtg02'
-    ]
-  },
-  {
-    id: 'single-pass',
-    name: 'Single Pass Packaging',
-    subtitle: 'CORRUGATED BOX & PAPER BAG PRINTING',
-    description: 'Mesin cetak digital kemasan karton box dan paper bag berkecepatan tinggi tanpa plat cetak.',
-    heroImage: '/images/categories/single-pass.webp',
-    slugs: [
-      'oria-one-pass-dc800sp'
     ]
   },
   {
@@ -113,14 +90,13 @@ const AD_CATEGORIES: AdCategoryConfig[] = [
     ]
   },
   {
-    id: 'indoor',
-    name: 'Indoor Eco-Solvent',
-    subtitle: 'HIGH RESOLUTION FINE-ART & DECAL PRINTING',
-    description: 'Mesin digital printing indoor beresolusi fotografi untuk stiker decal kendaraan, wallpaper interior, dan poster pameran.',
-    heroImage: '/images/categories/indoor.webp',
+    id: 'single-pass',
+    name: 'Single Pass Packaging',
+    subtitle: 'CORRUGATED BOX & PAPER BAG PRINTING',
+    description: 'Mesin cetak digital kemasan karton box dan paper bag berkecepatan tinggi tanpa plat cetak.',
+    heroImage: '/images/categories/single-pass.webp',
     slugs: [
-      'oria-indoor-3202',
-      'oria-indoor-1802'
+      'oria-one-pass-dc800sp'
     ]
   }
 ];
@@ -176,26 +152,6 @@ const INTENT_CONFIGS: Record<string, AdIntentConfig> = {
     heroDescription: 'Cetak langsung di segala media kaku & silinder: akrilik, kayu solid, kaca, plat metal, casing HP, tumbler, hingga merchandise souvenir presisi tinggi.',
     waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari mesin Printer UV Flatbed / Cylinder dari iklan Google oria.co.id. Mohon info spesifikasi & promo harga. Terima kasih.'
   },
-  'laser': {
-    key: 'laser',
-    label: 'Laser Cutting & Marking',
-    categoryIds: ['laser'],
-    heroBadge: 'PRECISION CO2 & FIBER LASER SYSTEMS',
-    heroTitleMain: 'MESIN LASER CUTTING',
-    heroTitleHighlight: '& FIBER MARKING',
-    heroDescription: 'Pemotongan presisi tinggi akrilik, kayu, MDF, kulit, hingga fiber laser untuk pemotongan plat metal dan grafir barcode perhiasan & souvenir.',
-    waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari Mesin Laser Cutting / Marking dari iklan Google oria.co.id. Mohon info promo harga & spesifikasi teknis. Terima kasih.'
-  },
-  'cnc': {
-    key: 'cnc',
-    label: 'CNC Router & Plasma',
-    categoryIds: ['cnc'],
-    heroBadge: 'HEAVY-DUTY CNC ROUTER & PLASMA CUTTING',
-    heroTitleMain: 'MESIN CNC ROUTER',
-    heroTitleHighlight: '& PLASMA FABRIKASI',
-    heroDescription: 'Heavy-duty framing & spindle bertenaga tinggi untuk pemotongan lembaran ACP reklame, ukiran kayu 3D, pembuatan kitchen set, dan pemotongan plat besi tebal.',
-    waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari Mesin CNC Router / Plasma dari iklan Google oria.co.id. Mohon info pricelist dan spesifikasi teknis. Terima kasih.'
-  },
   'dtf': {
     key: 'dtf',
     label: 'DTF & DTG Apparel',
@@ -238,26 +194,18 @@ const INTENT_CONFIGS: Record<string, AdIntentConfig> = {
   },
   'all': {
     key: 'all',
-    label: 'Semua Kategori',
-    categoryIds: ['outdoor', 'sublimasi', 'laser', 'cnc', 'dtf-dtg', 'single-pass', 'uv', 'indoor'],
-    heroBadge: 'INDUSTRIAL PRINTING & FABRICATION SYSTEMS',
-    heroTitleMain: 'SOLUSI MESIN CETAK',
+    label: 'Semua Mesin Printing',
+    categoryIds: ['outdoor', 'indoor', 'sublimasi', 'dtf-dtg', 'uv', 'single-pass'],
+    heroBadge: 'INDUSTRIAL DIGITAL PRINTING SYSTEMS',
+    heroTitleMain: 'SOLUSI MESIN DIGITAL PRINTING',
     heroTitleHighlight: 'BERGARANSI RESMI',
-    heroDescription: 'Investasi mesin industri presisi tinggi dengan durabilitas komponen kelas dunia, jaminan ketersediaan suku cadang original, dan pendampingan teknisi resmi ke seluruh kota di Indonesia.',
-    waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya tertarik konsultasi penawaran promo mesin industri dari iklan Google oria.co.id. Mohon info lebih detail & brosur harga. Terima kasih.'
+    heroDescription: 'Investasi mesin digital printing industri presisi tinggi dengan durabilitas komponen kelas dunia, jaminan ketersediaan suku cadang original, dan pendampingan teknisi resmi ke seluruh kota di Indonesia.',
+    waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya tertarik konsultasi penawaran promo mesin digital printing dari iklan Google oria.co.id. Mohon info lebih detail & brosur harga. Terima kasih.'
   }
 };
 
 /**
  * Deteksi intent kata kunci Google Ads dari berbagai variasi pencarian pengguna
- * Mendukung pencarian natural seperti:
- * - "mesin cetak banner", "mesin banner", "printer banner", "mesin cetak spanduk", "mesin baliho" -> Outdoor & Indoor
- * - "mesin print tekstil", "mesin cetak kain", "mesin sublimasi", "print jersey", "mesin hijab" -> Sublimasi
- * - "mesin sablon kaos", "cetak kaos distro", "mesin dtf", "printer dtg" -> DTF & DTG
- * - "mesin uv", "printer akrilik", "cetak tumbler", "uv flatbed", "merchandise" -> UV Flatbed & Cylinder
- * - "mesin laser cutting", "potong akrilik", "laser fiber", "mesin grafir" -> Laser
- * - "mesin cnc router", "potong acp", "ukir kayu", "plasma cutting" -> CNC
- * - "mesin cetak kardus", "printer kemasan", "box corrugated", "single pass" -> Single Pass Packaging
  */
 function detectIntent(rawQuery: string): AdIntentConfig {
   if (!rawQuery) return INTENT_CONFIGS['all'];
@@ -343,39 +291,12 @@ function detectIntent(rawQuery: string): AdIntentConfig {
     return INTENT_CONFIGS['uv'];
   }
 
-  // 6. Variasi Laser, Potong Akrilik, Grafir, Marking, Fiber -> Laser
-  if (
-    q.includes('laser') ||
-    q.includes('fiber laser') ||
-    q.includes('potong akrilik') ||
-    q.includes('cutting akrilik') ||
-    q.includes('grafir') ||
-    q.includes('marking') ||
-    q.includes('engraving')
-  ) {
-    return INTENT_CONFIGS['laser'];
-  }
-
-  // 7. Variasi CNC, Router, Plasma, ACP, Ukir Kayu -> CNC
-  if (
-    q.includes('cnc') ||
-    q.includes('router') ||
-    q.includes('plasma') ||
-    q.includes('acp') ||
-    q.includes('ukir kayu') ||
-    q.includes('milling') ||
-    q.includes('potong besi') ||
-    q.includes('spindle')
-  ) {
-    return INTENT_CONFIGS['cnc'];
-  }
-
-  // 8. Spesifik Outdoor
+  // 6. Spesifik Outdoor
   if (q.includes('outdoor') || q.includes('solvent') || q.includes('3204')) {
     return INTENT_CONFIGS['outdoor'];
   }
 
-  // 9. Spesifik Indoor
+  // 7. Spesifik Indoor
   if (
     q.includes('indoor') ||
     q.includes('eco solvent') ||
@@ -390,7 +311,7 @@ function detectIntent(rawQuery: string): AdIntentConfig {
     return INTENT_CONFIGS['indoor'];
   }
 
-  // 10. Digital Printing Umum
+  // 8. Digital Printing Umum
   if (
     q.includes('digital printing') ||
     q.includes('digital print') ||
@@ -427,7 +348,7 @@ export const load: PageServerLoad = async ({ fetch, url, setHeaders }) => {
 
   const allProducts = await fetchOriaProducts(fetch);
 
-  // Map ke 8 grup yang diminta pengguna secara presisi
+  // Map ke 6 grup kategori printing industrial
   const allCategoryGroups: AdCategoryGroup[] = AD_CATEGORIES.map((cfg) => {
     const matchedProducts: FormattedProduct[] = [];
     for (const slug of cfg.slugs) {

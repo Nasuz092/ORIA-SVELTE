@@ -129,13 +129,11 @@
 
   const adsCategories = [
     { id: 'outdoor', title: 'Outdoor Solvent' },
+    { id: 'indoor', title: 'Indoor Eco-Solvent' },
     { id: 'sublimasi', title: 'Sublimasi & Heat Press' },
-    { id: 'laser', title: 'Laser Cutting & Marking' },
-    { id: 'cnc', title: 'CNC Router & Fabrication' },
     { id: 'dtf-dtg', title: 'DTF & DTG Apparel' },
-    { id: 'single-pass', title: 'Single Pass Packaging' },
     { id: 'uv', title: 'UV Flatbed & Cylinder' },
-    { id: 'indoor', title: 'Indoor Eco-Solvent' }
+    { id: 'single-pass', title: 'Single Pass Packaging' }
   ];
 
   function scrollToAdsCategory(id: string, e?: MouseEvent) {
