@@ -80,6 +80,14 @@ export const handle: Handle = async ({ event, resolve }) => {
 				return `<!--email_off-->${match}<!--/email_off-->`;
 			});
 
+			// B. Enforce strict noindex & no-crawl meta tags on landing-ads HTML for AI & Google Search
+			if (pathname.startsWith('/landing-ads')) {
+				out = out.replace(
+					/<head>/i,
+					`<head>\n\t\t<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate" />\n\t\t<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate" />\n\t\t<meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate" />`
+				);
+			}
+
 			return out;
 		}
 	});
@@ -105,19 +113,31 @@ export const handle: Handle = async ({ event, resolve }) => {
 	response.headers.delete('x-sveltekit-page');
 	response.headers.delete('x-powered-by');
 
-	// Protect healthcheck and internal API routes from search indexing via HTTP headers
+	// Protect private landing-ads, healthcheck, and internal API routes from search indexing via HTTP headers
 	if (
+		event.url.pathname.startsWith('/landing-ads') ||
 		event.url.pathname.startsWith('/health') ||
 		(event.url.pathname.startsWith('/api/') && !event.url.pathname.startsWith('/api/img'))
 	) {
-		response.headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive, nosnippet');
+		response.headers.set(
+			'X-Robots-Tag',
+			'noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate'
+		);
+	}
+
+	// Dynamic private no-store headers for Google Ads landing page
+	if (event.url.pathname.startsWith('/landing-ads')) {
+		response.headers.set('Cache-Control', 'private, no-cache, no-store, max-age=0, must-revalidate');
+		response.headers.set('CDN-Cache-Control', 'no-store');
+		response.headers.set('Cloudflare-CDN-Cache-Control', 'no-store');
 	}
 
 	// Apply Cloudflare Edge & Browser Caching Headers for public GET requests
 	if (
 		event.request.method === 'GET' &&
 		!event.url.pathname.startsWith('/api/') &&
-		!event.url.pathname.startsWith('/health')
+		!event.url.pathname.startsWith('/health') &&
+		!event.url.pathname.startsWith('/landing-ads')
 	) {
 		if (!response.headers.has('cache-control')) {
 			response.headers.set(
