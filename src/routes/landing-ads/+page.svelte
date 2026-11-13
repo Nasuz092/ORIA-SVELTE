@@ -216,7 +216,7 @@
 <!-- ================================================================= -->
 <!-- SECTION 1: HERO PANORAMIC ADVERTISING (30% Black Contrast)        -->
 <!-- ================================================================= -->
-<section class="relative w-full min-h-[85svh] sm:min-h-[92svh] flex items-center bg-black text-white select-none overflow-hidden px-4 sm:px-8 lg:px-12 xl:px-16 py-16 sm:py-20 lg:py-24">
+<section class="relative w-full min-h-[85svh] sm:min-h-[92svh] flex items-center bg-black text-white select-none overflow-hidden px-6 sm:px-10 lg:px-16 py-16 sm:py-20 lg:py-24">
   <!-- Panoramic Background Image -->
   <div class="absolute inset-0 w-full h-full pointer-events-none">
     <img
@@ -284,7 +284,7 @@
 <!-- ================================================================= -->
 <!-- SECTION 2: OUR CAPACITY / VALUES (60% White / Light Clean Theme)  -->
 <!-- ================================================================= -->
-<section class="w-full bg-[#F8F9FA] text-black py-16 sm:py-20 lg:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 border-b border-black/10 select-none">
+<section class="w-full bg-[#F8F9FA] text-black py-16 sm:py-20 lg:py-24 px-6 sm:px-10 lg:px-16 border-b border-black/10 select-none">
   <div class="max-w-7xl mx-auto space-y-12 sm:space-y-16">
     <!-- Header (Clean Lotus Style Tanpa Pill / Badge) -->
     <div class="space-y-2 max-w-2xl">
@@ -359,7 +359,7 @@
 <!-- ================================================================= -->
 <!-- SECTION 3: PRODUCT CATALOG (60% White Clean, Borderless, 1:1)    -->
 <!-- ================================================================= -->
-<section id="katalog-iklan" class="w-full bg-white text-black py-16 sm:py-20 lg:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 select-none scroll-mt-14">
+<section id="katalog-iklan" class="w-full bg-white text-black py-16 sm:py-20 lg:py-24 px-6 sm:px-10 lg:px-16 select-none scroll-mt-14">
   <div class="max-w-7xl mx-auto space-y-10 sm:space-y-14">
     <!-- Section Header (Clean Tanpa Pill / Badge) -->
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-neutral-200 pb-8">
@@ -516,7 +516,7 @@
 <!-- ================================================================= -->
 <!-- SECTION 4: AFTERSALES & NATIONAL COVERAGE (60% Light Background)  -->
 <!-- ================================================================= -->
-<section class="w-full bg-[#F3F4F6] text-black py-16 sm:py-20 lg:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 border-t border-neutral-200 select-none">
+<section class="w-full bg-[#F3F4F6] text-black py-16 sm:py-20 lg:py-24 px-6 sm:px-10 lg:px-16 border-t border-neutral-200 select-none">
   <div class="max-w-7xl mx-auto space-y-10">
     <div class="max-w-2xl space-y-2">
       <p class="font-heading font-semibold text-xs sm:text-sm tracking-[0.28em] uppercase text-[#B89200]">
@@ -574,49 +574,51 @@
 <!-- ================================================================= -->
 <!-- SECTION 5: FINAL HIGH-CONVERSION CTA (30% Black Contrast)         -->
 <!-- ================================================================= -->
-<section class="w-full bg-[#050508] text-white py-16 sm:py-20 lg:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 border-t border-white/10 select-none">
-  <div class="max-w-4xl mx-auto text-center space-y-6">
-    <p class="font-heading font-semibold text-xs tracking-[0.3em] uppercase text-[#FFE500]">
-      PENAWARAN TERBATAS KHUSUS BULAN INI
-    </p>
+<section class="w-full bg-[#050508] text-white py-16 sm:py-20 lg:py-24 px-6 sm:px-10 lg:px-16 border-t border-white/10 select-none">
+  <div class="max-w-7xl mx-auto">
+    <div class="max-w-4xl mx-auto text-center space-y-6">
+      <p class="font-heading font-semibold text-xs tracking-[0.3em] uppercase text-[#FFE500]">
+        PENAWARAN TERBATAS KHUSUS BULAN INI
+      </p>
 
-    <!-- Catchy Commercial Headline -->
-    <h2 class="font-heading font-bold text-2xl sm:text-4xl lg:text-5xl tracking-[0.14em] uppercase text-white leading-tight">
-      KONSULTASIKAN KEBUTUHAN MESIN PRINTING &amp; FABRIKASI ANDA DENGAN AHLINYA
-    </h2>
+      <!-- Catchy Commercial Headline -->
+      <h2 class="font-heading font-bold text-2xl sm:text-4xl lg:text-5xl tracking-[0.14em] uppercase text-white leading-tight">
+        KONSULTASIKAN KEBUTUHAN MESIN PRINTING &amp; FABRIKASI ANDA DENGAN AHLINYA
+      </h2>
 
-    <!-- Engaging Commercial Copy -->
-    <p class="font-sans text-xs sm:text-base text-neutral-300 max-w-2xl mx-auto leading-relaxed">
-      Dapatkan kalkulasi simulasi Balik Modal (ROI), diskon promo khusus iklan Google, bonus paket tinta perdana, serta gratis instalasi dan pelatihan teknisi langsung ke lokasi usaha Anda.
-    </p>
+      <!-- Engaging Commercial Copy -->
+      <p class="font-sans text-xs sm:text-base text-neutral-300 max-w-2xl mx-auto leading-relaxed">
+        Dapatkan kalkulasi simulasi Balik Modal (ROI), diskon promo khusus iklan Google, bonus paket tinta perdana, serta gratis instalasi dan pelatihan teknisi langsung ke lokasi usaha Anda.
+      </p>
 
-    <!-- CTAs with WhatsApp Icon and Chevron -->
-    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a
-        href={getWaUrl(currentIntent.waContextMessage)}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 sm:py-5 bg-[#FFE500] text-black font-heading font-bold text-xs sm:text-sm tracking-[0.2em] uppercase hover:bg-white transition-colors duration-200"
-      >
-        <!-- WhatsApp Icon -->
-        <svg class="w-4 h-4 fill-current flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.075-1.111-.061-.718-.236-1.636-.789-2.387-1.541-.839-.839-1.428-1.859-1.688-2.612-.132-.381-.077-.736.067-.999.123-.223.297-.432.443-.576.147-.144.295-.144.442-.144.111 0 .222.003.313.011.111.009.24.032.348.291.132.317.45 1.097.489 1.177.039.08.065.174.013.279-.052.104-.078.17-.156.262-.078.092-.165.205-.235.276-.079.08-.161.167-.069.324.091.157.406.669.87 1.082.597.531 1.101.696 1.258.775.157.079.248.066.34-.039.092-.105.394-.459.499-.617.105-.157.21-.131.353-.079.144.053.914.431 1.072.509.157.079.262.118.301.184.039.066.039.381-.105.786zm-3.392-10.216c-5.464 0-9.907 4.444-9.907 9.908 0 1.747.458 3.447 1.328 4.956l-1.411 5.18 5.3-1.39c1.455.794 3.097 1.213 4.69 1.213 5.464 0 9.908-4.444 9.908-9.908 0-5.465-4.444-9.908-9.908-9.908z" />
-        </svg>
-        <span>KONSULTASI VIA WHATSAPP SEKARANG</span>
-        <svg class="w-4 h-4 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-        </svg>
-      </a>
+      <!-- CTAs with WhatsApp Icon and Chevron -->
+      <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href={getWaUrl(currentIntent.waContextMessage)}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 sm:py-5 bg-[#FFE500] text-black font-heading font-bold text-xs sm:text-sm tracking-[0.2em] uppercase hover:bg-white transition-colors duration-200"
+        >
+          <!-- WhatsApp Icon -->
+          <svg class="w-4 h-4 fill-current flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.075-1.111-.061-.718-.236-1.636-.789-2.387-1.541-.839-.839-1.428-1.859-1.688-2.612-.132-.381-.077-.736.067-.999.123-.223.297-.432.443-.576.147-.144.295-.144.442-.144.111 0 .222.003.313.011.111.009.24.032.348.291.132.317.45 1.097.489 1.177.039.08.065.174.013.279-.052.104-.078.17-.156.262-.078.092-.165.205-.235.276-.079.08-.161.167-.069.324.091.157.406.669.87 1.082.597.531 1.101.696 1.258.775.157.079.248.066.34-.039.092-.105.394-.459.499-.617.105-.157.21-.131.353-.079.144.053.914.431 1.072.509.157.079.262.118.301.184.039.066.039.381-.105.786zm-3.392-10.216c-5.464 0-9.907 4.444-9.907 9.908 0 1.747.458 3.447 1.328 4.956l-1.411 5.18 5.3-1.39c1.455.794 3.097 1.213 4.69 1.213 5.464 0 9.908-4.444 9.908-9.908 0-5.465-4.444-9.908-9.908-9.908z" />
+          </svg>
+          <span>KONSULTASI VIA WHATSAPP SEKARANG</span>
+          <svg class="w-4 h-4 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
 
-      <a
-        href="/kontak"
-        class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 sm:py-5 border border-white/20 text-white font-heading font-semibold text-xs sm:text-sm tracking-[0.2em] uppercase hover:border-[#FFE500] hover:text-[#FFE500] transition-colors duration-200 bg-neutral-950"
-      >
-        <span>KUNJUNGI SHOWROOM SURABAYA</span>
-        <svg class="w-4 h-4 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-        </svg>
-      </a>
+        <a
+          href="/kontak"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 sm:py-5 border border-white/20 text-white font-heading font-semibold text-xs sm:text-sm tracking-[0.2em] uppercase hover:border-[#FFE500] hover:text-[#FFE500] transition-colors duration-200 bg-neutral-950"
+        >
+          <span>KUNJUNGI SHOWROOM SURABAYA</span>
+          <svg class="w-4 h-4 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
 </section>

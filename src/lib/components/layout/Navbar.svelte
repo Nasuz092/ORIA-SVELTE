@@ -307,7 +307,7 @@
     class="w-full fixed top-0 left-0 z-40 pointer-events-auto bg-transparent"
   >
     <!-- ROW 1: Controls (Language on Left, Centered Logo, Hamburger on Right) -->
-    <div class="relative w-full h-14 sm:h-16 flex items-center justify-between px-4 sm:px-10 lg:px-16 transition-colors duration-300 {isScrolled ? 'bg-black shadow-lg' : 'bg-transparent'}">
+    <div class="relative w-full h-14 sm:h-16 flex items-center justify-between px-6 sm:px-10 lg:px-16 transition-colors duration-300 {isScrolled ? 'bg-black shadow-lg' : 'bg-transparent'}">
       <!-- Left: Language Translate Selector Button -->
       <div class="relative z-50">
         <button
@@ -407,7 +407,7 @@
     <div
       class="w-full h-11 sm:h-12 flex items-center overflow-x-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden overscroll-x-contain transition-colors duration-300 {isScrolled ? 'bg-black' : 'bg-transparent'}"
     >
-      <div class="min-w-full w-max flex items-center px-4 sm:px-10 lg:px-16 {isProductDetail ? 'justify-center' : 'md:justify-center'}">
+      <div class="min-w-full w-max flex items-center px-6 sm:px-10 lg:px-16 {isProductDetail ? 'justify-center' : 'md:justify-center'}">
         <nav
           aria-label={isProductDetail ? 'Navigasi Detail Produk' : isArtikelCategory ? 'Navigasi Kategori Artikel' : 'Navigasi Halaman Tentang'}
           class="flex items-center gap-6 sm:gap-8 md:gap-10 shrink-0"
@@ -455,7 +455,7 @@
       ? 'bg-black shadow-lg border-b border-white/10'
       : 'bg-transparent border-b border-transparent'}"
   >
-    <div class="relative w-full h-14 sm:h-16 flex items-center justify-between px-4 sm:px-10 lg:px-16">
+    <div class="relative w-full h-14 sm:h-16 flex items-center justify-between px-6 sm:px-10 lg:px-16">
       <!-- Left: Language Translate Selector Button -->
       <div class="relative z-50">
         <button

@@ -136,15 +136,25 @@ const INTENT_CONFIGS: Record<string, AdIntentConfig> = {
     heroDescription: 'Solusi mesin cetak spanduk flexi & baliho raksasa hingga stiker decal dan wallpaper indoor resolusi fotografi dengan garansi resmi dan pendampingan teknisi langsung.',
     waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari mesin Digital Printing (Outdoor/Indoor) dari iklan Google oria.co.id. Mohon info pricelist & promo unit. Terima kasih.'
   },
-  'uv': {
-    key: 'uv',
-    label: 'Printer UV Flatbed & Cylinder',
-    categoryIds: ['uv'],
-    heroBadge: 'PRECISION UV LED FLATBED & CYLINDER',
-    heroTitleMain: 'MESIN PRINTER UV',
-    heroTitleHighlight: 'FLATBED & CYLINDER',
-    heroDescription: 'Cetak langsung di segala media kaku & silinder: akrilik, kayu solid, kaca, plat metal, casing HP, tumbler, hingga merchandise souvenir presisi tinggi.',
-    waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari mesin Printer UV Flatbed / Cylinder dari iklan Google oria.co.id. Mohon info spesifikasi & promo harga. Terima kasih.'
+  'banner': {
+    key: 'digital-printing',
+    label: 'Mesin Cetak Banner & Spanduk',
+    categoryIds: ['outdoor', 'indoor'],
+    heroBadge: 'HIGH-SPEED INDUSTRIAL BANNER & SPANDUK PRINTING',
+    heroTitleMain: 'MESIN CETAK BANNER',
+    heroTitleHighlight: '& SPANDUK OUTDOOR',
+    heroDescription: 'Investasi mesin cetak banner flexi, spanduk reklame, dan baliho tahan cuaca ekstrem format 3.2 meter dengan sasis kokoh monokok dan kecepatan produksi tinggi.',
+    waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari Mesin Cetak Banner & Spanduk dari iklan Google oria.co.id. Mohon info pricelist dan penawaran promo. Terima kasih.'
+  },
+  'tekstil': {
+    key: 'sublim',
+    label: 'Mesin Print Tekstil & Kain',
+    categoryIds: ['sublimasi'],
+    heroBadge: 'INDUSTRIAL TEXTILE & FABRIC PRINTING',
+    heroTitleMain: 'MESIN PRINT TEKSTIL',
+    heroTitleHighlight: '& SUBLIMASI KAIN',
+    heroDescription: 'Solusi industri cetak tekstil roll-to-roll dan rotary heat press untuk konveksi jersey olahraga, hijab printing, kain motif, dan apparel fashion dengan warna tajam & tahan cuci.',
+    waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari Mesin Print Tekstil & Kain dari iklan Google oria.co.id. Mohon info paket usaha & penawaran promo. Terima kasih.'
   },
   'sublim': {
     key: 'sublim',
@@ -155,6 +165,16 @@ const INTENT_CONFIGS: Record<string, AdIntentConfig> = {
     heroTitleHighlight: '& HEAT PRESS ROTARY',
     heroDescription: 'Solusi industri jersey olahraga, hijab printing, apparel sportswear, dan fashion garmen dengan transfer warna tajam, stabil, dan tahan luntur cuci.',
     waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari Mesin Sublimasi & Heat Press dari iklan Google oria.co.id. Mohon info paket usaha & penawaran promo. Terima kasih.'
+  },
+  'uv': {
+    key: 'uv',
+    label: 'Printer UV Flatbed & Cylinder',
+    categoryIds: ['uv'],
+    heroBadge: 'PRECISION UV LED FLATBED & CYLINDER',
+    heroTitleMain: 'MESIN PRINTER UV',
+    heroTitleHighlight: 'FLATBED & CYLINDER',
+    heroDescription: 'Cetak langsung di segala media kaku & silinder: akrilik, kayu solid, kaca, plat metal, casing HP, tumbler, hingga merchandise souvenir presisi tinggi.',
+    waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari mesin Printer UV Flatbed / Cylinder dari iklan Google oria.co.id. Mohon info spesifikasi & promo harga. Terima kasih.'
   },
   'laser': {
     key: 'laser',
@@ -182,7 +202,7 @@ const INTENT_CONFIGS: Record<string, AdIntentConfig> = {
     categoryIds: ['dtf-dtg'],
     heroBadge: 'DIRECT TO FILM & DIRECT TO GARMENT',
     heroTitleMain: 'MESIN PRINTER DTF',
-    heroTitleHighlight: '& DIRECT TO GARMENT',
+    heroTitleHighlight: '& SABLON KAOS DISTRO',
     heroDescription: 'Inovasi sablon digital kaos distro katun, jersey, canvas bag, dan topi. Dilengkapi shaker powder otomatis dengan efisiensi tinta maksimal.',
     waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari Mesin DTF / DTG Sablon Kaos dari iklan Google oria.co.id. Mohon info penawaran promo & paket usaha. Terima kasih.'
   },
@@ -191,8 +211,8 @@ const INTENT_CONFIGS: Record<string, AdIntentConfig> = {
     label: 'Single Pass Packaging',
     categoryIds: ['single-pass'],
     heroBadge: 'CORRUGATED BOX & PAPER BAG PRINTING',
-    heroTitleMain: 'MESIN CETAK PACKAGING',
-    heroTitleHighlight: 'SINGLE PASS SYSTEM',
+    heroTitleMain: 'MESIN CETAK KARDUS',
+    heroTitleHighlight: '& SINGLE PASS PACKAGING',
     heroDescription: 'Cetak langsung di atas kardus corrugated box, box pizza, dan paper bag berkecepatan tinggi tanpa minimum order dan tanpa biaya plat film.',
     waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya tertarik dengan Mesin Single Pass Packaging dari iklan Google oria.co.id. Mohon info harga & kapasitas produksi. Terima kasih.'
   },
@@ -229,95 +249,125 @@ const INTENT_CONFIGS: Record<string, AdIntentConfig> = {
 };
 
 /**
- * Deteksi intent kata kunci Google Ads dari berbagai query parameter
- * Mendukung: ?k=, ?keyword=, ?key=, ?cat=, ?q=, ?utm_term=
+ * Deteksi intent kata kunci Google Ads dari berbagai variasi pencarian pengguna
+ * Mendukung pencarian natural seperti:
+ * - "mesin cetak banner", "mesin banner", "printer banner", "mesin cetak spanduk", "mesin baliho" -> Outdoor & Indoor
+ * - "mesin print tekstil", "mesin cetak kain", "mesin sublimasi", "print jersey", "mesin hijab" -> Sublimasi
+ * - "mesin sablon kaos", "cetak kaos distro", "mesin dtf", "printer dtg" -> DTF & DTG
+ * - "mesin uv", "printer akrilik", "cetak tumbler", "uv flatbed", "merchandise" -> UV Flatbed & Cylinder
+ * - "mesin laser cutting", "potong akrilik", "laser fiber", "mesin grafir" -> Laser
+ * - "mesin cnc router", "potong acp", "ukir kayu", "plasma cutting" -> CNC
+ * - "mesin cetak kardus", "printer kemasan", "box corrugated", "single pass" -> Single Pass Packaging
  */
 function detectIntent(rawQuery: string): AdIntentConfig {
   if (!rawQuery) return INTENT_CONFIGS['all'];
 
   const q = rawQuery.toLowerCase().replace(/[+_-]/g, ' ').trim();
 
-  // 1. Digital Printing (Outdoor & Indoor)
+  // 1. Variasi Banner, Spanduk, Baliho -> Digital Printing (Outdoor & Indoor)
   if (
-    q.includes('digital printing') ||
-    q.includes('digital print') ||
-    q.includes('outdoor indoor') ||
-    q.includes('indoor outdoor') ||
-    (q.includes('cetak') && (q.includes('spanduk') || q.includes('baliho') || q.includes('banner'))) ||
-    q === 'digital' ||
-    q === 'printing'
+    q.includes('banner') ||
+    q.includes('spanduk') ||
+    q.includes('baliho') ||
+    q.includes('reklame') ||
+    q.includes('flexi') ||
+    q.includes('billboard')
   ) {
-    return INTENT_CONFIGS['digital-printing'];
+    return INTENT_CONFIGS['banner'];
   }
 
-  // 2. UV
+  // 2. Variasi Tekstil, Kain, Jersey, Hijab, Garmen -> Sublimasi & Heat Press
   if (
-    q.includes('uv') ||
-    q.includes('flatbed') ||
-    q.includes('cylinder') ||
-    q.includes('tumbler') ||
-    q.includes('uv dtf')
-  ) {
-    return INTENT_CONFIGS['uv'];
-  }
-
-  // 3. Sublimasi & Heat Press
-  if (
-    q.includes('sublim') ||
-    q.includes('heatpress') ||
-    q.includes('heat press') ||
-    q.includes('jersey') ||
     q.includes('tekstil') ||
     q.includes('textile') ||
-    q.includes('hijab')
+    q.includes('kain') ||
+    q.includes('jersey') ||
+    q.includes('hijab') ||
+    q.includes('gamis') ||
+    q.includes('garmen') ||
+    q.includes('garment') ||
+    q.includes('sublim') ||
+    q.includes('sublimasi') ||
+    q.includes('heatpress') ||
+    q.includes('heat press') ||
+    q.includes('rotary press')
   ) {
-    return INTENT_CONFIGS['sublim'];
+    return INTENT_CONFIGS['tekstil'];
   }
 
-  // 4. Laser Cutting & Marking
-  if (
-    q.includes('laser') ||
-    q.includes('fiber laser') ||
-    q.includes('marking') ||
-    q.includes('grafir')
-  ) {
-    return INTENT_CONFIGS['laser'];
-  }
-
-  // 5. CNC Router & Plasma
-  if (
-    q.includes('cnc') ||
-    q.includes('router') ||
-    q.includes('plasma') ||
-    q.includes('milling') ||
-    q.includes('acp')
-  ) {
-    return INTENT_CONFIGS['cnc'];
-  }
-
-  // 6. DTF & DTG Apparel
+  // 3. Variasi Kaos, Sablon Baju, Distro -> DTF & DTG Apparel
   if (
     q.includes('dtf') ||
     q.includes('dtg') ||
     q.includes('kaos') ||
+    q.includes('baju') ||
     q.includes('sablon') ||
     q.includes('tshirt') ||
-    q.includes('distro')
+    q.includes('distro') ||
+    q.includes('direct to film') ||
+    q.includes('direct to garment')
   ) {
     return INTENT_CONFIGS['dtf'];
   }
 
-  // 7. Single Pass Packaging
+  // 4. Variasi Kardus, Box, Kemasan, Corrugated -> Single Pass Packaging
   if (
-    q.includes('single pass') ||
-    q.includes('one pass') ||
-    q.includes('packaging') ||
     q.includes('kardus') ||
     q.includes('kemasan') ||
     q.includes('corrugated') ||
-    q.includes('box')
+    q.includes('box') ||
+    q.includes('karton') ||
+    q.includes('paper bag') ||
+    q.includes('single pass') ||
+    q.includes('singlepass') ||
+    q.includes('one pass') ||
+    q.includes('onepass') ||
+    q.includes('packaging')
   ) {
     return INTENT_CONFIGS['single-pass'];
+  }
+
+  // 5. Variasi UV, Tumbler, Akrilik Cetak, Casing HP, Merchandise -> UV
+  if (
+    q.includes('uv') ||
+    q.includes('flatbed') ||
+    q.includes('tumbler') ||
+    q.includes('botol') ||
+    q.includes('cylinder') ||
+    q.includes('silinder') ||
+    q.includes('casing') ||
+    q.includes('merchandise') ||
+    q.includes('souvenir') ||
+    (q.includes('cetak') && (q.includes('akrilik') || q.includes('kaca') || q.includes('kayu')))
+  ) {
+    return INTENT_CONFIGS['uv'];
+  }
+
+  // 6. Variasi Laser, Potong Akrilik, Grafir, Marking, Fiber -> Laser
+  if (
+    q.includes('laser') ||
+    q.includes('fiber laser') ||
+    q.includes('potong akrilik') ||
+    q.includes('cutting akrilik') ||
+    q.includes('grafir') ||
+    q.includes('marking') ||
+    q.includes('engraving')
+  ) {
+    return INTENT_CONFIGS['laser'];
+  }
+
+  // 7. Variasi CNC, Router, Plasma, ACP, Ukir Kayu -> CNC
+  if (
+    q.includes('cnc') ||
+    q.includes('router') ||
+    q.includes('plasma') ||
+    q.includes('acp') ||
+    q.includes('ukir kayu') ||
+    q.includes('milling') ||
+    q.includes('potong besi') ||
+    q.includes('spindle')
+  ) {
+    return INTENT_CONFIGS['cnc'];
   }
 
   // 8. Spesifik Outdoor
@@ -326,8 +376,32 @@ function detectIntent(rawQuery: string): AdIntentConfig {
   }
 
   // 9. Spesifik Indoor
-  if (q.includes('indoor') || q.includes('eco solvent') || q.includes('ecosolvent') || q.includes('3202') || q.includes('1802')) {
+  if (
+    q.includes('indoor') ||
+    q.includes('eco solvent') ||
+    q.includes('ecosolvent') ||
+    q.includes('stiker') ||
+    q.includes('sticker') ||
+    q.includes('decal') ||
+    q.includes('wallpaper') ||
+    q.includes('3202') ||
+    q.includes('1802')
+  ) {
     return INTENT_CONFIGS['indoor'];
+  }
+
+  // 10. Digital Printing Umum
+  if (
+    q.includes('digital printing') ||
+    q.includes('digital print') ||
+    q.includes('mesin cetak') ||
+    q.includes('mesin print') ||
+    q.includes('large format') ||
+    q.includes('wide format') ||
+    q === 'digital' ||
+    q === 'printing'
+  ) {
+    return INTENT_CONFIGS['digital-printing'];
   }
 
   return INTENT_CONFIGS['all'];
@@ -382,16 +456,6 @@ export const load: PageServerLoad = async ({ fetch, url, setHeaders }) => {
     rawQuery,
     activeIntent,
     categoryGroups: allCategoryGroups,
-    initialCategoryGroups: filteredCategoryGroups,
-    availableFilterTabs: [
-      { key: 'all', label: 'Semua Mesin' },
-      { key: 'digital-printing', label: 'Digital Printing' },
-      { key: 'uv', label: 'Printer UV' },
-      { key: 'sublim', label: 'Sublimasi' },
-      { key: 'laser', label: 'Laser Cutting' },
-      { key: 'cnc', label: 'CNC Router' },
-      { key: 'dtf', label: 'DTF Apparel' },
-      { key: 'single-pass', label: 'Single Pass' }
-    ]
+    initialCategoryGroups: filteredCategoryGroups
   };
 };
