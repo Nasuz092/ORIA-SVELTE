@@ -125,6 +125,30 @@
     drawerOpen = false;
   }
 
+  let isLandingAds = $derived(page.url.pathname === '/landing-ads');
+
+  const adsCategories = [
+    { id: 'outdoor', title: 'Outdoor Solvent' },
+    { id: 'sublimasi', title: 'Sublimasi & Heat Press' },
+    { id: 'laser', title: 'Laser Cutting & Marking' },
+    { id: 'cnc', title: 'CNC Router & Fabrication' },
+    { id: 'dtf-dtg', title: 'DTF & DTG Apparel' },
+    { id: 'single-pass', title: 'Single Pass Packaging' },
+    { id: 'uv', title: 'UV Flatbed & Cylinder' },
+    { id: 'indoor', title: 'Indoor Eco-Solvent' }
+  ];
+
+  function scrollToAdsCategory(id: string, e?: MouseEvent) {
+    if (e) e.preventDefault();
+    closeDrawer();
+    setTimeout(() => {
+      const el = document.getElementById(`cat-${id}`);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 150);
+  }
+
   // Kategori produk terurut berdasarkan mesin terbanyak di database
   const productCategories = [
     { title: 'Laser Cutting', desc: 'Akrilik, Kayu, MDF, ACP', href: '/produk/laser' },
@@ -577,43 +601,64 @@
       scrollbarClass="bg-black/10"
       thumbClass="bg-black/25 hover:bg-black/45"
     >
-      <div class="py-4 flex flex-col gap-3 sm:gap-4">
-        <div class="font-sans font-bold text-[10px] uppercase tracking-[0.25em] text-black/60 mb-1">
-          Lini Mesin Industrial
-        </div>
-
-        {#each productCategories as cat}
-          <a
-            href={cat.href}
-            onclick={closeDrawer}
-            class="group flex items-center justify-between text-lg sm:text-2xl lg:text-[1.55rem] font-heading font-black uppercase tracking-[0.14em] text-black hover:text-black/60 transition-colors py-1 sm:py-1.5"
-          >
-            <span class="group-hover:translate-x-1 transition-transform duration-300">{cat.title}</span>
-            <svg class="w-4 h-4 sm:w-5 sm:h-5 stroke-current transition-transform duration-300 group-hover:translate-x-1.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
-              <polyline points="9 18 15 12 9 6" />
-            </svg>
-          </a>
-        {/each}
-
-        <!-- Divider -->
-        <div class="h-px bg-black/15 my-4 sm:my-5"></div>
-
-        <!-- Secondary Links (Discover ORIA, Artikel, Showroom) -->
-        <div class="flex flex-col gap-2 sm:gap-2.5">
-          {#each secondaryNavLinks as link}
+      {#if isLandingAds}
+        <!-- Quick Category Scroll Navigation for Ads Visitors -->
+        <div class="py-2 flex flex-col gap-1.5">
+          <div class="font-sans font-bold text-[10px] uppercase tracking-[0.25em] text-black/60 mb-2">
+            Pilih Kategori Mesin
+          </div>
+          {#each adsCategories as cat}
             <a
-              href={link.href}
-              onclick={closeDrawer}
-              class="group flex items-center justify-between text-xs sm:text-sm font-heading font-bold uppercase tracking-widest text-black/80 hover:text-black transition-colors py-1"
+              href={`#cat-${cat.id}`}
+              onclick={(e) => scrollToAdsCategory(cat.id, e)}
+              class="group flex items-center justify-between text-base sm:text-lg font-heading font-bold uppercase tracking-[0.14em] text-black hover:text-black/60 transition-colors py-2 border-b border-black/10"
             >
-              <span class="group-hover:translate-x-1 transition-transform duration-300">{link.name}</span>
-              <svg class="w-3.5 h-3.5 stroke-current transition-transform duration-300 group-hover:translate-x-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
+              <span class="group-hover:translate-x-1.5 transition-transform duration-300">{cat.title}</span>
+              <svg class="w-4 h-4 stroke-current transition-transform duration-300 group-hover:translate-x-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
                 <polyline points="9 18 15 12 9 6" />
               </svg>
             </a>
           {/each}
         </div>
-      </div>
+      {:else}
+        <div class="py-4 flex flex-col gap-3 sm:gap-4">
+          <div class="font-sans font-bold text-[10px] uppercase tracking-[0.25em] text-black/60 mb-1">
+            Lini Mesin Industrial
+          </div>
+
+          {#each productCategories as cat}
+            <a
+              href={cat.href}
+              onclick={closeDrawer}
+              class="group flex items-center justify-between text-lg sm:text-2xl lg:text-[1.55rem] font-heading font-black uppercase tracking-[0.14em] text-black hover:text-black/60 transition-colors py-1 sm:py-1.5"
+            >
+              <span class="group-hover:translate-x-1 transition-transform duration-300">{cat.title}</span>
+              <svg class="w-4 h-4 sm:w-5 sm:h-5 stroke-current transition-transform duration-300 group-hover:translate-x-1.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </a>
+          {/each}
+
+          <!-- Divider -->
+          <div class="h-px bg-black/15 my-4 sm:my-5"></div>
+
+          <!-- Secondary Links (Discover ORIA, Artikel, Showroom) -->
+          <div class="flex flex-col gap-2 sm:gap-2.5">
+            {#each secondaryNavLinks as link}
+              <a
+                href={link.href}
+                onclick={closeDrawer}
+                class="group flex items-center justify-between text-xs sm:text-sm font-heading font-bold uppercase tracking-widest text-black/80 hover:text-black transition-colors py-1"
+              >
+                <span class="group-hover:translate-x-1 transition-transform duration-300">{link.name}</span>
+                <svg class="w-3.5 h-3.5 stroke-current transition-transform duration-300 group-hover:translate-x-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </a>
+            {/each}
+          </div>
+        </div>
+      {/if}
     </ScrollArea>
   </div>
 

@@ -4,12 +4,13 @@
   let { data }: { data: PageData } = $props();
 
   const waNumber = process.env.WA_NUMBER || '6281252086455';
+  const siteUrl = process.env.SITE_URL || 'https://oria.co.id';
 
   function getWaUrl(message: string): string {
     return `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
   }
 
-  // Active filter tab: default 'all'
+  // Quick category tabs: default 'all'
   let activeTab = $state('all');
 
   const categories = $derived(data.categoryGroups || []);
@@ -18,28 +19,36 @@
     if (activeTab === 'all') return categories;
     return categories.filter((g) => g.id === activeTab);
   });
+
+  function scrollToCategory(id: string, e?: MouseEvent) {
+    if (e) e.preventDefault();
+    const el = document.getElementById(`cat-${id}`);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 </script>
 
 <svelte:head>
-  <title>Mesin Digital Printing & Fabrikasi Industri ORIA — Penawaran Khusus Iklan</title>
+  <title>Mesin Digital Printing & Fabrikasi Industri ORIA — Promo & Paket Usaha</title>
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate" />
   <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate" />
   <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate" />
 </svelte:head>
 
 <!-- ================================================================= -->
-<!-- SECTION 1: HERO PANORAMIC ADVERTISING (Full Width, Lotus/ORIA)    -->
+<!-- SECTION 1: HERO PANORAMIC ADVERTISING (30% Black Contrast)        -->
 <!-- ================================================================= -->
-<section class="relative w-full min-h-[90svh] sm:min-h-[100svh] flex items-center bg-black text-white select-none overflow-hidden px-4 sm:px-8 lg:px-12 xl:px-16 py-16 sm:py-20 lg:py-24">
+<section class="relative w-full min-h-[85svh] sm:min-h-[92svh] flex items-center bg-black text-white select-none overflow-hidden px-4 sm:px-8 lg:px-12 xl:px-16 py-16 sm:py-20 lg:py-24">
   <!-- Panoramic Background Image -->
   <div class="absolute inset-0 w-full h-full pointer-events-none">
     <img
       src="/images/our-drive-workshop.png"
-      alt="Workshop Mesin Digital Printing ORIA"
+      alt="Workshop Mesin Industri ORIA"
       class="w-full h-full object-cover object-center"
       loading="eager"
     />
-    <div class="absolute inset-0 bg-gradient-to-r from-black/95 via-black/85 to-black/45 sm:from-black/90 sm:via-black/75 sm:to-black/35"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/95 via-black/85 to-black/40 sm:from-black/90 sm:via-black/75 sm:to-black/30"></div>
     <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60"></div>
   </div>
 
@@ -59,17 +68,21 @@
 
       <!-- Value Subheadline -->
       <p class="font-sans text-sm sm:text-base lg:text-lg text-neutral-300 leading-relaxed font-normal max-w-2xl">
-        Investasi mesin industri berpresisi tinggi dengan durabilitas komponen kelas dunia, jaminan ketersediaan suku cadang original, dan pendampingan teknisi resmi ke seluruh kota di Indonesia.
+        Investasi mesin industri presisi tinggi dengan durabilitas komponen kelas dunia, jaminan ketersediaan suku cadang original, dan pendampingan teknisi resmi ke seluruh kota di Indonesia.
       </p>
 
-      <!-- Action Buttons with Chevron (Strictly No Arrows) -->
+      <!-- Action Buttons with Chevron (Strictly No Arrows, Plus WhatsApp Icon) -->
       <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
         <a
-          href={getWaUrl('Halo ORIA, saya tertarik konsultasi promo mesin industri dari penawaran iklan Google. Boleh minta katalog harga & spesifikasi lengkap?')}
+          href={getWaUrl('Halo Anugrah Supply Mandiri (ORIA)! Saya tertarik konsultasi penawaran promo mesin industri dari iklan Google. Apakah boleh minta info lebih detail & brosur harga? Terima kasih.')}
           target="_blank"
           rel="noopener noreferrer"
           class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#FFE500] text-black font-heading font-bold text-xs sm:text-sm tracking-[0.2em] uppercase hover:bg-white transition-colors duration-200"
         >
+          <!-- WhatsApp Icon -->
+          <svg class="w-4 h-4 fill-current flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.075-1.111-.061-.718-.236-1.636-.789-2.387-1.541-.839-.839-1.428-1.859-1.688-2.612-.132-.381-.077-.736.067-.999.123-.223.297-.432.443-.576.147-.144.295-.144.442-.144.111 0 .222.003.313.011.111.009.24.032.348.291.132.317.45 1.097.489 1.177.039.08.065.174.013.279-.052.104-.078.17-.156.262-.078.092-.165.205-.235.276-.079.08-.161.167-.069.324.091.157.406.669.87 1.082.597.531 1.101.696 1.258.775.157.079.248.066.34-.039.092-.105.394-.459.499-.617.105-.157.21-.131.353-.079.144.053.914.431 1.072.509.157.079.262.118.301.184.039.066.039.381-.105.786zm-3.392-10.216c-5.464 0-9.907 4.444-9.907 9.908 0 1.747.458 3.447 1.328 4.956l-1.411 5.18 5.3-1.39c1.455.794 3.097 1.213 4.69 1.213 5.464 0 9.908-4.444 9.908-9.908 0-5.465-4.444-9.908-9.908-9.908z" />
+          </svg>
           <span>KONSULTASI VIA WHATSAPP</span>
           <svg class="w-4 h-4 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
@@ -78,9 +91,10 @@
 
         <a
           href="#katalog-iklan"
+          onclick={(e) => scrollToCategory('outdoor', e)}
           class="inline-flex items-center justify-center gap-3 px-8 py-4 border border-white/30 text-white font-heading font-semibold text-xs sm:text-sm tracking-[0.2em] uppercase hover:border-[#FFE500] hover:text-[#FFE500] transition-colors duration-200 bg-black/60"
         >
-          <span>LIHAT KATALOG MESIN</span>
+          <span>PILIHAN MESIN UNGGULAN</span>
           <svg class="w-4 h-4 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
           </svg>
@@ -91,73 +105,73 @@
 </section>
 
 <!-- ================================================================= -->
-<!-- SECTION 2: OUR CAPACITY / VALUES (Statistik Angka Besar)           -->
+<!-- SECTION 2: OUR CAPACITY / VALUES (60% White / Light Clean Theme)  -->
 <!-- ================================================================= -->
-<section class="w-full bg-[#050508] text-white py-16 sm:py-20 lg:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 border-y border-white/10 select-none">
+<section class="w-full bg-[#F8F9FA] text-black py-16 sm:py-20 lg:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 border-b border-black/10 select-none">
   <div class="max-w-7xl mx-auto space-y-12 sm:space-y-16">
-    <!-- Section Header (Tanpa Pill / Badge) -->
+    <!-- Header (Clean Lotus Style Tanpa Pill / Badge) -->
     <div class="space-y-2 max-w-2xl">
-      <p class="font-heading font-light text-xs tracking-[0.28em] uppercase text-[#FFE500]">
+      <p class="font-heading font-semibold text-xs tracking-[0.28em] uppercase text-[#B89200]">
         OUR CAPACITY &amp; STANDARDS
       </p>
-      <h2 class="font-heading font-light text-2xl sm:text-4xl tracking-[0.2em] uppercase text-white leading-tight">
+      <h2 class="font-heading font-bold text-2xl sm:text-4xl tracking-[0.16em] uppercase text-black leading-tight">
         KAPASITAS LAYANAN &amp; NILAI RESMI ORIA
       </h2>
-      <p class="font-sans text-xs sm:text-sm text-neutral-400 leading-relaxed pt-1">
-        Integritas kemitraan jangka panjang dan dedikasi rekayasa mesin yang telah dipercaya oleh ratusan pelaku usaha percetakan di Indonesia.
+      <p class="font-sans text-xs sm:text-sm text-neutral-600 leading-relaxed pt-1">
+        Integritas kemitraan jangka panjang dan standar rekayasa mesin yang telah dipercaya oleh ratusan pelaku usaha percetakan di Indonesia.
       </p>
     </div>
 
-    <!-- 4 Clean Stats with Extra Large Numbers (Sesuai Gaya Value oria.co.id) -->
+    <!-- 4 Clean Stats with Extra Large Numbers (Angka Besar Seperti Value oria.co.id) -->
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12">
       <!-- Stat 1 -->
       <div class="space-y-2.5 border-l-2 border-[#FFE500] pl-4 sm:pl-5">
-        <div class="font-heading font-light text-4xl sm:text-6xl lg:text-7xl text-white tracking-tight tabular-nums">
-          500<span class="text-[#FFE500] font-normal">+</span>
+        <div class="font-heading font-light text-5xl sm:text-6xl lg:text-7xl text-black tracking-tight tabular-nums">
+          500<span class="text-[#E6C300] font-normal">+</span>
         </div>
-        <div class="text-[11px] sm:text-xs font-heading font-bold uppercase tracking-[0.2em] text-neutral-200">
+        <div class="text-[11px] sm:text-xs font-heading font-bold uppercase tracking-[0.2em] text-neutral-900">
           UNITS INSTALLED
         </div>
-        <p class="text-[11px] sm:text-xs text-neutral-400 font-sans leading-relaxed">
+        <p class="text-[11px] sm:text-xs text-neutral-600 font-sans leading-relaxed">
           Unit mesin aktif berproduksi di berbagai kota di Indonesia.
         </p>
       </div>
 
       <!-- Stat 2 -->
       <div class="space-y-2.5 border-l-2 border-[#FFE500] pl-4 sm:pl-5">
-        <div class="font-heading font-light text-4xl sm:text-6xl lg:text-7xl text-white tracking-tight tabular-nums">
-          100<span class="text-[#FFE500] font-normal">%</span>
+        <div class="font-heading font-light text-5xl sm:text-6xl lg:text-7xl text-black tracking-tight tabular-nums">
+          100<span class="text-[#E6C300] font-normal">%</span>
         </div>
-        <div class="text-[11px] sm:text-xs font-heading font-bold uppercase tracking-[0.2em] text-neutral-200">
+        <div class="text-[11px] sm:text-xs font-heading font-bold uppercase tracking-[0.2em] text-neutral-900">
           OFFICIAL WARRANTY
         </div>
-        <p class="text-[11px] sm:text-xs text-neutral-400 font-sans leading-relaxed">
+        <p class="text-[11px] sm:text-xs text-neutral-600 font-sans leading-relaxed">
           Jaminan garansi resmi unit dan proteksi suku cadang elektrik.
         </p>
       </div>
 
       <!-- Stat 3 -->
       <div class="space-y-2.5 border-l-2 border-[#FFE500] pl-4 sm:pl-5">
-        <div class="font-heading font-light text-4xl sm:text-6xl lg:text-7xl text-white tracking-tight tabular-nums">
-          24<span class="text-[#FFE500] font-normal">/7</span>
+        <div class="font-heading font-light text-5xl sm:text-6xl lg:text-7xl text-black tracking-tight tabular-nums">
+          24<span class="text-[#E6C300] font-normal">/7</span>
         </div>
-        <div class="text-[11px] sm:text-xs font-heading font-bold uppercase tracking-[0.2em] text-neutral-200">
+        <div class="text-[11px] sm:text-xs font-heading font-bold uppercase tracking-[0.2em] text-neutral-900">
           TECHNICAL SUPPORT
         </div>
-        <p class="text-[11px] sm:text-xs text-neutral-400 font-sans leading-relaxed">
+        <p class="text-[11px] sm:text-xs text-neutral-600 font-sans leading-relaxed">
           Respon teknisi bersertifikasi dan pendampingan operator gratis.
         </p>
       </div>
 
       <!-- Stat 4 -->
       <div class="space-y-2.5 border-l-2 border-[#FFE500] pl-4 sm:pl-5">
-        <div class="font-heading font-light text-4xl sm:text-6xl lg:text-7xl text-white tracking-tight tabular-nums">
-          38<span class="text-[#FFE500] font-normal">+</span>
+        <div class="font-heading font-light text-5xl sm:text-6xl lg:text-7xl text-black tracking-tight tabular-nums">
+          38<span class="text-[#E6C300] font-normal">+</span>
         </div>
-        <div class="text-[11px] sm:text-xs font-heading font-bold uppercase tracking-[0.2em] text-neutral-200">
+        <div class="text-[11px] sm:text-xs font-heading font-bold uppercase tracking-[0.2em] text-neutral-900">
           PROVINCES COVERED
         </div>
-        <p class="text-[11px] sm:text-xs text-neutral-400 font-sans leading-relaxed">
+        <p class="text-[11px] sm:text-xs text-neutral-600 font-sans leading-relaxed">
           Cakupan armada pengiriman dan instalasi ke seluruh Indonesia.
         </p>
       </div>
@@ -166,39 +180,42 @@
 </section>
 
 <!-- ================================================================= -->
-<!-- SECTION 3: PRODUCT CATALOG (8 Kategori Pilihan, 2 Kolom di Mobile) -->
+<!-- SECTION 3: PRODUCT CATALOG (60% White Clean, Borderless, 1:1)    -->
 <!-- ================================================================= -->
-<section id="katalog-iklan" class="w-full bg-black text-white py-16 sm:py-20 lg:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 select-none">
+<section id="katalog-iklan" class="w-full bg-white text-black py-16 sm:py-20 lg:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 select-none scroll-mt-14">
   <div class="max-w-7xl mx-auto space-y-12 sm:space-y-16">
-    <!-- Section Header (Tanpa Pill / Badge) -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/15 pb-8">
+    <!-- Section Header (Clean Tanpa Pill / Badge) -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-neutral-200 pb-8">
       <div class="space-y-1.5">
-        <p class="font-heading font-light text-xs sm:text-sm tracking-[0.28em] uppercase text-[#FFE500]">
+        <p class="font-heading font-semibold text-xs sm:text-sm tracking-[0.28em] uppercase text-[#B89200]">
           CURATED MACHINE LINEUP
         </p>
-        <h2 class="font-heading font-medium text-2xl sm:text-4xl lg:text-5xl tracking-[0.16em] uppercase text-white">
+        <h2 class="font-heading font-bold text-2xl sm:text-4xl lg:text-5xl tracking-[0.14em] uppercase text-black">
           KATALOG PILIHAN MESIN ORIA
         </h2>
       </div>
 
-      <!-- Quick Category Navigation (Sharp Rectangular Buttons) -->
+      <!-- Quick Category Navigation (Clean Rectangular Pills) -->
       <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
         <button
           type="button"
           onclick={() => (activeTab = 'all')}
           class="px-3.5 py-2 text-[11px] sm:text-xs font-heading tracking-[0.16em] uppercase whitespace-nowrap transition-colors {activeTab === 'all'
-            ? 'bg-[#FFE500] text-black font-bold'
-            : 'bg-neutral-950 text-neutral-300 hover:text-white border border-white/15'}"
+            ? 'bg-black text-white font-bold'
+            : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'}"
         >
           SEMUA ({categories.length})
         </button>
         {#each categories as group}
           <button
             type="button"
-            onclick={() => (activeTab = group.id)}
+            onclick={() => {
+              activeTab = group.id;
+              scrollToCategory(group.id);
+            }}
             class="px-3.5 py-2 text-[11px] sm:text-xs font-heading tracking-[0.16em] uppercase whitespace-nowrap transition-colors {activeTab === group.id
-              ? 'bg-[#FFE500] text-black font-bold'
-              : 'bg-neutral-950 text-neutral-300 hover:text-white border border-white/15'}"
+              ? 'bg-black text-white font-bold'
+              : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'}"
           >
             {group.name}
           </button>
@@ -209,79 +226,70 @@
     <!-- Product Category Groups -->
     <div class="space-y-16 sm:space-y-24">
       {#each displayedGroups as group (group.id)}
-        <div class="space-y-6 sm:space-y-8">
-          <!-- Category Title Header with Lotus tracked uppercase -->
+        <div id={`cat-${group.id}`} class="space-y-6 sm:space-y-8 scroll-mt-24">
+          <!-- Category Title Header with Clean Left Accent Bar -->
           <div class="space-y-1 border-l-2 border-[#FFE500] pl-4 sm:pl-5">
-            <h3 class="font-heading font-medium text-lg sm:text-2xl lg:text-3xl tracking-[0.16em] uppercase text-white">
+            <h3 class="font-heading font-bold text-lg sm:text-2xl lg:text-3xl tracking-[0.14em] uppercase text-black">
               {group.name}
             </h3>
-            <p class="font-sans text-xs sm:text-sm text-neutral-400 max-w-3xl leading-relaxed">
+            <p class="font-sans text-xs sm:text-sm text-neutral-600 max-w-3xl leading-relaxed">
               {group.description}
             </p>
           </div>
 
-          <!-- 2 Kolom di Mobile, 2-4 Kolom di Desktop (Sesuai Permintaan: tidak 1 baris ke bawah di mobile) -->
-          <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
+          <!-- 2 Kolom di Mobile, 2-4 Kolom di Desktop (Tanpa Border / Outline, 1:1 Image Fokus Kanan) -->
+          <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {#if group.products.length > 0}
               {#each group.products as product (product.id)}
-                <div class="group flex flex-col bg-neutral-950 border border-white/15 hover:border-white/40 transition-colors duration-300">
-                  <!-- Product Image Container -->
-                  <div class="relative w-full aspect-square sm:aspect-[4/3] overflow-hidden bg-black flex items-center justify-center p-3 sm:p-5">
+                <div class="group flex flex-col bg-[#F9FAFB] border-none outline-none shadow-none hover:shadow-lg transition-shadow duration-300">
+                  <!-- 1:1 Big Square Product Image Container with Right-Focus Object Alignment -->
+                  <div class="relative w-full aspect-square overflow-hidden bg-neutral-100 flex items-center justify-center p-2 sm:p-4">
                     <img
                       src={product.imageUrl || group.heroImage}
                       alt={product.name}
-                      class="max-h-full max-w-full object-contain transition-transform duration-500 ease-out group-hover:scale-105"
+                      class="w-full h-full object-cover object-right transition-transform duration-500 ease-out group-hover:scale-105"
                       loading="lazy"
                     />
                   </div>
 
-                  <!-- Product Details (Compact & Clean) -->
-                  <div class="p-3 sm:p-5 flex flex-col flex-1 justify-between space-y-3 sm:space-y-4 border-t border-white/10">
+                  <!-- Product Details (Sederhana: Tanpa Deskripsi, Cukup Nama, Harga, dan Tombol WA) -->
+                  <div class="p-3.5 sm:p-5 flex flex-col flex-1 justify-between space-y-3.5">
                     <div class="space-y-1.5">
-                      <p class="font-heading text-[10px] tracking-[0.2em] uppercase text-[#FFE500]">
+                      <p class="font-heading text-[10px] font-bold tracking-[0.18em] uppercase text-[#B89200]">
                         {group.name}
                       </p>
-                      <h4 class="font-heading font-medium text-xs sm:text-base text-white group-hover:text-[#FFE500] transition-colors leading-snug line-clamp-2">
+                      <h4 class="font-heading font-bold text-xs sm:text-base text-black group-hover:text-[#B89200] transition-colors leading-snug line-clamp-2">
                         {product.name}
                       </h4>
-                      <p class="font-sans text-[11px] sm:text-xs text-neutral-400 leading-relaxed line-clamp-2 hidden sm:block">
-                        {product.shortDescription || `Unit ${product.name} dengan komponen presisi tinggi standar industri.`}
-                      </p>
                     </div>
 
-                    <!-- Price & Promo Tag -->
-                    <div class="pt-2 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                    <!-- Price -->
+                    <div class="pt-2 border-t border-black/10 flex items-center justify-between">
                       <div>
-                        <p class="text-[9px] sm:text-[10px] uppercase tracking-wider text-neutral-400">Harga Promo</p>
-                        <p class="font-heading font-bold text-xs sm:text-sm text-white">
-                          {product.priceText || 'Hubungi Kami'}
+                        <p class="text-[9px] sm:text-[10px] uppercase tracking-wider text-neutral-500">Harga Promo</p>
+                        <p class="font-heading font-black text-xs sm:text-base text-black">
+                          {product.priceText || 'Hubungi Sales'}
                         </p>
                       </div>
-                      <span class="text-[9px] sm:text-[10px] uppercase tracking-wider text-[#FFE500] font-semibold">
+                      <span class="text-[9px] sm:text-[10px] uppercase tracking-wider text-[#B89200] font-bold">
                         Paket Usaha
                       </span>
                     </div>
 
-                    <!-- CTAs with Chevron Only -->
-                    <div class="flex flex-col gap-2 pt-1">
+                    <!-- Tombol WhatsApp (Templat Pesan Sama Seperti mesinprinting.id) -->
+                    <div class="pt-1">
                       <a
-                        href={getWaUrl(`Halo ORIA, saya tertarik dengan mesin *${product.name}* dari iklan Google. Mohon informasi harga promo, brosur, dan bonus paket usahanya.`)}
+                        href={getWaUrl(`Halo Anugrah Supply Mandiri (ORIA)! Saya tertarik dengan ${product.name} dari website oria.co.id. Apakah boleh minta info lebih detail & penawaran harga terbaik?\n\nLink Produk: ${siteUrl}/produk/${group.id.includes('sublim') ? 'sublimasi' : group.id.includes('dtf') ? 'dtf' : group.id}/${product.slug}`)}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="w-full flex items-center justify-center gap-1.5 py-2.5 sm:py-3 px-2 bg-[#FFE500] text-black font-heading font-bold text-[10px] sm:text-xs tracking-[0.14em] uppercase hover:bg-white transition-colors"
+                        class="w-full flex items-center justify-center gap-2 py-3 px-3 bg-[#FFE500] text-black font-heading font-bold text-[10px] sm:text-xs tracking-[0.14em] uppercase hover:bg-black hover:text-white transition-colors duration-200"
                       >
-                        <span>TANYA HARGA</span>
-                        <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                        <!-- WhatsApp Icon -->
+                        <svg class="w-3.5 h-3.5 fill-current flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.075-1.111-.061-.718-.236-1.636-.789-2.387-1.541-.839-.839-1.428-1.859-1.688-2.612-.132-.381-.077-.736.067-.999.123-.223.297-.432.443-.576.147-.144.295-.144.442-.144.111 0 .222.003.313.011.111.009.24.032.348.291.132.317.45 1.097.489 1.177.039.08.065.174.013.279-.052.104-.078.17-.156.262-.078.092-.165.205-.235.276-.079.08-.161.167-.069.324.091.157.406.669.87 1.082.597.531 1.101.696 1.258.775.157.079.248.066.34-.039.092-.105.394-.459.499-.617.105-.157.21-.131.353-.079.144.053.914.431 1.072.509.157.079.262.118.301.184.039.066.039.381-.105.786zm-3.392-10.216c-5.464 0-9.907 4.444-9.907 9.908 0 1.747.458 3.447 1.328 4.956l-1.411 5.18 5.3-1.39c1.455.794 3.097 1.213 4.69 1.213 5.464 0 9.908-4.444 9.908-9.908 0-5.465-4.444-9.908-9.908-9.908z" />
                         </svg>
-                      </a>
-
-                      <a
-                        href={`/produk/${group.id.includes('sublim') ? 'sublimasi' : group.id.includes('dtf') ? 'dtf' : group.id}/${product.slug}`}
-                        class="w-full flex items-center justify-center gap-1.5 py-2 sm:py-2.5 px-2 border border-white/20 text-neutral-300 font-heading font-medium text-[10px] sm:text-xs tracking-[0.14em] uppercase hover:border-[#FFE500] hover:text-[#FFE500] transition-colors bg-neutral-900"
-                      >
-                        <span>DETAIL SPESIFIKASI</span>
-                        <svg class="w-3 h-3 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                        <span>TANYA HARGA VIA WA</span>
+                        <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                         </svg>
                       </a>
@@ -290,18 +298,20 @@
                 </div>
               {/each}
             {:else}
-              <!-- Fallback Simple Category Card if products loading -->
-              <div class="col-span-2 flex flex-col bg-neutral-950 border border-white/15 p-6 text-center space-y-4">
-                <p class="font-heading text-sm text-[#FFE500] tracking-wider uppercase">{group.name}</p>
-                <p class="text-xs text-neutral-400">{group.description}</p>
+              <div class="col-span-2 flex flex-col bg-neutral-100 p-6 text-center space-y-4">
+                <p class="font-heading text-sm text-black font-bold uppercase tracking-wider">{group.name}</p>
+                <p class="text-xs text-neutral-600">{group.description}</p>
                 <a
-                  href={getWaUrl(`Halo ORIA, saya tertarik informasi lini mesin ${group.name} dari iklan Google. Mohon kirimkan katalog dan penawaran terbaik.`)}
+                  href={getWaUrl(`Halo Anugrah Supply Mandiri (ORIA)! Saya tertarik dengan kategori ${group.name} dari landing page iklan oria.co.id. Apakah boleh minta info katalog dan penawaran terbaik? Terima kasih.`)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex items-center justify-center gap-2 py-3 px-6 bg-[#FFE500] text-black font-heading font-bold text-xs tracking-wider uppercase hover:bg-white transition-colors mx-auto"
+                  class="inline-flex items-center justify-center gap-2 py-3 px-6 bg-[#FFE500] text-black font-heading font-bold text-xs tracking-wider uppercase hover:bg-black hover:text-white transition-colors mx-auto"
                 >
+                  <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.075-1.111-.061-.718-.236-1.636-.789-2.387-1.541-.839-.839-1.428-1.859-1.688-2.612-.132-.381-.077-.736.067-.999.123-.223.297-.432.443-.576.147-.144.295-.144.442-.144.111 0 .222.003.313.011.111.009.24.032.348.291.132.317.45 1.097.489 1.177.039.08.065.174.013.279-.052.104-.078.17-.156.262-.078.092-.165.205-.235.276-.079.08-.161.167-.069.324.091.157.406.669.87 1.082.597.531 1.101.696 1.258.775.157.079.248.066.34-.039.092-.105.394-.459.499-.617.105-.157.21-.131.353-.079.144.053.914.431 1.072.509.157.079.262.118.301.184.039.066.039.381-.105.786zm-3.392-10.216c-5.464 0-9.907 4.444-9.907 9.908 0 1.747.458 3.447 1.328 4.956l-1.411 5.18 5.3-1.39c1.455.794 3.097 1.213 4.69 1.213 5.464 0 9.908-4.444 9.908-9.908 0-5.465-4.444-9.908-9.908-9.908z" />
+                  </svg>
                   <span>KONSULTASI KATALOG LENGKAP</span>
-                  <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                  <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                   </svg>
                 </a>
@@ -315,66 +325,56 @@
 </section>
 
 <!-- ================================================================= -->
-<!-- SECTION 4: AFTERSALES & NATIONAL COVERAGE (Full Width)             -->
+<!-- SECTION 4: AFTERSALES & NATIONAL COVERAGE (60% Light Background)  -->
 <!-- ================================================================= -->
-<section class="relative w-full min-h-[540px] flex items-center overflow-hidden bg-black select-none px-4 sm:px-8 lg:px-12 xl:px-16 py-16 sm:py-20 lg:py-24 border-t border-white/15">
-  <div class="absolute inset-0 w-full h-full pointer-events-none">
-    <img
-      src="/images/showcase-about.png"
-      alt="Layanan Teknisi & Showroom ORIA Surabaya"
-      class="w-full h-full object-cover object-center"
-      loading="lazy"
-    />
-    <div class="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/60 sm:to-black/50"></div>
-  </div>
-
-  <div class="relative z-10 w-full max-w-7xl mx-auto space-y-10">
+<section class="w-full bg-[#F3F4F6] text-black py-16 sm:py-20 lg:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 border-t border-neutral-200 select-none">
+  <div class="max-w-7xl mx-auto space-y-10">
     <div class="max-w-2xl space-y-2">
-      <p class="font-heading font-light text-xs sm:text-sm tracking-[0.28em] uppercase text-[#FFE500]">
+      <p class="font-heading font-semibold text-xs sm:text-sm tracking-[0.28em] uppercase text-[#B89200]">
         NATIONAL SERVICE NETWORK
       </p>
-      <h2 class="font-heading font-medium text-2xl sm:text-4xl lg:text-5xl tracking-[0.16em] uppercase text-white leading-tight">
+      <h2 class="font-heading font-bold text-2xl sm:text-4xl lg:text-5xl tracking-[0.14em] uppercase text-black leading-tight">
         LAYANAN TEKNISI RESMI SELURUH INDONESIA
       </h2>
-      <p class="font-sans text-xs sm:text-sm text-neutral-300 leading-relaxed pt-2">
+      <p class="font-sans text-xs sm:text-sm text-neutral-600 leading-relaxed pt-2">
         Tim teknisi profesional siap melayani instalasi, maintenance berkala, hingga kalibrasi warna di seluruh kota di Indonesia.
       </p>
     </div>
 
     <!-- 4 Coverage Pillars -->
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
-      <div class="p-4 sm:p-6 bg-neutral-950/85 border border-white/15 space-y-2">
-        <h4 class="font-heading font-medium text-xs sm:text-base text-[#FFE500] uppercase tracking-wider">
+      <div class="p-5 sm:p-6 bg-white border-none shadow-sm space-y-2">
+        <h4 class="font-heading font-bold text-xs sm:text-base text-black uppercase tracking-wider">
           Instalasi Langsung
         </h4>
-        <p class="text-[11px] sm:text-xs text-neutral-300 leading-relaxed">
+        <p class="text-[11px] sm:text-xs text-neutral-600 leading-relaxed">
           Pemasangan mesin di lokasi usaha Anda dengan pengujian operasional menyeluruh.
         </p>
       </div>
 
-      <div class="p-4 sm:p-6 bg-neutral-950/85 border border-white/15 space-y-2">
-        <h4 class="font-heading font-medium text-xs sm:text-base text-[#FFE500] uppercase tracking-wider">
+      <div class="p-5 sm:p-6 bg-white border-none shadow-sm space-y-2">
+        <h4 class="font-heading font-bold text-xs sm:text-base text-black uppercase tracking-wider">
           Training Operator
         </h4>
-        <p class="text-[11px] sm:text-xs text-neutral-300 leading-relaxed">
+        <p class="text-[11px] sm:text-xs text-neutral-600 leading-relaxed">
           Pelatihan teknis pengoperasian mesin dan software RIP sampai mahir berproduksi.
         </p>
       </div>
 
-      <div class="p-4 sm:p-6 bg-neutral-950/85 border border-white/15 space-y-2">
-        <h4 class="font-heading font-medium text-xs sm:text-base text-[#FFE500] uppercase tracking-wider">
+      <div class="p-5 sm:p-6 bg-white border-none shadow-sm space-y-2">
+        <h4 class="font-heading font-bold text-xs sm:text-base text-black uppercase tracking-wider">
           Jaminan Sparepart
         </h4>
-        <p class="text-[11px] sm:text-xs text-neutral-300 leading-relaxed">
+        <p class="text-[11px] sm:text-xs text-neutral-600 leading-relaxed">
           Ketersediaan suku cadang elektrik, printhead, dan tinta original ready stock.
         </p>
       </div>
 
-      <div class="p-4 sm:p-6 bg-neutral-950/85 border border-white/15 space-y-2">
-        <h4 class="font-heading font-medium text-xs sm:text-base text-[#FFE500] uppercase tracking-wider">
+      <div class="p-5 sm:p-6 bg-white border-none shadow-sm space-y-2">
+        <h4 class="font-heading font-bold text-xs sm:text-base text-black uppercase tracking-wider">
           Showroom &amp; Demo
         </h4>
-        <p class="text-[11px] sm:text-xs text-neutral-300 leading-relaxed">
+        <p class="text-[11px] sm:text-xs text-neutral-600 leading-relaxed">
           Uji coba langsung hasil cetak menggunakan bahan Anda di Showroom Surabaya.
         </p>
       </div>
@@ -383,30 +383,37 @@
 </section>
 
 <!-- ================================================================= -->
-<!-- SECTION 5: FINAL DIRECT CTA (Full Width, Consistent Padding)       -->
+<!-- SECTION 5: FINAL HIGH-CONVERSION CTA (30% Black Contrast)         -->
 <!-- ================================================================= -->
-<section class="w-full bg-[#050508] text-white py-16 sm:py-20 lg:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 border-t border-white/15 select-none">
+<section class="w-full bg-[#050508] text-white py-16 sm:py-20 lg:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 border-t border-white/10 select-none">
   <div class="max-w-4xl mx-auto text-center space-y-6">
-    <p class="font-heading font-light text-xs tracking-[0.3em] uppercase text-[#FFE500]">
-      START YOUR PRODUCTION TODAY
+    <p class="font-heading font-semibold text-xs tracking-[0.3em] uppercase text-[#FFE500]">
+      PENAWARAN TERBATAS KHUSUS BULAN INI
     </p>
 
-    <h2 class="font-heading font-bold text-2xl sm:text-4xl lg:text-5xl tracking-[0.16em] uppercase text-white leading-tight">
-      SIAP MEMILIKI MESIN INDUSTRIAL BERGARANSI RESMI?
+    <!-- Catchy Commercial Headline -->
+    <h2 class="font-heading font-bold text-2xl sm:text-4xl lg:text-5xl tracking-[0.14em] uppercase text-white leading-tight">
+      KONSULTASIKAN KEBUTUHAN MESIN PRINTING &amp; FABRIKASI ANDA DENGAN AHLINYA
     </h2>
 
+    <!-- Engaging Commercial Copy -->
     <p class="font-sans text-xs sm:text-base text-neutral-300 max-w-2xl mx-auto leading-relaxed">
-      Dapatkan penawaran harga khusus iklan Google hari ini, bonus paket tinta awal, konsultasi kalkulasi Balik Modal (ROI), serta jadwal demo cetak gratis.
+      Dapatkan kalkulasi simulasi Balik Modal (ROI), diskon promo khusus iklan Google, bonus paket tinta perdana, serta gratis instalasi dan pelatihan teknisi langsung ke lokasi usaha Anda.
     </p>
 
-    <div class="pt-3 flex flex-col sm:flex-row items-center justify-center gap-4">
+    <!-- CTAs with WhatsApp Icon and Chevron -->
+    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
       <a
-        href={getWaUrl('Halo ORIA, saya ingin konsultasi penawaran harga promo mesin dari iklan Google serta bonus paket usahanya.')}
+        href={getWaUrl('Halo Anugrah Supply Mandiri (ORIA)! Saya ingin konsultasi penawaran promo mesin dari iklan Google, bonus paket tinta awal, dan simulasi perhitungan balik modal (BEP). Terima kasih.')}
         target="_blank"
         rel="noopener noreferrer"
-        class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#FFE500] text-black font-heading font-bold text-xs sm:text-sm tracking-[0.2em] uppercase hover:bg-white transition-colors duration-200"
+        class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 sm:py-5 bg-[#FFE500] text-black font-heading font-bold text-xs sm:text-sm tracking-[0.2em] uppercase hover:bg-white transition-colors duration-200"
       >
-        <span>HUBUNGI VIA WHATSAPP</span>
+        <!-- WhatsApp Icon -->
+        <svg class="w-4 h-4 fill-current flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.075-1.111-.061-.718-.236-1.636-.789-2.387-1.541-.839-.839-1.428-1.859-1.688-2.612-.132-.381-.077-.736.067-.999.123-.223.297-.432.443-.576.147-.144.295-.144.442-.144.111 0 .222.003.313.011.111.009.24.032.348.291.132.317.45 1.097.489 1.177.039.08.065.174.013.279-.052.104-.078.17-.156.262-.078.092-.165.205-.235.276-.079.08-.161.167-.069.324.091.157.406.669.87 1.082.597.531 1.101.696 1.258.775.157.079.248.066.34-.039.092-.105.394-.459.499-.617.105-.157.21-.131.353-.079.144.053.914.431 1.072.509.157.079.262.118.301.184.039.066.039.381-.105.786zm-3.392-10.216c-5.464 0-9.907 4.444-9.907 9.908 0 1.747.458 3.447 1.328 4.956l-1.411 5.18 5.3-1.39c1.455.794 3.097 1.213 4.69 1.213 5.464 0 9.908-4.444 9.908-9.908 0-5.465-4.444-9.908-9.908-9.908z" />
+        </svg>
+        <span>KONSULTASI VIA WHATSAPP SEKARANG</span>
         <svg class="w-4 h-4 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
         </svg>
@@ -414,9 +421,9 @@
 
       <a
         href="/kontak"
-        class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 border border-white/20 text-white font-heading font-semibold text-xs sm:text-sm tracking-[0.2em] uppercase hover:border-[#FFE500] hover:text-[#FFE500] transition-colors duration-200 bg-neutral-950"
+        class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 sm:py-5 border border-white/20 text-white font-heading font-semibold text-xs sm:text-sm tracking-[0.2em] uppercase hover:border-[#FFE500] hover:text-[#FFE500] transition-colors duration-200 bg-neutral-950"
       >
-        <span>LOKASI SHOWROOM SURABAYA</span>
+        <span>KUNJUNGI SHOWROOM SURABAYA</span>
         <svg class="w-4 h-4 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
         </svg>
@@ -426,18 +433,21 @@
 </section>
 
 <!-- ================================================================= -->
-<!-- STICKY BOTTOM QUICK ACTION BAR FOR MOBILE (Google Ads Instant Conversion) -->
+<!-- STICKY BOTTOM QUICK ACTION BAR FOR MOBILE (Direct WhatsApp CTA)   -->
 <!-- ================================================================= -->
 <aside
   class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-md border-t border-white/20 p-2.5 select-none"
   aria-label="Aksi Cepat WhatsApp"
 >
   <a
-    href={getWaUrl('Halo ORIA, saya ingin konsultasi penawaran promo mesin dari iklan Google.')}
+    href={getWaUrl('Halo Anugrah Supply Mandiri (ORIA)! Saya ingin konsultasi penawaran promo mesin dari iklan Google oria.co.id. Terima kasih.')}
     target="_blank"
     rel="noopener noreferrer"
     class="w-full flex items-center justify-center gap-2 py-3 px-4 bg-[#FFE500] text-black font-heading font-bold text-xs tracking-[0.16em] uppercase hover:bg-white transition-colors"
   >
+    <svg class="w-4 h-4 fill-current flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.075-1.111-.061-.718-.236-1.636-.789-2.387-1.541-.839-.839-1.428-1.859-1.688-2.612-.132-.381-.077-.736.067-.999.123-.223.297-.432.443-.576.147-.144.295-.144.442-.144.111 0 .222.003.313.011.111.009.24.032.348.291.132.317.45 1.097.489 1.177.039.08.065.174.013.279-.052.104-.078.17-.156.262-.078.092-.165.205-.235.276-.079.08-.161.167-.069.324.091.157.406.669.87 1.082.597.531 1.101.696 1.258.775.157.079.248.066.34-.039.092-.105.394-.459.499-.617.105-.157.21-.131.353-.079.144.053.914.431 1.072.509.157.079.262.118.301.184.039.066.039.381-.105.786zm-3.392-10.216c-5.464 0-9.907 4.444-9.907 9.908 0 1.747.458 3.447 1.328 4.956l-1.411 5.18 5.3-1.39c1.455.794 3.097 1.213 4.69 1.213 5.464 0 9.908-4.444 9.908-9.908 0-5.465-4.444-9.908-9.908-9.908z" />
+    </svg>
     <span>KONSULTASI VIA WHATSAPP</span>
     <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
       <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />

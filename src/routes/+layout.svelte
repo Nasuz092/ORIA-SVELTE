@@ -28,9 +28,11 @@
 </script>
 
 <svelte:head>
-  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 </svelte:head>
 
@@ -38,7 +40,7 @@
 
 <ScrollArea
   class="h-[100svh] w-full"
-  viewportClass="h-full w-full"
+  viewportClass="h-full w-full scroll-smooth"
   bind:viewportRef={viewportEl}
   onscroll={handleScroll}
 >
