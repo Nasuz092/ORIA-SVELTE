@@ -28,12 +28,14 @@
       <img
         src={product.mainImageDesktopUrl || product.imageUrl}
         alt={product.name}
-        class="w-full h-full object-cover object-right select-none scale-[1.3] sm:scale-[1.45] lg:scale-[1.65] origin-[90%_75%] transition-transform duration-700"
+        class="w-full h-full object-cover object-center sm:object-right select-none scale-[0.95] sm:scale-[0.90] lg:scale-[0.88] origin-center lg:origin-[85%_center] transition-transform duration-700"
         loading="eager"
       />
     </picture>
     <!-- Layer gradient hitam dari kiri ke kanan transparan -->
-    <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent sm:from-black sm:via-black/85 lg:via-black/70 lg:to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-transparent sm:from-black sm:via-black/75 sm:to-transparent lg:via-black/55 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/70 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/70 pointer-events-none"></div>
   </div>
 
   <!-- KONTEN TEKS KIRI: Breadcrumbs & Judul, dan 4 Spesifikasi (2x2 di Desktop, 1 Kolom di Mobile, Tanpa Garis) -->
