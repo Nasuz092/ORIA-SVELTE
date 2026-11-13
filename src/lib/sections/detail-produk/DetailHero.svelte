@@ -19,7 +19,7 @@
 <!-- HERO SECTION: FULL WIDTH, 100VH, GRADIENT HITAM DARI KIRI KE KANAN, TEKS PUTIH -->
 <!-- ========================================================================= -->
 <section id="overview" class="relative w-full h-[100svh] min-h-[640px] bg-black text-white overflow-hidden select-none">
-  <!-- GAMBAR MESIN: Full width & 100vh, hanya sisi kanan (mesin) yang diambil sehingga space kiri terpotong -->
+  <!-- GAMBAR MESIN: Full width & 100vh cover sampai ke ujung tanpa ada space -->
   <div class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
     <picture class="w-full h-full block overflow-hidden">
       {#if product.mainImageMobileUrl}
@@ -28,14 +28,12 @@
       <img
         src={product.mainImageDesktopUrl || product.imageUrl}
         alt={product.name}
-        class="w-full h-full object-cover object-center sm:object-right select-none scale-[0.95] sm:scale-[0.90] lg:scale-[0.88] origin-center lg:origin-[85%_center] transition-transform duration-700"
+        class="w-full h-full object-cover object-center sm:object-right select-none"
         loading="eager"
       />
     </picture>
-    <!-- Layer gradient hitam dari kiri ke kanan transparan -->
-    <div class="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-transparent sm:from-black sm:via-black/75 sm:to-transparent lg:via-black/55 pointer-events-none"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/70 pointer-events-none"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/70 pointer-events-none"></div>
+    <!-- Layer gradient hitam dari kiri ke kanan transparan agar teks di kiri tajam -->
+    <div class="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-transparent sm:from-black sm:via-black/80 lg:via-black/65 lg:to-transparent"></div>
   </div>
 
   <!-- KONTEN TEKS KIRI: Breadcrumbs & Judul, dan 4 Spesifikasi (2x2 di Desktop, 1 Kolom di Mobile, Tanpa Garis) -->
