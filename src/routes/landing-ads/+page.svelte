@@ -10,27 +10,204 @@
     return `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
   }
 
-  // Quick category tabs: default 'all'
-  let activeTab = $state('all');
+  // Active filter initialized from server-detected keyword intent, or 'all'
+  let activeFilterKey = $state('all');
 
-  const categories = $derived(data.categoryGroups || []);
-
-  const displayedGroups = $derived.by(() => {
-    if (activeTab === 'all') return categories;
-    return categories.filter((g) => g.id === activeTab);
+  $effect(() => {
+    activeFilterKey = data.activeIntent?.key || 'all';
   });
 
-  function scrollToCategory(id: string, e?: MouseEvent) {
+  $effect(() => {
+    function handleCategorySelect(e: Event) {
+      const customEvt = e as CustomEvent<{ id: string }>;
+      const targetId = customEvt.detail?.id;
+      if (targetId) {
+        const isVisible = displayedGroups.some((g) => g.id === targetId);
+        if (!isVisible) {
+          activeFilterKey = 'all';
+        }
+      }
+    }
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('ads-category-select', handleCategorySelect);
+      return () => {
+        window.removeEventListener('ads-category-select', handleCategorySelect);
+      };
+    }
+  });
+
+  const allCategories = $derived(data.categoryGroups || []);
+
+  // Filter category groups dynamically based on keyword/tab
+  const displayedGroups = $derived.by(() => {
+    if (activeFilterKey === 'all') return allCategories;
+
+    // Digital printing combines Outdoor & Indoor
+    if (activeFilterKey === 'digital-printing') {
+      return allCategories.filter((g) => g.id === 'outdoor' || g.id === 'indoor');
+    }
+    if (activeFilterKey === 'uv') {
+      return allCategories.filter((g) => g.id === 'uv');
+    }
+    if (activeFilterKey === 'sublim') {
+      return allCategories.filter((g) => g.id === 'sublimasi');
+    }
+    if (activeFilterKey === 'laser') {
+      return allCategories.filter((g) => g.id === 'laser');
+    }
+    if (activeFilterKey === 'cnc') {
+      return allCategories.filter((g) => g.id === 'cnc');
+    }
+    if (activeFilterKey === 'dtf') {
+      return allCategories.filter((g) => g.id === 'dtf-dtg');
+    }
+    if (activeFilterKey === 'single-pass') {
+      return allCategories.filter((g) => g.id === 'single-pass');
+    }
+    if (activeFilterKey === 'outdoor') {
+      return allCategories.filter((g) => g.id === 'outdoor');
+    }
+    if (activeFilterKey === 'indoor') {
+      return allCategories.filter((g) => g.id === 'indoor');
+    }
+
+    // Direct match by ID if any
+    const directMatch = allCategories.filter((g) => g.id === activeFilterKey);
+    if (directMatch.length > 0) return directMatch;
+
+    return allCategories;
+  });
+
+  // Dynamic Intent metadata (Headline, Subtitle, WA Message)
+  const currentIntent = $derived.by(() => {
+    if (activeFilterKey === data.activeIntent?.key) {
+      return data.activeIntent;
+    }
+    if (activeFilterKey === 'digital-printing') {
+      return {
+        key: 'digital-printing',
+        label: 'Digital Printing (Outdoor & Indoor)',
+        categoryIds: ['outdoor', 'indoor'],
+        heroBadge: 'INDUSTRIAL OUTDOOR & INDOOR PRINTING SYSTEMS',
+        heroTitleMain: 'MESIN DIGITAL PRINTING',
+        heroTitleHighlight: 'OUTDOOR & INDOOR',
+        heroDescription: 'Solusi mesin cetak spanduk flexi & baliho raksasa hingga stiker decal dan wallpaper indoor resolusi fotografi dengan garansi resmi dan pendampingan teknisi langsung.',
+        waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari mesin Digital Printing (Outdoor/Indoor) dari iklan Google oria.co.id. Mohon info pricelist & promo unit. Terima kasih.'
+      };
+    }
+    if (activeFilterKey === 'uv') {
+      return {
+        key: 'uv',
+        label: 'Printer UV Flatbed & Cylinder',
+        categoryIds: ['uv'],
+        heroBadge: 'PRECISION UV LED FLATBED & CYLINDER',
+        heroTitleMain: 'MESIN PRINTER UV',
+        heroTitleHighlight: 'FLATBED & CYLINDER',
+        heroDescription: 'Cetak langsung di segala media kaku & silinder: akrilik, kayu solid, kaca, plat metal, casing HP, tumbler, hingga merchandise souvenir presisi tinggi.',
+        waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari mesin Printer UV Flatbed / Cylinder dari iklan Google oria.co.id. Mohon info spesifikasi & promo harga. Terima kasih.'
+      };
+    }
+    if (activeFilterKey === 'sublim') {
+      return {
+        key: 'sublim',
+        label: 'Sublimasi & Heat Press',
+        categoryIds: ['sublimasi'],
+        heroBadge: 'TEXTILE & APPAREL CONTINUOUS TRANSFER',
+        heroTitleMain: 'MESIN CETAK SUBLIMASI',
+        heroTitleHighlight: '& HEAT PRESS ROTARY',
+        heroDescription: 'Solusi industri jersey olahraga, hijab printing, apparel sportswear, dan fashion garmen dengan transfer warna tajam, stabil, dan tahan luntur cuci.',
+        waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari Mesin Sublimasi & Heat Press dari iklan Google oria.co.id. Mohon info paket usaha & penawaran promo. Terima kasih.'
+      };
+    }
+    if (activeFilterKey === 'laser') {
+      return {
+        key: 'laser',
+        label: 'Laser Cutting & Marking',
+        categoryIds: ['laser'],
+        heroBadge: 'PRECISION CO2 & FIBER LASER SYSTEMS',
+        heroTitleMain: 'MESIN LASER CUTTING',
+        heroTitleHighlight: '& FIBER MARKING',
+        heroDescription: 'Pemotongan presisi tinggi akrilik, kayu, MDF, kulit, hingga fiber laser untuk pemotongan plat metal dan grafir barcode perhiasan & souvenir.',
+        waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari Mesin Laser Cutting / Marking dari iklan Google oria.co.id. Mohon info promo harga & spesifikasi teknis. Terima kasih.'
+      };
+    }
+    if (activeFilterKey === 'cnc') {
+      return {
+        key: 'cnc',
+        label: 'CNC Router & Plasma',
+        categoryIds: ['cnc'],
+        heroBadge: 'HEAVY-DUTY CNC ROUTER & PLASMA CUTTING',
+        heroTitleMain: 'MESIN CNC ROUTER',
+        heroTitleHighlight: '& PLASMA FABRIKASI',
+        heroDescription: 'Heavy-duty framing & spindle bertenaga tinggi untuk pemotongan lembaran ACP reklame, ukiran kayu 3D, pembuatan kitchen set, dan pemotongan plat besi tebal.',
+        waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari Mesin CNC Router / Plasma dari iklan Google oria.co.id. Mohon info pricelist dan spesifikasi teknis. Terima kasih.'
+      };
+    }
+    if (activeFilterKey === 'dtf') {
+      return {
+        key: 'dtf',
+        label: 'DTF & DTG Apparel',
+        categoryIds: ['dtf-dtg'],
+        heroBadge: 'DIRECT TO FILM & DIRECT TO GARMENT',
+        heroTitleMain: 'MESIN PRINTER DTF',
+        heroTitleHighlight: '& DIRECT TO GARMENT',
+        heroDescription: 'Inovasi sablon digital kaos distro katun, jersey, canvas bag, dan topi. Dilengkapi shaker powder otomatis dengan efisiensi tinta maksimal.',
+        waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari Mesin DTF / DTG Sablon Kaos dari iklan Google oria.co.id. Mohon info penawaran promo & paket usaha. Terima kasih.'
+      };
+    }
+    if (activeFilterKey === 'single-pass') {
+      return {
+        key: 'single-pass',
+        label: 'Single Pass Packaging',
+        categoryIds: ['single-pass'],
+        heroBadge: 'CORRUGATED BOX & PAPER BAG PRINTING',
+        heroTitleMain: 'MESIN CETAK PACKAGING',
+        heroTitleHighlight: 'SINGLE PASS SYSTEM',
+        heroDescription: 'Cetak langsung di atas kardus corrugated box, box pizza, dan paper bag berkecepatan tinggi tanpa minimum order dan tanpa biaya plat film.',
+        waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya tertarik dengan Mesin Single Pass Packaging dari iklan Google oria.co.id. Mohon info harga & kapasitas produksi. Terima kasih.'
+      };
+    }
+
+    return {
+      key: 'all',
+      label: 'Semua Kategori',
+      categoryIds: ['outdoor', 'sublimasi', 'laser', 'cnc', 'dtf-dtg', 'single-pass', 'uv', 'indoor'],
+      heroBadge: 'INDUSTRIAL PRINTING & FABRICATION SYSTEMS',
+      heroTitleMain: 'SOLUSI MESIN CETAK',
+      heroTitleHighlight: 'BERGARANSI RESMI',
+      heroDescription: 'Investasi mesin industri presisi tinggi dengan durabilitas komponen kelas dunia, jaminan ketersediaan suku cadang original, dan pendampingan teknisi resmi ke seluruh kota di Indonesia.',
+      waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya tertarik konsultasi penawaran promo mesin industri dari iklan Google oria.co.id. Mohon info lebih detail & brosur harga. Terima kasih.'
+    };
+  });
+
+  const filterTabs = [
+    { key: 'all', label: 'SEMUA MESIN' },
+    { key: 'digital-printing', label: 'DIGITAL PRINTING (OUTDOOR & INDOOR)' },
+    { key: 'uv', label: 'PRINTER UV' },
+    { key: 'sublim', label: 'SUBLIMASI & HEAT PRESS' },
+    { key: 'laser', label: 'LASER CUTTING' },
+    { key: 'cnc', label: 'CNC ROUTER' },
+    { key: 'dtf', label: 'DTF APPAREL' },
+    { key: 'single-pass', label: 'SINGLE PASS' }
+  ];
+
+  function scrollToSection(id: string, e?: MouseEvent) {
     if (e) e.preventDefault();
-    const el = document.getElementById(`cat-${id}`);
+    const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
+
+  function handleTabChange(key: string) {
+    activeFilterKey = key;
+    scrollToSection('katalog-iklan');
+  }
 </script>
 
 <svelte:head>
-  <title>Mesin Digital Printing & Fabrikasi Industri ORIA — Promo & Paket Usaha</title>
+  <title>{currentIntent.heroTitleMain} {currentIntent.heroTitleHighlight} ORIA — Promo Iklan &amp; Garansi Resmi</title>
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate" />
   <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate" />
   <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate" />
@@ -55,26 +232,26 @@
   <!-- Hero Content -->
   <div class="relative z-10 w-full max-w-7xl mx-auto flex flex-col justify-center pt-16 sm:pt-20">
     <div class="max-w-3xl space-y-6 sm:space-y-8">
-      <!-- Tracked Category Subtitle (Tanpa Pill / Badge) -->
+      <!-- Tracked Category Subtitle (Tanpa Pill / Badge, Lotus Style Tracking) -->
       <p class="font-heading font-light text-xs sm:text-sm tracking-[0.28em] sm:tracking-[0.32em] uppercase text-[#FFE500]">
-        INDUSTRIAL PRINTING &amp; FABRICATION SYSTEMS
+        {currentIntent.heroBadge}
       </p>
 
-      <!-- Main Headline: Sharp Luxury Lotus Tracking -->
+      <!-- Main Dynamic Headline: Sharp Luxury Lotus Tracking -->
       <h1 class="font-heading font-bold text-3xl sm:text-5xl lg:text-6xl tracking-[0.12em] sm:tracking-[0.16em] uppercase leading-[1.1] text-white">
-        SOLUSI MESIN CETAK <br />
-        <span class="text-[#FFE500]">BERGARANSI RESMI</span>
+        {currentIntent.heroTitleMain} <br />
+        <span class="text-[#FFE500]">{currentIntent.heroTitleHighlight}</span>
       </h1>
 
-      <!-- Value Subheadline -->
+      <!-- Dynamic Value Subheadline -->
       <p class="font-sans text-sm sm:text-base lg:text-lg text-neutral-300 leading-relaxed font-normal max-w-2xl">
-        Investasi mesin industri presisi tinggi dengan durabilitas komponen kelas dunia, jaminan ketersediaan suku cadang original, dan pendampingan teknisi resmi ke seluruh kota di Indonesia.
+        {currentIntent.heroDescription}
       </p>
 
       <!-- Action Buttons with Chevron (Strictly No Arrows, Plus WhatsApp Icon) -->
       <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
         <a
-          href={getWaUrl('Halo Anugrah Supply Mandiri (ORIA)! Saya tertarik konsultasi penawaran promo mesin industri dari iklan Google. Apakah boleh minta info lebih detail & brosur harga? Terima kasih.')}
+          href={getWaUrl(currentIntent.waContextMessage)}
           target="_blank"
           rel="noopener noreferrer"
           class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#FFE500] text-black font-heading font-bold text-xs sm:text-sm tracking-[0.2em] uppercase hover:bg-white transition-colors duration-200"
@@ -91,10 +268,10 @@
 
         <a
           href="#katalog-iklan"
-          onclick={(e) => scrollToCategory('outdoor', e)}
+          onclick={(e) => scrollToSection('katalog-iklan', e)}
           class="inline-flex items-center justify-center gap-3 px-8 py-4 border border-white/30 text-white font-heading font-semibold text-xs sm:text-sm tracking-[0.2em] uppercase hover:border-[#FFE500] hover:text-[#FFE500] transition-colors duration-200 bg-black/60"
         >
-          <span>PILIHAN MESIN UNGGULAN</span>
+          <span>LIHAT REKOMENDASI MESIN</span>
           <svg class="w-4 h-4 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
           </svg>
@@ -183,45 +360,57 @@
 <!-- SECTION 3: PRODUCT CATALOG (60% White Clean, Borderless, 1:1)    -->
 <!-- ================================================================= -->
 <section id="katalog-iklan" class="w-full bg-white text-black py-16 sm:py-20 lg:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 select-none scroll-mt-14">
-  <div class="max-w-7xl mx-auto space-y-12 sm:space-y-16">
+  <div class="max-w-7xl mx-auto space-y-10 sm:space-y-14">
     <!-- Section Header (Clean Tanpa Pill / Badge) -->
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-neutral-200 pb-8">
       <div class="space-y-1.5">
         <p class="font-heading font-semibold text-xs sm:text-sm tracking-[0.28em] uppercase text-[#B89200]">
-          CURATED MACHINE LINEUP
+          TARGETED MACHINE LINEUP
         </p>
         <h2 class="font-heading font-bold text-2xl sm:text-4xl lg:text-5xl tracking-[0.14em] uppercase text-black">
           KATALOG PILIHAN MESIN ORIA
         </h2>
+        {#if activeFilterKey !== 'all'}
+          <p class="text-xs sm:text-sm text-neutral-600 pt-1">
+            Menampilkan kategori pilihan untuk: <span class="font-bold text-black uppercase">{currentIntent.label}</span>
+          </p>
+        {/if}
       </div>
 
-      <!-- Quick Category Navigation (Clean Rectangular Pills) -->
+      <!-- Filter Tabs Bar (No Rounded, Sharp Angular Rectangular Pills) -->
       <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
-        <button
-          type="button"
-          onclick={() => (activeTab = 'all')}
-          class="px-3.5 py-2 text-[11px] sm:text-xs font-heading tracking-[0.16em] uppercase whitespace-nowrap transition-colors {activeTab === 'all'
-            ? 'bg-black text-white font-bold'
-            : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'}"
-        >
-          SEMUA ({categories.length})
-        </button>
-        {#each categories as group}
+        {#each filterTabs as tab}
           <button
             type="button"
-            onclick={() => {
-              activeTab = group.id;
-              scrollToCategory(group.id);
-            }}
-            class="px-3.5 py-2 text-[11px] sm:text-xs font-heading tracking-[0.16em] uppercase whitespace-nowrap transition-colors {activeTab === group.id
-              ? 'bg-black text-white font-bold'
+            onclick={() => handleTabChange(tab.key)}
+            class="px-3.5 py-2.5 text-[11px] sm:text-xs font-heading tracking-[0.16em] uppercase whitespace-nowrap transition-colors {activeFilterKey === tab.key
+              ? 'bg-black text-[#FFE500] font-bold shadow-sm'
               : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'}"
           >
-            {group.name}
+            {tab.label}
           </button>
         {/each}
       </div>
     </div>
+
+    <!-- Active Filter Reset Bar if Filtered -->
+    {#if activeFilterKey !== 'all'}
+      <div class="flex items-center justify-between bg-[#F8F9FA] px-4 py-3 border-l-4 border-[#FFE500]">
+        <div class="text-xs text-neutral-700 font-sans">
+          Sedang memfilter: <span class="font-bold text-black">{currentIntent.label}</span> ({displayedGroups.length} Kategori ditampilkan)
+        </div>
+        <button
+          type="button"
+          onclick={() => handleTabChange('all')}
+          class="inline-flex items-center gap-1.5 text-xs font-heading font-bold text-black hover:text-[#B89200] uppercase tracking-wider transition-colors"
+        >
+          <span>LIHAT SEMUA KATEGORI</span>
+          <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    {/if}
 
     <!-- Product Category Groups -->
     <div class="space-y-16 sm:space-y-24">
@@ -404,7 +593,7 @@
     <!-- CTAs with WhatsApp Icon and Chevron -->
     <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
       <a
-        href={getWaUrl('Halo Anugrah Supply Mandiri (ORIA)! Saya ingin konsultasi penawaran promo mesin dari iklan Google, bonus paket tinta awal, dan simulasi perhitungan balik modal (BEP). Terima kasih.')}
+        href={getWaUrl(currentIntent.waContextMessage)}
         target="_blank"
         rel="noopener noreferrer"
         class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 sm:py-5 bg-[#FFE500] text-black font-heading font-bold text-xs sm:text-sm tracking-[0.2em] uppercase hover:bg-white transition-colors duration-200"
@@ -440,7 +629,7 @@
   aria-label="Aksi Cepat WhatsApp"
 >
   <a
-    href={getWaUrl('Halo Anugrah Supply Mandiri (ORIA)! Saya ingin konsultasi penawaran promo mesin dari iklan Google oria.co.id. Terima kasih.')}
+    href={getWaUrl(currentIntent.waContextMessage)}
     target="_blank"
     rel="noopener noreferrer"
     class="w-full flex items-center justify-center gap-2 py-3 px-4 bg-[#FFE500] text-black font-heading font-bold text-xs tracking-[0.16em] uppercase hover:bg-white transition-colors"

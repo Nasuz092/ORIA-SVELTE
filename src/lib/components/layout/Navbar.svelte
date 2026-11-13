@@ -141,6 +141,9 @@
   function scrollToAdsCategory(id: string, e?: MouseEvent) {
     if (e) e.preventDefault();
     closeDrawer();
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('ads-category-select', { detail: { id } }));
+    }
     setTimeout(() => {
       const el = document.getElementById(`cat-${id}`);
       if (el) {
