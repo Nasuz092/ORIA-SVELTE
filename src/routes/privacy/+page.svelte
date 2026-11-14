@@ -63,7 +63,7 @@
                 <button
                   type="button"
                   onclick={() => selectVersion(v)}
-                  class="w-full text-left px-4 py-2.5 text-xs sm:text-sm text-neutral-800 hover:bg-[#FFE500] hover:text-black hover:font-semibold transition-colors cursor-pointer"
+                  class="w-full text-left px-4 py-2.5 text-xs sm:text-sm text-neutral-800 hover:bg-[#334c54] hover:text-white hover:font-semibold transition-colors cursor-pointer"
                 >
                   {v}
                 </button>

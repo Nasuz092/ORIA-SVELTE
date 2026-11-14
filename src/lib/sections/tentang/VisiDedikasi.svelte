@@ -50,7 +50,7 @@
         class="relative z-10 max-w-xl p-8 sm:p-12 lg:p-16 space-y-5 transition-transform duration-150 ease-out will-change-transform"
         style="transform: translate3d(0, {parallaxY}px, 0);"
       >
-        <div class="font-heading font-bold text-xs uppercase tracking-[0.28em] text-[#FFE500]">
+        <div class="font-heading font-bold text-xs uppercase tracking-[0.28em] text-[#334c54]">
           ENGINEERED FOR INDUSTRY
         </div>
         <h3 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl uppercase tracking-wider text-white leading-tight">

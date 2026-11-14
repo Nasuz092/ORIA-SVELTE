@@ -13,7 +13,7 @@
     <!-- Purple/Indigo Cinematic Tint (Gradasi hitam ke transparan) -->
     <div class="absolute inset-0 bg-gradient-to-r from-[#05020a]/70 via-[#090214]/40 to-transparent sm:from-[#05020a] sm:via-[#090214]/90 lg:via-[#090214]/75 sm:to-transparent"></div>
     <!-- Ambient glow -->
-    <div class="absolute -top-32 -left-32 w-96 h-96 bg-[#FFE500]/5 rounded-full blur-3xl"></div>
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-[#334c54]/5 rounded-full blur-3xl"></div>
     <div class="absolute top-1/2 right-1/4 w-[500px] h-[500px] bg-purple-900/10 rounded-full blur-[120px]"></div>
   </div>
 
@@ -23,11 +23,11 @@
       <div class="max-w-xl lg:max-w-2xl space-y-5 sm:space-y-6">
         <!-- Brand & Editorial Kicker -->
         <div class="space-y-2.5">
-          <div class="font-heading font-black text-xs sm:text-sm uppercase tracking-[0.3em] text-[#FFE500]">
+          <div class="font-heading font-black text-xs sm:text-sm uppercase tracking-[0.3em] text-[#334c54]">
             ORIA EDITORIAL &middot; PRESS ARCHIVE
           </div>
           <h1 class="font-heading font-light text-3xl sm:text-4xl lg:text-5xl uppercase tracking-[0.16em] sm:tracking-[0.2em] text-white leading-tight">
-            PERSPECTIVES <span class="font-medium text-[#FFE500]">IN PRECISION</span>
+            PERSPECTIVES <span class="font-medium text-[#334c54]">IN PRECISION</span>
             <span class="block mt-1 sm:mt-2 text-2xl sm:text-3xl lg:text-4xl font-light text-neutral-200 tracking-[0.2em]">
               &amp; PRINTING INNOVATION
             </span>
@@ -43,7 +43,7 @@
         <div class="pt-2 sm:pt-4">
           <a
             href="/artikel/digital-print"
-            class="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 bg-[#FFE500] hover:bg-[#fff04d] text-black font-heading font-black text-xs sm:text-sm uppercase tracking-[0.25em] transition-all duration-300 shadow-xl group cursor-pointer"
+            class="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 bg-[#334c54] hover:bg-[#273a40] text-black font-heading font-black text-xs sm:text-sm uppercase tracking-[0.25em] transition-all duration-300 shadow-xl group cursor-pointer"
           >
             <span>EXPLORE ARTICLES</span>
             <svg

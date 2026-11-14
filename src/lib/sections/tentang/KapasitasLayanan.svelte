@@ -72,7 +72,7 @@
       <!-- Stat 1: 500+ Installed Units -->
       <div class="space-y-3">
         <div class="font-heading font-light text-5xl sm:text-6xl lg:text-7xl text-white tracking-tight tabular-nums">
-          {count500}<span class="text-[#FFE500] font-normal">+</span>
+          {count500}<span class="text-[#334c54] font-normal">+</span>
         </div>
         <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
           UNITS INSTALLED
@@ -85,7 +85,7 @@
       <!-- Stat 2: 100% Official Warranty -->
       <div class="space-y-3">
         <div class="font-heading font-light text-5xl sm:text-6xl lg:text-7xl text-white tracking-tight tabular-nums">
-          {count100}<span class="text-[#FFE500] font-normal">%</span>
+          {count100}<span class="text-[#334c54] font-normal">%</span>
         </div>
         <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
           OFFICIAL WARRANTY
@@ -98,7 +98,7 @@
       <!-- Stat 3: 24/7 Technical Support -->
       <div class="space-y-3">
         <div class="font-heading font-light text-5xl sm:text-6xl lg:text-7xl text-white tracking-tight tabular-nums">
-          {count24}<span class="text-[#FFE500] font-normal">/7</span>
+          {count24}<span class="text-[#334c54] font-normal">/7</span>
         </div>
         <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
           TECHNICAL SUPPORT

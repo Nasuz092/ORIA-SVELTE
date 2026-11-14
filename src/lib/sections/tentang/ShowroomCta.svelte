@@ -15,7 +15,7 @@
       <div class="w-full lg:w-auto shrink-0">
         <a
           href="/kontak"
-          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 bg-[#FFE500] hover:bg-white text-black font-sans text-xs sm:text-sm font-bold uppercase tracking-[0.22em] transition-colors duration-300 group"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 bg-[#334c54] hover:bg-[#273a40] text-white font-sans text-xs sm:text-sm font-bold uppercase tracking-[0.22em] transition-colors duration-300 group"
         >
           <span>BOOK A VISIT</span>
           <svg

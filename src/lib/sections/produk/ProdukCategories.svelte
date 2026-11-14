@@ -30,13 +30,13 @@
 
           <!-- Category Name and Button Below -->
           <div class="mt-5 space-y-2.5">
-            <!-- Category Title (Black when idle, #FFE500 yellow on hover) -->
-            <h3 class="font-heading font-medium text-base sm:text-lg lg:text-xl text-black uppercase tracking-[0.16em] group-hover:text-[#FFE500] transition-colors leading-snug">
+            <!-- Category Title (Black when idle, #334c54 yellow on hover) -->
+            <h3 class="font-heading font-medium text-base sm:text-lg lg:text-xl text-black uppercase tracking-[0.16em] group-hover:text-[#334c54] transition-colors leading-snug">
               <span class="animated-underline inline">{cat.name}</span>
             </h3>
 
             <!-- Button with Chevron (Strict Rule from AGENTS.md: Chevron only, no arrows) -->
-            <div class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-neutral-700 group-hover:text-[#FFE500] transition-colors">
+            <div class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-neutral-700 group-hover:text-[#334c54] transition-colors">
               <span>EXPLORE {unitCount > 0 ? `(${unitCount})` : 'MACHINES'}</span>
               <svg
                 class="w-4 h-4 stroke-current transition-transform duration-300 group-hover:translate-x-1"

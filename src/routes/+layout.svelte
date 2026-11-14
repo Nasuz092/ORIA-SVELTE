@@ -44,7 +44,7 @@
   bind:viewportRef={viewportEl}
   onscroll={handleScroll}
 >
-  <div class="min-h-screen flex flex-col bg-[#050508] text-white font-sans relative">
+  <div class="min-h-screen flex flex-col bg-white text-black font-sans relative">
     <Navbar />
     <main class="flex-1 w-full {page.url.pathname === '/' || page.url.pathname === '/tentang' || page.url.pathname.startsWith('/produk') || page.url.pathname.startsWith('/artikel') || page.url.pathname === '/kontak' || page.url.pathname === '/landing-ads' || (page.status && page.status >= 400) ? '' : 'pt-16 sm:pt-20'}">
       {@render children()}

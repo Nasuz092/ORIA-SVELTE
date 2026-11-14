@@ -63,7 +63,7 @@
                 <button
                   type="button"
                   onclick={() => selectVersion(v)}
-                  class="w-full text-left px-4 py-2.5 text-xs sm:text-sm text-neutral-800 hover:bg-[#FFE500] hover:text-black hover:font-semibold transition-colors cursor-pointer"
+                  class="w-full text-left px-4 py-2.5 text-xs sm:text-sm text-neutral-800 hover:bg-[#334c54] hover:text-white hover:font-semibold transition-colors cursor-pointer"
                 >
                   {v}
                 </button>
@@ -118,7 +118,7 @@
               </p>
             </div>
 
-            <div class="bg-neutral-50 p-5 space-y-1.5 border-l-2 border-[#FFE500]">
+            <div class="bg-neutral-50 p-5 space-y-1.5 border-l-2 border-[#334c54]">
               <h3 class="font-heading font-bold text-sm uppercase tracking-wide text-black">
                 B. Cookies Kinerja &amp; Analitik (Analytical / Performance Cookies)
               </h3>

@@ -191,7 +191,7 @@
       <div class="max-w-7xl mx-auto w-full">
         <div class="space-y-3 sm:space-y-4 max-w-3xl">
           <!-- Tag / Heading in Yellow Tracked (Ukuran font seimbang & elegan) -->
-          <h1 class="font-heading font-medium text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-[0.16em] sm:tracking-[0.2em] uppercase text-[#FFE500] leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
+          <h1 class="font-heading font-medium text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-[0.16em] sm:tracking-[0.2em] uppercase text-[#334c54] leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
             <span class="block">ORIA</span>
             <span class="block mt-1 sm:mt-1.5 text-white">CONTACT US</span>
           </h1>
@@ -229,7 +229,7 @@
           href="https://wa.me/6281252086455"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center justify-center gap-3 px-6 py-4 bg-[#FFE500] text-black font-heading font-bold text-xs uppercase tracking-[0.2em] hover:bg-[#ebd300] transition-colors shadow-sm"
+          class="inline-flex items-center justify-center gap-3 px-6 py-4 bg-[#334c54] text-white font-heading font-bold text-xs uppercase tracking-[0.2em] hover:bg-[#ebd300] transition-colors shadow-sm"
         >
           <span>WHATSAPP HOTLINE</span>
           <svg class="w-4 h-4 stroke-black stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
@@ -269,7 +269,7 @@
         <!-- Column 1: Surabaya Location -->
         <div class="space-y-3">
           <div class="font-heading font-light text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight uppercase">
-            SURABAYA<span class="text-[#FFE500] font-normal">.</span>
+            SURABAYA<span class="text-[#334c54] font-normal">.</span>
           </div>
           <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
             HEADQUARTERS &amp; SHOWROOM
@@ -282,7 +282,7 @@
               href="https://maps.google.com/?q=Ruko+Royal+Town+Gunung+Anyar+Surabaya"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-widest text-[#FFE500] animated-underline"
+              class="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-widest text-[#334c54] animated-underline"
             >
               <span>Petunjuk Rute Maps</span>
               <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24">
@@ -295,7 +295,7 @@
         <!-- Column 2: Live Demo & Testing -->
         <div class="space-y-3">
           <div class="font-heading font-light text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight uppercase">
-            LIVE DEMO<span class="text-[#FFE500] font-normal">.</span>
+            LIVE DEMO<span class="text-[#334c54] font-normal">.</span>
           </div>
           <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
             LIVE DEMO &amp; TESTING
@@ -311,11 +311,11 @@
             href="https://wa.me/6281252086455?text={encodeURIComponent('Halo tim ORIA, saya ingin berkonsultasi mengenai spesifikasi mesin industri dan penawaran resmi.')}"
             target="_blank"
             rel="noopener noreferrer"
-            class="group flex items-center justify-between w-full font-heading font-light text-4xl sm:text-5xl lg:text-6xl text-white hover:text-[#FFE500] transition-colors tracking-tight uppercase"
+            class="group flex items-center justify-between w-full font-heading font-light text-4xl sm:text-5xl lg:text-6xl text-white hover:text-[#334c54] transition-colors tracking-tight uppercase"
           >
-            <span>WHATSAPP<span class="text-[#FFE500] font-normal">.</span></span>
+            <span>WHATSAPP<span class="text-[#334c54] font-normal">.</span></span>
             <svg
-              class="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 stroke-current stroke-[2] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 shrink-0 text-white group-hover:text-[#FFE500]"
+              class="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 stroke-current stroke-[2] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 shrink-0 text-white group-hover:text-[#334c54]"
               fill="none"
               viewBox="0 0 24 24"
               aria-hidden="true"
@@ -333,7 +333,7 @@
           <div class="pt-2">
             <a
               href="mailto:info@oria.co.id"
-              class="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-widest text-[#FFE500] hover:text-white transition-colors"
+              class="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-widest text-[#334c54] hover:text-white transition-colors"
             >
               <span>info@oria.co.id</span>
               <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24">
@@ -371,7 +371,7 @@
 
       {#if submitted}
         <div class="p-8 sm:p-12 bg-neutral-50 space-y-4 text-center">
-          <div class="w-12 h-12 mx-auto rounded-full bg-[#FFE500]/30 flex items-center justify-center text-black">
+          <div class="w-12 h-12 mx-auto rounded-full bg-[#334c54]/20 flex items-center justify-center text-[#334c54]">
             <svg class="w-6 h-6 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
             </svg>
@@ -473,8 +473,8 @@
                       type="button"
                       onclick={() => selectCategory(cat)}
                       class="w-full text-left px-4 py-3 text-xs sm:text-sm flex items-center justify-between transition-colors cursor-pointer {selectedCategory === cat
-                        ? 'bg-[#FFE500] text-black font-bold'
-                        : 'text-neutral-800 hover:bg-[#FFE500] hover:text-black hover:font-semibold'}"
+                        ? 'bg-[#334c54] text-white font-bold'
+                        : 'text-neutral-800 hover:bg-[#334c54] hover:text-white hover:font-semibold'}"
                     >
                       <span>{cat}</span>
                       {#if selectedCategory === cat}
@@ -524,8 +524,8 @@
                         type="button"
                         onclick={() => selectMachine(m)}
                         class="w-full text-left px-4 py-3 text-xs sm:text-sm flex items-center justify-between transition-colors cursor-pointer {selectedMachine === m
-                          ? 'bg-[#FFE500] text-black font-bold'
-                          : 'text-neutral-800 hover:bg-[#FFE500] hover:text-black hover:font-semibold'}"
+                          ? 'bg-[#334c54] text-white font-bold'
+                          : 'text-neutral-800 hover:bg-[#334c54] hover:text-white hover:font-semibold'}"
                       >
                         <span>{m}</span>
                         {#if selectedMachine === m}
@@ -560,7 +560,7 @@
           <div class="pt-3">
             <button
               type="submit"
-              class="w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#FFE500] hover:bg-[#ebd300] text-black font-heading font-black text-xs sm:text-sm uppercase tracking-[0.25em] transition-all duration-300 shadow-md group cursor-pointer border-0"
+              class="w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#334c54] hover:bg-[#273a40] text-white font-heading font-black text-xs sm:text-sm uppercase tracking-[0.25em] transition-all duration-300 shadow-md group cursor-pointer border-0"
             >
               <span>KIRIM VIA WHATSAPP RESMI</span>
               <svg

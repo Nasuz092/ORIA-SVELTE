@@ -360,9 +360,9 @@
         <div class="max-w-2xl">
           <!-- Topic Tagline with Yellow Indicator -->
           <div class="flex items-center gap-2 mb-3">
-            <span class="w-1.5 h-3 bg-[#FFE500]"></span>
+            <span class="w-1.5 h-3 bg-[#334c54]"></span>
             <span
-              class="text-xs font-mono uppercase tracking-[0.25em] text-[#FFE500] font-bold"
+              class="text-xs font-mono uppercase tracking-[0.25em] text-[#334c54] font-bold"
             >
               {ctaConfig.topic}
             </span>
@@ -386,7 +386,7 @@
               href={`https://wa.me/6281252086455?text=${encodeURIComponent(ctaConfig.message)}`}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-3 px-8 py-3.5 bg-[#FFE500] text-black font-heading font-bold text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 shadow-xl"
+              class="inline-flex items-center gap-3 px-8 py-3.5 bg-[#334c54] text-white font-heading font-bold text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 shadow-xl"
             >
               <span>{ctaConfig.buttonText}</span>
               <svg class="w-4 h-4 stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="2.5">

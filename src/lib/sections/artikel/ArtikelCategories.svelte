@@ -72,7 +72,7 @@
     <!-- Section Header (Lotus Editorial Typography, Borderless) -->
     <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-2">
       <div class="space-y-3">
-        <div class="font-heading font-black text-xs sm:text-sm uppercase tracking-[0.3em] text-[#FFE500]">
+        <div class="font-heading font-black text-xs sm:text-sm uppercase tracking-[0.3em] text-[#334c54]">
           PRESS & KNOWLEDGE PILLARS
         </div>
         <h2 class="font-heading font-black text-3xl sm:text-4xl lg:text-5xl uppercase tracking-tight text-white leading-none">
@@ -93,7 +93,7 @@
           type="button"
           onclick={() => handleCategoryClick(cat.id)}
           class="group text-left flex flex-col justify-between bg-[#0c0c12] hover:bg-[#13131c] transition-all duration-400 ease-out overflow-hidden hover:-translate-y-1 cursor-pointer focus:outline-none {isSelected
-            ? 'shadow-[0_0_30px_rgba(255,229,0,0.18)] ring-1 ring-[#FFE500]'
+            ? 'shadow-[0_0_30px_rgba(255,229,0,0.18)] ring-1 ring-[#334c54]'
             : 'hover:shadow-2xl'}"
         >
           <!-- Card Image Header -->
@@ -108,7 +108,7 @@
 
             <!-- Category Top Tag -->
             <div class="absolute top-4 left-4">
-              <span class="inline-block bg-[#FFE500] text-black font-heading font-black text-[10px] tracking-[0.2em] uppercase px-2.5 py-1">
+              <span class="inline-block bg-[#334c54] text-white font-heading font-black text-[10px] tracking-[0.2em] uppercase px-2.5 py-1">
                 {cat.id}
               </span>
             </div>
@@ -124,10 +124,10 @@
           <!-- Card Content Body -->
           <div class="p-6 sm:p-7 flex flex-col justify-between flex-1 space-y-4">
             <div class="space-y-2">
-              <div class="font-heading font-semibold text-[11px] tracking-[0.22em] text-[#FFE500] uppercase">
+              <div class="font-heading font-semibold text-[11px] tracking-[0.22em] text-[#334c54] uppercase">
                 {cat.tagline}
               </div>
-              <h3 class="font-heading font-black text-xl sm:text-2xl text-white uppercase tracking-wide group-hover:text-[#FFE500] transition-colors leading-snug">
+              <h3 class="font-heading font-black text-xl sm:text-2xl text-white uppercase tracking-wide group-hover:text-[#334c54] transition-colors leading-snug">
                 {cat.name}
               </h3>
               <p class="font-sans text-xs sm:text-sm text-neutral-400 leading-relaxed line-clamp-2">
@@ -137,7 +137,7 @@
 
             <!-- Card Bottom Action with Chevron (Strict: Chevron only, no arrows) -->
             <div class="pt-3 flex items-center justify-between">
-              <span class="inline-flex items-center gap-2 font-heading font-bold text-xs uppercase tracking-[0.22em] text-white/90 group-hover:text-[#FFE500] transition-colors">
+              <span class="inline-flex items-center gap-2 font-heading font-bold text-xs uppercase tracking-[0.22em] text-white/90 group-hover:text-[#334c54] transition-colors">
                 <span>VIEW {cat.id.toUpperCase()}</span>
                 <svg
                   class="w-4 h-4 stroke-current stroke-[2.5] transition-transform duration-300 group-hover:translate-x-1.5"
@@ -149,7 +149,7 @@
                 </svg>
               </span>
               {#if isSelected}
-                <span class="text-[10px] font-heading font-bold text-[#FFE500] tracking-widest uppercase">
+                <span class="text-[10px] font-heading font-bold text-[#334c54] tracking-widest uppercase">
                   ACTIVE
                 </span>
               {/if}

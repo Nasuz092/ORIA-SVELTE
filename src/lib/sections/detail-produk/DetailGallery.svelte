@@ -118,7 +118,7 @@
           <button
             type="button"
             onclick={prevSlide}
-            class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 border border-[#FFE500] bg-black/80 hover:bg-[#FFE500] text-[#FFE500] hover:text-black flex items-center justify-center transition-all duration-300 cursor-pointer focus:outline-none group backdrop-blur-sm shadow-xl"
+            class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 border border-[#334c54] bg-[#334c54] hover:bg-[#273a40] text-white flex items-center justify-center transition-all duration-300 cursor-pointer focus:outline-none group backdrop-blur-sm shadow-xl"
             aria-label="Foto Sebelumnya"
           >
             <svg
@@ -136,7 +136,7 @@
           <button
             type="button"
             onclick={nextSlide}
-            class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 border border-[#FFE500] bg-black/80 hover:bg-[#FFE500] text-[#FFE500] hover:text-black flex items-center justify-center transition-all duration-300 cursor-pointer focus:outline-none group backdrop-blur-sm shadow-xl"
+            class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 border border-[#334c54] bg-[#334c54] hover:bg-[#273a40] text-white flex items-center justify-center transition-all duration-300 cursor-pointer focus:outline-none group backdrop-blur-sm shadow-xl"
             aria-label="Foto Berikutnya"
           >
             <svg

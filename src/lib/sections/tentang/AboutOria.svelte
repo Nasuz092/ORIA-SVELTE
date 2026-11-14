@@ -16,7 +16,7 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 lg:gap-12">
       <!-- Card 1 -->
       <div class="space-y-4 p-8 bg-black/60 border border-neutral-800 hover:border-neutral-600 transition-colors">
-        <div class="font-heading font-black text-2xl text-[#FFE500]">01</div>
+        <div class="font-heading font-black text-2xl text-[#334c54]">01</div>
         <h3 class="font-heading font-bold text-xl uppercase tracking-wider text-white">
           Presisi Tanpa Kompromi
         </h3>
@@ -27,7 +27,7 @@
 
       <!-- Card 2 -->
       <div class="space-y-4 p-8 bg-black/60 border border-neutral-800 hover:border-neutral-600 transition-colors">
-        <div class="font-heading font-black text-2xl text-[#FFE500]">02</div>
+        <div class="font-heading font-black text-2xl text-[#334c54]">02</div>
         <h3 class="font-heading font-bold text-xl uppercase tracking-wider text-white">
           Efisiensi Produksi Tinggi
         </h3>
@@ -38,7 +38,7 @@
 
       <!-- Card 3 -->
       <div class="space-y-4 p-8 bg-black/60 border border-neutral-800 hover:border-neutral-600 transition-colors">
-        <div class="font-heading font-black text-2xl text-[#FFE500]">03</div>
+        <div class="font-heading font-black text-2xl text-[#334c54]">03</div>
         <h3 class="font-heading font-bold text-xl uppercase tracking-wider text-white">
           Dukungan Purna Jual Total
         </h3>

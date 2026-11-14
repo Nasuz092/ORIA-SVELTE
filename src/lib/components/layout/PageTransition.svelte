@@ -35,7 +35,7 @@
 </script>
 
 <div
-  class="fixed inset-0 z-[100] pointer-events-none select-none bg-[#FFE500] flex items-center justify-center transition-opacity duration-200 ease-out {isVisible
+  class="fixed inset-0 z-[100] pointer-events-none select-none bg-[#334c54] flex items-center justify-center transition-opacity duration-200 ease-out {isVisible
     ? 'opacity-100'
     : 'opacity-0'}"
   aria-hidden="true"

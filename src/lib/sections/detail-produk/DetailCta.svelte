@@ -47,7 +47,7 @@
             href="https://wa.me/6281807090888?text={encodeURIComponent(`Halo ORIA, saya ingin konsultasi teknis dan demo mesin ${product.name}`)}"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 bg-transparent hover:bg-white hover:text-black text-white border border-white font-heading font-bold text-xs sm:text-sm uppercase tracking-[0.28em] transition-all duration-300 group select-none cursor-pointer"
+            class="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 bg-transparent hover:bg-[#334c54] hover:border-[#334c54] hover:text-white text-white border border-white font-heading font-bold text-xs sm:text-sm uppercase tracking-[0.28em] transition-all duration-300 group select-none cursor-pointer"
           >
             <span>EXPLORE NOW</span>
             <svg

@@ -17,7 +17,7 @@
     <div class="max-w-7xl mx-auto w-full">
       <div class="space-y-3 sm:space-y-4 max-w-3xl">
         <!-- Tag / Accent Category (Lotus: LOTUS STORY -> ORIA: ORIA STORY) -->
-        <div class="font-heading font-black text-xs sm:text-sm tracking-[0.25em] text-[#FFE500] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+        <div class="font-heading font-black text-xs sm:text-sm tracking-[0.25em] text-[#334c54] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
           ORIA STORY
         </div>
 

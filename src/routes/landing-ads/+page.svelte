@@ -204,14 +204,14 @@
   <div class="relative z-10 w-full max-w-7xl mx-auto flex flex-col justify-center pt-16 sm:pt-20">
     <div class="max-w-3xl space-y-6 sm:space-y-8">
       <!-- Tracked Category Subtitle (Tanpa Pill / Badge, Lotus Style Tracking) -->
-      <p class="font-heading font-light text-xs sm:text-sm tracking-[0.28em] sm:tracking-[0.32em] uppercase text-[#FFE500]">
+      <p class="font-heading font-light text-xs sm:text-sm tracking-[0.28em] sm:tracking-[0.32em] uppercase text-[#334c54]">
         {currentIntent.heroBadge}
       </p>
 
       <!-- Main Dynamic Headline: Sharp Luxury Lotus Tracking -->
       <h1 class="font-heading font-bold text-3xl sm:text-5xl lg:text-6xl tracking-[0.12em] sm:tracking-[0.16em] uppercase leading-[1.1] text-white">
         {currentIntent.heroTitleMain} <br />
-        <span class="text-[#FFE500]">{currentIntent.heroTitleHighlight}</span>
+        <span class="text-[#334c54]">{currentIntent.heroTitleHighlight}</span>
       </h1>
 
       <!-- Dynamic Value Subheadline -->
@@ -225,7 +225,7 @@
           href={getWaUrl(currentIntent.waContextMessage)}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#FFE500] text-black font-heading font-bold text-xs sm:text-sm tracking-[0.2em] uppercase hover:bg-white transition-colors duration-200"
+          class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#334c54] text-white font-heading font-bold text-xs sm:text-sm tracking-[0.2em] uppercase hover:bg-[#273a40] transition-colors duration-200"
         >
           <!-- WhatsApp Icon -->
           <svg class="w-4 h-4 fill-current flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true">
@@ -240,7 +240,7 @@
         <a
           href="#katalog-iklan"
           onclick={(e) => scrollToSection('katalog-iklan', e)}
-          class="inline-flex items-center justify-center gap-3 px-8 py-4 border border-white/30 text-white font-heading font-semibold text-xs sm:text-sm tracking-[0.2em] uppercase hover:border-[#FFE500] hover:text-[#FFE500] transition-colors duration-200 bg-black/60"
+          class="inline-flex items-center justify-center gap-3 px-8 py-4 border border-white/40 text-white font-heading font-semibold text-xs sm:text-sm tracking-[0.2em] uppercase hover:bg-[#334c54] hover:border-[#334c54] hover:text-white transition-colors duration-200 bg-black/40 backdrop-blur-sm"
         >
           <span>LIHAT REKOMENDASI MESIN</span>
           <svg class="w-4 h-4 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
@@ -259,7 +259,7 @@
   <div class="max-w-7xl mx-auto space-y-12 sm:space-y-16">
     <!-- Header (Clean Lotus Style Tanpa Pill / Badge) -->
     <div class="space-y-2 max-w-2xl">
-      <p class="font-heading font-semibold text-xs tracking-[0.28em] uppercase text-[#B89200]">
+      <p class="font-heading font-semibold text-xs tracking-[0.28em] uppercase text-[#334c54]">
         OUR CAPACITY &amp; STANDARDS
       </p>
       <h2 class="font-heading font-bold text-2xl sm:text-4xl tracking-[0.16em] uppercase text-black leading-tight">
@@ -273,9 +273,9 @@
     <!-- 4 Clean Stats with Extra Large Numbers (Angka Besar Seperti Value oria.co.id) -->
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12">
       <!-- Stat 1 -->
-      <div class="space-y-2.5 border-l-2 border-[#FFE500] pl-4 sm:pl-5">
+      <div class="space-y-2.5 border-l-2 border-[#334c54] pl-4 sm:pl-5">
         <div class="font-heading font-light text-5xl sm:text-6xl lg:text-7xl text-black tracking-tight tabular-nums">
-          500<span class="text-[#E6C300] font-normal">+</span>
+          500<span class="text-[#334c54] font-normal">+</span>
         </div>
         <div class="text-[11px] sm:text-xs font-heading font-bold uppercase tracking-[0.2em] text-neutral-900">
           UNITS INSTALLED
@@ -286,9 +286,9 @@
       </div>
 
       <!-- Stat 2 -->
-      <div class="space-y-2.5 border-l-2 border-[#FFE500] pl-4 sm:pl-5">
+      <div class="space-y-2.5 border-l-2 border-[#334c54] pl-4 sm:pl-5">
         <div class="font-heading font-light text-5xl sm:text-6xl lg:text-7xl text-black tracking-tight tabular-nums">
-          100<span class="text-[#E6C300] font-normal">%</span>
+          100<span class="text-[#334c54] font-normal">%</span>
         </div>
         <div class="text-[11px] sm:text-xs font-heading font-bold uppercase tracking-[0.2em] text-neutral-900">
           OFFICIAL WARRANTY
@@ -299,9 +299,9 @@
       </div>
 
       <!-- Stat 3 -->
-      <div class="space-y-2.5 border-l-2 border-[#FFE500] pl-4 sm:pl-5">
+      <div class="space-y-2.5 border-l-2 border-[#334c54] pl-4 sm:pl-5">
         <div class="font-heading font-light text-5xl sm:text-6xl lg:text-7xl text-black tracking-tight tabular-nums">
-          24<span class="text-[#E6C300] font-normal">/7</span>
+          24<span class="text-[#334c54] font-normal">/7</span>
         </div>
         <div class="text-[11px] sm:text-xs font-heading font-bold uppercase tracking-[0.2em] text-neutral-900">
           TECHNICAL SUPPORT
@@ -312,9 +312,9 @@
       </div>
 
       <!-- Stat 4 -->
-      <div class="space-y-2.5 border-l-2 border-[#FFE500] pl-4 sm:pl-5">
+      <div class="space-y-2.5 border-l-2 border-[#334c54] pl-4 sm:pl-5">
         <div class="font-heading font-light text-5xl sm:text-6xl lg:text-7xl text-black tracking-tight tabular-nums">
-          38<span class="text-[#E6C300] font-normal">+</span>
+          38<span class="text-[#334c54] font-normal">+</span>
         </div>
         <div class="text-[11px] sm:text-xs font-heading font-bold uppercase tracking-[0.2em] text-neutral-900">
           PROVINCES COVERED
@@ -335,7 +335,7 @@
     <!-- Section Header (Clean Tanpa Pill / Badge) -->
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-neutral-200 pb-8">
       <div class="space-y-1.5">
-        <p class="font-heading font-semibold text-xs sm:text-sm tracking-[0.28em] uppercase text-[#B89200]">
+        <p class="font-heading font-semibold text-xs sm:text-sm tracking-[0.28em] uppercase text-[#334c54]">
           TARGETED MACHINE LINEUP
         </p>
         <h2 class="font-heading font-bold text-2xl sm:text-4xl lg:text-5xl tracking-[0.14em] uppercase text-black">
@@ -355,7 +355,7 @@
             type="button"
             onclick={() => handleTabChange(tab.key)}
             class="px-3.5 py-2.5 text-[11px] sm:text-xs font-heading tracking-[0.16em] uppercase whitespace-nowrap transition-colors {activeFilterKey === tab.key
-              ? 'bg-black text-[#FFE500] font-bold shadow-sm'
+              ? 'bg-[#334c54] text-white font-bold shadow-sm'
               : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'}"
           >
             {tab.label}
@@ -366,14 +366,14 @@
 
     <!-- Active Filter Reset Bar if Filtered -->
     {#if activeFilterKey !== 'all'}
-      <div class="flex items-center justify-between bg-[#F8F9FA] px-4 py-3 border-l-4 border-[#FFE500]">
+      <div class="flex items-center justify-between bg-[#F8F9FA] px-4 py-3 border-l-4 border-[#334c54]">
         <div class="text-xs text-neutral-700 font-sans">
           Sedang memfilter: <span class="font-bold text-black">{currentIntent.label}</span> ({displayedGroups.length} Kategori ditampilkan)
         </div>
         <button
           type="button"
           onclick={() => handleTabChange('all')}
-          class="inline-flex items-center gap-1.5 text-xs font-heading font-bold text-black hover:text-[#B89200] uppercase tracking-wider transition-colors"
+          class="inline-flex items-center gap-1.5 text-xs font-heading font-bold text-black hover:text-[#334c54] uppercase tracking-wider transition-colors"
         >
           <span>LIHAT SEMUA KATEGORI</span>
           <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24">
@@ -388,7 +388,7 @@
       {#each displayedGroups as group (group.id)}
         <div id={`cat-${group.id}`} class="space-y-6 sm:space-y-8 scroll-mt-24">
           <!-- Category Title Header with Clean Left Accent Bar -->
-          <div class="space-y-1 border-l-2 border-[#FFE500] pl-4 sm:pl-5">
+          <div class="space-y-1 border-l-2 border-[#334c54] pl-4 sm:pl-5">
             <h3 class="font-heading font-bold text-lg sm:text-2xl lg:text-3xl tracking-[0.14em] uppercase text-black">
               {group.name}
             </h3>
@@ -415,10 +415,10 @@
                   <!-- Product Details (Sederhana: Tanpa Deskripsi, Cukup Nama, Harga, dan Tombol WA) -->
                   <div class="p-3.5 sm:p-5 flex flex-col flex-1 justify-between space-y-3.5">
                     <div class="space-y-1.5">
-                      <p class="font-heading text-[10px] font-bold tracking-[0.18em] uppercase text-[#B89200]">
+                      <p class="font-heading text-[10px] font-bold tracking-[0.18em] uppercase text-[#334c54]">
                         {group.name}
                       </p>
-                      <h4 class="font-heading font-bold text-xs sm:text-base text-black group-hover:text-[#B89200] transition-colors leading-snug line-clamp-2">
+                      <h4 class="font-heading font-bold text-xs sm:text-base text-black group-hover:text-[#334c54] transition-colors leading-snug line-clamp-2">
                         {product.name}
                       </h4>
                     </div>
@@ -431,7 +431,7 @@
                           {product.priceText || 'Hubungi Sales'}
                         </p>
                       </div>
-                      <span class="text-[9px] sm:text-[10px] uppercase tracking-wider text-[#B89200] font-bold">
+                      <span class="text-[9px] sm:text-[10px] uppercase tracking-wider text-[#334c54] font-bold">
                         Paket Usaha
                       </span>
                     </div>
@@ -442,7 +442,7 @@
                         href={getWaUrl(`Halo Anugrah Supply Mandiri (ORIA)! Saya tertarik dengan ${product.name} dari website oria.co.id. Apakah boleh minta info lebih detail & penawaran harga terbaik?\n\nLink Produk: ${siteUrl}/produk/${group.id.includes('sublim') ? 'sublimasi' : group.id.includes('dtf') ? 'dtf' : group.id}/${product.slug}`)}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="w-full flex items-center justify-center gap-2 py-3 px-3 bg-[#FFE500] text-black font-heading font-bold text-[10px] sm:text-xs tracking-[0.14em] uppercase hover:bg-black hover:text-white transition-colors duration-200"
+                        class="w-full flex items-center justify-center gap-2 py-3 px-3 bg-[#334c54] text-white font-heading font-bold text-[10px] sm:text-xs tracking-[0.14em] uppercase hover:bg-[#273a40] hover:text-white transition-colors duration-200"
                       >
                         <!-- WhatsApp Icon -->
                         <svg class="w-3.5 h-3.5 fill-current flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true">
@@ -465,7 +465,7 @@
                   href={getWaUrl(`Halo Anugrah Supply Mandiri (ORIA)! Saya tertarik dengan kategori ${group.name} dari landing page iklan oria.co.id. Apakah boleh minta info katalog dan penawaran terbaik? Terima kasih.`)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex items-center justify-center gap-2 py-3 px-6 bg-[#FFE500] text-black font-heading font-bold text-xs tracking-wider uppercase hover:bg-black hover:text-white transition-colors mx-auto"
+                  class="inline-flex items-center justify-center gap-2 py-3 px-6 bg-[#334c54] text-white font-heading font-bold text-xs tracking-wider uppercase hover:bg-[#273a40] hover:text-white transition-colors mx-auto"
                 >
                   <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                     <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.075-1.111-.061-.718-.236-1.636-.789-2.387-1.541-.839-.839-1.428-1.859-1.688-2.612-.132-.381-.077-.736.067-.999.123-.223.297-.432.443-.576.147-.144.295-.144.442-.144.111 0 .222.003.313.011.111.009.24.032.348.291.132.317.45 1.097.489 1.177.039.08.065.174.013.279-.052.104-.078.17-.156.262-.078.092-.165.205-.235.276-.079.08-.161.167-.069.324.091.157.406.669.87 1.082.597.531 1.101.696 1.258.775.157.079.248.066.34-.039.092-.105.394-.459.499-.617.105-.157.21-.131.353-.079.144.053.914.431 1.072.509.157.079.262.118.301.184.039.066.039.381-.105.786zm-3.392-10.216c-5.464 0-9.907 4.444-9.907 9.908 0 1.747.458 3.447 1.328 4.956l-1.411 5.18 5.3-1.39c1.455.794 3.097 1.213 4.69 1.213 5.464 0 9.908-4.444 9.908-9.908 0-5.465-4.444-9.908-9.908-9.908z" />
@@ -490,7 +490,7 @@
 <section class="w-full bg-[#F3F4F6] text-black py-16 sm:py-20 lg:py-24 px-6 sm:px-10 lg:px-16 border-t border-neutral-200 select-none">
   <div class="max-w-7xl mx-auto space-y-10">
     <div class="max-w-2xl space-y-2">
-      <p class="font-heading font-semibold text-xs sm:text-sm tracking-[0.28em] uppercase text-[#B89200]">
+      <p class="font-heading font-semibold text-xs sm:text-sm tracking-[0.28em] uppercase text-[#334c54]">
         NATIONAL SERVICE NETWORK
       </p>
       <h2 class="font-heading font-bold text-2xl sm:text-4xl lg:text-5xl tracking-[0.14em] uppercase text-black leading-tight">
@@ -548,7 +548,7 @@
 <section class="w-full bg-[#050508] text-white py-16 sm:py-20 lg:py-24 px-6 sm:px-10 lg:px-16 border-t border-white/10 select-none">
   <div class="max-w-7xl mx-auto">
     <div class="max-w-4xl mx-auto text-center space-y-6">
-      <p class="font-heading font-semibold text-xs tracking-[0.3em] uppercase text-[#FFE500]">
+      <p class="font-heading font-semibold text-xs tracking-[0.3em] uppercase text-[#334c54]">
         PENAWARAN TERBATAS KHUSUS BULAN INI
       </p>
 
@@ -568,7 +568,7 @@
           href={getWaUrl(currentIntent.waContextMessage)}
           target="_blank"
           rel="noopener noreferrer"
-          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 sm:py-5 bg-[#FFE500] text-black font-heading font-bold text-xs sm:text-sm tracking-[0.2em] uppercase hover:bg-white transition-colors duration-200"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 sm:py-5 bg-[#334c54] text-white font-heading font-bold text-xs sm:text-sm tracking-[0.2em] uppercase hover:bg-[#273a40] transition-colors duration-200"
         >
           <!-- WhatsApp Icon -->
           <svg class="w-4 h-4 fill-current flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true">
@@ -582,7 +582,7 @@
 
         <a
           href="/kontak"
-          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 sm:py-5 border border-white/20 text-white font-heading font-semibold text-xs sm:text-sm tracking-[0.2em] uppercase hover:border-[#FFE500] hover:text-[#FFE500] transition-colors duration-200 bg-neutral-950"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 sm:py-5 border border-black/20 text-black font-heading font-semibold text-xs sm:text-sm tracking-[0.2em] uppercase hover:bg-[#334c54] hover:border-[#334c54] hover:text-white transition-colors duration-200 bg-neutral-100"
         >
           <span>KUNJUNGI SHOWROOM SURABAYA</span>
           <svg class="w-4 h-4 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
@@ -605,7 +605,7 @@
     href={getWaUrl(currentIntent.waContextMessage)}
     target="_blank"
     rel="noopener noreferrer"
-    class="w-full flex items-center justify-center gap-2 py-3 px-4 bg-[#FFE500] text-black font-heading font-bold text-xs tracking-[0.16em] uppercase hover:bg-white transition-colors"
+    class="w-full flex items-center justify-center gap-2 py-3 px-4 bg-[#334c54] text-white font-heading font-bold text-xs tracking-[0.16em] uppercase hover:bg-white transition-colors"
   >
     <svg class="w-4 h-4 fill-current flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true">
       <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.075-1.111-.061-.718-.236-1.636-.789-2.387-1.541-.839-.839-1.428-1.859-1.688-2.612-.132-.381-.077-.736.067-.999.123-.223.297-.432.443-.576.147-.144.295-.144.442-.144.111 0 .222.003.313.011.111.009.24.032.348.291.132.317.45 1.097.489 1.177.039.08.065.174.013.279-.052.104-.078.17-.156.262-.078.092-.165.205-.235.276-.079.08-.161.167-.069.324.091.157.406.669.87 1.082.597.531 1.101.696 1.258.775.157.079.248.066.34-.039.092-.105.394-.459.499-.617.105-.157.21-.131.353-.079.144.053.914.431 1.072.509.157.079.262.118.301.184.039.066.039.381-.105.786zm-3.392-10.216c-5.464 0-9.907 4.444-9.907 9.908 0 1.747.458 3.447 1.328 4.956l-1.411 5.18 5.3-1.39c1.455.794 3.097 1.213 4.69 1.213 5.464 0 9.908-4.444 9.908-9.908 0-5.465-4.444-9.908-9.908-9.908z" />

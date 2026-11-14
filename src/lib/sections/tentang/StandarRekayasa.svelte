@@ -20,7 +20,7 @@
       />
       <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20"></div>
       <div class="absolute bottom-6 sm:bottom-10 left-6 sm:left-10 max-w-lg z-10">
-        <div class="text-xs font-mono uppercase tracking-[0.2em] text-[#FFE500]">STANDAR KUALITAS</div>
+        <div class="text-xs font-mono uppercase tracking-[0.2em] text-[#334c54]">STANDAR KUALITAS</div>
         <div class="font-heading font-bold text-xl sm:text-2xl uppercase tracking-wider text-white mt-1">
           Penyelarasan Mikron & Beban Kerja Berat
         </div>
@@ -29,7 +29,7 @@
 
     <!-- Detailed Bullet Highlights -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
-      <div class="space-y-2 border-l-2 border-[#FFE500] pl-6">
+      <div class="space-y-2 border-l-2 border-[#334c54] pl-6">
         <h4 class="font-heading font-bold text-lg uppercase tracking-wider text-white">Sasis Baja Heavy Duty</h4>
         <p class="font-sans text-sm text-neutral-400 leading-relaxed font-normal">
           Konstruksi rangka padat yang dinormalisasi dengan perlakuan panas khusus untuk mencegah deformasi struktural jangka panjang akibat tegangan kerja.

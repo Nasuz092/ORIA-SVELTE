@@ -147,7 +147,7 @@
           <div class="w-full h-full max-w-7xl mx-auto flex flex-col justify-end pb-14 sm:pb-16 lg:pb-20">
             <div class="max-w-lg pointer-events-auto space-y-3 sm:space-y-4">
               <!-- Headline: Ukuran font proporsional dengan shadow -->
-              <div class="font-heading font-black text-xl sm:text-2xl md:text-3xl lg:text-[2.25rem] tracking-[0.18em] sm:tracking-[0.22em] leading-tight text-[#FFE500] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+              <div class="font-heading font-black text-xl sm:text-2xl md:text-3xl lg:text-[2.25rem] tracking-[0.18em] sm:tracking-[0.22em] leading-tight text-white uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                 <div>{slide.line1}</div>
                 <div class="mt-0.5 sm:mt-1">{slide.line2}</div>
               </div>
@@ -162,7 +162,7 @@
               <div class="pt-1.5 sm:pt-2">
                 <a
                   href={slide.ctaHref}
-                  class="inline-flex items-center gap-2 bg-[#FFE500] hover:bg-[#ffe500]/90 text-black font-heading font-black text-[11px] sm:text-xs uppercase tracking-widest px-6 sm:px-8 py-2.5 sm:py-3 transition-all shadow-xl cursor-pointer"
+                  class="inline-flex items-center gap-2 bg-[#334c54] hover:bg-[#273a40] text-white font-heading font-black text-[11px] sm:text-xs uppercase tracking-widest px-6 sm:px-8 py-2.5 sm:py-3 transition-all shadow-xl cursor-pointer"
                 >
                   <span>{slide.ctaText}</span>
                   <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24">
@@ -187,7 +187,7 @@
         aria-label="Menuju Slide {i + 1}"
       >
         <span
-          class="block h-1.5 rounded-full transition-all duration-300 drop-shadow-md {current === i ? 'w-7 bg-[#FFE500]' : 'w-2 bg-white/70 group-hover:bg-white'}"
+          class="block h-1.5 rounded-full transition-all duration-300 drop-shadow-md {current === i ? 'w-7 bg-[#334c54]' : 'w-2 bg-white/70 group-hover:bg-white'}"
         ></span>
       </button>
     {/each}

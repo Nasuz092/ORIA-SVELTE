@@ -48,7 +48,7 @@
     <!-- Lotus Editorial Header (Matching Lotus Cars Press Room) -->
     <div class="space-y-4 sm:space-y-5 border-b border-white/10 pb-8 sm:pb-12">
       <!-- Editorial Kicker -->
-      <div class="font-heading font-black text-xs sm:text-sm uppercase tracking-[0.3em] text-[#FFE500]">
+      <div class="font-heading font-black text-xs sm:text-sm uppercase tracking-[0.3em] text-[#334c54]">
         ORIA EDITORIAL &middot; {category.label}
       </div>
 
@@ -64,7 +64,7 @@
 
       <!-- Publications Meta Count -->
       <div class="pt-2 text-xs font-sans text-neutral-400 tracking-wider uppercase">
-        Menampilkan <span class="text-[#FFE500] font-bold">{articles.length}</span> publikasi resmi
+        Menampilkan <span class="text-[#334c54] font-bold">{articles.length}</span> publikasi resmi
       </div>
     </div>
 
@@ -89,7 +89,7 @@
 
                 <!-- Yellow Category Tag -->
                 <div class="absolute top-4 left-4">
-                  <span class="inline-block bg-[#FFE500] text-black font-heading font-black text-[10px] tracking-[0.2em] uppercase px-3 py-1 shadow-md">
+                  <span class="inline-block bg-[#334c54] text-white font-heading font-black text-[10px] tracking-[0.2em] uppercase px-3 py-1 shadow-md">
                     {a.category}
                   </span>
                 </div>
@@ -103,7 +103,7 @@
                   <span>{a.readingTime}</span>
                 </div>
 
-                <h2 class="font-heading font-bold text-xl sm:text-2xl text-white group-hover:text-[#FFE500] leading-snug transition-colors line-clamp-2">
+                <h2 class="font-heading font-bold text-xl sm:text-2xl text-white group-hover:text-[#334c54] leading-snug transition-colors line-clamp-2">
                   <a href="/artikel/{a.slug}" class="focus:outline-none">
                     {a.title}
                   </a>
@@ -119,7 +119,7 @@
             <div class="pt-6 px-6 sm:px-8">
               <a
                 href="/artikel/{a.slug}"
-                class="font-heading font-bold text-xs uppercase tracking-[0.22em] text-[#FFE500] group-hover:text-white inline-flex items-center gap-2 transition-colors focus:outline-none"
+                class="font-heading font-bold text-xs uppercase tracking-[0.22em] text-[#334c54] group-hover:text-white inline-flex items-center gap-2 transition-colors focus:outline-none"
               >
                 <span>{a.ctaText || 'BACA ARTIKEL'}</span>
                 <svg
@@ -144,7 +144,7 @@
         <div>
           <a
             href="/artikel/digital-print"
-            class="inline-flex items-center gap-2 px-6 py-3 bg-[#FFE500] text-black font-heading font-bold text-xs uppercase tracking-[0.2em] hover:bg-[#fff04d] transition-colors cursor-pointer"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-[#334c54] text-white font-heading font-bold text-xs uppercase tracking-[0.2em] hover:bg-[#273a40] transition-colors cursor-pointer"
           >
             <span>JELAJAHI DIGITAL PRINT</span>
             <svg class="w-4 h-4 stroke-black stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">

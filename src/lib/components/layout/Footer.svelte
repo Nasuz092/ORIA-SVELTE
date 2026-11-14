@@ -153,24 +153,21 @@
   });
 </script>
 
-<footer class="w-full bg-black text-white pt-16 sm:pt-20 lg:pt-24 pb-0 select-none px-6 sm:px-10 lg:px-16">
+<footer class="w-full bg-white text-black border-t border-black/10 pt-16 sm:pt-20 lg:pt-24 pb-0 select-none px-6 sm:px-10 lg:px-16">
   <!-- Top Center Yellow CTA Logo Badge Intersecting Yellow Horizontal Divider -->
   <div class="relative w-full max-w-7xl mx-auto mb-16 sm:mb-20 lg:mb-24">
     <!-- Thin Yellow Divider Line -->
-    <div class="w-full border-t border-[#FFE500]"></div>
+    <div class="w-full border-t border-[#334c54]"></div>
 
     <!-- Centered Circular ORIA Logo Badge (Replacing Lotus Emblem CTA) -->
     <div class="absolute left-1/2 -translate-x-1/2 -top-9 sm:-top-11 z-20">
       <a
         href="/"
         onclick={handleCtaClick}
-        class="w-18 h-18 sm:w-22 sm:h-22 rounded-full bg-[#FFE500] border-2 border-black/40 flex items-center justify-center p-3.5 sm:p-4 shadow-[0_0_35px_rgba(255,229,0,0.35)] hover:scale-105 active:scale-95 transition-all duration-300 group cursor-pointer focus:outline-none"
+        class="w-18 h-18 sm:w-22 sm:h-22 rounded-full bg-[#334c54] border-2 border-black/10 flex items-center justify-center p-3.5 sm:p-4 shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 group cursor-pointer focus:outline-none"
         aria-label="ORIA Home & Kembali ke Atas"
       >
-        <img
-          src="/images/oria-logo-hd.png"
-          alt="ORIA"
-          class="w-full h-auto object-contain brightness-0 group-hover:scale-105 transition-transform duration-300"
+        <img src="/images/oria-logo-hd.png" alt="ORIA" class="w-full h-auto object-contain brightness-0 invert group-hover:scale-105 transition-transform duration-300"
         />
       </a>
     </div>
@@ -187,7 +184,7 @@
             href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
-            class="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-neutral-600 hover:border-[#FFE500] text-neutral-300 hover:text-[#FFE500] flex items-center justify-center transition-all duration-300 focus:outline-none"
+            class="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-neutral-600 hover:border-[#334c54] text-neutral-300 hover:text-[#334c54] flex items-center justify-center transition-all duration-300 focus:outline-none"
             aria-label="Facebook ORIA"
           >
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -200,7 +197,7 @@
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            class="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-neutral-600 hover:border-[#FFE500] text-neutral-300 hover:text-[#FFE500] flex items-center justify-center transition-all duration-300 focus:outline-none"
+            class="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-neutral-600 hover:border-[#334c54] text-neutral-300 hover:text-[#334c54] flex items-center justify-center transition-all duration-300 focus:outline-none"
             aria-label="Instagram ORIA"
           >
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -213,7 +210,7 @@
             href="https://x.com"
             target="_blank"
             rel="noopener noreferrer"
-            class="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-neutral-600 hover:border-[#FFE500] text-neutral-300 hover:text-[#FFE500] flex items-center justify-center transition-all duration-300 focus:outline-none"
+            class="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-neutral-600 hover:border-[#334c54] text-neutral-300 hover:text-[#334c54] flex items-center justify-center transition-all duration-300 focus:outline-none"
             aria-label="X ORIA"
           >
             <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -226,7 +223,7 @@
             href="https://youtube.com"
             target="_blank"
             rel="noopener noreferrer"
-            class="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-neutral-600 hover:border-[#FFE500] text-neutral-300 hover:text-[#FFE500] flex items-center justify-center transition-all duration-300 focus:outline-none"
+            class="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-neutral-600 hover:border-[#334c54] text-neutral-300 hover:text-[#334c54] flex items-center justify-center transition-all duration-300 focus:outline-none"
             aria-label="YouTube ORIA"
           >
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -238,47 +235,47 @@
 
       <!-- Center Column: MODELS -->
       <div class="md:col-span-3 lg:col-span-3 space-y-4">
-        <h4 class="font-heading font-bold text-sm sm:text-base uppercase tracking-[0.22em] text-[#FFE500]">
+        <h4 class="font-heading font-bold text-sm sm:text-base uppercase tracking-[0.22em] text-[#334c54]">
           MODELS
         </h4>
         <ul class="space-y-2.5 font-sans text-sm sm:text-[15px] text-neutral-300">
           <li>
-            <a href="/produk/uv/oria-uv-flatbed-a3" class="hover:text-[#FFE500] transition-colors">
+            <a href="/produk/uv/oria-uv-flatbed-a3" class="hover:text-[#334c54] transition-colors">
               ORIA UV Flatbed A3
             </a>
           </li>
           <li>
-            <a href="/produk/sublimasi/oria-sublim-1902" class="hover:text-[#FFE500] transition-colors">
+            <a href="/produk/sublimasi/oria-sublim-1902" class="hover:text-[#334c54] transition-colors">
               ORIA Sublimasi 1902
             </a>
           </li>
           <li>
-            <a href="/produk/laser/oria-laser-cutting-6040" class="hover:text-[#FFE500] transition-colors">
+            <a href="/produk/laser/oria-laser-cutting-6040" class="hover:text-[#334c54] transition-colors">
               ORIA Laser Cutting 6040
             </a>
           </li>
           <li>
-            <a href="/produk/dtf/oria-dtf-6004" class="hover:text-[#FFE500] transition-colors">
+            <a href="/produk/dtf/oria-dtf-6004" class="hover:text-[#334c54] transition-colors">
               ORIA DTF 6004 Industrial
             </a>
           </li>
           <li>
-            <a href="/produk/dtg/oria-dtg-or-dtg02" class="hover:text-[#FFE500] transition-colors">
+            <a href="/produk/dtg/oria-dtg-or-dtg02" class="hover:text-[#334c54] transition-colors">
               ORIA DTG OR-DTG02
             </a>
           </li>
           <li>
-            <a href="/produk/outdoor/oria-outdoor-3204-st" class="hover:text-[#FFE500] transition-colors">
+            <a href="/produk/outdoor/oria-outdoor-3204-st" class="hover:text-[#334c54] transition-colors">
               ORIA Outdoor 3204
             </a>
           </li>
           <li>
-            <a href="/produk/indoor/oria-indoor-3202" class="hover:text-[#FFE500] transition-colors">
+            <a href="/produk/indoor/oria-indoor-3202" class="hover:text-[#334c54] transition-colors">
               ORIA Indoor 3202
             </a>
           </li>
           <li>
-            <a href="/produk/cnc/oria-cnc-router-1325" class="hover:text-[#FFE500] transition-colors">
+            <a href="/produk/cnc/oria-cnc-router-1325" class="hover:text-[#334c54] transition-colors">
               ORIA CNC Router 1325
             </a>
           </li>
@@ -287,32 +284,32 @@
 
       <!-- Right Column: ABOUT ORIA -->
       <div class="md:col-span-4 lg:col-span-4 space-y-4">
-        <h4 class="font-heading font-bold text-sm sm:text-base uppercase tracking-[0.22em] text-[#FFE500]">
+        <h4 class="font-heading font-bold text-sm sm:text-base uppercase tracking-[0.22em] text-[#334c54]">
           ABOUT ORIA
         </h4>
         <ul class="space-y-2.5 font-sans text-sm sm:text-[15px] text-neutral-300">
           <li>
-            <a href="/tentang" class="hover:text-[#FFE500] transition-colors">
+            <a href="/tentang" class="hover:text-[#334c54] transition-colors">
               Tentang ORIA
             </a>
           </li>
           <li>
-            <a href="/tentang" class="hover:text-[#FFE500] transition-colors">
+            <a href="/tentang" class="hover:text-[#334c54] transition-colors">
               Standar Rekayasa Presisi
             </a>
           </li>
           <li>
-            <a href="/kontak" class="hover:text-[#FFE500] transition-colors">
+            <a href="/kontak" class="hover:text-[#334c54] transition-colors">
               Showroom & Workshop
             </a>
           </li>
           <li>
-            <a href="/artikel" class="hover:text-[#FFE500] transition-colors">
+            <a href="/artikel" class="hover:text-[#334c54] transition-colors">
               Artikel & Wawasan Industri
             </a>
           </li>
           <li>
-            <a href="/kontak" class="hover:text-[#FFE500] transition-colors">
+            <a href="/kontak" class="hover:text-[#334c54] transition-colors">
               Layanan Garansi & Teknisi Resmi
             </a>
           </li>
@@ -323,7 +320,7 @@
 
   <!-- Bottom Bar with Yellow Divider Line -->
   <div class="max-w-7xl mx-auto">
-    <div class="border-t border-[#FFE500] py-5 sm:py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-sans text-neutral-400">
+    <div class="border-t border-[#334c54] py-5 sm:py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-sans text-neutral-400">
       <!-- Legal Links -->
       <div class="flex flex-wrap items-center justify-center sm:justify-start gap-6 sm:gap-8">
         <a href="/terms-conditions" class="hover:text-white transition-colors">
@@ -348,7 +345,7 @@
           aria-label="Pilih Bahasa"
         >
           <span class="text-xs">{selectedLang}</span>
-          <div class="w-6 h-6 border border-[#FFE500] flex items-center justify-center text-[#FFE500] group-hover:bg-[#FFE500] group-hover:text-black transition-colors">
+          <div class="w-6 h-6 border border-[#334c54] flex items-center justify-center text-[#334c54] group-hover:bg-[#334c54] group-hover:text-white transition-colors">
             <svg
               class="w-3.5 h-3.5 stroke-current transition-transform duration-200 {isLangOpen ? 'rotate-180' : ''}"
               fill="none"
@@ -380,8 +377,8 @@
                 type="button"
                 onclick={() => changeLanguage(lang)}
                 class="w-full text-left px-4 py-2.5 text-xs flex items-center justify-between gap-3 transition-colors cursor-pointer {selectedCode === lang.code
-                  ? 'bg-[#FFE500] text-black font-bold'
-                  : 'text-neutral-300 hover:bg-white/10 hover:text-[#FFE500]'}"
+                  ? 'bg-[#334c54] text-white font-bold'
+                  : 'text-neutral-300 hover:bg-white/10 hover:text-[#334c54]'}"
                 role="option"
                 aria-selected={selectedCode === lang.code}
               >

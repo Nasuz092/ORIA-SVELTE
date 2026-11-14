@@ -63,7 +63,7 @@
       <div class="pt-2 sm:pt-4">
         <a
           href="/tentang"
-          class="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 border border-white text-white hover:bg-white hover:text-black font-sans text-xs sm:text-sm font-bold uppercase tracking-[0.25em] transition-all duration-300 group bg-transparent focus:outline-none"
+          class="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 border border-white text-white hover:bg-[#334c54] hover:border-[#334c54] hover:text-white font-sans text-xs sm:text-sm font-bold uppercase tracking-[0.25em] transition-all duration-300 group bg-transparent focus:outline-none"
         >
           <span>LEARN MORE</span>
           <svg

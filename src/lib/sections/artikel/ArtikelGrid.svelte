@@ -49,7 +49,7 @@
     <div class="space-y-6 sm:space-y-8">
       <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 pb-2">
         <div>
-          <div class="font-heading font-black text-xs sm:text-sm uppercase tracking-[0.3em] text-[#FFE500]">
+          <div class="font-heading font-black text-xs sm:text-sm uppercase tracking-[0.3em] text-[#334c54]">
             ORIA EDITORIAL DESK
           </div>
           <h2 class="font-heading font-black text-3xl sm:text-4xl uppercase tracking-tight text-white leading-none pt-2">
@@ -70,13 +70,13 @@
             type="button"
             onclick={() => handleTabClick(tab)}
             class="shrink-0 px-4 sm:px-5 py-2.5 text-xs font-heading font-bold uppercase tracking-[0.16em] transition-all duration-200 cursor-pointer focus:outline-none flex items-center gap-2 {isActive
-              ? 'bg-[#FFE500] text-black shadow-lg font-black'
+              ? 'bg-[#334c54] text-white shadow-lg font-black'
               : 'bg-[#0c0c12] text-neutral-300 hover:bg-[#181824] hover:text-white'}"
           >
             <span>{tab}</span>
             <span
               class="text-[10px] px-1.5 py-0.5 rounded-none {isActive
-                ? 'bg-black text-[#FFE500] font-black'
+                ? 'bg-black text-[#334c54] font-black'
                 : 'bg-white/10 text-neutral-400'}"
             >
               {count}
@@ -106,7 +106,7 @@
                 <div class="absolute inset-0 bg-gradient-to-t from-[#0c0c12] via-transparent to-transparent opacity-60"></div>
                 <!-- Yellow Category Tag -->
                 <div class="absolute top-3.5 left-3.5">
-                  <span class="inline-block bg-[#FFE500] text-black font-heading font-black text-[10px] tracking-[0.2em] uppercase px-2 py-0.5">
+                  <span class="inline-block bg-[#334c54] text-white font-heading font-black text-[10px] tracking-[0.2em] uppercase px-2 py-0.5">
                     {a.category}
                   </span>
                 </div>
@@ -119,7 +119,7 @@
                   <span>•</span>
                   <span>{a.readingTime}</span>
                 </div>
-                <h3 class="font-heading font-bold text-lg sm:text-xl text-white group-hover:text-[#FFE500] leading-snug line-clamp-2 transition-colors">
+                <h3 class="font-heading font-bold text-lg sm:text-xl text-white group-hover:text-[#334c54] leading-snug line-clamp-2 transition-colors">
                   <a href="/artikel/{a.slug}" class="focus:outline-none">
                     {a.title}
                   </a>
@@ -134,7 +134,7 @@
             <div class="pt-5 px-6">
               <a
                 href="/artikel/{a.slug}"
-                class="font-heading font-bold text-xs uppercase tracking-[0.22em] text-[#FFE500] group-hover:text-white inline-flex items-center gap-2 transition-colors focus:outline-none"
+                class="font-heading font-bold text-xs uppercase tracking-[0.22em] text-[#334c54] group-hover:text-white inline-flex items-center gap-2 transition-colors focus:outline-none"
               >
                 <span>{a.ctaText || 'BACA ARTIKEL'}</span>
                 <svg
@@ -160,7 +160,7 @@
           <button
             type="button"
             onclick={() => handleTabClick('ALL')}
-            class="inline-flex items-center gap-2 px-6 py-3 bg-[#FFE500] text-black font-heading font-bold text-xs uppercase tracking-[0.2em] hover:bg-[#fff04d] transition-colors cursor-pointer"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-[#334c54] text-white font-heading font-bold text-xs uppercase tracking-[0.2em] hover:bg-[#273a40] transition-colors cursor-pointer"
           >
             <span>TAMPILKAN SEMUA ARTIKEL</span>
             <svg class="w-4 h-4 stroke-black stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">

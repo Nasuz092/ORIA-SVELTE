@@ -61,13 +61,13 @@ button, a, img, svg {
 }
 
 ::selection {
-  background-color: #FFE500 !important;
-  color: #000000 !important;
+  background-color: #334c54 !important;
+  color: #ffffff !important;
 }
 
 ::-moz-selection {
-  background-color: #FFE500 !important;
-  color: #000000 !important;
+  background-color: #334c54 !important;
+  color: #ffffff !important;
 }
 
 /* Hide scrollbar across all browsers */
