@@ -311,14 +311,14 @@
         <button
           type="button"
           onclick={toggleLang}
-          class="flex items-center gap-2 {isScrolled ? 'text-black hover:text-[#334c54]' : 'text-white hover:text-white/80 drop-shadow-sm'} transition-colors cursor-pointer group focus:outline-none"
+          class="flex items-center gap-2 {isScrolled ? 'text-black hover:opacity-75' : 'text-white hover:opacity-75 drop-shadow-sm'} transition-colors cursor-pointer group focus:outline-none"
           aria-haspopup="listbox"
           aria-expanded={isLangOpen}
           aria-label="Pilih Bahasa"
         >
           <span class="text-xs font-semibold tracking-wider hidden sm:inline">{selectedLang}</span>
           <span class="text-xs font-semibold tracking-wider sm:hidden">{selectedShort}</span>
-          <div class="w-6 h-6 border {isScrolled ? 'border-[#334c54] text-[#334c54] group-hover:bg-[#334c54] group-hover:text-white' : 'border-white/70 text-white group-hover:border-[#334c54] group-hover:bg-[#334c54] group-hover:text-white'} flex items-center justify-center transition-colors">
+          <div class="w-6 h-6 border {isScrolled ? 'border-[#334c54] text-[#334c54]' : 'border-white/70 text-white'} flex items-center justify-center transition-colors">
             <svg
               class="w-3.5 h-3.5 stroke-current transition-transform duration-200 {isLangOpen ? 'rotate-180' : ''}"
               fill="none"
@@ -418,7 +418,7 @@
                 href={item.href}
                 class="flex items-center text-[11px] sm:text-xs md:text-[13px] font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none bg-transparent hover:bg-transparent py-1 drop-shadow-[0_2px_6px_rgba(0,0,0,0.85)] {isActive
                   ? 'text-[#334c54] font-bold'
-                  : isScrolled ? 'text-neutral-700 hover:text-[#334c54]' : 'text-neutral-300 hover:text-white'}"
+                  : isScrolled ? 'text-neutral-700 hover:text-black' : 'text-neutral-300 hover:text-white'}"
               >
                 <span>{item.label}</span>
               </a>
@@ -430,7 +430,7 @@
                 onclick={(e) => scrollToSection(item.id, e)}
                 class="flex items-center text-[11px] sm:text-xs md:text-[13px] font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none bg-transparent hover:bg-transparent py-1 drop-shadow-[0_2px_6px_rgba(0,0,0,0.85)] {activeSection === item.id
                   ? 'text-[#334c54] font-bold'
-                  : isScrolled ? 'text-neutral-700 hover:text-[#334c54]' : 'text-neutral-300 hover:text-white'}"
+                  : isScrolled ? 'text-neutral-700 hover:text-black' : 'text-neutral-300 hover:text-white'}"
               >
                 <span>{item.label}</span>
               </a>
@@ -459,14 +459,14 @@
         <button
           type="button"
           onclick={toggleLang}
-          class="flex items-center gap-2 {isScrolled ? 'text-black hover:text-[#334c54]' : 'text-white hover:text-white/80 drop-shadow-sm'} transition-colors cursor-pointer group focus:outline-none"
+          class="flex items-center gap-2 {isScrolled ? 'text-black hover:opacity-75' : 'text-white hover:opacity-75 drop-shadow-sm'} transition-colors cursor-pointer group focus:outline-none"
           aria-haspopup="listbox"
           aria-expanded={isLangOpen}
           aria-label="Pilih Bahasa"
         >
           <span class="text-xs font-semibold tracking-wider hidden sm:inline">{selectedLang}</span>
           <span class="text-xs font-semibold tracking-wider sm:hidden">{selectedShort}</span>
-          <div class="w-6 h-6 border {isScrolled ? 'border-[#334c54] text-[#334c54] group-hover:bg-[#334c54] group-hover:text-white' : 'border-white/70 text-white group-hover:border-[#334c54] group-hover:bg-[#334c54] group-hover:text-white'} flex items-center justify-center transition-colors">
+          <div class="w-6 h-6 border {isScrolled ? 'border-[#334c54] text-[#334c54]' : 'border-white/70 text-white'} flex items-center justify-center transition-colors">
             <svg
               class="w-3.5 h-3.5 stroke-current transition-transform duration-200 {isLangOpen ? 'rotate-180' : ''}"
               fill="none"

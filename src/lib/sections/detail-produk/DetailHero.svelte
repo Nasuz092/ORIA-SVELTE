@@ -28,7 +28,7 @@
       <img
         src={product.mainImageDesktopUrl || product.imageUrl}
         alt={product.name}
-        class="w-full h-full object-cover object-center sm:object-right select-none"
+        class="w-full h-full object-cover object-right select-none"
         loading="eager"
       />
     </picture>
@@ -43,12 +43,12 @@
       <div class="max-w-xl lg:max-w-3xl xl:max-w-4xl pointer-events-auto pt-28 sm:pt-36 lg:pt-40">
         <!-- Breadcrumbs & Category Bar -->
         <nav class="flex flex-wrap items-center gap-1.5 sm:gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-[0.22em] text-neutral-300 font-medium" aria-label="Breadcrumb">
-          <a href="/produk" class="hover:text-[#334c54] transition-colors cursor-pointer">CATALOG</a>
+          <a href="/produk" class="hover:text-white transition-colors cursor-pointer">CATALOG</a>
           <svg class="w-3 h-3 text-neutral-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
           </svg>
           {#if categoryId}
-            <a href="/produk/{categoryId}" class="text-neutral-400 hover:text-[#334c54] transition-colors cursor-pointer">{product.categoryName}</a>
+            <a href="/produk/{categoryId}" class="text-neutral-400 hover:text-white transition-colors cursor-pointer">{product.categoryName}</a>
           {:else}
             <span class="text-neutral-400">{product.categoryName}</span>
           {/if}
@@ -78,10 +78,10 @@
                 href="https://wa.me/6281252086455?text={encodeURIComponent(`Halo ORIA, saya ingin menanyakan informasi harga dan penawaran resmi untuk unit ${product.name}.`)}"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-[0.22em] text-neutral-300 hover:text-[#334c54] transition-colors group cursor-pointer"
+                class="inline-flex items-center gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-[0.22em] text-neutral-300 hover:text-white transition-colors group cursor-pointer"
               >
                 <span>ESTIMASI HARGA:</span>
-                <span class="text-[#334c54] font-semibold underline underline-offset-4">{product.priceText}</span>
+                <span class="text-[#334c54] font-semibold underline underline-offset-4 group-hover:text-white">{product.priceText}</span>
                 <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5] transition-transform duration-200 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
