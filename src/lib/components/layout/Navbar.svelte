@@ -305,20 +305,20 @@
     class="w-full fixed top-0 left-0 z-40 pointer-events-auto bg-transparent"
   >
     <!-- ROW 1: Controls (Language on Left, Centered Logo, Hamburger on Right) -->
-    <div class="relative w-full h-14 sm:h-16 flex items-center justify-between px-6 sm:px-10 lg:px-16 transition-colors duration-300 bg-white/95 text-black border-b border-white/15 shadow-sm backdrop-blur-md">
+    <div class="relative w-full h-14 sm:h-16 flex items-center justify-between px-6 sm:px-10 lg:px-16 transition-colors duration-300 {isScrolled ? 'bg-white/95 text-black border-b border-black/10 shadow-sm backdrop-blur-md' : 'bg-transparent text-white border-b border-transparent'}">
       <!-- Left: Language Translate Selector Button -->
       <div class="relative z-50">
         <button
           type="button"
           onclick={toggleLang}
-          class="flex items-center gap-2 text-black hover:text-[#334c54] transition-colors cursor-pointer group focus:outline-none"
+          class="flex items-center gap-2 {isScrolled ? 'text-black hover:text-[#334c54]' : 'text-white hover:text-white/80 drop-shadow-sm'} transition-colors cursor-pointer group focus:outline-none"
           aria-haspopup="listbox"
           aria-expanded={isLangOpen}
           aria-label="Pilih Bahasa"
         >
           <span class="text-xs font-semibold tracking-wider hidden sm:inline">{selectedLang}</span>
           <span class="text-xs font-semibold tracking-wider sm:hidden">{selectedShort}</span>
-          <div class="w-6 h-6 border border-[#334c54] flex items-center justify-center text-[#334c54] group-hover:bg-[#334c54] group-hover:text-white transition-colors">
+          <div class="w-6 h-6 border {isScrolled ? 'border-[#334c54] text-[#334c54] group-hover:bg-[#334c54] group-hover:text-white' : 'border-white/70 text-white group-hover:border-[#334c54] group-hover:bg-[#334c54] group-hover:text-white'} flex items-center justify-center transition-colors">
             <svg
               class="w-3.5 h-3.5 stroke-current transition-transform duration-200 {isLangOpen ? 'rotate-180' : ''}"
               fill="none"
@@ -342,7 +342,7 @@
 
           <!-- Dropdown Menu -->
           <div
-            class="absolute top-full left-0 mt-2 z-50 min-w-[170px] bg-white border border-black/15 shadow-2xl shadow-2xl py-1.5 rounded-none backdrop-blur-md animate-in fade-in slide-in-from-top-2 duration-200"
+            class="absolute top-full left-0 mt-2 z-50 min-w-[170px] bg-white border border-black/15 shadow-2xl py-1.5 rounded-none backdrop-blur-md animate-in fade-in slide-in-from-top-2 duration-200"
             role="listbox"
           >
             {#each languages as lang}
@@ -379,7 +379,7 @@
           <img
             src="/images/oria-logo-hd.png"
             alt="Logo ORIA"
-            class="h-7 sm:h-8 md:h-9 w-auto object-contain brightness-0 drop-shadow-sm"
+            class="h-7 sm:h-8 md:h-9 w-auto object-contain {isScrolled ? 'brightness-0 drop-shadow-sm' : 'brightness-0 invert drop-shadow-md'} transition-all duration-300"
           />
         </a>
       </div>
@@ -389,21 +389,21 @@
         <button
           type="button"
           onclick={openDrawer}
-          class="text-black p-2 hover:text-[#334c54] focus:outline-none cursor-pointer transition-colors group flex items-center justify-center drop-shadow-md"
+          class="{isScrolled ? 'text-black' : 'text-white'} p-2 hover:opacity-75 focus:outline-none cursor-pointer transition-opacity group flex items-center justify-center drop-shadow-md"
           aria-label="Buka Menu Navigasi"
         >
           <div class="flex flex-col items-end gap-1.5 w-6 sm:w-7">
-            <span class="block w-full h-[2px] bg-black group-hover:bg-[#334c54] transition-colors"></span>
-            <span class="block w-4/5 h-[2px] bg-white group-hover:w-full group-hover:bg-[#334c54] transition-all"></span>
-            <span class="block w-full h-[2px] bg-black group-hover:bg-[#334c54] transition-colors"></span>
+            <span class="block w-full h-[2px] {isScrolled ? 'bg-black' : 'bg-white'} transition-all"></span>
+            <span class="block w-4/5 h-[2px] {isScrolled ? 'bg-black' : 'bg-white'} group-hover:w-full transition-all"></span>
+            <span class="block w-full h-[2px] {isScrolled ? 'bg-black' : 'bg-white'} transition-all"></span>
           </div>
         </button>
       </div>
     </div>
 
-    <!-- ROW 2: Subnav Row (Transparent when at top, solid black when scrolled or hovered, no blur) -->
+    <!-- ROW 2: Subnav Row -->
     <div
-      class="w-full h-11 sm:h-12 flex items-center overflow-x-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden overscroll-x-contain transition-colors duration-300 bg-white/95 text-black border-b border-white/15"
+      class="w-full h-11 sm:h-12 flex items-center overflow-x-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden overscroll-x-contain transition-colors duration-300 {isScrolled ? 'bg-white/95 text-black border-b border-black/10 shadow-sm' : 'bg-transparent text-white border-b border-white/15'}"
     >
       <div class="min-w-full w-max flex items-center px-6 sm:px-10 lg:px-16 {isProductDetail ? 'justify-center' : 'md:justify-center'}">
         <nav
@@ -418,7 +418,7 @@
                 href={item.href}
                 class="flex items-center text-[11px] sm:text-xs md:text-[13px] font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none bg-transparent hover:bg-transparent py-1 drop-shadow-[0_2px_6px_rgba(0,0,0,0.85)] {isActive
                   ? 'text-[#334c54] font-bold'
-                  : 'text-black hover:text-[#334c54]'}"
+                  : isScrolled ? 'text-neutral-700 hover:text-[#334c54]' : 'text-neutral-300 hover:text-white'}"
               >
                 <span>{item.label}</span>
               </a>
@@ -430,7 +430,7 @@
                 onclick={(e) => scrollToSection(item.id, e)}
                 class="flex items-center text-[11px] sm:text-xs md:text-[13px] font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none bg-transparent hover:bg-transparent py-1 drop-shadow-[0_2px_6px_rgba(0,0,0,0.85)] {activeSection === item.id
                   ? 'text-[#334c54] font-bold'
-                  : 'text-black hover:text-[#334c54]'}"
+                  : isScrolled ? 'text-neutral-700 hover:text-[#334c54]' : 'text-neutral-300 hover:text-white'}"
               >
                 <span>{item.label}</span>
               </a>
@@ -450,8 +450,8 @@
   <!-- ================================================================= -->
   <header
     class="w-full fixed top-0 left-0 z-40 transition-colors duration-300 pointer-events-auto {isScrolled
-      ? 'bg-black shadow-lg border-b border-white/10'
-      : 'bg-transparent border-b border-transparent'}"
+      ? 'bg-white/95 text-black shadow-md border-b border-black/10 backdrop-blur-md'
+      : 'bg-transparent text-white border-b border-transparent'}"
   >
     <div class="relative w-full h-14 sm:h-16 flex items-center justify-between px-6 sm:px-10 lg:px-16">
       <!-- Left: Language Translate Selector Button -->
@@ -459,14 +459,14 @@
         <button
           type="button"
           onclick={toggleLang}
-          class="flex items-center gap-2 text-black hover:text-[#334c54] transition-colors cursor-pointer group focus:outline-none"
+          class="flex items-center gap-2 {isScrolled ? 'text-black hover:text-[#334c54]' : 'text-white hover:text-white/80 drop-shadow-sm'} transition-colors cursor-pointer group focus:outline-none"
           aria-haspopup="listbox"
           aria-expanded={isLangOpen}
           aria-label="Pilih Bahasa"
         >
           <span class="text-xs font-semibold tracking-wider hidden sm:inline">{selectedLang}</span>
           <span class="text-xs font-semibold tracking-wider sm:hidden">{selectedShort}</span>
-          <div class="w-6 h-6 border border-[#334c54] flex items-center justify-center text-[#334c54] group-hover:bg-[#334c54] group-hover:text-white transition-colors">
+          <div class="w-6 h-6 border {isScrolled ? 'border-[#334c54] text-[#334c54] group-hover:bg-[#334c54] group-hover:text-white' : 'border-white/70 text-white group-hover:border-[#334c54] group-hover:bg-[#334c54] group-hover:text-white'} flex items-center justify-center transition-colors">
             <svg
               class="w-3.5 h-3.5 stroke-current transition-transform duration-200 {isLangOpen ? 'rotate-180' : ''}"
               fill="none"
@@ -490,7 +490,7 @@
 
           <!-- Dropdown Menu -->
           <div
-            class="absolute top-full left-0 mt-2 z-50 min-w-[170px] bg-white border border-black/15 shadow-2xl shadow-2xl py-1.5 rounded-none backdrop-blur-md animate-in fade-in slide-in-from-top-2 duration-200"
+            class="absolute top-full left-0 mt-2 z-50 min-w-[170px] bg-white border border-black/15 shadow-2xl py-1.5 rounded-none backdrop-blur-md animate-in fade-in slide-in-from-top-2 duration-200"
             role="listbox"
           >
             {#each languages as lang}
@@ -527,7 +527,7 @@
           <img
             src="/images/oria-logo-hd.png"
             alt="Logo ORIA"
-            class="h-7 sm:h-8 md:h-9 w-auto object-contain brightness-0 drop-shadow-sm"
+            class="h-7 sm:h-8 md:h-9 w-auto object-contain {isScrolled ? 'brightness-0 drop-shadow-sm' : 'brightness-0 invert drop-shadow-md'} transition-all duration-300"
           />
         </a>
       </div>
@@ -537,13 +537,13 @@
         <button
           type="button"
           onclick={openDrawer}
-          class="text-black p-2 hover:text-[#334c54] focus:outline-none cursor-pointer transition-colors group flex items-center justify-center drop-shadow-md"
+          class="{isScrolled ? 'text-black' : 'text-white'} p-2 hover:opacity-75 focus:outline-none cursor-pointer transition-opacity group flex items-center justify-center drop-shadow-md"
           aria-label="Buka Menu Navigasi"
         >
           <div class="flex flex-col items-end gap-1.5 w-6 sm:w-7">
-            <span class="block w-full h-[2px] bg-black group-hover:bg-[#334c54] transition-colors"></span>
-            <span class="block w-4/5 h-[2px] bg-white group-hover:w-full group-hover:bg-[#334c54] transition-all"></span>
-            <span class="block w-full h-[2px] bg-black group-hover:bg-[#334c54] transition-colors"></span>
+            <span class="block w-full h-[2px] {isScrolled ? 'bg-black' : 'bg-white'} transition-all"></span>
+            <span class="block w-4/5 h-[2px] {isScrolled ? 'bg-black' : 'bg-white'} group-hover:w-full transition-all"></span>
+            <span class="block w-full h-[2px] {isScrolled ? 'bg-black' : 'bg-white'} transition-all"></span>
           </div>
         </button>
       </div>
@@ -609,7 +609,7 @@
             <a
               href={`#cat-${cat.id}`}
               onclick={(e) => scrollToAdsCategory(cat.id, e)}
-              class="group flex items-center justify-between text-base sm:text-lg font-heading font-bold uppercase tracking-[0.14em] text-black hover:text-white/70 transition-colors py-2 border-b border-white/15"
+              class="group flex items-center justify-between text-base sm:text-lg font-heading font-bold uppercase tracking-[0.14em] text-white hover:text-neutral-200 transition-colors py-2 border-b border-white/15"
             >
               <span class="group-hover:translate-x-1.5 transition-transform duration-300">{cat.title}</span>
               <svg class="w-4 h-4 stroke-current transition-transform duration-300 group-hover:translate-x-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
@@ -628,7 +628,7 @@
             <a
               href={cat.href}
               onclick={closeDrawer}
-              class="group flex items-center justify-between text-lg sm:text-2xl lg:text-[1.55rem] font-heading font-black uppercase tracking-[0.14em] text-black hover:text-white/70 transition-colors py-1 sm:py-1.5"
+              class="group flex items-center justify-between text-lg sm:text-2xl lg:text-[1.55rem] font-heading font-black uppercase tracking-[0.14em] text-white hover:text-neutral-200 transition-colors py-1 sm:py-1.5"
             >
               <span class="group-hover:translate-x-1 transition-transform duration-300">{cat.title}</span>
               <svg class="w-4 h-4 sm:w-5 sm:h-5 stroke-current transition-transform duration-300 group-hover:translate-x-1.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
@@ -638,7 +638,7 @@
           {/each}
 
           <!-- Divider -->
-          <div class="h-px bg-black/15 my-4 sm:my-5"></div>
+          <div class="h-px bg-white/15 my-4 sm:my-5"></div>
 
           <!-- Secondary Links (Discover ORIA, Artikel, Showroom) -->
           <div class="flex flex-col gap-2 sm:gap-2.5">
@@ -646,7 +646,7 @@
               <a
                 href={link.href}
                 onclick={closeDrawer}
-                class="group flex items-center justify-between text-xs sm:text-sm font-heading font-bold uppercase tracking-widest text-black/80 hover:text-black transition-colors py-1"
+                class="group flex items-center justify-between text-xs sm:text-sm font-heading font-bold uppercase tracking-widest text-white/90 hover:text-white transition-colors py-1"
               >
                 <span class="group-hover:translate-x-1 transition-transform duration-300">{link.name}</span>
                 <svg class="w-3.5 h-3.5 stroke-current transition-transform duration-300 group-hover:translate-x-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
@@ -661,11 +661,11 @@
   </div>
 
   <!-- Drawer Bottom: Showroom & WhatsApp Support -->
-  <div class="border-t border-black/15 pt-5 flex flex-col gap-2.5 text-xs tracking-wider text-black/80 font-sans flex-shrink-0">
+  <div class="border-t border-white/15 pt-5 flex flex-col gap-2.5 text-xs tracking-wider text-white/90 font-sans flex-shrink-0">
     <a
       href="/kontak"
       onclick={closeDrawer}
-      class="flex items-center gap-2.5 text-black hover:text-white/70 transition-colors uppercase font-semibold"
+      class="flex items-center gap-2.5 text-white/90 hover:text-white transition-colors uppercase font-semibold"
     >
       <svg class="w-4 h-4 stroke-current flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -677,7 +677,7 @@
       href="https://wa.me/6281252086455"
       target="_blank"
       rel="noopener noreferrer"
-      class="flex items-center gap-2.5 text-black hover:text-white/70 transition-colors uppercase font-semibold"
+      class="flex items-center gap-2.5 text-white/90 hover:text-white transition-colors uppercase font-semibold"
     >
       <svg class="w-4 h-4 stroke-current flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />

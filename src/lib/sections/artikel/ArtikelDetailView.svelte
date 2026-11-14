@@ -438,7 +438,7 @@
             </div>
 
             <h3
-              class="text-lg sm:text-xl font-heading font-bold uppercase text-black group-hover:text-[#b3a100] transition-colors line-clamp-3 leading-snug tracking-wider"
+              class="text-lg sm:text-xl font-heading font-bold uppercase text-black group-hover:text-[#334c54] transition-colors line-clamp-3 leading-snug tracking-wider"
             >
               {item.title}
             </h3>
@@ -541,7 +541,7 @@
   }
 
   :global(.article-body a:hover) {
-    color: #b3a100;
+    color: #334c54;
   }
 
   /* Responsive Table Container & Styling */

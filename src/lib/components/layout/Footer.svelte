@@ -184,7 +184,7 @@
             href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
-            class="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-neutral-600 hover:border-[#334c54] text-neutral-300 hover:text-[#334c54] flex items-center justify-center transition-all duration-300 focus:outline-none"
+            class="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-neutral-300 hover:border-[#334c54] text-neutral-700 hover:text-[#334c54] flex items-center justify-center transition-all duration-300 focus:outline-none"
             aria-label="Facebook ORIA"
           >
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -197,7 +197,7 @@
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            class="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-neutral-600 hover:border-[#334c54] text-neutral-300 hover:text-[#334c54] flex items-center justify-center transition-all duration-300 focus:outline-none"
+            class="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-neutral-300 hover:border-[#334c54] text-neutral-700 hover:text-[#334c54] flex items-center justify-center transition-all duration-300 focus:outline-none"
             aria-label="Instagram ORIA"
           >
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -210,7 +210,7 @@
             href="https://x.com"
             target="_blank"
             rel="noopener noreferrer"
-            class="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-neutral-600 hover:border-[#334c54] text-neutral-300 hover:text-[#334c54] flex items-center justify-center transition-all duration-300 focus:outline-none"
+            class="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-neutral-300 hover:border-[#334c54] text-neutral-700 hover:text-[#334c54] flex items-center justify-center transition-all duration-300 focus:outline-none"
             aria-label="X ORIA"
           >
             <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -223,7 +223,7 @@
             href="https://youtube.com"
             target="_blank"
             rel="noopener noreferrer"
-            class="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-neutral-600 hover:border-[#334c54] text-neutral-300 hover:text-[#334c54] flex items-center justify-center transition-all duration-300 focus:outline-none"
+            class="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-neutral-300 hover:border-[#334c54] text-neutral-700 hover:text-[#334c54] flex items-center justify-center transition-all duration-300 focus:outline-none"
             aria-label="YouTube ORIA"
           >
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -238,7 +238,7 @@
         <h4 class="font-heading font-bold text-sm sm:text-base uppercase tracking-[0.22em] text-[#334c54]">
           MODELS
         </h4>
-        <ul class="space-y-2.5 font-sans text-sm sm:text-[15px] text-neutral-300">
+        <ul class="space-y-2.5 font-sans text-sm sm:text-[15px] text-neutral-700">
           <li>
             <a href="/produk/uv/oria-uv-flatbed-a3" class="hover:text-[#334c54] transition-colors">
               ORIA UV Flatbed A3
@@ -287,7 +287,7 @@
         <h4 class="font-heading font-bold text-sm sm:text-base uppercase tracking-[0.22em] text-[#334c54]">
           ABOUT ORIA
         </h4>
-        <ul class="space-y-2.5 font-sans text-sm sm:text-[15px] text-neutral-300">
+        <ul class="space-y-2.5 font-sans text-sm sm:text-[15px] text-neutral-700">
           <li>
             <a href="/tentang" class="hover:text-[#334c54] transition-colors">
               Tentang ORIA
@@ -323,13 +323,13 @@
     <div class="border-t border-[#334c54] py-5 sm:py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-sans text-neutral-400">
       <!-- Legal Links -->
       <div class="flex flex-wrap items-center justify-center sm:justify-start gap-6 sm:gap-8">
-        <a href="/terms-conditions" class="hover:text-white transition-colors">
+        <a href="/terms-conditions" class="hover:text-[#334c54] transition-colors">
           Terms and Conditions
         </a>
-        <a href="/privacy" class="hover:text-white transition-colors">
+        <a href="/privacy" class="hover:text-[#334c54] transition-colors">
           Privacy Notice
         </a>
-        <a href="/cookie-statement" class="hover:text-white transition-colors">
+        <a href="/cookie-statement" class="hover:text-[#334c54] transition-colors">
           Cookie Statement
         </a>
       </div>
@@ -339,13 +339,13 @@
         <button
           type="button"
           onclick={toggleLang}
-          class="flex items-center gap-2 text-neutral-400 hover:text-white transition-colors cursor-pointer group focus:outline-none"
+          class="flex items-center gap-2 text-neutral-400 hover:text-[#334c54] transition-colors cursor-pointer group focus:outline-none"
           aria-haspopup="listbox"
           aria-expanded={isLangOpen}
           aria-label="Pilih Bahasa"
         >
           <span class="text-xs">{selectedLang}</span>
-          <div class="w-6 h-6 border border-[#334c54] flex items-center justify-center text-[#334c54] group-hover:bg-[#334c54] group-hover:text-white transition-colors">
+          <div class="w-6 h-6 border border-[#334c54] flex items-center justify-center text-[#334c54] group-hover:bg-[#334c54] group-hover:text-[#334c54] transition-colors">
             <svg
               class="w-3.5 h-3.5 stroke-current transition-transform duration-200 {isLangOpen ? 'rotate-180' : ''}"
               fill="none"
@@ -369,7 +369,7 @@
 
           <!-- Dropdown Menu (Opens Upward with Lotus/ORIA Premium Dark Style) -->
           <div
-            class="absolute bottom-full right-0 mb-3 z-50 min-w-[170px] bg-neutral-950 border border-white/15 shadow-2xl py-1.5 rounded-none backdrop-blur-md animate-in fade-in slide-in-from-bottom-2 duration-200"
+            class="absolute bottom-full right-0 mb-3 z-50 min-w-[170px] bg-white border border-black/15 shadow-2xl py-1.5 rounded-none backdrop-blur-md animate-in fade-in slide-in-from-bottom-2 duration-200"
             role="listbox"
           >
             {#each languages as lang}
@@ -378,7 +378,7 @@
                 onclick={() => changeLanguage(lang)}
                 class="w-full text-left px-4 py-2.5 text-xs flex items-center justify-between gap-3 transition-colors cursor-pointer {selectedCode === lang.code
                   ? 'bg-[#334c54] text-white font-bold'
-                  : 'text-neutral-300 hover:bg-white/10 hover:text-[#334c54]'}"
+                  : 'text-neutral-800 hover:bg-neutral-100 hover:text-[#334c54]'}"
                 role="option"
                 aria-selected={selectedCode === lang.code}
               >

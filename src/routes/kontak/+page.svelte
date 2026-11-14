@@ -229,7 +229,7 @@
           href="https://wa.me/6281252086455"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center justify-center gap-3 px-6 py-4 bg-[#334c54] text-white font-heading font-bold text-xs uppercase tracking-[0.2em] hover:bg-[#ebd300] transition-colors shadow-sm"
+          class="inline-flex items-center justify-center gap-3 px-6 py-4 bg-[#334c54] text-white font-heading font-bold text-xs uppercase tracking-[0.2em] hover:bg-[#273a40] transition-colors shadow-sm"
         >
           <span>WHATSAPP HOTLINE</span>
           <svg class="w-4 h-4 stroke-black stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
@@ -333,7 +333,7 @@
           <div class="pt-2">
             <a
               href="mailto:info@oria.co.id"
-              class="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-widest text-[#334c54] hover:text-white transition-colors"
+              class="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-widest text-[#334c54] hover:text-black transition-colors"
             >
               <span>info@oria.co.id</span>
               <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24">

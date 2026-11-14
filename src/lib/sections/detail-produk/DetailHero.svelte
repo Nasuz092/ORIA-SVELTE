@@ -55,11 +55,11 @@
           <svg class="w-3 h-3 text-neutral-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
           </svg>
-          <span class="text-white truncate max-w-[200px] sm:max-w-[280px] font-medium">{product.sku}</span>
+          <span class="text-[#334c54] truncate max-w-[200px] sm:max-w-[280px] font-semibold">{product.sku}</span>
         </nav>
 
         <!-- Main Model Name (Ukuran font seimbang & elegan, tidak terlalu besar atau terlalu kecil) -->
-        <h1 class="mt-3 sm:mt-4 font-heading font-medium tracking-[0.16em] sm:tracking-[0.2em] text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase text-white leading-tight drop-shadow-[0_4px_30px_rgba(0,0,0,0.95)]">
+        <h1 class="mt-3 sm:mt-4 font-heading font-medium tracking-[0.16em] sm:tracking-[0.2em] text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase text-[#334c54] leading-tight drop-shadow-[0_4px_30px_rgba(0,0,0,0.95)]">
           {cleanModelName}
         </h1>
 
@@ -94,26 +94,27 @@
       <!-- BAWAH: 4 Spesifikasi Utama (2x2 di Desktop, 1 Kolom di Mobile, Nilai font-medium, Tanpa Garis) -->
       <div class="pointer-events-auto w-full pt-6">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 lg:gap-x-20 gap-y-3.5 sm:gap-y-6 lg:gap-y-8 max-w-3xl">
-          {#each specs.slice(0, 4) as s}
+          {#each specs.slice(0, 4) as s, idx}
             {@const isSize = s.val.includes('x') || s.val.endsWith('m') || s.val.endsWith('cm') || s.val.endsWith('mm')}
+            {@const isHighlight = idx < 2}
             <div class="flex sm:flex-col items-center sm:items-start justify-between sm:justify-start gap-3 sm:gap-2">
               <!-- Metric Primary Value (font-medium, bukan bold/black) -->
               <div class="font-heading font-medium tracking-tight text-white drop-shadow-lg flex items-baseline gap-2 shrink-0">
                 {#if isSize && s.val.includes(' ')}
                   {@const parts = s.val.split(' ')}
-                  <span class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white leading-none">{parts[0]}</span>
-                  <span class="text-sm sm:text-base lg:text-xl font-medium text-white tracking-normal">{parts.slice(1).join(' ')}</span>
+                  <span class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-[#334c54] leading-none">{parts[0]}</span>
+                  <span class="text-sm sm:text-base lg:text-xl font-medium text-[#334c54] tracking-normal">{parts.slice(1).join(' ')}</span>
                 {:else if s.val.includes(' ')}
                   {@const parts = s.val.split(' ')}
-                  <span class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium leading-none">{parts[0]}</span>
-                  <span class="text-sm sm:text-base lg:text-xl font-medium text-neutral-300 tracking-normal">{parts.slice(1).join(' ')}</span>
+                  <span class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium leading-none {isHighlight ? 'text-[#334c54]' : 'text-white'}">{parts[0]}</span>
+                  <span class="text-sm sm:text-base lg:text-xl font-medium tracking-normal {isHighlight ? 'text-[#334c54]' : 'text-neutral-300'}">{parts.slice(1).join(' ')}</span>
                 {:else}
-                  <span class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-medium leading-none">{s.val}</span>
+                  <span class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-medium leading-none {isHighlight ? 'text-[#334c54]' : 'text-white'}">{s.val}</span>
                 {/if}
               </div>
               <!-- Metric Unit & Subtitle -->
               <div class="space-y-0.5 sm:space-y-1 min-w-0 text-right sm:text-left">
-                <div class="font-sans font-medium text-xs sm:text-sm uppercase tracking-wider {isSize ? 'text-[#334c54]' : 'text-white'} drop-shadow-sm truncate">
+                <div class="font-sans font-medium text-xs sm:text-sm uppercase tracking-wider {isHighlight ? 'text-[#334c54]' : 'text-white'} drop-shadow-sm truncate">
                   {s.unit}
                 </div>
                 <div class="font-sans text-xs sm:text-[13px] text-neutral-300 leading-snug line-clamp-2 drop-shadow-sm font-normal">

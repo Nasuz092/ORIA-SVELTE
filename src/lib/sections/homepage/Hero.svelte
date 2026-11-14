@@ -146,8 +146,8 @@
         <div class="absolute inset-0 z-20 pointer-events-none px-6 sm:px-10 lg:px-16">
           <div class="w-full h-full max-w-7xl mx-auto flex flex-col justify-end pb-14 sm:pb-16 lg:pb-20">
             <div class="max-w-lg pointer-events-auto space-y-3 sm:space-y-4">
-              <!-- Headline: Ukuran font proporsional dengan shadow -->
-              <div class="font-heading font-black text-xl sm:text-2xl md:text-3xl lg:text-[2.25rem] tracking-[0.18em] sm:tracking-[0.22em] leading-tight text-white uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+              <!-- Headline: Ukuran font proporsional dengan shadow (Warna Brand #334c54) -->
+              <div class="font-heading font-black text-xl sm:text-2xl md:text-3xl lg:text-[2.25rem] tracking-[0.18em] sm:tracking-[0.22em] leading-tight text-[#334c54] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                 <div>{slide.line1}</div>
                 <div class="mt-0.5 sm:mt-1">{slide.line2}</div>
               </div>
