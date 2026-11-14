@@ -3,6 +3,8 @@
 @theme {
   --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --color-oria-teal: #334c54;
+  --color-oria-silver: #d6dbdd;
 }
 
 html, body {

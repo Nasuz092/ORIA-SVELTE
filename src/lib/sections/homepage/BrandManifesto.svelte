@@ -28,7 +28,7 @@
   });
 </script>
 
-<section bind:this={sectionEl} class="w-full bg-white text-black py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 select-none overflow-hidden">
+<section bind:this={sectionEl} class="w-full bg-white text-black py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 select-none overflow-hidden border-t border-[#D6DBDD]">
   <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
     <!-- Left Column: Big elegant uppercase tracked heading (Subtle Parallax) -->
     <div
@@ -47,12 +47,12 @@
         ORIA menghadirkan ekosistem teknologi cetak digital dan fabrikasi berstandar industri untuk mendukung lini produksi modern yang menuntut keandalan tinggi.
       </p>
 
-      <p class="font-medium text-white">
+      <p class="font-medium text-neutral-900">
         Dirancang dengan arsitektur mekanis kelas berat, setiap unit menggabungkan akurasi mikron, kecepatan throughput tinggi, dan ketangguhan operasional nonstop 24/7.
       </p>
 
-      <p class="text-white/80">
-        Standar rekayasa presisi untuk meningkatkan efisiensi dan skala kapasitas bisnis Anda — <span class="text-white font-semibold tracking-wide">Engineered for Industry.</span>
+      <p class="text-neutral-700">
+        Standar rekayasa presisi untuk meningkatkan efisiensi dan skala kapasitas bisnis Anda — <span class="text-black font-semibold tracking-wide">Engineered for Industry.</span>
       </p>
     </div>
   </div>

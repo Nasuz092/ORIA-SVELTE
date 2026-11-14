@@ -222,7 +222,7 @@
     <button
       type="button"
       onclick={handlePrev}
-      class="absolute left-2 sm:left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 border-2 border-neutral-300 hover:border-[#334c54] bg-transparent text-neutral-800 hover:text-[#334c54] flex items-center justify-center transition-all duration-300 cursor-pointer focus:outline-none group"
+      class="absolute left-2 sm:left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 border-2 border-[#D6DBDD] hover:border-[#334c54] bg-transparent text-neutral-800 hover:text-[#334c54] flex items-center justify-center transition-all duration-300 cursor-pointer focus:outline-none group"
       aria-label="Model Sebelumnya"
     >
       <svg class="w-4 h-4 sm:w-5 sm:h-5 stroke-current transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke-width="2.5">
@@ -234,7 +234,7 @@
     <button
       type="button"
       onclick={handleNext}
-      class="absolute right-2 sm:right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 border-2 border-neutral-300 hover:border-[#334c54] bg-transparent text-neutral-800 hover:text-[#334c54] flex items-center justify-center transition-all duration-300 cursor-pointer focus:outline-none group"
+      class="absolute right-2 sm:right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 border-2 border-[#D6DBDD] hover:border-[#334c54] bg-transparent text-neutral-800 hover:text-[#334c54] flex items-center justify-center transition-all duration-300 cursor-pointer focus:outline-none group"
       aria-label="Model Berikutnya"
     >
       <svg class="w-4 h-4 sm:w-5 sm:h-5 stroke-current transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke-width="2.5">

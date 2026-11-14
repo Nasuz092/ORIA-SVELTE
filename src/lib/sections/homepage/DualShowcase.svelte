@@ -2,7 +2,7 @@
   // Section Dual Showcase (Lotus Inspired 2-Column Grid: Produk & Tentang ORIA)
 </script>
 
-<section class="w-full bg-white text-black py-16 border-t border-black/10 sm:py-24 lg:py-32 px-6 sm:px-10 lg:px-16 select-none">
+<section class="w-full bg-white text-black py-16 border-t border-[#D6DBDD] sm:py-24 lg:py-32 px-6 sm:px-10 lg:px-16 select-none">
   <div class="max-w-7xl mx-auto">
     <!-- Section Top Header Title (Lotus-style tracked uppercase) -->
     <div class="mb-8 sm:mb-12 lg:mb-16">
@@ -19,7 +19,7 @@
         class="group block flex flex-col focus:outline-none"
       >
         <!-- Card Image Container -->
-        <div class="relative w-full aspect-[16/10] overflow-hidden bg-neutral-100 border border-neutral-200">
+        <div class="relative w-full aspect-[16/10] overflow-hidden bg-neutral-100 border border-[#D6DBDD]">
           <img
             src="/images/showcase-products.png"
             alt="ORIA UV Flatbed Printer Workshop"
@@ -62,7 +62,7 @@
         class="group block flex flex-col focus:outline-none"
       >
         <!-- Card Image Container -->
-        <div class="relative w-full aspect-[16/10] overflow-hidden bg-neutral-100 border border-neutral-200">
+        <div class="relative w-full aspect-[16/10] overflow-hidden bg-neutral-100 border border-[#D6DBDD]">
           <img
             src="/images/showcase-about.png"
             alt="Industrial ORIA Wall Signage - Fasilitas Resmi ORIA"
@@ -75,10 +75,10 @@
         <!-- Card Info -->
         <div class="mt-6 flex flex-col flex-1 justify-between">
           <div>
-            <h3 class="font-heading font-medium text-xl sm:text-2xl text-white flex items-center gap-2 sm:gap-2.5">
+            <h3 class="font-heading font-medium text-xl sm:text-2xl text-black flex items-center gap-2 sm:gap-2.5">
               <span class="group-hover:text-[#334c54] transition-colors duration-300">About</span>
               <span
-                class="inline-block h-5 sm:h-6 aspect-[2101/666] bg-white group-hover:bg-[#334c54] transition-colors duration-300"
+                class="inline-block h-5 sm:h-6 aspect-[2101/666] bg-black group-hover:bg-[#334c54] transition-colors duration-300"
                 style="-webkit-mask-image: url('/images/oria-logo-hd.png'); mask-image: url('/images/oria-logo-hd.png'); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;"
                 role="img"
                 aria-label="ORIA"
