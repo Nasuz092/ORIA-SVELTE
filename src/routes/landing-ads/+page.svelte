@@ -405,9 +405,9 @@
                   <!-- 1:1 Big Square Product Image Container with Right-Focus Object Alignment -->
                   <div class="relative w-full aspect-square overflow-hidden bg-neutral-100 flex items-center justify-center p-2 sm:p-4">
                     <img
-                      src={product.imageUrl || group.heroImage}
+                      src={product.cardImageUrl || product.imageUrl || group.heroImage}
                       alt={product.name}
-                      class="w-full h-full object-cover object-right transition-transform duration-500 ease-out group-hover:scale-105"
+                      class="w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
                       loading="lazy"
                     />
                   </div>

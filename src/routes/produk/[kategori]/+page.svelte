@@ -111,9 +111,9 @@
             <!-- 1:1 Ratio Machine Image Box: Full width, hanya sisi kanan (mesin) yang diambil sehingga space kiri terpotong -->
             <div class="w-full aspect-square overflow-hidden bg-neutral-100 relative border border-neutral-200 shadow-sm">
               <img
-                src={product.mainImageDesktopUrl || product.imageUrl}
+                src={product.cardImageUrl || product.mainImageDesktopUrl || product.imageUrl}
                 alt={product.name}
-                class="w-full h-full object-cover object-right scale-100 group-hover:scale-105 transition-transform duration-500 ease-out pointer-events-none select-none"
+                class="w-full h-full object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-500 ease-out pointer-events-none select-none"
                 loading="lazy"
               />
             </div>
