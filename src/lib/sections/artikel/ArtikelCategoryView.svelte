@@ -48,7 +48,7 @@
     <!-- Lotus Editorial Header (Matching Lotus Cars Press Room) -->
     <div class="space-y-4 sm:space-y-5 border-b border-white/10 pb-8 sm:pb-12">
       <!-- Editorial Kicker -->
-      <div class="font-heading font-black text-xs sm:text-sm uppercase tracking-[0.3em] text-[#334c54]">
+      <div class="font-heading font-black text-xs sm:text-sm uppercase tracking-[0.3em] text-[#A3BCC4]">
         ORIA EDITORIAL &middot; {category.label}
       </div>
 
@@ -64,7 +64,7 @@
 
       <!-- Publications Meta Count -->
       <div class="pt-2 text-xs font-sans text-neutral-400 tracking-wider uppercase">
-        Menampilkan <span class="text-[#334c54] font-bold">{articles.length}</span> publikasi resmi
+        Menampilkan <span class="text-[#A3BCC4] font-bold">{articles.length}</span> publikasi resmi
       </div>
     </div>
 
@@ -103,7 +103,7 @@
                   <span>{a.readingTime}</span>
                 </div>
 
-                <h2 class="font-heading font-bold text-xl sm:text-2xl text-white group-hover:text-[#334c54] leading-snug transition-colors line-clamp-2">
+                <h2 class="font-heading font-bold text-xl sm:text-2xl text-white group-hover:text-[#A3BCC4] leading-snug transition-colors line-clamp-2">
                   <a href="/artikel/{a.slug}" class="focus:outline-none">
                     {a.title}
                   </a>
@@ -119,7 +119,7 @@
             <div class="pt-6 px-6 sm:px-8">
               <a
                 href="/artikel/{a.slug}"
-                class="font-heading font-bold text-xs uppercase tracking-[0.22em] text-[#334c54] group-hover:text-white inline-flex items-center gap-2 transition-colors focus:outline-none"
+                class="font-heading font-bold text-xs uppercase tracking-[0.22em] text-[#A3BCC4] group-hover:text-white inline-flex items-center gap-2 transition-colors focus:outline-none"
               >
                 <span>{a.ctaText || 'BACA ARTIKEL'}</span>
                 <svg

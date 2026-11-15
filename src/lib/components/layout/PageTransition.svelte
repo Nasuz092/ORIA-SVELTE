@@ -43,6 +43,6 @@
   <img
     src="/images/oria-logo-hd.png"
     alt="ORIA"
-    class="h-10 sm:h-12 md:h-14 w-auto object-contain brightness-0 pointer-events-none select-none"
+    class="h-10 sm:h-12 md:h-14 w-auto object-contain brightness-0 invert pointer-events-none select-none"
   />
 </div>

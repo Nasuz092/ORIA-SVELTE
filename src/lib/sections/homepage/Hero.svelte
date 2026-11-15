@@ -146,8 +146,8 @@
         <div class="absolute inset-0 z-20 pointer-events-none px-6 sm:px-10 lg:px-16">
           <div class="w-full h-full max-w-7xl mx-auto flex flex-col justify-end pb-14 sm:pb-16 lg:pb-20">
             <div class="max-w-lg pointer-events-auto space-y-3 sm:space-y-4">
-              <!-- Headline: Ukuran font proporsional dengan shadow (Warna Brand #334c54) -->
-              <div class="font-heading font-black text-xl sm:text-2xl md:text-3xl lg:text-[2.25rem] tracking-[0.18em] sm:tracking-[0.22em] leading-tight text-[#334c54] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+              <!-- Headline: Ukuran font proporsional dengan shadow (Light Teal #A3BCC4 di atas dark overlay) -->
+              <div class="font-heading font-black text-xl sm:text-2xl md:text-3xl lg:text-[2.25rem] tracking-[0.18em] sm:tracking-[0.22em] leading-tight text-[#A3BCC4] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                 <div>{slide.line1}</div>
                 <div class="mt-0.5 sm:mt-1">{slide.line2}</div>
               </div>
@@ -187,7 +187,7 @@
         aria-label="Menuju Slide {i + 1}"
       >
         <span
-          class="block h-1.5 rounded-full transition-all duration-300 drop-shadow-md {current === i ? 'w-7 bg-[#334c54]' : 'w-2 bg-white/70 group-hover:bg-white'}"
+          class="block h-1.5 rounded-full transition-all duration-300 drop-shadow-md {current === i ? 'w-7 bg-[#A3BCC4]' : 'w-2 bg-white/70 group-hover:bg-white'}"
         ></span>
       </button>
     {/each}

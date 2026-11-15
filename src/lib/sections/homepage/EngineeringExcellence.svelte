@@ -40,6 +40,9 @@
     />
   </picture>
 
+  <!-- Base Black 70% Overlay -->
+  <div class="absolute inset-0 bg-black/70 pointer-events-none"></div>
+
   <!-- Cinematic Contrast Gradient (Gradasi hitam ke transparan) -->
   <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent sm:from-black/90 sm:via-black/55 sm:to-black/25 pointer-events-none"></div>
 

@@ -109,6 +109,7 @@
 
   // Background solid hitam untuk halaman dengan latar terang (Detail Artikel, Legal) atau saat di-scroll
   let isLightTopPage = $derived(
+    Boolean(page.error) ||
     page.data?.mode === 'article' ||
     Boolean(page.data?.article) ||
     page.url.pathname.startsWith('/cookie-statement') ||
@@ -311,7 +312,7 @@
         <button
           type="button"
           onclick={toggleLang}
-          class="flex items-center gap-2 {isScrolled ? 'text-black hover:opacity-75' : 'text-white hover:opacity-75 drop-shadow-sm'} transition-colors cursor-pointer group focus:outline-none"
+          class="flex items-center gap-2 {isScrolled ? 'text-black hover:opacity-75' : 'text-white hover:opacity-75'} transition-colors cursor-pointer group focus:outline-none"
           aria-haspopup="listbox"
           aria-expanded={isLangOpen}
           aria-label="Pilih Bahasa"
@@ -379,7 +380,7 @@
           <img
             src="/images/oria-logo-hd.png"
             alt="Logo ORIA"
-            class="h-7 sm:h-8 md:h-9 w-auto object-contain {isScrolled ? 'brightness-0 drop-shadow-sm' : 'brightness-0 invert drop-shadow-md'} transition-all duration-300"
+            class="h-7 sm:h-8 md:h-9 w-auto object-contain {isScrolled ? 'brightness-0' : 'brightness-0 invert'} transition-all duration-300"
           />
         </a>
       </div>
@@ -389,7 +390,7 @@
         <button
           type="button"
           onclick={openDrawer}
-          class="{isScrolled ? 'text-black' : 'text-white'} p-2 hover:opacity-75 focus:outline-none cursor-pointer transition-opacity group flex items-center justify-center drop-shadow-md"
+          class="{isScrolled ? 'text-black' : 'text-white'} p-2 hover:opacity-75 focus:outline-none cursor-pointer transition-opacity group flex items-center justify-center"
           aria-label="Buka Menu Navigasi"
         >
           <div class="flex flex-col items-end gap-1.5 w-6 sm:w-7">
@@ -416,7 +417,7 @@
               {@const isActive = page.url.pathname.startsWith(item.href) || activeCatSlug === item.id}
               <a
                 href={item.href}
-                class="flex items-center text-[11px] sm:text-xs md:text-[13px] font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none bg-transparent hover:bg-transparent py-1 drop-shadow-[0_2px_6px_rgba(0,0,0,0.85)] {isActive
+                class="flex items-center text-[11px] sm:text-xs md:text-[13px] font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none bg-transparent hover:bg-transparent py-1 {isActive
                   ? 'text-[#334c54] font-bold'
                   : isScrolled ? 'text-neutral-700 hover:text-black' : 'text-neutral-300 hover:text-white'}"
               >
@@ -428,7 +429,7 @@
               <a
                 href="#{item.id}"
                 onclick={(e) => scrollToSection(item.id, e)}
-                class="flex items-center text-[11px] sm:text-xs md:text-[13px] font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none bg-transparent hover:bg-transparent py-1 drop-shadow-[0_2px_6px_rgba(0,0,0,0.85)] {activeSection === item.id
+                class="flex items-center text-[11px] sm:text-xs md:text-[13px] font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none bg-transparent hover:bg-transparent py-1 {activeSection === item.id
                   ? 'text-[#334c54] font-bold'
                   : isScrolled ? 'text-neutral-700 hover:text-black' : 'text-neutral-300 hover:text-white'}"
               >
@@ -459,7 +460,7 @@
         <button
           type="button"
           onclick={toggleLang}
-          class="flex items-center gap-2 {isScrolled ? 'text-black hover:opacity-75' : 'text-white hover:opacity-75 drop-shadow-sm'} transition-colors cursor-pointer group focus:outline-none"
+          class="flex items-center gap-2 {isScrolled ? 'text-black hover:opacity-75' : 'text-white hover:opacity-75'} transition-colors cursor-pointer group focus:outline-none"
           aria-haspopup="listbox"
           aria-expanded={isLangOpen}
           aria-label="Pilih Bahasa"
@@ -527,7 +528,7 @@
           <img
             src="/images/oria-logo-hd.png"
             alt="Logo ORIA"
-            class="h-7 sm:h-8 md:h-9 w-auto object-contain {isScrolled ? 'brightness-0 drop-shadow-sm' : 'brightness-0 invert drop-shadow-md'} transition-all duration-300"
+            class="h-7 sm:h-8 md:h-9 w-auto object-contain {isScrolled ? 'brightness-0' : 'brightness-0 invert'} transition-all duration-300"
           />
         </a>
       </div>
@@ -537,7 +538,7 @@
         <button
           type="button"
           onclick={openDrawer}
-          class="{isScrolled ? 'text-black' : 'text-white'} p-2 hover:opacity-75 focus:outline-none cursor-pointer transition-opacity group flex items-center justify-center drop-shadow-md"
+          class="{isScrolled ? 'text-black' : 'text-white'} p-2 hover:opacity-75 focus:outline-none cursor-pointer transition-opacity group flex items-center justify-center"
           aria-label="Buka Menu Navigasi"
         >
           <div class="flex flex-col items-end gap-1.5 w-6 sm:w-7">

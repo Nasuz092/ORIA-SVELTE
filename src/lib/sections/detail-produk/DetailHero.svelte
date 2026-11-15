@@ -55,11 +55,11 @@
           <svg class="w-3 h-3 text-neutral-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
           </svg>
-          <span class="text-[#334c54] truncate max-w-[200px] sm:max-w-[280px] font-semibold">{product.sku}</span>
+          <span class="text-[#A3BCC4] truncate max-w-[200px] sm:max-w-[280px] font-semibold">{product.sku}</span>
         </nav>
 
         <!-- Main Model Name (Ukuran font seimbang & elegan, tidak terlalu besar atau terlalu kecil) -->
-        <h1 class="mt-3 sm:mt-4 font-heading font-medium tracking-[0.16em] sm:tracking-[0.2em] text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase text-[#334c54] leading-tight drop-shadow-[0_4px_30px_rgba(0,0,0,0.95)]">
+        <h1 class="mt-3 sm:mt-4 font-heading font-medium tracking-[0.16em] sm:tracking-[0.2em] text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase text-[#A3BCC4] leading-tight drop-shadow-[0_4px_30px_rgba(0,0,0,0.95)]">
           {cleanModelName}
         </h1>
 
@@ -81,7 +81,7 @@
                 class="inline-flex items-center gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-[0.22em] text-neutral-300 hover:text-white transition-colors group cursor-pointer"
               >
                 <span>ESTIMASI HARGA:</span>
-                <span class="text-[#334c54] font-semibold underline underline-offset-4 group-hover:text-white">{product.priceText}</span>
+                <span class="text-[#A3BCC4] font-semibold underline underline-offset-4 group-hover:text-white">{product.priceText}</span>
                 <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5] transition-transform duration-200 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
@@ -102,19 +102,19 @@
               <div class="font-heading font-medium tracking-tight text-white drop-shadow-lg flex items-baseline gap-2 shrink-0">
                 {#if isSize && s.val.includes(' ')}
                   {@const parts = s.val.split(' ')}
-                  <span class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-[#334c54] leading-none">{parts[0]}</span>
-                  <span class="text-sm sm:text-base lg:text-xl font-medium text-[#334c54] tracking-normal">{parts.slice(1).join(' ')}</span>
+                  <span class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-[#A3BCC4] leading-none">{parts[0]}</span>
+                  <span class="text-sm sm:text-base lg:text-xl font-medium text-[#A3BCC4] tracking-normal">{parts.slice(1).join(' ')}</span>
                 {:else if s.val.includes(' ')}
                   {@const parts = s.val.split(' ')}
-                  <span class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium leading-none {isHighlight ? 'text-[#334c54]' : 'text-white'}">{parts[0]}</span>
-                  <span class="text-sm sm:text-base lg:text-xl font-medium tracking-normal {isHighlight ? 'text-[#334c54]' : 'text-neutral-300'}">{parts.slice(1).join(' ')}</span>
+                  <span class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium leading-none {isHighlight ? 'text-[#A3BCC4]' : 'text-white'}">{parts[0]}</span>
+                  <span class="text-sm sm:text-base lg:text-xl font-medium tracking-normal {isHighlight ? 'text-[#A3BCC4]' : 'text-neutral-300'}">{parts.slice(1).join(' ')}</span>
                 {:else}
-                  <span class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-medium leading-none {isHighlight ? 'text-[#334c54]' : 'text-white'}">{s.val}</span>
+                  <span class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-medium leading-none {isHighlight ? 'text-[#A3BCC4]' : 'text-white'}">{s.val}</span>
                 {/if}
               </div>
               <!-- Metric Unit & Subtitle -->
               <div class="space-y-0.5 sm:space-y-1 min-w-0 text-right sm:text-left">
-                <div class="font-sans font-medium text-xs sm:text-sm uppercase tracking-wider {isHighlight ? 'text-[#334c54]' : 'text-white'} drop-shadow-sm truncate">
+                <div class="font-sans font-medium text-xs sm:text-sm uppercase tracking-wider {isHighlight ? 'text-[#A3BCC4]' : 'text-white'} drop-shadow-sm truncate">
                   {s.unit}
                 </div>
                 <div class="font-sans text-xs sm:text-[13px] text-neutral-300 leading-snug line-clamp-2 drop-shadow-sm font-normal">

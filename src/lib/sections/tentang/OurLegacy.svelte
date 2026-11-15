@@ -48,7 +48,7 @@
       style="transform: translate3d(0, {parallaxY}px, 0);"
     >
       <!-- Section Tag / Accent Title -->
-      <h2 class="font-heading font-light text-2xl sm:text-3xl lg:text-4xl tracking-[0.25em] sm:tracking-[0.3em] uppercase text-[#334c54]">
+      <h2 class="font-heading font-light text-2xl sm:text-3xl lg:text-4xl tracking-[0.25em] sm:tracking-[0.3em] uppercase text-[#A3BCC4]">
         OUR LEGACY
       </h2>
 
@@ -59,7 +59,7 @@
         </p>
 
         <!-- Signature Quote / Ethos -->
-        <p class="text-white italic text-sm sm:text-base md:text-lg font-serif border-l-2 border-[#334c54] pl-4 py-1 my-2 text-neutral-200">
+        <p class="text-white italic text-sm sm:text-base md:text-lg font-serif border-l-2 border-[#A3BCC4] pl-4 py-1 my-2 text-neutral-200">
           &lsquo;Presisi tanpa kompromi, efisiensi tanpa batas.&rsquo;
         </p>
 

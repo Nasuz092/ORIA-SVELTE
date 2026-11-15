@@ -49,7 +49,7 @@
     <div class="space-y-6 sm:space-y-8">
       <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 pb-2">
         <div>
-          <div class="font-heading font-black text-xs sm:text-sm uppercase tracking-[0.3em] text-[#334c54]">
+          <div class="font-heading font-black text-xs sm:text-sm uppercase tracking-[0.3em] text-[#A3BCC4]">
             ORIA EDITORIAL DESK
           </div>
           <h2 class="font-heading font-black text-3xl sm:text-4xl uppercase tracking-tight text-white leading-none pt-2">
@@ -76,7 +76,7 @@
             <span>{tab}</span>
             <span
               class="text-[10px] px-1.5 py-0.5 rounded-none {isActive
-                ? 'bg-black text-[#334c54] font-black'
+                ? 'bg-black text-[#A3BCC4] font-black'
                 : 'bg-white/10 text-neutral-400'}"
             >
               {count}
@@ -119,7 +119,7 @@
                   <span>•</span>
                   <span>{a.readingTime}</span>
                 </div>
-                <h3 class="font-heading font-bold text-lg sm:text-xl text-white group-hover:text-[#334c54] leading-snug line-clamp-2 transition-colors">
+                <h3 class="font-heading font-bold text-lg sm:text-xl text-white group-hover:text-[#A3BCC4] leading-snug line-clamp-2 transition-colors">
                   <a href="/artikel/{a.slug}" class="focus:outline-none">
                     {a.title}
                   </a>
@@ -134,7 +134,7 @@
             <div class="pt-5 px-6">
               <a
                 href="/artikel/{a.slug}"
-                class="font-heading font-bold text-xs uppercase tracking-[0.22em] text-[#334c54] group-hover:text-white inline-flex items-center gap-2 transition-colors focus:outline-none"
+                class="font-heading font-bold text-xs uppercase tracking-[0.22em] text-[#A3BCC4] group-hover:text-white inline-flex items-center gap-2 transition-colors focus:outline-none"
               >
                 <span>{a.ctaText || 'BACA ARTIKEL'}</span>
                 <svg

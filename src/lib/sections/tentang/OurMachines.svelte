@@ -37,8 +37,8 @@
       class="lg:col-span-5 space-y-6 sm:space-y-8 max-w-xl transition-transform duration-150 ease-out will-change-transform"
       style="transform: translate3d(0, {parallaxY}px, 0);"
     >
-      <!-- Section Tag / Yellow Accent Title -->
-      <h2 class="font-heading font-light text-2xl sm:text-3xl lg:text-4xl tracking-[0.25em] sm:tracking-[0.3em] uppercase text-[#334c54]">
+      <!-- Section Tag / Accent Title -->
+      <h2 class="font-heading font-light text-2xl sm:text-3xl lg:text-4xl tracking-[0.25em] sm:tracking-[0.3em] uppercase text-[#A3BCC4]">
         OUR MACHINES
       </h2>
 
@@ -71,7 +71,7 @@
       
       <!-- Caption Badge -->
       <div class="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 bg-black/80 backdrop-blur-md px-3.5 py-1.5 border border-white/10 text-[10px] sm:text-xs tracking-wider uppercase text-neutral-300">
-        <span class="text-[#334c54] font-semibold">Macro View</span> &mdash; Linear Guide Rail &amp; Dual Carriage
+        <span class="text-[#A3BCC4] font-semibold">Macro View</span> &mdash; Linear Guide Rail &amp; Dual Carriage
       </div>
     </div>
   </div>

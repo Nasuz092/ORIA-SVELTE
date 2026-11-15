@@ -191,7 +191,7 @@
       <div class="max-w-7xl mx-auto w-full">
         <div class="space-y-3 sm:space-y-4 max-w-3xl">
           <!-- Tag / Heading in Yellow Tracked (Ukuran font seimbang & elegan) -->
-          <h1 class="font-heading font-medium text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-[0.16em] sm:tracking-[0.2em] uppercase text-[#334c54] leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
+          <h1 class="font-heading font-medium text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-[0.16em] sm:tracking-[0.2em] uppercase text-[#A3BCC4] leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
             <span class="block">ORIA</span>
             <span class="block mt-1 sm:mt-1.5 text-white">CONTACT US</span>
           </h1>
@@ -269,7 +269,7 @@
         <!-- Column 1: Surabaya Location -->
         <div class="space-y-3">
           <div class="font-heading font-light text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight uppercase">
-            SURABAYA<span class="text-[#334c54] font-normal">.</span>
+            SURABAYA<span class="text-[#A3BCC4] font-normal">.</span>
           </div>
           <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
             HEADQUARTERS &amp; SHOWROOM
@@ -282,7 +282,7 @@
               href="https://maps.google.com/?q=Ruko+Royal+Town+Gunung+Anyar+Surabaya"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-widest text-[#334c54] animated-underline"
+              class="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-widest text-[#A3BCC4] animated-underline"
             >
               <span>Petunjuk Rute Maps</span>
               <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24">
@@ -295,7 +295,7 @@
         <!-- Column 2: Live Demo & Testing -->
         <div class="space-y-3">
           <div class="font-heading font-light text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight uppercase">
-            LIVE DEMO<span class="text-[#334c54] font-normal">.</span>
+            LIVE DEMO<span class="text-[#A3BCC4] font-normal">.</span>
           </div>
           <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
             LIVE DEMO &amp; TESTING
@@ -311,11 +311,11 @@
             href="https://wa.me/6281252086455?text={encodeURIComponent('Halo tim ORIA, saya ingin berkonsultasi mengenai spesifikasi mesin industri dan penawaran resmi.')}"
             target="_blank"
             rel="noopener noreferrer"
-            class="group flex items-center justify-between w-full font-heading font-light text-4xl sm:text-5xl lg:text-6xl text-white hover:text-[#334c54] transition-colors tracking-tight uppercase"
+            class="group flex items-center justify-between w-full font-heading font-light text-4xl sm:text-5xl lg:text-6xl text-white hover:text-[#A3BCC4] transition-colors tracking-tight uppercase"
           >
-            <span>WHATSAPP<span class="text-[#334c54] font-normal">.</span></span>
+            <span>WHATSAPP<span class="text-[#A3BCC4] font-normal">.</span></span>
             <svg
-              class="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 stroke-current stroke-[2] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 shrink-0 text-white group-hover:text-[#334c54]"
+              class="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 stroke-current stroke-[2] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 shrink-0 text-white group-hover:text-[#A3BCC4]"
               fill="none"
               viewBox="0 0 24 24"
               aria-hidden="true"
@@ -333,7 +333,7 @@
           <div class="pt-2">
             <a
               href="mailto:info@oria.co.id"
-              class="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-widest text-[#334c54] hover:text-black transition-colors"
+              class="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-widest text-[#A3BCC4] hover:text-white transition-colors"
             >
               <span>info@oria.co.id</span>
               <svg class="w-3.5 h-3.5 stroke-current stroke-[2.5]" fill="none" viewBox="0 0 24 24">

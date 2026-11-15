@@ -37,6 +37,8 @@
       class="w-full h-full object-cover object-center lg:object-[center_40%]"
       loading="lazy"
     />
+    <!-- Base Black 70% Overlay -->
+    <div class="absolute inset-0 bg-black/70 pointer-events-none"></div>
     <!-- Subtle Gradient Overlay for Text Legibility (Gradasi hitam ke transparan) -->
     <div class="absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-transparent sm:from-black/80 sm:via-black/30 sm:to-transparent"></div>
   </div>

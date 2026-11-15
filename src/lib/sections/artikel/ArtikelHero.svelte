@@ -23,11 +23,11 @@
       <div class="max-w-xl lg:max-w-2xl space-y-5 sm:space-y-6">
         <!-- Brand & Editorial Kicker -->
         <div class="space-y-2.5">
-          <div class="font-heading font-black text-xs sm:text-sm uppercase tracking-[0.3em] text-[#334c54]">
+          <div class="font-heading font-black text-xs sm:text-sm uppercase tracking-[0.3em] text-[#A3BCC4]">
             ORIA EDITORIAL &middot; PRESS ARCHIVE
           </div>
           <h1 class="font-heading font-light text-3xl sm:text-4xl lg:text-5xl uppercase tracking-[0.16em] sm:tracking-[0.2em] text-white leading-tight">
-            PERSPECTIVES <span class="font-medium text-[#334c54]">IN PRECISION</span>
+            PERSPECTIVES <span class="font-medium text-[#A3BCC4]">IN PRECISION</span>
             <span class="block mt-1 sm:mt-2 text-2xl sm:text-3xl lg:text-4xl font-light text-neutral-200 tracking-[0.2em]">
               &amp; PRINTING INNOVATION
             </span>

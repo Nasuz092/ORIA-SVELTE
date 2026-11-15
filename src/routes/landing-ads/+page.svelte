@@ -53,14 +53,14 @@
     if (activeFilterKey === 'sublim') {
       return allCategories.filter((g) => g.id === 'sublimasi');
     }
+    if (activeFilterKey === 'heat-press') {
+      return allCategories.filter((g) => g.id === 'heat-press');
+    }
+    if (activeFilterKey === 'tekstil') {
+      return allCategories.filter((g) => g.id === 'sublimasi' || g.id === 'heat-press');
+    }
     if (activeFilterKey === 'dtf') {
       return allCategories.filter((g) => g.id === 'dtf-dtg');
-    }
-    if (activeFilterKey === 'uv') {
-      return allCategories.filter((g) => g.id === 'uv');
-    }
-    if (activeFilterKey === 'single-pass') {
-      return allCategories.filter((g) => g.id === 'single-pass');
     }
     if (activeFilterKey === 'outdoor') {
       return allCategories.filter((g) => g.id === 'outdoor');
@@ -108,13 +108,37 @@
     if (activeFilterKey === 'sublim') {
       return {
         key: 'sublim',
-        label: 'Sublimasi & Heat Press',
+        label: 'Mesin Sublim',
         categoryIds: ['sublimasi'],
-        heroBadge: 'TEXTILE & APPAREL CONTINUOUS TRANSFER',
-        heroTitleMain: 'MESIN CETAK SUBLIMASI',
-        heroTitleHighlight: '& HEAT PRESS ROTARY',
-        heroDescription: 'Solusi industri jersey olahraga, hijab printing, apparel sportswear, dan fashion garmen dengan transfer warna tajam, stabil, dan tahan luntur cuci.',
-        waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari Mesin Sublimasi & Heat Press dari iklan Google oria.co.id. Mohon info paket usaha & penawaran promo. Terima kasih.'
+        heroBadge: 'TEXTILE & APPAREL CONTINUOUS SUBLIMATION',
+        heroTitleMain: 'MESIN CETAK SUBLIM',
+        heroTitleHighlight: 'TEKSTIL & JERSEY',
+        heroDescription: 'Solusi industri jersey olahraga, hijab printing, apparel sportswear, dan fashion garmen dengan cetak roll-to-roll berkecepatan tinggi dan warna tajam.',
+        waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari Mesin Sublim dari iklan Google oria.co.id. Mohon info paket usaha & penawaran promo. Terima kasih.'
+      };
+    }
+    if (activeFilterKey === 'heat-press') {
+      return {
+        key: 'heat-press',
+        label: 'Mesin Heat Press',
+        categoryIds: ['heat-press'],
+        heroBadge: 'ROTARY & FLATBED HEAT TRANSFER SYSTEM',
+        heroTitleMain: 'MESIN HEAT PRESS',
+        heroTitleHighlight: 'ROTARY & TRANSFER',
+        heroDescription: 'Mesin press transfer panas rotary dan flatbed presisi industri untuk hasil transfer sublimasi yang merata, tajam, dan tahan luntur cuci.',
+        waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari Mesin Heat Press dari iklan Google oria.co.id. Mohon info spesifikasi & penawaran promo. Terima kasih.'
+      };
+    }
+    if (activeFilterKey === 'tekstil') {
+      return {
+        key: 'tekstil',
+        label: 'Mesin Print Tekstil & Kain',
+        categoryIds: ['sublimasi', 'heat-press'],
+        heroBadge: 'INDUSTRIAL TEXTILE & FABRIC PRINTING',
+        heroTitleMain: 'MESIN PRINT TEKSTIL',
+        heroTitleHighlight: '& SUBLIMASI KAIN',
+        heroDescription: 'Solusi industri cetak tekstil roll-to-roll dan rotary heat press untuk konveksi jersey olahraga, hijab printing, kain motif, dan apparel fashion dengan warna tajam & tahan cuci.',
+        waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari Mesin Print Tekstil & Kain dari iklan Google oria.co.id. Mohon info paket usaha & penawaran promo. Terima kasih.'
       };
     }
     if (activeFilterKey === 'dtf') {
@@ -129,23 +153,11 @@
         waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari Mesin DTF / DTG Sablon Kaos dari iklan Google oria.co.id. Mohon info penawaran promo & paket usaha. Terima kasih.'
       };
     }
-    if (activeFilterKey === 'single-pass') {
-      return {
-        key: 'single-pass',
-        label: 'Single Pass Packaging',
-        categoryIds: ['single-pass'],
-        heroBadge: 'CORRUGATED BOX & PAPER BAG PRINTING',
-        heroTitleMain: 'MESIN CETAK KARDUS',
-        heroTitleHighlight: '& SINGLE PASS PACKAGING',
-        heroDescription: 'Cetak langsung di atas kardus corrugated box, box pizza, dan paper bag berkecepatan tinggi tanpa minimum order dan tanpa biaya plat film.',
-        waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya tertarik dengan Mesin Single Pass Packaging dari iklan Google oria.co.id. Mohon info harga & kapasitas produksi. Terima kasih.'
-      };
-    }
 
     return {
       key: 'all',
       label: 'Semua Mesin Printing',
-      categoryIds: ['outdoor', 'indoor', 'sublimasi', 'dtf-dtg', 'uv', 'single-pass'],
+      categoryIds: ['outdoor', 'indoor', 'sublimasi', 'heat-press', 'dtf-dtg', 'uv'],
       heroBadge: 'INDUSTRIAL DIGITAL PRINTING SYSTEMS',
       heroTitleMain: 'SOLUSI MESIN DIGITAL PRINTING',
       heroTitleHighlight: 'BERGARANSI RESMI',
@@ -157,10 +169,10 @@
   const filterTabs = [
     { key: 'all', label: 'SEMUA MESIN PRINTING' },
     { key: 'digital-printing', label: 'DIGITAL PRINTING (OUTDOOR & INDOOR)' },
-    { key: 'sublim', label: 'SUBLIMASI & HEAT PRESS' },
+    { key: 'sublim', label: 'MESIN SUBLIM' },
+    { key: 'heat-press', label: 'MESIN HEAT PRESS' },
     { key: 'dtf', label: 'DTF APPAREL' },
-    { key: 'uv', label: 'PRINTER UV' },
-    { key: 'single-pass', label: 'SINGLE PASS' }
+    { key: 'uv', label: 'PRINTER UV' }
   ];
 
   function scrollToSection(id: string, e?: MouseEvent) {
@@ -204,14 +216,14 @@
   <div class="relative z-10 w-full max-w-7xl mx-auto flex flex-col justify-center pt-16 sm:pt-20">
     <div class="max-w-3xl space-y-6 sm:space-y-8">
       <!-- Tracked Category Subtitle (Tanpa Pill / Badge, Lotus Style Tracking) -->
-      <p class="font-heading font-light text-xs sm:text-sm tracking-[0.28em] sm:tracking-[0.32em] uppercase text-[#334c54]">
+      <p class="font-heading font-light text-xs sm:text-sm tracking-[0.28em] sm:tracking-[0.32em] uppercase text-[#A3BCC4]">
         {currentIntent.heroBadge}
       </p>
 
       <!-- Main Dynamic Headline: Sharp Luxury Lotus Tracking -->
       <h1 class="font-heading font-bold text-3xl sm:text-5xl lg:text-6xl tracking-[0.12em] sm:tracking-[0.16em] uppercase leading-[1.1] text-white">
         {currentIntent.heroTitleMain} <br />
-        <span class="text-[#334c54]">{currentIntent.heroTitleHighlight}</span>
+        <span class="text-[#A3BCC4]">{currentIntent.heroTitleHighlight}</span>
       </h1>
 
       <!-- Dynamic Value Subheadline -->
@@ -407,7 +419,7 @@
                     <img
                       src={product.cardImageUrl || product.imageUrl || group.heroImage}
                       alt={product.name}
-                      class="w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
+                      class="w-full h-full object-cover {product.cardImageUrl ? 'object-center' : 'object-right'} transition-transform duration-500 ease-out group-hover:scale-105"
                       loading="lazy"
                     />
                   </div>
@@ -439,7 +451,7 @@
                     <!-- Tombol WhatsApp (Templat Pesan Sama Seperti mesinprinting.id) -->
                     <div class="pt-1">
                       <a
-                        href={getWaUrl(`Halo Anugrah Supply Mandiri (ORIA)! Saya tertarik dengan ${product.name} dari website oria.co.id. Apakah boleh minta info lebih detail & penawaran harga terbaik?\n\nLink Produk: ${siteUrl}/produk/${group.id.includes('sublim') ? 'sublimasi' : group.id.includes('dtf') ? 'dtf' : group.id}/${product.slug}`)}
+                        href={getWaUrl(`Halo Anugrah Supply Mandiri (ORIA)! Saya tertarik dengan ${product.name} dari website oria.co.id. Apakah boleh minta info lebih detail & penawaran harga terbaik?\n\nLink Produk: ${siteUrl}/produk/${product.categorySlug || (group.id.includes('sublim') ? 'sublimasi' : group.id.includes('dtf') ? 'dtf' : group.id)}/${product.slug}`)}
                         target="_blank"
                         rel="noopener noreferrer"
                         class="w-full flex items-center justify-center gap-2 py-3 px-3 bg-[#334c54] text-white font-heading font-bold text-[10px] sm:text-xs tracking-[0.14em] uppercase hover:bg-[#273a40] hover:text-white transition-colors duration-200"
@@ -548,7 +560,7 @@
 <section class="w-full bg-[#050508] text-white py-16 sm:py-20 lg:py-24 px-6 sm:px-10 lg:px-16 border-t border-white/10 select-none">
   <div class="max-w-7xl mx-auto">
     <div class="max-w-4xl mx-auto text-center space-y-6">
-      <p class="font-heading font-semibold text-xs tracking-[0.3em] uppercase text-[#334c54]">
+      <p class="font-heading font-semibold text-xs tracking-[0.3em] uppercase text-[#A3BCC4]">
         PENAWARAN TERBATAS KHUSUS BULAN INI
       </p>
 

@@ -8,7 +8,8 @@ export interface AdCategoryConfig {
   subtitle: string;
   description: string;
   heroImage: string;
-  slugs: string[];
+  categorySlugs: string[];
+  slugs?: string[];
 }
 
 export interface AdCategoryGroup {
@@ -31,7 +32,7 @@ export interface AdIntentConfig {
   waContextMessage: string;
 }
 
-// 6 Kategori Mesin Printing Industrial (Tanpa CNC dan Laser Cutting)
+// 6 Kategori Mesin Printing Industrial (Tanpa CNC, Laser Cutting, dan Single Pass)
 const AD_CATEGORIES: AdCategoryConfig[] = [
   {
     id: 'outdoor',
@@ -39,7 +40,7 @@ const AD_CATEGORIES: AdCategoryConfig[] = [
     subtitle: 'HIGH-SPEED INDUSTRIAL BILLBOARD PRINTING',
     description: 'Mesin digital printing outdoor format 3.2 meter dengan sasis baja monokok untuk produksi spanduk dan baliho tahan cuaca ekstrem.',
     heroImage: '/images/categories/outdoor.webp',
-    slugs: ['oria-outdoor-3204-st']
+    categorySlugs: ['mesin-outdoor']
   },
   {
     id: 'indoor',
@@ -47,23 +48,23 @@ const AD_CATEGORIES: AdCategoryConfig[] = [
     subtitle: 'HIGH RESOLUTION FINE-ART & DECAL PRINTING',
     description: 'Mesin digital printing indoor beresolusi fotografi untuk stiker decal kendaraan, wallpaper interior, dan poster pameran.',
     heroImage: '/images/categories/indoor.webp',
-    slugs: [
-      'oria-indoor-3202',
-      'oria-indoor-1802'
-    ]
+    categorySlugs: ['mesin-indoor']
   },
   {
     id: 'sublimasi',
-    name: 'Sublimasi & Heat Press',
-    subtitle: 'TEXTILE & APPAREL CONTINUOUS TRANSFER',
-    description: 'Lini mesin cetak tekstil roll-to-roll dan heat press rotary untuk jersey olahraga, hijab, dan fashion garmen.',
+    name: 'Mesin Sublim',
+    subtitle: 'TEXTILE & APPAREL CONTINUOUS SUBLIMATION',
+    description: 'Lini mesin cetak tekstil roll-to-roll berkecepatan tinggi untuk jersey olahraga, hijab, gamis, dan fashion garmen.',
     heroImage: '/images/categories/sublimasi.webp',
-    slugs: [
-      'oria-sublim-1902',
-      'oria-sublim-1804',
-      'oria-heat-press-1720',
-      'oria-heat-press-1942'
-    ]
+    categorySlugs: ['mesin-sublim']
+  },
+  {
+    id: 'heat-press',
+    name: 'Mesin Heat Press',
+    subtitle: 'ROTARY & FLATBED HEAT TRANSFER SYSTEM',
+    description: 'Mesin press transfer panas rotary dan flatbed presisi industri untuk hasil transfer warna tajam dan tahan cuci.',
+    heroImage: '/images/categories/sublimasi.webp',
+    categorySlugs: ['mesin-heat-press']
   },
   {
     id: 'dtf-dtg',
@@ -71,6 +72,7 @@ const AD_CATEGORIES: AdCategoryConfig[] = [
     subtitle: 'DIRECT TO FILM & DIRECT TO GARMENT',
     description: 'Solusi sablon kaos distro digital dengan shaker powder otomatis dan printer direct-to-garment tanpa transfer paper.',
     heroImage: '/images/categories/dtf.webp',
+    categorySlugs: ['mesin-dtf', 'mesin-dtg'],
     slugs: [
       'oria-dtf-6004',
       'oria-dtg-or-dtg02'
@@ -82,21 +84,12 @@ const AD_CATEGORIES: AdCategoryConfig[] = [
     subtitle: 'DIRECT PRINTING ON FLAT & ROTARY MEDIA',
     description: 'Mesin cetak UV LED presisi tinggi untuk media datar akrilik, kaca, kayu, casing HP, serta tumbler silinder.',
     heroImage: '/images/categories/uv.webp',
+    categorySlugs: ['mesin-uv-flatbed', 'mesin-uv-dtf', 'mesin-uv-cylinder'],
     slugs: [
       'oria-uv-flatbed-a3',
       'oria-uv-dtf-a3',
       'oria-uv-cylinder-e3',
       'oria-uv-laser-marking-5w'
-    ]
-  },
-  {
-    id: 'single-pass',
-    name: 'Single Pass Packaging',
-    subtitle: 'CORRUGATED BOX & PAPER BAG PRINTING',
-    description: 'Mesin cetak digital kemasan karton box dan paper bag berkecepatan tinggi tanpa plat cetak.',
-    heroImage: '/images/categories/single-pass.webp',
-    slugs: [
-      'oria-one-pass-dc800sp'
     ]
   }
 ];
@@ -123,9 +116,9 @@ const INTENT_CONFIGS: Record<string, AdIntentConfig> = {
     waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari Mesin Cetak Banner & Spanduk dari iklan Google oria.co.id. Mohon info pricelist dan penawaran promo. Terima kasih.'
   },
   'tekstil': {
-    key: 'sublim',
+    key: 'tekstil',
     label: 'Mesin Print Tekstil & Kain',
-    categoryIds: ['sublimasi'],
+    categoryIds: ['sublimasi', 'heat-press'],
     heroBadge: 'INDUSTRIAL TEXTILE & FABRIC PRINTING',
     heroTitleMain: 'MESIN PRINT TEKSTIL',
     heroTitleHighlight: '& SUBLIMASI KAIN',
@@ -134,13 +127,23 @@ const INTENT_CONFIGS: Record<string, AdIntentConfig> = {
   },
   'sublim': {
     key: 'sublim',
-    label: 'Sublimasi & Heat Press',
+    label: 'Mesin Sublim',
     categoryIds: ['sublimasi'],
-    heroBadge: 'TEXTILE & APPAREL CONTINUOUS TRANSFER',
-    heroTitleMain: 'MESIN CETAK SUBLIMASI',
-    heroTitleHighlight: '& HEAT PRESS ROTARY',
-    heroDescription: 'Solusi industri jersey olahraga, hijab printing, apparel sportswear, dan fashion garmen dengan transfer warna tajam, stabil, dan tahan luntur cuci.',
-    waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari Mesin Sublimasi & Heat Press dari iklan Google oria.co.id. Mohon info paket usaha & penawaran promo. Terima kasih.'
+    heroBadge: 'TEXTILE & APPAREL CONTINUOUS SUBLIMATION',
+    heroTitleMain: 'MESIN CETAK SUBLIM',
+    heroTitleHighlight: 'TEKSTIL & JERSEY',
+    heroDescription: 'Solusi industri jersey olahraga, hijab printing, apparel sportswear, dan fashion garmen dengan cetak roll-to-roll berkecepatan tinggi dan warna tajam.',
+    waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari Mesin Sublim dari iklan Google oria.co.id. Mohon info paket usaha & penawaran promo. Terima kasih.'
+  },
+  'heat-press': {
+    key: 'heat-press',
+    label: 'Mesin Heat Press',
+    categoryIds: ['heat-press'],
+    heroBadge: 'ROTARY & FLATBED HEAT TRANSFER SYSTEM',
+    heroTitleMain: 'MESIN HEAT PRESS',
+    heroTitleHighlight: 'ROTARY & TRANSFER',
+    heroDescription: 'Mesin press transfer panas rotary dan flatbed presisi industri untuk hasil transfer sublimasi yang merata, tajam, dan tahan luntur cuci.',
+    waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari Mesin Heat Press dari iklan Google oria.co.id. Mohon info spesifikasi & penawaran promo. Terima kasih.'
   },
   'uv': {
     key: 'uv',
@@ -161,16 +164,6 @@ const INTENT_CONFIGS: Record<string, AdIntentConfig> = {
     heroTitleHighlight: '& SABLON KAOS DISTRO',
     heroDescription: 'Inovasi sablon digital kaos distro katun, jersey, canvas bag, dan topi. Dilengkapi shaker powder otomatis dengan efisiensi tinta maksimal.',
     waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya mencari Mesin DTF / DTG Sablon Kaos dari iklan Google oria.co.id. Mohon info penawaran promo & paket usaha. Terima kasih.'
-  },
-  'single-pass': {
-    key: 'single-pass',
-    label: 'Single Pass Packaging',
-    categoryIds: ['single-pass'],
-    heroBadge: 'CORRUGATED BOX & PAPER BAG PRINTING',
-    heroTitleMain: 'MESIN CETAK KARDUS',
-    heroTitleHighlight: '& SINGLE PASS PACKAGING',
-    heroDescription: 'Cetak langsung di atas kardus corrugated box, box pizza, dan paper bag berkecepatan tinggi tanpa minimum order dan tanpa biaya plat film.',
-    waContextMessage: 'Halo Anugrah Supply Mandiri (ORIA)! Saya tertarik dengan Mesin Single Pass Packaging dari iklan Google oria.co.id. Mohon info harga & kapasitas produksi. Terima kasih.'
   },
   'outdoor': {
     key: 'outdoor',
@@ -195,7 +188,7 @@ const INTENT_CONFIGS: Record<string, AdIntentConfig> = {
   'all': {
     key: 'all',
     label: 'Semua Mesin Printing',
-    categoryIds: ['outdoor', 'indoor', 'sublimasi', 'dtf-dtg', 'uv', 'single-pass'],
+    categoryIds: ['outdoor', 'indoor', 'sublimasi', 'heat-press', 'dtf-dtg', 'uv'],
     heroBadge: 'INDUSTRIAL DIGITAL PRINTING SYSTEMS',
     heroTitleMain: 'SOLUSI MESIN DIGITAL PRINTING',
     heroTitleHighlight: 'BERGARANSI RESMI',
@@ -224,7 +217,22 @@ function detectIntent(rawQuery: string): AdIntentConfig {
     return INTENT_CONFIGS['banner'];
   }
 
-  // 2. Variasi Tekstil, Kain, Jersey, Hijab, Garmen -> Sublimasi & Heat Press
+  // 2. Variasi Tekstil, Kain, Jersey, Hijab, Garmen -> Sublim & Heat Press
+  if (
+    q.includes('heatpress') ||
+    q.includes('heat press') ||
+    q.includes('rotary press')
+  ) {
+    return INTENT_CONFIGS['heat-press'];
+  }
+
+  if (
+    q.includes('sublim') ||
+    q.includes('sublimasi')
+  ) {
+    return INTENT_CONFIGS['sublim'];
+  }
+
   if (
     q.includes('tekstil') ||
     q.includes('textile') ||
@@ -233,12 +241,7 @@ function detectIntent(rawQuery: string): AdIntentConfig {
     q.includes('hijab') ||
     q.includes('gamis') ||
     q.includes('garmen') ||
-    q.includes('garment') ||
-    q.includes('sublim') ||
-    q.includes('sublimasi') ||
-    q.includes('heatpress') ||
-    q.includes('heat press') ||
-    q.includes('rotary press')
+    q.includes('garment')
   ) {
     return INTENT_CONFIGS['tekstil'];
   }
@@ -258,24 +261,7 @@ function detectIntent(rawQuery: string): AdIntentConfig {
     return INTENT_CONFIGS['dtf'];
   }
 
-  // 4. Variasi Kardus, Box, Kemasan, Corrugated -> Single Pass Packaging
-  if (
-    q.includes('kardus') ||
-    q.includes('kemasan') ||
-    q.includes('corrugated') ||
-    q.includes('box') ||
-    q.includes('karton') ||
-    q.includes('paper bag') ||
-    q.includes('single pass') ||
-    q.includes('singlepass') ||
-    q.includes('one pass') ||
-    q.includes('onepass') ||
-    q.includes('packaging')
-  ) {
-    return INTENT_CONFIGS['single-pass'];
-  }
-
-  // 5. Variasi UV, Tumbler, Akrilik Cetak, Casing HP, Merchandise -> UV
+  // 4. Variasi UV, Tumbler, Akrilik Cetak, Casing HP, Merchandise -> UV
   if (
     q.includes('uv') ||
     q.includes('flatbed') ||
@@ -348,12 +334,19 @@ export const load: PageServerLoad = async ({ fetch, url, setHeaders }) => {
 
   const allProducts = await fetchOriaProducts(fetch);
 
-  // Map ke 6 grup kategori printing industrial
+  // Map ke 6 grup kategori printing industrial (semua unit per kategori ditampilkan)
   const allCategoryGroups: AdCategoryGroup[] = AD_CATEGORIES.map((cfg) => {
     const matchedProducts: FormattedProduct[] = [];
-    for (const slug of cfg.slugs) {
-      const p = allProducts.find((item) => item.slug === slug || item.slug.toLowerCase() === slug.toLowerCase());
-      if (p) {
+    const seenSlugs = new Set<string>();
+
+    for (const p of allProducts) {
+      const catSlug = p.categorySlug?.toLowerCase() || '';
+      const prodSlug = p.slug?.toLowerCase() || '';
+      const matchesCategory = cfg.categorySlugs.includes(catSlug);
+      const matchesSlug = cfg.slugs ? cfg.slugs.some((s) => s.toLowerCase() === prodSlug) : false;
+
+      if ((matchesCategory || matchesSlug) && !seenSlugs.has(prodSlug)) {
+        seenSlugs.add(prodSlug);
         matchedProducts.push(p);
       }
     }
