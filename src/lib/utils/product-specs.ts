@@ -515,17 +515,21 @@ function cleanStrapiText(text: string): string {
     .replace(/&times;/gi, '×')
     .replace(/&deg;/gi, '°')
     .replace(/&plusmn;/gi, '±')
-    // Fix common encoding artifacts from Strapi HTML imports
+    // 1. Replace 3-question-mark (???) encoding artifacts FIRST
+    .replace(/CO\?\?\?/g, 'CO₂')
+    .replace(/colors\?\?\?([^?]+)\?\?\?/gi, 'colors ($1)')
+    .replace(/^\?\?\?\s*/g, '≤ ')
+    .replace(/\?\?\?/g, '–')
+    // 2. Replace 2-question-mark (??) encoding artifacts
     .replace(/m\?\?\/jam/gi, 'm²/jam')
     .replace(/m\?\?\/h/gi, 'm²/h')
-    .replace(/(\d+)\s*\?\?\s*C\b/gi, '$1 °C')
-    .replace(/(\d+)\?\?C\?\?\?(\d+)\?\?C/gi, '$1°C – $2°C')
-    .replace(/(\d)\s*\?\?\s*(\d)/g, '$1 × $2')
-    .replace(/\(\?\?10%\)/g, '(±10%)')
-    .replace(/^\?\?\s+/g, '± ')
-    .replace(/\?\?\s+(\d)/g, '± $1')
-    .replace(/\s+\?\?\?\s+/g, ' – ')
-    .replace(/\?\?\?/g, '–')
+    .replace(/\?\?m\b/g, 'μm')
+    .replace(/\?\?\s*C\b/gi, '°C')
+    .replace(/([XLP])\s*\?\?\s*([WYHL])/g, '$1 × $2')
+    .replace(/([WYHL])\s*\?\?\s*([HLT])/g, '$1 × $2')
+    .replace(/(\d+(?:\.\d+)?(?:\s*cm)?)\s*\?\?\s*(\d)/g, '$1 × $2')
+    .replace(/\?\?(\s*\d)/g, '±$1')
+    .replace(/\?\?/g, '–')
     .replace(/\s+/g, ' ')
     .trim();
 }
