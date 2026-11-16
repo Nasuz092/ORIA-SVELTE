@@ -1,14 +1,20 @@
 <script lang="ts">
   import type { FormattedProduct } from '$lib/types/product';
-  import type { SpecGroup } from '$lib/utils/product-specs';
+  import { parseStrapiSpecRows, type SpecGroup } from '$lib/utils/product-specs';
 
   let {
     product,
-    detailedSpecs
+    detailedSpecs = { left: [], right: [] }
   }: {
     product: FormattedProduct;
-    detailedSpecs: { left: SpecGroup[]; right: SpecGroup[] };
+    detailedSpecs?: { left: SpecGroup[]; right: SpecGroup[] };
   } = $props();
+
+  let specRows = $derived.by(() => {
+    const authentic = parseStrapiSpecRows(product);
+    if (authentic.length > 0) return authentic;
+    return [...detailedSpecs.left, ...detailedSpecs.right].flatMap((g) => g.items);
+  });
 
   let warrantySectionEl: HTMLElement | null = $state(null);
   let hasAnimated = $state(false);
@@ -72,56 +78,34 @@
       </p>
     </div>
 
-    <!-- 2-Column Grid of Categorized Groups (mesinprintingjersey.id Style) -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-12 lg:gap-x-16 gap-y-12 lg:gap-y-16">
-      <!-- Left Column -->
-      <div class="space-y-12 sm:space-y-14">
-        {#each detailedSpecs.left as group}
-          <div>
-            <h3 class="text-xs sm:text-sm font-bold font-heading tracking-widest text-[#334c54] uppercase mb-4 pb-2.5 border-b border-[#334c54]/30 flex items-center justify-between">
-              <span>{group.title}</span>
-              <span class="w-1.5 h-1.5 rounded-full bg-[#334c54]/70"></span>
-            </h3>
-            <div>
-              {#each group.items as item}
-                <div class="grid grid-cols-12 py-3.5 border-b border-neutral-200 text-xs sm:text-sm items-baseline gap-2 sm:gap-4 transition-colors hover:bg-neutral-50">
-                  <span class="col-span-5 text-neutral-600 font-medium leading-relaxed">
-                    {item.label}
-                  </span>
-                  <span class="col-span-7 text-black font-semibold leading-relaxed">
-                    {item.value}
-                  </span>
-                </div>
-              {/each}
-            </div>
+    <!-- Simple, Clean & Elegant Specification Table (Authentic Strapi Data) -->
+    {#if specRows.length > 0}
+      <div class="max-w-4xl mx-auto overflow-hidden border border-[#D6DBDD] bg-white">
+        <!-- Table Header -->
+        <div class="grid grid-cols-12 bg-[#334c54] text-white font-heading font-bold text-[11px] sm:text-xs uppercase tracking-[0.18em]">
+          <div class="col-span-5 sm:col-span-4 px-4 sm:px-6 py-3.5 sm:py-4">
+            Spesifikasi
           </div>
-        {/each}
-      </div>
+          <div class="col-span-7 sm:col-span-8 px-4 sm:px-6 py-3.5 sm:py-4 border-l border-white/15">
+            Keterangan
+          </div>
+        </div>
 
-      <!-- Right Column -->
-      <div class="space-y-12 sm:space-y-14">
-        {#each detailedSpecs.right as group}
-          <div>
-            <h3 class="text-xs sm:text-sm font-bold font-heading tracking-widest text-[#334c54] uppercase mb-4 pb-2.5 border-b border-[#334c54]/30 flex items-center justify-between">
-              <span>{group.title}</span>
-              <span class="w-1.5 h-1.5 rounded-full bg-[#334c54]/70"></span>
-            </h3>
-            <div>
-              {#each group.items as item}
-                <div class="grid grid-cols-12 py-3.5 border-b border-neutral-200 text-xs sm:text-sm items-baseline gap-2 sm:gap-4 transition-colors hover:bg-neutral-50">
-                  <span class="col-span-5 text-neutral-600 font-medium leading-relaxed">
-                    {item.label}
-                  </span>
-                  <span class="col-span-7 text-black font-semibold leading-relaxed">
-                    {item.value}
-                  </span>
-                </div>
-              {/each}
+        <!-- Table Rows -->
+        <div class="divide-y divide-[#D6DBDD]">
+          {#each specRows as row, idx}
+            <div class="grid grid-cols-12 items-baseline text-xs sm:text-sm transition-colors hover:bg-[#F8F9FA] {idx % 2 === 1 ? 'bg-neutral-50/50' : 'bg-white'}">
+              <div class="col-span-5 sm:col-span-4 px-4 sm:px-6 py-3.5 sm:py-4 text-neutral-600 font-medium leading-relaxed">
+                {row.label}
+              </div>
+              <div class="col-span-7 sm:col-span-8 px-4 sm:px-6 py-3.5 sm:py-4 text-black font-semibold leading-relaxed border-l border-[#D6DBDD]/60">
+                {row.value}
+              </div>
             </div>
-          </div>
-        {/each}
+          {/each}
+        </div>
       </div>
-    </div>
+    {/if}
 
     <!-- Action Button: Download Full Spec & Brochure (Below Spec Tables) -->
     <div class="flex flex-col sm:flex-row items-center justify-center pt-2 sm:pt-4">

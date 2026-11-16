@@ -502,3 +502,59 @@ export function getDetailedSpecColumns(prod: FormattedProduct): { left: SpecGrou
 
   return { left, right };
 }
+
+function cleanStrapiText(text: string): string {
+  return text
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&amp;/gi, '&')
+    .replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>')
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;|&apos;/gi, "'")
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&times;/gi, '×')
+    .replace(/&deg;/gi, '°')
+    .replace(/&plusmn;/gi, '±')
+    // Fix common encoding artifacts from Strapi HTML imports
+    .replace(/m\?\?\/jam/gi, 'm²/jam')
+    .replace(/m\?\?\/h/gi, 'm²/h')
+    .replace(/(\d)\s*\?\?\s*(\d)/g, '$1 × $2')
+    .replace(/(\d+)\?\?C\?\?\?(\d+)\?\?C/gi, '$1°C – $2°C')
+    .replace(/\(\?\?10%\)/g, '(±10%)')
+    .replace(/\s+\?\?\?\s+/g, ' – ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/**
+ * Parse authentic specification rows directly from Strapi specificationsHtml (or descriptionHtml fallback).
+ * Preserves exact labels, values, and order from Strapi without inventing extra rows.
+ */
+export function parseStrapiSpecRows(prod: FormattedProduct): SpecRow[] {
+  const html = prod.specificationsHtml || prod.descriptionHtml || '';
+  if (!html) return [];
+
+  const rows: SpecRow[] = [];
+  const trRegex = /<tr[^>]*>([\s\S]*?)<\/tr>/gi;
+  let trMatch;
+
+  while ((trMatch = trRegex.exec(html)) !== null) {
+    const trInner = trMatch[1];
+    // Skip header rows using <th>
+    if (/<th[\s>]/i.test(trInner) && !/<td[\s>]/i.test(trInner)) continue;
+
+    const tdMatches = [...trInner.matchAll(/<td[^>]*>([\s\S]*?)<\/td>/gi)];
+    if (tdMatches.length >= 2) {
+      const label = cleanStrapiText(tdMatches[0][1])
+        .replace(/^[\s:-]+/, '')
+        .replace(/[\s:-]+$/, '');
+      const value = cleanStrapiText(tdMatches[1][1]).replace(/^[\s:-]+/, '');
+
+      if (label && value && !/^(detail mesin|detail produk|spesifikasi|keterangan(?: spesifikasi)?)$/i.test(label)) {
+        rows.push({ label, value });
+      }
+    }
+  }
+
+  return rows;
+}
