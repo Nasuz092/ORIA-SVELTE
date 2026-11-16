@@ -73,10 +73,10 @@
     <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-2">
       <div class="space-y-3">
         <div class="font-heading font-black text-xs sm:text-sm uppercase tracking-[0.3em] text-[#A3BCC4]">
-          PRESS & KNOWLEDGE PILLARS
+          PILAR PUBLIKASI & WAWASAN
         </div>
         <h2 class="font-heading font-black text-3xl sm:text-4xl lg:text-5xl uppercase tracking-tight text-white leading-none">
-          EXPLORE BY CATEGORY
+          JELAJAHI BERDASARKAN KATEGORI
         </h2>
       </div>
       <p class="font-sans text-xs sm:text-sm text-neutral-400 max-w-md leading-relaxed">
@@ -116,7 +116,7 @@
             <!-- Article Count Pill -->
             <div class="absolute top-4 right-4">
               <span class="inline-block bg-black/75 backdrop-blur-sm text-neutral-300 font-sans text-[11px] font-semibold tracking-wider uppercase px-2.5 py-1">
-                {count} {count === 1 ? 'ARTICLE' : 'ARTICLES'}
+                {count} ARTIKEL
               </span>
             </div>
           </div>
@@ -138,7 +138,7 @@
             <!-- Card Bottom Action with Chevron (Strict: Chevron only, no arrows) -->
             <div class="pt-3 flex items-center justify-between">
               <span class="inline-flex items-center gap-2 font-heading font-bold text-xs uppercase tracking-[0.22em] text-white/90 group-hover:text-[#A3BCC4] transition-colors">
-                <span>VIEW {cat.id.toUpperCase()}</span>
+                <span>LIHAT {cat.id.toUpperCase()}</span>
                 <svg
                   class="w-4 h-4 stroke-current stroke-[2.5] transition-transform duration-300 group-hover:translate-x-1.5"
                   fill="none"

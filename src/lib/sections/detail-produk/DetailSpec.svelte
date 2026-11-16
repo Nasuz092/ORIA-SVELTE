@@ -62,13 +62,13 @@
     <!-- Header: Consistent English Title -->
     <div class="text-center space-y-3 sm:space-y-4">
       <div class="font-mono text-xs uppercase tracking-[0.3em] text-[#334c54]">
-        PERFORMANCE &amp; CAPABILITIES
+        PERFORMA &amp; KAPABILITAS
       </div>
       <h2 class="font-heading font-black text-2xl sm:text-4xl lg:text-5xl uppercase tracking-[0.16em] text-black">
-        TECHNICAL SPECIFICATIONS
+        SPESIFIKASI TEKNIS
       </h2>
       <p class="font-sans text-xs sm:text-sm text-neutral-600 max-w-xl mx-auto leading-relaxed">
-        Official technical parameters and operational specifications for <span class="text-black font-medium">{product.name}</span>.
+        Parameter teknis resmi dan spesifikasi operasional untuk <span class="text-black font-medium">{product.name}</span>.
       </p>
     </div>
 
@@ -135,7 +135,7 @@
         <svg class="w-4 h-4 stroke-white stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M7.5 12L12 16.5m0 0L16.5 12M12 16.5V3" />
         </svg>
-        <span>DOWNLOAD BROCHURE &amp; FULL SPEC</span>
+        <span>UNDUH BROSUR &amp; SPESIFIKASI LENGKAP</span>
         <svg class="w-4 h-4 stroke-white stroke-[3] transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
         </svg>
@@ -146,7 +146,7 @@
     <div bind:this={warrantySectionEl} class="pt-16 sm:pt-24 border-t border-neutral-200 space-y-12 sm:space-y-16">
       <div class="space-y-3 max-w-2xl">
         <h3 class="font-heading font-light text-2xl sm:text-3xl lg:text-4xl tracking-[0.2em] sm:tracking-[0.25em] uppercase text-black">
-          WARRANTY &amp; SERVICES
+          GARANSI &amp; LAYANAN
         </h3>
         <p class="font-sans text-xs sm:text-sm text-neutral-600 max-w-xl leading-relaxed pt-1">
           Standar proteksi investasi dan dukungan operasional resmi dari teknisi pabrikan ORIA.
@@ -158,10 +158,10 @@
         <!-- Stat 1: 1-Year Official Warranty -->
         <div class="space-y-3">
           <div class="font-heading font-light text-5xl sm:text-6xl lg:text-7xl text-black tracking-tight tabular-nums">
-            1<span class="text-[#334c54] font-normal"> YEAR</span>
+            1<span class="text-[#334c54] font-normal"> TAHUN</span>
           </div>
           <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-900 pt-1">
-            OFFICIAL WARRANTY
+            GARANSI RESMI
           </div>
           <p class="text-xs sm:text-sm text-neutral-600 font-sans leading-relaxed">
             Jaminan perlindungan penuh untuk sparepart non-consumable dan servis berkala oleh teknisi resmi pabrikan ORIA.
@@ -174,7 +174,7 @@
             {count100}<span class="text-[#334c54] font-normal">%</span>
           </div>
           <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-900 pt-1">
-            ON-SITE INSTALLATION &amp; TRAINING
+            INSTALASI &amp; PELATIHAN DI LOKASI
           </div>
           <p class="text-xs sm:text-sm text-neutral-600 font-sans leading-relaxed">
             Tim teknisi kami hadir langsung di workshop Anda untuk setting mesin, kalibrasi warna, dan pelatihan operator hingga mahir.
@@ -187,7 +187,7 @@
             {count24}<span class="text-[#334c54] font-normal">/7</span>
           </div>
           <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-900 pt-1">
-            GENUINE CONSUMABLES &amp; SPARE PARTS
+            SUKU CADANG &amp; TINTA RESMI
           </div>
           <p class="text-xs sm:text-sm text-neutral-600 font-sans leading-relaxed">
             Ketersediaan consumable original terjamin berkesinambungan agar jadwal produksi bisnis Anda tidak pernah terhenti.

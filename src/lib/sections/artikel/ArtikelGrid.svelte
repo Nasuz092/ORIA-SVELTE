@@ -50,14 +50,14 @@
       <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 pb-2">
         <div>
           <div class="font-heading font-black text-xs sm:text-sm uppercase tracking-[0.3em] text-[#A3BCC4]">
-            ORIA EDITORIAL DESK
+            MEJA REDAKSI ORIA
           </div>
           <h2 class="font-heading font-black text-3xl sm:text-4xl uppercase tracking-tight text-white leading-none pt-2">
-            LATEST ARTICLES & RELEASES
+            ARTIKEL & RILIS TERBARU
           </h2>
         </div>
         <div class="text-xs sm:text-sm font-sans text-neutral-400">
-          Showing <span class="text-white font-bold">{filteredArticles.length}</span> of {articles.length} publications
+          Menampilkan <span class="text-white font-bold">{filteredArticles.length}</span> dari {articles.length} publikasi
         </div>
       </div>
 

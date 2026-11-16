@@ -48,7 +48,7 @@
       <div class="max-w-xl lg:max-w-3xl xl:max-w-4xl pointer-events-auto pt-28 sm:pt-36 lg:pt-40">
         <!-- Breadcrumbs & Category Bar -->
         <nav class="flex flex-wrap items-center gap-1.5 sm:gap-2 font-mono text-[11px] sm:text-xs uppercase tracking-[0.22em] text-neutral-300 font-medium" aria-label="Breadcrumb">
-          <a href="/produk" class="hover:text-white transition-colors cursor-pointer">CATALOG</a>
+          <a href="/produk" class="hover:text-white transition-colors cursor-pointer">KATALOG</a>
           <svg class="w-3 h-3 text-neutral-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
           </svg>
@@ -73,7 +73,7 @@
           <div class="mt-3 sm:mt-4 flex flex-wrap items-baseline gap-2.5 sm:gap-3 drop-shadow-md">
             {#if product.priceText.startsWith('Rp')}
               <span class="font-mono text-[11px] sm:text-xs uppercase tracking-[0.25em] text-neutral-400">
-                STARTING FROM
+                MULAI DARI
               </span>
               <span class="font-heading font-medium text-xl sm:text-2xl lg:text-3xl text-white tracking-tight tabular-nums">
                 {product.priceText}

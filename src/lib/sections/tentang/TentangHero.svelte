@@ -16,14 +16,14 @@
   <div class="relative z-20 w-full px-6 sm:px-10 lg:px-16 pb-14 sm:pb-18 lg:pb-22">
     <div class="max-w-7xl mx-auto w-full">
       <div class="space-y-3 sm:space-y-4 max-w-3xl">
-        <!-- Tag / Accent Category (Lotus: LOTUS STORY -> ORIA: ORIA STORY) -->
+        <!-- Tag / Accent Category (Lotus: LOTUS STORY -> ORIA: KISAH ORIA) -->
         <div class="font-heading font-black text-xs sm:text-sm tracking-[0.25em] text-[#A3BCC4] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-          ORIA STORY
+          KISAH ORIA
         </div>
 
         <!-- Main Headline (Ukuran font serasi dengan hero produk, font-medium elegan) -->
         <h1 class="font-heading font-medium text-xl sm:text-2xl md:text-3xl lg:text-[2.25rem] tracking-[0.18em] sm:tracking-[0.22em] uppercase text-white leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
-          ABOUT US
+          TENTANG KAMI
         </h1>
 
         <!-- Short Lead -->

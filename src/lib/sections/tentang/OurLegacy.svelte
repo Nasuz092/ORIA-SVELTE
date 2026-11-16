@@ -49,7 +49,7 @@
     >
       <!-- Section Tag / Accent Title -->
       <h2 class="font-heading font-light text-2xl sm:text-3xl lg:text-4xl tracking-[0.25em] sm:tracking-[0.3em] uppercase text-[#A3BCC4]">
-        OUR LEGACY
+        REKAM JEJAK KAMI
       </h2>
 
       <!-- Narrative Body Text (Concise) -->

@@ -3,7 +3,7 @@
   <div class="max-w-7xl mx-auto space-y-12">
     <div class="max-w-2xl space-y-3">
       <h2 class="font-heading font-light text-3xl sm:text-4xl lg:text-5xl tracking-[0.2em] sm:tracking-[0.25em] uppercase text-white leading-tight">
-        ENGINEERING EXCELLENCE
+        KEUNGGULAN REKAYASA
       </h2>
       <p class="font-sans text-sm sm:text-base text-neutral-400 leading-relaxed pt-2">
         Setiap komponen mesin ORIA dipilih secara ketat untuk menahan siklus cetak ribuan meter persegi setiap bulannya.

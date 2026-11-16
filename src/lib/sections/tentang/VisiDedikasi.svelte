@@ -9,7 +9,7 @@
       const vh = window.innerHeight || 800;
       const centerOffset = (rect.top + rect.height / 2 - vh / 2) / vh;
       const clamped = Math.max(-1, Math.min(1, centerOffset));
-      // Parallax halus (maks ±22px) pada konten kartu OUR DEDICATION
+      // Parallax halus (maks ±22px) pada konten kartu DEDIKASI KAMI
       parallaxY = clamped * 22;
     }
 
@@ -32,7 +32,7 @@
   <div class="max-w-7xl mx-auto space-y-10">
     <div class="space-y-2">
       <h2 class="font-heading font-light text-3xl sm:text-4xl lg:text-5xl tracking-[0.2em] sm:tracking-[0.25em] uppercase text-white">
-        OUR DEDICATION
+        DEDIKASI KAMI
       </h2>
     </div>
 
@@ -51,7 +51,7 @@
         style="transform: translate3d(0, {parallaxY}px, 0);"
       >
         <div class="font-heading font-bold text-xs uppercase tracking-[0.28em] text-[#A3BCC4]">
-          ENGINEERED FOR INDUSTRY
+          DIRANCANG UNTUK INDUSTRI
         </div>
         <h3 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl uppercase tracking-wider text-white leading-tight">
           Mendukung Kemandirian Industri Kreatif Indonesia

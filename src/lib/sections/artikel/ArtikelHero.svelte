@@ -24,12 +24,12 @@
         <!-- Brand & Editorial Kicker -->
         <div class="space-y-2.5">
           <div class="font-heading font-black text-xs sm:text-sm uppercase tracking-[0.3em] text-[#A3BCC4]">
-            ORIA EDITORIAL &middot; PRESS ARCHIVE
+            REDAKSI ORIA &middot; ARSIP PUBLIKASI
           </div>
           <h1 class="font-heading font-light text-3xl sm:text-4xl lg:text-5xl uppercase tracking-[0.16em] sm:tracking-[0.2em] text-white leading-tight">
-            PERSPECTIVES <span class="font-medium text-[#A3BCC4]">IN PRECISION</span>
+            PERSPEKTIF <span class="font-medium text-[#A3BCC4]">DALAM PRESISI</span>
             <span class="block mt-1 sm:mt-2 text-2xl sm:text-3xl lg:text-4xl font-light text-neutral-200 tracking-[0.2em]">
-              &amp; PRINTING INNOVATION
+              &amp; INOVASI PERCETAKAN
             </span>
           </h1>
         </div>
@@ -45,7 +45,7 @@
             href="/artikel/digital-print"
             class="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 bg-[#334c54] hover:bg-[#273a40] text-white font-heading font-black text-xs sm:text-sm uppercase tracking-[0.25em] transition-all duration-300 shadow-xl group cursor-pointer"
           >
-            <span>EXPLORE ARTICLES</span>
+            <span>JELAJAHI ARTIKEL</span>
             <svg
               class="w-4 h-4 stroke-white stroke-[3] transition-transform duration-300 group-hover:translate-x-1"
               fill="none"

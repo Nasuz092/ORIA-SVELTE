@@ -74,7 +74,7 @@
 
 {#if gallery.length > 0}
   <!-- ========================================================================= -->
-  <!-- SECTION 3: GALLERY (LOTUS MACHINE GALLERY STYLE - WHITE BACKGROUND)       -->
+  <!-- SECTION 3: GALLERY (LOTUS GALERI MESIN STYLE - WHITE BACKGROUND)       -->
   <!-- ========================================================================= -->
   <section
     id="gallery"
@@ -84,7 +84,7 @@
       <!-- Top Header (English Section Title & Brief Editorial Description) -->
       <div class="space-y-3 sm:space-y-4 max-w-3xl">
         <h2 class="font-heading font-medium tracking-[0.2em] sm:tracking-[0.25em] text-2xl sm:text-3xl lg:text-4xl uppercase text-black leading-tight">
-          MACHINE GALLERY
+          GALERI MESIN
         </h2>
         <p class="font-sans text-xs sm:text-sm text-neutral-600 font-normal leading-relaxed">
           Eksplorasi visual setiap sudut konstruksi baja berat, arsitektur printhead, dan integrasi komponen presisi tinggi dari ORIA {cleanModelName}.

@@ -5,7 +5,7 @@
   <div class="max-w-4xl mx-auto text-center space-y-8 sm:space-y-10">
     <!-- Big Tracked Lotus-Style Title -->
     <h2 class="font-heading font-light text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-[0.25em] sm:tracking-[0.3em] uppercase text-black leading-tight">
-      INDUSTRIAL PRECISION<br />MACHINERY
+      MESIN PRESISI<br />INDUSTRI
     </h2>
 
     <!-- Centered Editorial Narrative (Adapted to Industrial Printing Machinery) -->
@@ -22,7 +22,7 @@
     <!-- Subtitle Label (Lotus: ROAD CARS OVERVIEW) -->
     <div class="pt-8 sm:pt-12">
       <div class="font-mono text-xs sm:text-sm tracking-[0.3em] uppercase text-neutral-400">
-        ORIA MACHINE CATEGORIES
+        KATEGORI MESIN ORIA
       </div>
     </div>
   </div>

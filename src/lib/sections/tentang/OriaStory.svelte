@@ -35,7 +35,7 @@
       class="font-heading font-light text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-[0.22em] sm:tracking-[0.26em] uppercase text-neutral-900 leading-tight transition-transform duration-150 ease-out will-change-transform"
       style="transform: translate3d(0, {parallaxY}px, 0);"
     >
-      ENGINEERED FOR INDUSTRY
+      DIRANCANG UNTUK INDUSTRI
     </h2>
 
     <!-- Centered Editorial Narrative (Adapted to Printing Machine Industry) -->
@@ -49,7 +49,7 @@
       </p>
 
       <p class="text-neutral-600">
-        Sebuah standar performa industri, yang menjadi hasil akhir sekaligus titik awal dalam mengejar keunggulan manufaktur, seiring kami senantiasa didorong oleh inovasi masa depan. Prinsip panduan dalam setiap hal yang kami lakukan, untuk setiap mesin yang kami bangun — <span class="text-neutral-950 font-semibold tracking-wide">Engineered for Industry.</span>
+        Sebuah standar performa industri, yang menjadi hasil akhir sekaligus titik awal dalam mengejar keunggulan manufaktur, seiring kami senantiasa didorong oleh inovasi masa depan. Prinsip panduan dalam setiap hal yang kami lakukan, untuk setiap mesin yang kami bangun — <span class="text-neutral-950 font-semibold tracking-wide">Dirancang untuk Industri.</span>
       </p>
     </div>
   </div>

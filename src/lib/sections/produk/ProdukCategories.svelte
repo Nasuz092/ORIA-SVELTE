@@ -37,7 +37,7 @@
 
             <!-- Button with Chevron (Strict Rule from AGENTS.md: Chevron only, no arrows) -->
             <div class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-neutral-700 group-hover:text-[#334c54] transition-colors">
-              <span>EXPLORE {unitCount > 0 ? `(${unitCount})` : 'MACHINES'}</span>
+              <span>LIHAT {unitCount > 0 ? `(${unitCount})` : 'MESIN'}</span>
               <svg
                 class="w-4 h-4 stroke-current transition-transform duration-300 group-hover:translate-x-1"
                 fill="none"

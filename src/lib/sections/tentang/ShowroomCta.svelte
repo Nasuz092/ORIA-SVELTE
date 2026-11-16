@@ -4,7 +4,7 @@
     <div class="p-8 sm:p-12 lg:p-16 bg-black flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 sm:gap-10">
       <div class="space-y-4 max-w-2xl">
         <h2 class="font-heading font-black text-2xl sm:text-3xl lg:text-4xl uppercase tracking-wider text-white leading-tight">
-          VISIT OUR SHOWROOM
+          KUNJUNGI SHOWROOM KAMI
         </h2>
         <p class="font-sans text-sm sm:text-base text-neutral-300 leading-relaxed font-normal">
           Rasakan langsung kecepatan cetak, detail presisi, dan kestabilan sasis mesin industri ORIA. Anda dapat membawa sample material sendiri untuk uji coba cetak langsung bersama tim engineering kami.
@@ -17,7 +17,7 @@
           href="/kontak"
           class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 bg-[#334c54] hover:bg-[#273a40] text-white font-sans text-xs sm:text-sm font-bold uppercase tracking-[0.22em] transition-colors duration-300 group"
         >
-          <span>BOOK A VISIT</span>
+          <span>JADWALKAN KUNJUNGAN</span>
           <svg
             class="w-4 h-4 stroke-current transition-transform duration-300 group-hover:translate-x-1"
             fill="none"

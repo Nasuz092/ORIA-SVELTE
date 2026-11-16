@@ -38,7 +38,7 @@
         <h2 class="font-heading font-light tracking-[0.22em] sm:tracking-[0.32em] text-3xl sm:text-5xl lg:text-6xl uppercase text-white leading-[1.15]">
           ORIA {cleanModelName}
           <span class="block font-thin tracking-[0.2em] sm:tracking-[0.28em] text-neutral-300 text-2xl sm:text-4xl lg:text-5xl pt-2">
-            INSPECTION & LIVE DEMO
+            INSPEKSI & DEMO LANGSUNG
           </span>
         </h2>
 
@@ -49,7 +49,7 @@
             rel="noopener noreferrer"
             class="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 bg-transparent hover:bg-[#334c54] hover:border-[#334c54] hover:text-white text-white border border-white font-heading font-bold text-xs sm:text-sm uppercase tracking-[0.28em] transition-all duration-300 group select-none cursor-pointer"
           >
-            <span>EXPLORE NOW</span>
+            <span>KONSULTASI SEKARANG</span>
             <svg
               class="w-4 h-4 stroke-current transition-transform duration-300 group-hover:translate-x-1"
               fill="none"

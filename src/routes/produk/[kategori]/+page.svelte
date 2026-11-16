@@ -96,7 +96,7 @@
         >
           <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
-        <span>ALL CATEGORIES</span>
+        <span>SEMUA KATEGORI</span>
       </a>
     </div>
 
@@ -127,7 +127,7 @@
 
               <!-- Tombol Lihat Detail dengan Chevron (Strict Rule: Chevron only, no arrows) -->
               <div class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-neutral-700 group-hover:text-black transition-colors">
-                <span>VIEW SPECIFICATIONS</span>
+                <span>LIHAT SPESIFIKASI</span>
                 <svg
                   class="w-4 h-4 stroke-current transition-transform duration-300 group-hover:translate-x-1"
                   fill="none"

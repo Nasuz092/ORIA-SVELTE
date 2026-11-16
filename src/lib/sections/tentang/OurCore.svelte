@@ -58,7 +58,7 @@
 </script>
 
 <!-- ======================================================================= -->
-<!-- SECTION: Our Core (Lotus "OUR CORE" Style - 3 Value Dispersion Cards)   -->
+<!-- SECTION: Our Core (Lotus "FONDASI KAMI" Style - 3 Value Dispersion Cards)   -->
 <!-- ======================================================================= -->
 <section
   id="our-core"
@@ -66,10 +66,10 @@
   class="w-full bg-white text-black py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 select-none overflow-hidden scroll-mt-14 sm:scroll-mt-16"
 >
   <div class="max-w-7xl mx-auto">
-    <!-- Center-Aligned Editorial Narrative (Lotus "OUR CORE" Style) -->
+    <!-- Center-Aligned Editorial Narrative (Lotus "FONDASI KAMI" Style) -->
     <div class="max-w-3xl mx-auto text-center space-y-6 sm:space-y-7">
       <h2 class="font-heading font-light text-3xl sm:text-4xl lg:text-5xl tracking-[0.25em] sm:tracking-[0.3em] uppercase text-black">
-        OUR CORE
+        FONDASI KAMI
       </h2>
 
       <div class="space-y-4 font-sans text-xs sm:text-sm md:text-base text-neutral-600 font-normal leading-relaxed">

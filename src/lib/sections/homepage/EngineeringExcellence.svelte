@@ -1,5 +1,5 @@
 <script lang="ts">
-  // Section banner sinematik ala Lotus (LEADING THE WAY)
+  // Section banner sinematik ala Lotus (PELOPOR INOVASI INDUSTRI)
   let sectionEl = $state<HTMLElement | null>(null);
   let parallaxY = $state(0);
 
@@ -10,7 +10,7 @@
       const vh = window.innerHeight || 800;
       const centerOffset = (rect.top + rect.height / 2 - vh / 2) / vh;
       const clamped = Math.max(-1, Math.min(1, centerOffset));
-      // Parallax halus (maks ±20px) untuk blok teks LEADING THE WAY
+      // Parallax halus (maks ±20px) untuk blok teks PELOPOR INOVASI INDUSTRI
       parallaxY = clamped * 20;
     }
 
@@ -54,7 +54,7 @@
     >
       <!-- Section Title (Lotus Style) -->
       <h2 class="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl uppercase tracking-[0.22em] text-white leading-[1.15]">
-        LEADING THE WAY
+        PELOPOR INOVASI INDUSTRI
       </h2>
 
       <!-- Subtitle Description -->
@@ -68,7 +68,7 @@
           href="/tentang"
           class="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 border border-white text-white hover:bg-[#334c54] hover:border-[#334c54] hover:text-white font-sans text-xs sm:text-sm font-bold uppercase tracking-[0.25em] transition-all duration-300 group bg-transparent focus:outline-none"
         >
-          <span>LEARN MORE</span>
+          <span>SELENGKAPNYA</span>
           <svg
             class="w-4 h-4 stroke-current transition-transform duration-300 group-hover:translate-x-1"
             fill="none"

@@ -21,10 +21,10 @@
     <!-- Header: Wide letter spacing (Lotus Freedom style) -->
     <div class="space-y-3 sm:space-y-4">
       <div class="font-mono text-[10px] sm:text-xs uppercase tracking-[0.35em] text-[#A3BCC4]">
-        ENGINEERING & PERFORMANCE
+        REKAYASA & PERFORMA
       </div>
       <h2 class="font-heading font-light tracking-[0.22em] sm:tracking-[0.32em] text-2xl sm:text-4xl lg:text-5xl uppercase text-white leading-tight">
-        BUILT FOR MARATHON PRODUCTION
+        DIRANCANG UNTUK PRODUKSI MARATON
       </h2>
     </div>
 
@@ -54,18 +54,18 @@
     <!-- 3 Pillars of Precision (Minimalist Grid - English Headers) -->
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 pt-8 sm:pt-12 border-t border-white/15 max-w-3xl mx-auto">
       <div class="space-y-1 text-center">
-        <div class="font-heading font-bold text-xl sm:text-2xl text-[#A3BCC4] tracking-tight">24/7 HEAVY DUTY</div>
-        <div class="font-mono text-[10px] uppercase tracking-widest text-neutral-400">INDUSTRIAL STABILITY</div>
+        <div class="font-heading font-bold text-xl sm:text-2xl text-[#A3BCC4] tracking-tight">OPERASIONAL 24/7</div>
+        <div class="font-mono text-[10px] uppercase tracking-widest text-neutral-400">STABILITAS INDUSTRI</div>
         <p class="font-sans text-xs text-neutral-300">Rigid chasis untuk produksi maraton stabil.</p>
       </div>
       <div class="space-y-1 text-center">
-        <div class="font-heading font-bold text-xl sm:text-2xl text-white tracking-tight">MICRON PRECISION</div>
-        <div class="font-mono text-[10px] uppercase tracking-widest text-neutral-400">MOTOR & GANTRY ACCURACY</div>
+        <div class="font-heading font-bold text-xl sm:text-2xl text-white tracking-tight">PRESISI MIKRON</div>
+        <div class="font-mono text-[10px] uppercase tracking-widest text-neutral-400">AKURASI MOTOR & GANTRY</div>
         <p class="font-sans text-xs text-neutral-300">Sistem linier pemandu tanpa vibrasi.</p>
       </div>
       <div class="space-y-1 text-center">
-        <div class="font-heading font-bold text-xl sm:text-2xl text-[#A3BCC4] tracking-tight">ZERO COMPROMISE</div>
-        <div class="font-mono text-[10px] uppercase tracking-widest text-neutral-400">OFFICIAL WARRANTY & SUPPORT</div>
+        <div class="font-heading font-bold text-xl sm:text-2xl text-[#A3BCC4] tracking-tight">TANPA KOMPROMI</div>
+        <div class="font-mono text-[10px] uppercase tracking-widest text-neutral-400">GARANSI & DUKUNGAN RESMI</div>
         <p class="font-sans text-xs text-neutral-300">Teknisi standby & ketersediaan sparepart.</p>
       </div>
     </div>

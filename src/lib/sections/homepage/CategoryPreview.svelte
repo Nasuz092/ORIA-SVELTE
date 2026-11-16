@@ -15,7 +15,7 @@
       defaultHref: '/produk/outdoor/oria-outdoor-3204-st',
       image: '/images/categories/outdoor.webp',
       imgClass: 'max-h-[160px] sm:max-h-[200px] md:max-h-[235px] lg:max-h-[255px] max-w-[98%]',
-      ctaText: 'DISCOVER'
+      ctaText: 'JELAJAHI'
     },
     {
       id: 'uv',
@@ -25,7 +25,7 @@
       defaultHref: '/produk/uv/oria-uv-flatbed-a3',
       image: '/images/categories/uv.webp',
       imgClass: 'max-h-[175px] sm:max-h-[220px] md:max-h-[255px] lg:max-h-[275px] max-w-[85%]',
-      ctaText: 'DISCOVER'
+      ctaText: 'JELAJAHI'
     },
     {
       id: 'sublimasi',
@@ -35,7 +35,7 @@
       defaultHref: '/produk/sublimasi/oria-sublim-1902',
       image: '/images/categories/sublimasi.webp',
       imgClass: 'max-h-[170px] sm:max-h-[215px] md:max-h-[250px] lg:max-h-[270px] max-w-[95%]',
-      ctaText: 'DISCOVER'
+      ctaText: 'JELAJAHI'
     },
     {
       id: 'laser',
@@ -45,7 +45,7 @@
       defaultHref: '/produk/laser/oria-laser-cutting-6040',
       image: '/images/categories/laser.webp',
       imgClass: 'max-h-[170px] sm:max-h-[215px] md:max-h-[250px] lg:max-h-[270px] max-w-[85%]',
-      ctaText: 'DISCOVER'
+      ctaText: 'JELAJAHI'
     },
     {
       id: 'dtf',
@@ -55,7 +55,7 @@
       defaultHref: '/produk/dtf/oria-dtf-6004',
       image: '/images/categories/dtf.webp',
       imgClass: 'max-h-[175px] sm:max-h-[220px] md:max-h-[255px] lg:max-h-[275px] max-w-[85%]',
-      ctaText: 'DISCOVER'
+      ctaText: 'JELAJAHI'
     },
     {
       id: 'dtg',
@@ -65,7 +65,7 @@
       defaultHref: '/produk/dtg/oria-dtg-or-dtg02',
       image: '/images/categories/dtg.webp',
       imgClass: 'max-h-[175px] sm:max-h-[220px] md:max-h-[255px] lg:max-h-[275px] max-w-[85%]',
-      ctaText: 'DISCOVER'
+      ctaText: 'JELAJAHI'
     },
     {
       id: 'indoor',
@@ -75,7 +75,7 @@
       defaultHref: '/produk/indoor/oria-indoor-3202',
       image: '/images/categories/indoor.webp',
       imgClass: 'max-h-[170px] sm:max-h-[215px] md:max-h-[250px] lg:max-h-[270px] max-w-[95%]',
-      ctaText: 'DISCOVER'
+      ctaText: 'JELAJAHI'
     },
     {
       id: 'cnc',
@@ -85,7 +85,7 @@
       defaultHref: '/produk/cnc/oria-cnc-metal-6090',
       image: '/images/categories/cnc.webp',
       imgClass: 'max-h-[175px] sm:max-h-[220px] md:max-h-[255px] lg:max-h-[275px] max-w-[75%]',
-      ctaText: 'DISCOVER'
+      ctaText: 'JELAJAHI'
     }
   ];
 
@@ -107,7 +107,7 @@
         href: match ? `/produk/${getProductCategoryId(match)}/${match.slug}` : cat.defaultHref,
         image: cat.image,
         imgClass: cat.imgClass,
-        ctaText: 'DISCOVER',
+        ctaText: 'JELAJAHI',
         count
       };
     });
@@ -187,10 +187,10 @@
 </script>
 
 <section class="relative w-full bg-white text-black pt-10 pb-14 sm:pt-12 sm:pb-16 lg:pt-14 lg:pb-20 overflow-hidden select-none">
-  <!-- Top Center Header (Lotus Style: OUR MODELS) -->
+  <!-- Top Center Header (Lotus Style: MODEL KAMI) -->
   <div class="text-center mb-6 sm:mb-8">
     <h2 class="font-heading font-bold text-base sm:text-lg lg:text-xl uppercase tracking-[0.3em] text-neutral-800">
-      OUR MODELS
+      MODEL KAMI
     </h2>
   </div>
 

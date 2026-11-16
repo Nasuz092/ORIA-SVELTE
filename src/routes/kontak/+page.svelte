@@ -193,12 +193,12 @@
           <!-- Tag / Heading in Yellow Tracked (Ukuran font seimbang & elegan) -->
           <h1 class="font-heading font-medium text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-[0.16em] sm:tracking-[0.2em] uppercase text-[#A3BCC4] leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
             <span class="block">ORIA</span>
-            <span class="block mt-1 sm:mt-1.5 text-white">CONTACT US</span>
+            <span class="block mt-1 sm:mt-1.5 text-white">HUBUNGI KAMI</span>
           </h1>
 
           <!-- Subtitle in White Tracked Uppercase -->
           <div class="font-heading font-medium text-xs sm:text-sm md:text-base tracking-[0.28em] text-white uppercase pt-1 sm:pt-2 drop-shadow-md">
-            CENTRES &amp; CONSULTATION
+            PUSAT LAYANAN &amp; KONSULTASI
           </div>
         </div>
       </div>
@@ -216,7 +216,7 @@
           PUSAT LAYANAN &amp; KONSULTASI RESMI
         </div>
         <h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-black uppercase tracking-tight leading-tight">
-          HOW CAN WE ASSIST YOUR BUSINESS?
+          BAGAIMANA KAMI DAPAT MEMBANTU BISNIS ANDA?
         </h2>
         <p class="font-sans text-xs sm:text-sm md:text-base text-neutral-600 leading-relaxed">
           Hubungi konsultan teknis ORIA untuk konsultasi pemilihan unit mesin, analisa kebutuhan workshop, serta penjadwalan demo privat langsung di Flagship Showroom.
@@ -231,7 +231,7 @@
           rel="noopener noreferrer"
           class="inline-flex items-center justify-center gap-3 px-6 py-4 bg-[#334c54] text-white font-heading font-bold text-xs uppercase tracking-[0.2em] hover:bg-[#273a40] transition-colors shadow-sm"
         >
-          <span>WHATSAPP HOTLINE</span>
+          <span>HOTLINE WHATSAPP</span>
           <svg class="w-4 h-4 stroke-black stroke-[2.5]" fill="none" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
           </svg>
@@ -257,7 +257,7 @@
       <!-- Section Heading (Exact OUR CAPACITY Lotus Style) -->
       <div class="space-y-3 max-w-2xl">
         <h2 class="font-heading font-light text-3xl sm:text-4xl lg:text-5xl tracking-[0.2em] sm:tracking-[0.25em] uppercase text-white">
-          FLAGSHIP SHOWROOM &amp; EXPERIENCE
+          SHOWROOM UTAMA &amp; UJI COBA
         </h2>
         <p class="font-sans text-sm sm:text-base text-neutral-400 max-w-xl leading-relaxed pt-1">
           Saksikan langsung demo operasional, uji cetak bahan Anda sendiri, dan diskusikan kalkulasi ROI bersama insinyur aplikasi ORIA.
@@ -272,7 +272,7 @@
             SURABAYA<span class="text-[#A3BCC4] font-normal">.</span>
           </div>
           <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
-            HEADQUARTERS &amp; SHOWROOM
+            KANTOR PUSAT &amp; SHOWROOM
           </div>
           <p class="text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed">
             Ruko Royal Town Blok RB8, Gunung Anyar, Surabaya, Jawa Timur 60294. Lokasi strategis dengan display unit mesin industri lengkap.
@@ -295,10 +295,10 @@
         <!-- Column 2: Live Demo & Testing -->
         <div class="space-y-3">
           <div class="font-heading font-light text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight uppercase">
-            LIVE DEMO<span class="text-[#A3BCC4] font-normal">.</span>
+            DEMO LANGSUNG<span class="text-[#A3BCC4] font-normal">.</span>
           </div>
           <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
-            LIVE DEMO &amp; TESTING
+            DEMO &amp; UJI COBA LANGSUNG
           </div>
           <p class="text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed">
             Unit aktif siap uji: ORIA Sublim, ORIA DTF, dan ORIA Outdoor.
@@ -356,7 +356,7 @@
           FORMULIR KONSULTASI RESMI
         </div>
         <h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-black uppercase tracking-tight">
-          REQUEST QUOTATION &amp; SPECIFICATIONS
+          MINTA PENAWARAN &amp; SPESIFIKASI
         </h2>
         <p class="font-sans text-xs sm:text-sm md:text-base text-neutral-600 leading-relaxed">
           Isi rincian kebutuhan usaha Anda di bawah ini untuk terhubung langsung dengan konsultan teknis ORIA.
@@ -579,7 +579,7 @@
   </section>
 
   <!-- ======================================================================= -->
-  <!-- 5. "HOW CAN WE DO BETTER?" BANNER SECTION (Industrial Machinery Aesthetic)-->
+  <!-- 5. "BAGAIMANA KAMI BISA LEBIH BAIK?" BANNER SECTION (Industrial Machinery Aesthetic)-->
   <!-- ======================================================================= -->
   <section class="relative w-full bg-[#050508] text-white overflow-hidden py-24 sm:py-32 lg:py-36 min-h-[440px] flex items-center">
     <!-- Background Image with Fade (New Industrial Printing Machinery) -->
@@ -601,7 +601,7 @@
     <div class="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
       <div class="max-w-xl space-y-6">
         <h2 class="font-heading font-bold text-2xl sm:text-3xl lg:text-4xl text-white uppercase tracking-tight leading-tight">
-          HOW CAN WE DO BETTER?
+          BAGAIMANA KAMI BISA LEBIH BAIK?
         </h2>
         <div class="space-y-4 font-sans text-xs sm:text-sm md:text-base text-neutral-300 leading-relaxed">
           <p>

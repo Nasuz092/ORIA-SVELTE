@@ -236,7 +236,7 @@
       <!-- Center Column: MODELS -->
       <div class="md:col-span-3 lg:col-span-3 space-y-4">
         <h4 class="font-heading font-bold text-sm sm:text-base uppercase tracking-[0.22em] text-white font-bold">
-          MODELS
+          MODEL MESIN
         </h4>
         <ul class="space-y-2.5 font-sans text-sm sm:text-[15px] text-white/90">
           <li>
@@ -285,7 +285,7 @@
       <!-- Right Column: ABOUT ORIA -->
       <div class="md:col-span-4 lg:col-span-4 space-y-4">
         <h4 class="font-heading font-bold text-sm sm:text-base uppercase tracking-[0.22em] text-white font-bold">
-          ABOUT ORIA
+          TENTANG ORIA
         </h4>
         <ul class="space-y-2.5 font-sans text-sm sm:text-[15px] text-white/90">
           <li>
@@ -324,13 +324,13 @@
       <!-- Legal Links -->
       <div class="flex flex-wrap items-center justify-center sm:justify-start gap-6 sm:gap-8">
         <a href="/terms-conditions" class="hover:text-neutral-300 transition-colors">
-          Terms and Conditions
+          Syarat dan Ketentuan
         </a>
         <a href="/privacy" class="hover:text-neutral-300 transition-colors">
-          Privacy Notice
+          Kebijakan Privasi
         </a>
         <a href="/cookie-statement" class="hover:text-neutral-300 transition-colors">
-          Cookie Statement
+          Pernyataan Cookie
         </a>
       </div>
 

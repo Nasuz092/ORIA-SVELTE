@@ -164,7 +164,7 @@
   ];
 
   const secondaryNavLinks = [
-    { name: 'Discover ORIA', href: '/tentang' },
+    { name: 'Tentang ORIA', href: '/tentang' },
     { name: 'Katalog Semua Mesin', href: '/produk' },
     { name: 'Artikel & Wawasan', href: '/artikel' },
     { name: 'Kontak & Showroom', href: '/kontak' }
@@ -186,13 +186,13 @@
   let hasSubNav = $derived(isTentang || isProductDetail || isArtikelCategory);
 
   const tentangSubNavItems = [
-    { id: 'oria-story', label: 'STORY' },
-    { id: 'our-legacy', label: 'LEGACY' },
-    { id: 'our-machines', label: 'MACHINES' },
-    { id: 'our-core', label: 'CORE' },
-    { id: 'standar-rekayasa', label: 'ENGINEERING' },
-    { id: 'kapasitas-layanan', label: 'CAPACITY' },
-    { id: 'visi-dedikasi', label: 'DEDICATION' },
+    { id: 'oria-story', label: 'KISAH' },
+    { id: 'our-legacy', label: 'REKAM JEJAK' },
+    { id: 'our-machines', label: 'MESIN' },
+    { id: 'our-core', label: 'FONDASI' },
+    { id: 'standar-rekayasa', label: 'REKAYASA' },
+    { id: 'kapasitas-layanan', label: 'KAPASITAS' },
+    { id: 'visi-dedikasi', label: 'DEDIKASI' },
     { id: 'showroom', label: 'SHOWROOM' }
   ];
 
@@ -200,24 +200,24 @@
     const hasGallery = Boolean(page.data?.product?.galleryUrls && page.data.product.galleryUrls.length > 0);
     if (hasGallery) {
       return [
-        { id: 'overview', label: 'OVERVIEW' },
-        { id: 'story', label: 'STORY' },
-        { id: 'gallery', label: 'GALLERY' },
-        { id: 'spec', label: 'SPEC' }
+        { id: 'overview', label: 'RINGKASAN' },
+        { id: 'story', label: 'KISAH' },
+        { id: 'gallery', label: 'GALERI' },
+        { id: 'spec', label: 'SPESIFIKASI' }
       ];
     }
     return [
-      { id: 'overview', label: 'OVERVIEW' },
-      { id: 'story', label: 'STORY' },
-      { id: 'spec', label: 'SPEC' }
+      { id: 'overview', label: 'RINGKASAN' },
+      { id: 'story', label: 'KISAH' },
+      { id: 'spec', label: 'SPESIFIKASI' }
     ];
   });
 
   const artikelSubNavItems = [
     { id: 'digital-print', label: 'DIGITAL PRINT', href: '/artikel/digital-print' },
-    { id: 'business', label: 'BUSINESS', href: '/artikel/business' },
-    { id: 'insight', label: 'INSIGHT', href: '/artikel/insight' },
-    { id: 'product', label: 'PRODUCT', href: '/artikel/product' },
+    { id: 'business', label: 'BISNIS', href: '/artikel/business' },
+    { id: 'insight', label: 'WAWASAN', href: '/artikel/insight' },
+    { id: 'product', label: 'PRODUK', href: '/artikel/product' },
     { id: 'trivia', label: 'TRIVIA', href: '/artikel/trivia' }
   ];
 

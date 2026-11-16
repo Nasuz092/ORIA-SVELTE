@@ -10,7 +10,7 @@
       const vh = window.innerHeight || 800;
       const centerOffset = (rect.top + rect.height / 2 - vh / 2) / vh;
       const clamped = Math.max(-1, Math.min(1, centerOffset));
-      // Parallax halus (maks ±22px) untuk blok teks OUR DEDICATION
+      // Parallax halus (maks ±22px) untuk blok teks DEDIKASI KAMI
       parallaxY = clamped * 22;
     }
 
@@ -51,7 +51,7 @@
     >
       <!-- Title -->
       <h2 class="font-heading font-medium text-2xl sm:text-3xl lg:text-4xl uppercase tracking-[0.25em] text-white leading-tight drop-shadow-md">
-        OUR DEDICATION
+        DEDIKASI KAMI
       </h2>
 
       <!-- Description (Disesuaikan khusus industri percetakan digital skala industri) -->
@@ -65,7 +65,7 @@
           href="/tentang"
           class="inline-flex items-center gap-3 px-7 sm:px-8 py-3.5 sm:py-4 border border-white text-white hover:bg-white hover:text-black font-sans text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] transition-all duration-300 backdrop-blur-xs group"
         >
-          <span>OUR VISION</span>
+          <span>VISI KAMI</span>
           <svg
             class="w-4 h-4 stroke-current transition-transform duration-300 group-hover:translate-x-1"
             fill="none"

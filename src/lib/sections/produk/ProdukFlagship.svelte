@@ -195,7 +195,7 @@
           href={models[activeIndex].href}
           class="group inline-flex items-center gap-3 border border-white/80 hover:border-white px-7 sm:px-9 py-3 sm:py-3.5 text-xs sm:text-sm font-semibold uppercase tracking-[0.22em] text-white hover:bg-white hover:text-black transition-all duration-300 shadow-xl"
         >
-          <span>EXPLORE {models[activeIndex].name}</span>
+          <span>EKSPLORASI {models[activeIndex].name}</span>
           <svg
             class="w-4 h-4 stroke-current transition-transform duration-300 group-hover:translate-x-1"
             fill="none"

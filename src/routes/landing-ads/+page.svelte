@@ -272,7 +272,7 @@
     <!-- Header (Clean Lotus Style Tanpa Pill / Badge) -->
     <div class="space-y-2 max-w-2xl">
       <p class="font-heading font-semibold text-xs tracking-[0.28em] uppercase text-[#334c54]">
-        OUR CAPACITY &amp; STANDARDS
+        KAPASITAS &amp; STANDAR KAMI
       </p>
       <h2 class="font-heading font-bold text-2xl sm:text-4xl tracking-[0.16em] uppercase text-black leading-tight">
         KAPASITAS LAYANAN &amp; NILAI RESMI ORIA
@@ -303,7 +303,7 @@
           100<span class="text-[#334c54] font-normal">%</span>
         </div>
         <div class="text-[11px] sm:text-xs font-heading font-bold uppercase tracking-[0.2em] text-neutral-900">
-          OFFICIAL WARRANTY
+          GARANSI RESMI
         </div>
         <p class="text-[11px] sm:text-xs text-neutral-600 font-sans leading-relaxed">
           Jaminan garansi resmi unit dan proteksi suku cadang elektrik.

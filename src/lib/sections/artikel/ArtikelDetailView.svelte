@@ -115,7 +115,7 @@
       };
     }
     return {
-      topic: 'ENGINEERING & PRODUCTION',
+      topic: 'REKAYASA & PRODUKSI',
       image: '/images/engineering-excellence.png',
       headline: 'WUJUDKAN KREASI INDUSTRIAL.<br />PRODUKSI PRESISI TANPA BATAS.',
       subtitle:
@@ -407,7 +407,7 @@
       <h2
         class="text-2xl sm:text-3xl lg:text-4xl font-heading font-bold uppercase text-black tracking-wider mb-8 sm:mb-12"
       >
-        READ MORE
+        BACA JUGA
       </h2>
 
       <!-- 3 Columns Grid -->

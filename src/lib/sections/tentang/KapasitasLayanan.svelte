@@ -60,7 +60,7 @@
     <!-- Header: Clean Title in English (Lotus Style) -->
     <div class="space-y-3 max-w-2xl">
       <h2 class="font-heading font-light text-3xl sm:text-4xl lg:text-5xl tracking-[0.2em] sm:tracking-[0.25em] uppercase text-white">
-        OUR CAPACITY
+        KAPASITAS KAMI
       </h2>
       <p class="font-sans text-sm sm:text-base text-neutral-400 max-w-xl leading-relaxed pt-1">
         Komitmen nyata dan integritas kemitraan jangka panjang yang telah dipercaya oleh ratusan pengusaha percetakan di Indonesia.
@@ -75,7 +75,7 @@
           {count500}<span class="text-[#A3BCC4] font-normal">+</span>
         </div>
         <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
-          UNITS INSTALLED
+          UNIT TERPASANG
         </div>
         <p class="text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed">
           Beroperasi aktif di berbagai provinsi di Indonesia.
@@ -88,7 +88,7 @@
           {count100}<span class="text-[#A3BCC4] font-normal">%</span>
         </div>
         <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
-          OFFICIAL WARRANTY
+          GARANSI RESMI
         </div>
         <p class="text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed">
           Jaminan keaslian komponen dan proteksi investasi unit.
@@ -101,7 +101,7 @@
           {count24}<span class="text-[#A3BCC4] font-normal">/7</span>
         </div>
         <div class="text-xs sm:text-sm font-heading font-bold uppercase tracking-[0.2em] text-neutral-200 pt-1">
-          TECHNICAL SUPPORT
+          DUKUNGAN TEKNIS
         </div>
         <p class="text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed">
           Konsultasi cepat dan penanganan teknisi tersertifikasi.

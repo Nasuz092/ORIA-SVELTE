@@ -36,8 +36,8 @@
       style="transform: translate3d(0, {parallaxY}px, 0);"
     >
       <h2 class="font-heading font-light text-3xl sm:text-4xl lg:text-5xl tracking-[0.22em] sm:tracking-[0.26em] uppercase leading-[1.15] text-black">
-        <span class="block">ENGINEERED</span>
-        <span class="block mt-1 sm:mt-2">FOR INDUSTRY</span>
+        <span class="block">DIRANCANG</span>
+        <span class="block mt-1 sm:mt-2">UNTUK INDUSTRI</span>
       </h2>
     </div>
 
@@ -52,7 +52,7 @@
       </p>
 
       <p class="text-neutral-700">
-        Standar rekayasa presisi untuk meningkatkan efisiensi dan skala kapasitas bisnis Anda — <span class="text-black font-semibold tracking-wide">Engineered for Industry.</span>
+        Standar rekayasa presisi untuk meningkatkan efisiensi dan skala kapasitas bisnis Anda — <span class="text-black font-semibold tracking-wide">Dirancang untuk Industri.</span>
       </p>
     </div>
   </div>

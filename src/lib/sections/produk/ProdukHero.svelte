@@ -20,13 +20,13 @@
       <div class="space-y-3 sm:space-y-4 max-w-3xl">
       <!-- Tag / Category in Yellow Tracked Heading (Ukuran font seimbang & elegan) -->
       <h1 class="font-heading font-medium text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-[0.16em] sm:tracking-[0.2em] uppercase text-[#A3BCC4] leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
-        <span class="block">ORIA</span>
-        <span class="block mt-1 sm:mt-1.5">MACHINERY</span>
+        <span class="block">MESIN</span>
+        <span class="block mt-1 sm:mt-1.5">ORIA</span>
       </h1>
 
       <!-- Subtitle in White Tracked Uppercase -->
       <div class="font-heading font-medium text-xs sm:text-sm md:text-base tracking-[0.28em] text-white uppercase pt-1 sm:pt-2 drop-shadow-md">
-        INDUSTRIAL MACHINERY
+        MESIN INDUSTRI PRESISI
       </div>
       </div>
     </div>
