@@ -267,7 +267,7 @@
 <!-- ================================================================= -->
 <!-- SECTION 2: OUR CAPACITY / VALUES (60% White / Light Clean Theme)  -->
 <!-- ================================================================= -->
-<section class="w-full bg-[#F8F9FA] text-black py-16 sm:py-20 lg:py-24 px-6 sm:px-10 lg:px-16 border-b border-black/10 select-none">
+<section class="w-full bg-[#F8F9FA] text-black py-16 sm:py-20 lg:py-24 px-6 sm:px-10 lg:px-16 select-none">
   <div class="max-w-7xl mx-auto space-y-12 sm:space-y-16">
     <!-- Header (Clean Lotus Style Tanpa Pill / Badge) -->
     <div class="space-y-2 max-w-2xl">
@@ -499,7 +499,7 @@
 <!-- ================================================================= -->
 <!-- SECTION 4: AFTERSALES & NATIONAL COVERAGE (60% Light Background)  -->
 <!-- ================================================================= -->
-<section class="w-full bg-[#F3F4F6] text-black py-16 sm:py-20 lg:py-24 px-6 sm:px-10 lg:px-16 border-t border-neutral-200 select-none">
+<section class="w-full bg-[#F3F4F6] text-black py-16 sm:py-20 lg:py-24 px-6 sm:px-10 lg:px-16 select-none">
   <div class="max-w-7xl mx-auto space-y-10">
     <div class="max-w-2xl space-y-2">
       <p class="font-heading font-semibold text-xs sm:text-sm tracking-[0.28em] uppercase text-[#334c54]">
@@ -557,7 +557,7 @@
 <!-- ================================================================= -->
 <!-- SECTION 5: FINAL HIGH-CONVERSION CTA (30% Black Contrast)         -->
 <!-- ================================================================= -->
-<section class="w-full bg-[#050508] text-white py-16 sm:py-20 lg:py-24 px-6 sm:px-10 lg:px-16 border-t border-white/10 select-none">
+<section class="w-full bg-[#050508] text-white py-16 sm:py-20 lg:py-24 px-6 sm:px-10 lg:px-16 select-none">
   <div class="max-w-7xl mx-auto">
     <div class="max-w-4xl mx-auto text-center space-y-6">
       <p class="font-heading font-semibold text-xs tracking-[0.3em] uppercase text-[#A3BCC4]">

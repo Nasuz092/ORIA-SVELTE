@@ -2,7 +2,7 @@
   // Section Dual Showcase (Lotus Inspired 2-Column Grid: Produk & Tentang ORIA)
 </script>
 
-<section class="w-full bg-white text-black py-16 border-t border-[#D6DBDD] sm:py-24 lg:py-32 px-6 sm:px-10 lg:px-16 select-none">
+<section class="w-full bg-white text-black py-16 sm:py-24 lg:py-32 px-6 sm:px-10 lg:px-16 select-none">
   <div class="max-w-7xl mx-auto">
     <!-- Section Top Header Title (Lotus-style tracked uppercase) -->
     <div class="mb-8 sm:mb-12 lg:mb-16">

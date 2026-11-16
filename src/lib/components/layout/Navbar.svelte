@@ -303,7 +303,7 @@
   <!-- 2-TIER SUBNAV NAVBAR (Produk Detail, Tentang, Kategori Artikel)  -->
   <!-- ================================================================= -->
   <header
-    class="w-full fixed top-0 left-0 z-40 pointer-events-auto transition-colors duration-300 {isScrolled ? 'bg-white/95 text-black border-b border-black/10 shadow-sm backdrop-blur-md' : 'bg-transparent text-white'}"
+    class="w-full fixed top-0 left-0 z-40 pointer-events-auto transition-colors duration-300 {isScrolled ? 'bg-white/95 text-black shadow-sm backdrop-blur-md' : 'bg-transparent text-white'}"
   >
     <!-- ROW 1: Controls (Language on Left, Centered Logo, Hamburger on Right) -->
     <div class="relative w-full h-14 sm:h-16 flex items-center justify-between px-6 sm:px-10 lg:px-16 transition-colors duration-300">
@@ -404,7 +404,7 @@
 
     <!-- ROW 2: Subnav Row -->
     <div
-      class="w-full h-11 sm:h-12 flex items-center overflow-x-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden overscroll-x-contain transition-colors duration-300 {isScrolled ? '' : 'border-b border-white/15'}"
+      class="w-full h-11 sm:h-12 flex items-center overflow-x-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden overscroll-x-contain transition-colors duration-300"
     >
       <div class="min-w-full w-max flex items-center px-6 sm:px-10 lg:px-16 {isProductDetail ? 'justify-center' : 'md:justify-center'}">
         <nav
@@ -451,8 +451,8 @@
   <!-- ================================================================= -->
   <header
     class="w-full fixed top-0 left-0 z-40 transition-colors duration-300 pointer-events-auto {isScrolled
-      ? 'bg-white/95 text-black shadow-sm border-b border-black/10 backdrop-blur-md'
-      : 'bg-transparent text-white border-b border-transparent'}"
+      ? 'bg-white/95 text-black shadow-sm backdrop-blur-md'
+      : 'bg-transparent text-white'}"
   >
     <div class="relative w-full h-14 sm:h-16 flex items-center justify-between px-6 sm:px-10 lg:px-16">
       <!-- Left: Language Translate Selector Button -->

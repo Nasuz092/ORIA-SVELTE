@@ -28,7 +28,7 @@
   });
 </script>
 
-<section bind:this={sectionEl} class="w-full bg-white text-black py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 select-none overflow-hidden border-t border-[#D6DBDD]">
+<section bind:this={sectionEl} class="w-full bg-white text-black py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 select-none overflow-hidden">
   <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
     <!-- Left Column: Big elegant uppercase tracked heading (Subtle Parallax) -->
     <div
