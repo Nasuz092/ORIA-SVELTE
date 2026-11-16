@@ -1,12 +1,12 @@
 export const SITE_URL = (process.env.SITE_URL || 'https://oria.co.id').replace(/\/$/, '');
 
 export const DEFAULT_SEO = {
-  siteName: 'oria.co.id — ORIA Industrial Printing',
-  title: 'ORIA Indonesia — Mesin Digital Printing Industrial Presisi & Solusi Cetak Modern',
+  siteName: 'ORIA Printing',
+  title: 'ORIA Printing — Mesin Digital Printing Industrial Presisi & Solusi Cetak Modern',
   description:
-    'Pusat teknologi dan rekayasa mesin digital printing industrial di Indonesia. Solusi terdepan printer UV flatbed, DTF apparel, laser cutting, CNC router, dan sublimasi tekstil bergaransi resmi.',
+    'Pusat mesin digital printing terpercaya di Indonesia. Solusi terdepan mesin digital printing UV flatbed, DTF apparel, sublimasi tekstil, outdoor & indoor bergaransi resmi.',
   keywords:
-    'oria, mesin digital printing oria, oria industrial printing, printer uv flatbed oria, mesin dtf oria, printer sublimasi oria, fiber laser cutting oria, cnc router oria, mesin ecosolvent oria, oria indonesia',
+    'mesin digital printing, jual mesin digital printing, harga mesin digital printing, mesin digital printing indonesia, mesin digital printing surabaya, oria printing, mesin digital printing oria, printer uv flatbed, mesin dtf, printer sublimasi, mesin ecosolvent',
   defaultImage: 'https://oria.co.id/images/contact/hero-desktop.png',
   locale: 'id_ID',
   robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
@@ -16,7 +16,7 @@ export const COMPANY_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   '@id': `${SITE_URL}/#Organization`,
-  name: 'ORIA Industrial Printing',
+  name: 'ORIA Printing',
   alternateName: 'ORIA Indonesia',
   url: SITE_URL,
   email: 'info@oria.co.id',
@@ -34,7 +34,7 @@ export const COMPANY_SCHEMA = {
     '@id': `${SITE_URL}/#logo`,
     url: `${SITE_URL}/images/oria-logo-hd.png`,
     contentUrl: `${SITE_URL}/images/oria-logo-hd.png`,
-    caption: 'ORIA Industrial Printing',
+    caption: 'ORIA Printing',
     inLanguage: 'id-ID'
   },
   image: {
@@ -88,12 +88,12 @@ export const WEBSITE_SCHEMA = {
   '@type': 'WebSite',
   '@id': `${SITE_URL}/#website`,
   url: SITE_URL,
-  name: 'ORIA Industrial Printing',
+  name: 'ORIA Printing',
   description: DEFAULT_SEO.description,
   publisher: {
     '@type': 'Organization',
     '@id': `${SITE_URL}/#Organization`,
-    name: 'ORIA Industrial Printing',
+    name: 'ORIA Printing',
     url: SITE_URL
   },
   potentialAction: [

@@ -343,7 +343,7 @@
 
           <!-- Dropdown Menu -->
           <div
-            class="absolute top-full left-0 mt-2 z-50 min-w-[170px] bg-white border border-black/15 shadow-2xl py-1.5 rounded-none backdrop-blur-md animate-in fade-in slide-in-from-top-2 duration-200"
+            class="absolute top-full left-0 mt-5 sm:mt-6 z-50 min-w-[170px] bg-white border border-black/15 shadow-2xl py-1.5 rounded-none backdrop-blur-md animate-in fade-in slide-in-from-top-2 duration-200"
             role="listbox"
           >
             {#each languages as lang}
@@ -491,7 +491,7 @@
 
           <!-- Dropdown Menu -->
           <div
-            class="absolute top-full left-0 mt-2 z-50 min-w-[170px] bg-white border border-black/15 shadow-2xl py-1.5 rounded-none backdrop-blur-md animate-in fade-in slide-in-from-top-2 duration-200"
+            class="absolute top-full left-0 mt-5 sm:mt-6 z-50 min-w-[170px] bg-white border border-black/15 shadow-2xl py-1.5 rounded-none backdrop-blur-md animate-in fade-in slide-in-from-top-2 duration-200"
             role="listbox"
           >
             {#each languages as lang}

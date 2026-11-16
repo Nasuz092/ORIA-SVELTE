@@ -27,9 +27,9 @@
 </script>
 
 <SEO
-  title="ORIA Indonesia — Mesin Digital Printing Industrial Presisi & Solusi Cetak Modern"
-  description="Pusat teknologi dan rekayasa mesin digital printing industrial di Indonesia. Solusi terdepan printer UV flatbed, DTF apparel, laser cutting, CNC router, dan sublimasi tekstil bergaransi resmi."
-  keywords="mesin digital printing, jual mesin digital printing, mesin digital printing oria, UV flatbed, DTF apparel, printer sublim, laser cutting, CNC router, ecosolvent, oria indonesia, mesin printing surabaya"
+  title="ORIA Printing — Mesin Digital Printing Industrial Presisi & Solusi Cetak Modern"
+  description="Pusat mesin digital printing terpercaya di Indonesia. Solusi terdepan mesin digital printing UV flatbed, DTF apparel, sublimasi tekstil, outdoor & indoor bergaransi resmi."
+  keywords="mesin digital printing, jual mesin digital printing, harga mesin digital printing, mesin digital printing indonesia, mesin digital printing surabaya, oria printing, mesin digital printing oria, printer uv flatbed, mesin dtf, printer sublimasi, mesin ecosolvent"
   canonical="/"
   customSchemas={[featuredItemListSchema]}
 />
