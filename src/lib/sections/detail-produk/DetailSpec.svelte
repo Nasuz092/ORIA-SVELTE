@@ -78,27 +78,29 @@
       </p>
     </div>
 
-    <!-- Simple, Clean & Elegant Specification Table (Authentic Strapi Data) -->
+    <!-- Editorial Luxury Specification Table: Borderless Outside, No Vertical Lines, Horizontal Dividers Only -->
     {#if specRows.length > 0}
-      <div class="max-w-4xl mx-auto overflow-hidden border border-[#D6DBDD] bg-white">
-        <!-- Table Header -->
-        <div class="grid grid-cols-12 bg-[#334c54] text-white font-heading font-bold text-[11px] sm:text-xs uppercase tracking-[0.18em]">
-          <div class="col-span-5 sm:col-span-4 px-4 sm:px-6 py-3.5 sm:py-4">
+      <div class="max-w-4xl mx-auto">
+        <!-- Refined Header Row (No Solid Box, Crisp 2px Brand Teal Bottom Border) -->
+        <div class="grid grid-cols-12 items-center border-b-2 border-[#334c54] pb-3.5 px-2 sm:px-4 text-[11px] sm:text-xs font-heading font-bold uppercase tracking-[0.22em] text-[#334c54]">
+          <div class="col-span-5 sm:col-span-4">
             Spesifikasi
           </div>
-          <div class="col-span-7 sm:col-span-8 px-4 sm:px-6 py-3.5 sm:py-4 border-l border-white/15">
-            Keterangan
+          <div class="col-span-7 sm:col-span-8 flex items-center justify-between">
+            <span>Keterangan</span>
+            <span class="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-[#334c54]"></span>
           </div>
         </div>
 
-        <!-- Table Rows -->
+        <!-- Horizontal-Only Rows -->
         <div class="divide-y divide-[#D6DBDD]">
-          {#each specRows as row, idx}
-            <div class="grid grid-cols-12 items-baseline text-xs sm:text-sm transition-colors hover:bg-[#F8F9FA] {idx % 2 === 1 ? 'bg-neutral-50/50' : 'bg-white'}">
-              <div class="col-span-5 sm:col-span-4 px-4 sm:px-6 py-3.5 sm:py-4 text-neutral-600 font-medium leading-relaxed">
-                {row.label}
+          {#each specRows as row}
+            <div class="group grid grid-cols-12 items-baseline py-4 sm:py-4.5 px-2 sm:px-4 text-xs sm:text-sm transition-colors duration-200 hover:bg-[#334c54]/[0.03]">
+              <div class="col-span-5 sm:col-span-4 pr-4 text-neutral-500 group-hover:text-[#334c54] font-medium leading-relaxed transition-colors duration-200 flex items-baseline gap-2.5">
+                <span class="hidden sm:inline-block w-1 h-1 rounded-full bg-[#D6DBDD] group-hover:bg-[#334c54] shrink-0 transition-colors duration-200"></span>
+                <span>{row.label}</span>
               </div>
-              <div class="col-span-7 sm:col-span-8 px-4 sm:px-6 py-3.5 sm:py-4 text-black font-semibold leading-relaxed border-l border-[#D6DBDD]/60">
+              <div class="col-span-7 sm:col-span-8 text-black font-semibold leading-relaxed">
                 {row.value}
               </div>
             </div>

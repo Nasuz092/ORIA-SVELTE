@@ -60,7 +60,7 @@
       'ORIA Indoor 1802',
       'ORIA Indoor 1902',
       'ORIA Indoor 1902 8 Warna',
-      'ORIA Indoor 3202'
+      'ORIA Outdoor 3202'
     ],
     'Single Pass Packaging': [
       'ORIA One Pass DC800SP'

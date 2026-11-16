@@ -15,78 +15,6 @@ export interface CategoryInfo {
 
 export const CATEGORIES: CategoryInfo[] = [
   {
-    id: 'uv',
-    name: 'UV Flatbed & Cylinder',
-    heroLine1: 'ORIA',
-    heroLine2: 'UV FLATBED',
-    heroSubtitle: 'PRESISI CETAK DATAR & SILINDER ROTARY',
-    heroImage: '/images/categories/card-uv.webp',
-    heroImageMobile: '/images/categories/mobile/uv.webp',
-    cardImage: '/images/categories/uv.webp',
-    alt: 'Mesin UV Flatbed & Rotary Printing ORIA',
-    description: 'Jelajahi seluruh mesin UV Flatbed & Rotary Cylinder ORIA untuk percetakan resolusi tinggi pada media datar, akrilik, kayu, kaca, dan silinder.'
-  },
-  {
-    id: 'sublimasi',
-    name: 'Sublimasi Textile',
-    heroLine1: 'ORIA',
-    heroLine2: 'SUBLIMASI',
-    heroSubtitle: 'CETAK TEKSTIL & APPAREL KECEPATAN TINGGI',
-    heroImage: '/images/categories/card-sublimasi.webp',
-    heroImageMobile: '/images/categories/mobile/sublimasi.webp',
-    cardImage: '/images/categories/sublimasi.webp',
-    alt: 'Mesin Textile Sublimasi Printing ORIA',
-    description: 'Inovasi mesin printing sublimasi textile dan heat press ORIA untuk produksi massal jersey olahraga, hijab, fashion, dan kain roll-to-roll.'
-  },
-  {
-    id: 'laser',
-    name: 'Laser Cutting & Engraving',
-    heroLine1: 'ORIA',
-    heroLine2: 'LASER CUTTING',
-    heroSubtitle: 'SISTEM LASER CO2 & FIBER PRESISI TINGGI',
-    heroImage: '/images/categories/card-laser.webp',
-    heroImageMobile: '/images/categories/mobile/laser.webp',
-    cardImage: '/images/categories/laser.webp',
-    alt: 'Mesin Laser Cutting CO2 & Engraving ORIA',
-    description: 'Koleksi mesin laser cutting CO2 dan fiber laser ORIA dengan presisi mikron untuk pemotongan dan grafir akrilik, kayu, MDF, kain, dan plat metal.'
-  },
-  {
-    id: 'cnc',
-    name: 'CNC Router & Fabrication',
-    heroLine1: 'ORIA',
-    heroLine2: 'CNC ROUTER',
-    heroSubtitle: 'FABRIKASI BERAT & PENGERJAAN KAYU',
-    heroImage: '/images/categories/card-cnc.webp',
-    heroImageMobile: '/images/categories/mobile/cnc.webp',
-    cardImage: '/images/categories/cnc.webp',
-    alt: 'Mesin CNC Router & Woodworking ORIA',
-    description: 'Mesin CNC router dan plasma cutting berdaya tahan tinggi untuk pemotongan presisi plat besi, ACP, kayu solid, PVC foam board, dan aluminium.'
-  },
-  {
-    id: 'dtf',
-    name: 'DTF Film Printing',
-    heroLine1: 'ORIA',
-    heroLine2: 'DTF FILM',
-    heroSubtitle: 'SISTEM PRODUKSI DIRECT TO FILM',
-    heroImage: '/images/categories/card-dtf.webp',
-    heroImageMobile: '/images/categories/mobile/dtf.webp',
-    cardImage: '/images/categories/dtf.webp',
-    alt: 'Mesin DTF Digital Transfer Film ORIA',
-    description: 'Sistem cetak DTF (Direct to Film) ORIA berkecepatan tinggi dengan shaker powder otomatis untuk sablon kaos distro, apparel custom, topi, dan merchandise.'
-  },
-  {
-    id: 'dtg',
-    name: 'DTG Direct to Garment',
-    heroLine1: 'ORIA',
-    heroLine2: 'DTG APPAREL',
-    heroSubtitle: 'SISTEM CETAK KAOS LANGSUNG PRESISI',
-    heroImage: '/images/categories/card-dtg.webp',
-    heroImageMobile: '/images/categories/mobile/dtg.webp',
-    cardImage: '/images/categories/dtg.webp',
-    alt: 'Mesin DTG Direct to Garment ORIA',
-    description: 'Mesin cetak kaos langsung DTG (Direct to Garment) ORIA beresolusi fotografi untuk cetak kaos katun distro, hoodie, dan kain garmen tanpa transfer paper.'
-  },
-  {
     id: 'outdoor',
     name: 'Outdoor Solvent Printing',
     heroLine1: 'ORIA',
@@ -109,6 +37,78 @@ export const CATEGORIES: CategoryInfo[] = [
     cardImage: '/images/categories/indoor.webp',
     alt: 'Mesin Printing Indoor Eco-Solvent ORIA',
     description: 'Mesin digital printing indoor eco-solvent ORIA dengan resolusi fotografi untuk stiker ritel, banner indoor, wallcovering estetis, dan pameran.'
+  },
+  {
+    id: 'sublimasi',
+    name: 'Sublimasi Textile',
+    heroLine1: 'ORIA',
+    heroLine2: 'SUBLIMASI',
+    heroSubtitle: 'CETAK TEKSTIL & APPAREL KECEPATAN TINGGI',
+    heroImage: '/images/categories/card-sublimasi.webp',
+    heroImageMobile: '/images/categories/mobile/sublimasi.webp',
+    cardImage: '/images/categories/sublimasi.webp',
+    alt: 'Mesin Textile Sublimasi Printing ORIA',
+    description: 'Inovasi mesin printing sublimasi textile dan heat press ORIA untuk produksi massal jersey olahraga, hijab, fashion, dan kain roll-to-roll.'
+  },
+  {
+    id: 'uv',
+    name: 'UV Flatbed & Cylinder',
+    heroLine1: 'ORIA',
+    heroLine2: 'UV FLATBED',
+    heroSubtitle: 'PRESISI CETAK DATAR & SILINDER ROTARY',
+    heroImage: '/images/categories/card-uv.webp',
+    heroImageMobile: '/images/categories/mobile/uv.webp',
+    cardImage: '/images/categories/uv.webp',
+    alt: 'Mesin UV Flatbed & Rotary Printing ORIA',
+    description: 'Jelajahi seluruh mesin UV Flatbed & Rotary Cylinder ORIA untuk percetakan resolusi tinggi pada media datar, akrilik, kayu, kaca, dan silinder.'
+  },
+  {
+    id: 'dtg',
+    name: 'DTG Direct to Garment',
+    heroLine1: 'ORIA',
+    heroLine2: 'DTG APPAREL',
+    heroSubtitle: 'SISTEM CETAK KAOS LANGSUNG PRESISI',
+    heroImage: '/images/categories/card-dtg.webp',
+    heroImageMobile: '/images/categories/mobile/dtg.webp',
+    cardImage: '/images/categories/dtg.webp',
+    alt: 'Mesin DTG Direct to Garment ORIA',
+    description: 'Mesin cetak kaos langsung DTG (Direct to Garment) ORIA beresolusi fotografi untuk cetak kaos katun distro, hoodie, dan kain garmen tanpa transfer paper.'
+  },
+  {
+    id: 'dtf',
+    name: 'DTF Film Printing',
+    heroLine1: 'ORIA',
+    heroLine2: 'DTF FILM',
+    heroSubtitle: 'SISTEM PRODUKSI DIRECT TO FILM',
+    heroImage: '/images/categories/card-dtf.webp',
+    heroImageMobile: '/images/categories/mobile/dtf.webp',
+    cardImage: '/images/categories/dtf.webp',
+    alt: 'Mesin DTF Digital Transfer Film ORIA',
+    description: 'Sistem cetak DTF (Direct to Film) ORIA berkecepatan tinggi dengan shaker powder otomatis untuk sablon kaos distro, apparel custom, topi, dan merchandise.'
+  },
+  {
+    id: 'cnc',
+    name: 'CNC Router & Fabrication',
+    heroLine1: 'ORIA',
+    heroLine2: 'CNC ROUTER',
+    heroSubtitle: 'FABRIKASI BERAT & PENGERJAAN KAYU',
+    heroImage: '/images/categories/card-cnc.webp',
+    heroImageMobile: '/images/categories/mobile/cnc.webp',
+    cardImage: '/images/categories/cnc.webp',
+    alt: 'Mesin CNC Router & Woodworking ORIA',
+    description: 'Mesin CNC router dan plasma cutting berdaya tahan tinggi untuk pemotongan presisi plat besi, ACP, kayu solid, PVC foam board, dan aluminium.'
+  },
+  {
+    id: 'laser',
+    name: 'Laser Cutting & Engraving',
+    heroLine1: 'ORIA',
+    heroLine2: 'LASER CUTTING',
+    heroSubtitle: 'SISTEM LASER CO2 & FIBER PRESISI TINGGI',
+    heroImage: '/images/categories/card-laser.webp',
+    heroImageMobile: '/images/categories/mobile/laser.webp',
+    cardImage: '/images/categories/laser.webp',
+    alt: 'Mesin Laser Cutting CO2 & Engraving ORIA',
+    description: 'Koleksi mesin laser cutting CO2 dan fiber laser ORIA dengan presisi mikron untuk pemotongan dan grafir akrilik, kayu, MDF, kain, dan plat metal.'
   },
   {
     id: 'single-pass',

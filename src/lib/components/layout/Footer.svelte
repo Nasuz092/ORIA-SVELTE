@@ -270,8 +270,8 @@
             </a>
           </li>
           <li>
-            <a href="/produk/indoor/oria-indoor-3202" class="hover:text-neutral-300 transition-colors">
-              ORIA Indoor 3202
+            <a href="/produk/outdoor/oria-outdoor-3202" class="hover:text-neutral-300 transition-colors">
+              ORIA Outdoor 3202
             </a>
           </li>
           <li>

@@ -153,14 +153,15 @@
 
   // Kategori produk terurut berdasarkan mesin terbanyak di database
   const productCategories = [
-    { title: 'Laser Cutting', desc: 'Akrilik, Kayu, MDF, ACP', href: '/produk/laser' },
+    { title: 'Outdoor Printing', desc: 'Spanduk, Baliho, Billboard', href: '/produk/outdoor' },
     { title: 'Indoor Printing', desc: 'Sticker, Banner, Display', href: '/produk/indoor' },
-    { title: 'UV Printing', desc: 'Flatbed & Cylinder', href: '/produk/uv' },
     { title: 'Sublimasi', desc: 'Textile & Fashion', href: '/produk/sublimasi' },
-    { title: 'CNC Router', desc: 'Fabrikasi & Woodworking', href: '/produk/cnc' },
-    { title: 'DTF', desc: 'Custom Apparel & Film', href: '/produk/dtf' },
+    { title: 'UV Printing', desc: 'Flatbed & Cylinder', href: '/produk/uv' },
     { title: 'DTG', desc: 'Direct to Kaos & Kain', href: '/produk/dtg' },
-    { title: 'Outdoor Printing', desc: 'Spanduk, Baliho, Billboard', href: '/produk/outdoor' }
+    { title: 'DTF', desc: 'Custom Apparel & Film', href: '/produk/dtf' },
+    { title: 'CNC Router', desc: 'Fabrikasi & Woodworking', href: '/produk/cnc' },
+    { title: 'Laser Cutting', desc: 'Akrilik, Kayu, MDF, ACP', href: '/produk/laser' },
+    { title: 'Single Pass', desc: 'Kemasan Karton & Box', href: '/produk/single-pass' }
   ];
 
   const secondaryNavLinks = [

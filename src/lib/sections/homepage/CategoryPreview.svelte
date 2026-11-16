@@ -70,9 +70,9 @@
     {
       id: 'indoor',
       title: 'Indoor Printing',
-      defaultTagline: 'ORIA INDOOR 3202',
+      defaultTagline: 'ORIA INDOOR 1902',
       defaultDesc: 'Hasil cetak foto, poster, sticker, dan POSM display beresolusi tajam hingga lebar 3,2 meter.',
-      defaultHref: '/produk/indoor/oria-indoor-3202',
+      defaultHref: '/produk/indoor/oria-indoor-1902',
       image: '/images/categories/indoor.webp',
       imgClass: 'max-h-[170px] sm:max-h-[215px] md:max-h-[250px] lg:max-h-[270px] max-w-[95%]',
       ctaText: 'JELAJAHI'

@@ -518,10 +518,14 @@ function cleanStrapiText(text: string): string {
     // Fix common encoding artifacts from Strapi HTML imports
     .replace(/m\?\?\/jam/gi, 'm²/jam')
     .replace(/m\?\?\/h/gi, 'm²/h')
-    .replace(/(\d)\s*\?\?\s*(\d)/g, '$1 × $2')
+    .replace(/(\d+)\s*\?\?\s*C\b/gi, '$1 °C')
     .replace(/(\d+)\?\?C\?\?\?(\d+)\?\?C/gi, '$1°C – $2°C')
+    .replace(/(\d)\s*\?\?\s*(\d)/g, '$1 × $2')
     .replace(/\(\?\?10%\)/g, '(±10%)')
+    .replace(/^\?\?\s+/g, '± ')
+    .replace(/\?\?\s+(\d)/g, '± $1')
     .replace(/\s+\?\?\?\s+/g, ' – ')
+    .replace(/\?\?\?/g, '–')
     .replace(/\s+/g, ' ')
     .trim();
 }
