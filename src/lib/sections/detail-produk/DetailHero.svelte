@@ -23,12 +23,12 @@
   <div class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
     <picture class="w-full h-full block overflow-hidden">
       {#if product.mainImageMobileUrl}
-        <source media="(max-width: 640px)" srcset={product.mainImageMobileUrl} />
+        <source media="(max-width: 639px)" srcset={product.mainImageMobileUrl} />
       {/if}
       <img
         src={product.mainImageDesktopUrl || product.imageUrl}
         alt={product.name}
-        class="w-full h-full object-cover object-right select-none"
+        class="w-full h-full object-cover object-center sm:object-right select-none"
         loading="eager"
       />
     </picture>
