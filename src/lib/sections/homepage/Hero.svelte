@@ -141,9 +141,9 @@
 
         <!-- Layer Gradient Hitam ke Transparan (Dari kiri hitam ke kanan transparan) -->
         <!-- Mobile: Gradasi hitam (atas) ke transparan (bawah) untuk kontras navbar -->
-        <div class="sm:hidden absolute top-0 inset-x-0 h-[35%] bg-gradient-to-b from-black/85 via-black/45 to-transparent pointer-events-none z-10"></div>
+        <div class="sm:hidden absolute top-0 inset-x-0 h-[42%] bg-gradient-to-b from-black/90 via-black/55 to-transparent pointer-events-none z-10"></div>
         <!-- Mobile: Gradasi hitam (bawah) ke transparan (atas) untuk kontras teks & CTA -->
-        <div class="sm:hidden absolute bottom-0 inset-x-0 h-[45%] bg-gradient-to-t from-black via-black/75 to-transparent pointer-events-none z-10"></div>
+        <div class="sm:hidden absolute bottom-0 inset-x-0 h-[54%] bg-gradient-to-t from-black via-black/85 to-transparent pointer-events-none z-10"></div>
         <!-- Desktop: Gradasi hitam (kiri) ke transparan (kanan) -->
         <div class="hidden sm:block absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-transparent pointer-events-none z-10"></div>
 
