@@ -300,16 +300,47 @@
 />
 
 {#if hasSubNav}
+  {#snippet subNavLinks(isCompactDesktop = false)}
+    {#if isArtikelCategory}
+      {#each artikelSubNavItems as item}
+        {@const activeCatSlug = page.data?.category?.id || (page.data?.article?.category ? page.data.article.category.toLowerCase().trim().replace(/\s+/g, '-') : '')}
+        {@const isActive = page.url.pathname.startsWith(item.href) || activeCatSlug === item.id}
+        <a
+          href={item.href}
+          class="flex items-center {isCompactDesktop ? 'text-[11px] lg:text-xs' : 'text-[11px] sm:text-xs md:text-[13px]'} font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none bg-transparent hover:bg-transparent py-1 {isActive
+            ? 'text-[#334c54] font-bold'
+            : isScrolled ? 'text-neutral-700 hover:text-black' : 'text-neutral-300 hover:text-white'}"
+        >
+          <span>{item.label}</span>
+        </a>
+      {/each}
+    {:else}
+      {#each currentSubNavItems as item}
+        <a
+          href="#{item.id}"
+          onclick={(e) => scrollToSection(item.id, e)}
+          class="flex items-center {isCompactDesktop ? 'text-[11px] lg:text-xs' : 'text-[11px] sm:text-xs md:text-[13px]'} font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none bg-transparent hover:bg-transparent py-1 {activeSection === item.id
+            ? 'text-[#334c54] font-bold'
+            : isScrolled ? 'text-neutral-700 hover:text-black' : 'text-neutral-300 hover:text-white'}"
+        >
+          <span>{item.label}</span>
+        </a>
+      {/each}
+    {/if}
+  {/snippet}
+
   <!-- ================================================================= -->
   <!-- 2-TIER SUBNAV NAVBAR (Produk Detail, Tentang, Kategori Artikel)  -->
+  <!-- Desktop: Saat di-scroll, logo terdorong naik & subnav naik menggantikannya -->
+  <!-- Mobile: Tetap 2 baris (Row 1 Logo + Kontrol, Row 2 Subnav)        -->
   <!-- ================================================================= -->
   <header
     class="w-full fixed top-0 left-0 z-40 pointer-events-auto transition-colors duration-300 {isScrolled ? 'bg-white/95 text-black shadow-sm backdrop-blur-md' : 'bg-transparent text-white'}"
   >
-    <!-- ROW 1: Controls (Language on Left, Centered Logo, Hamburger on Right) -->
+    <!-- ROW 1: Controls (Language on Left, Centered Logo / Desktop Scrolled Subnav, Hamburger on Right) -->
     <div class="relative w-full h-14 sm:h-16 flex items-center justify-between px-6 sm:px-10 lg:px-16 transition-colors duration-300">
       <!-- Left: Language Translate Selector Button -->
-      <div class="relative z-50">
+      <div class="relative z-50 shrink-0">
         <button
           type="button"
           onclick={toggleLang}
@@ -372,8 +403,12 @@
         {/if}
       </div>
 
-      <!-- Center: ORIA Logo (Persistent, stays visible on scroll) -->
-      <div class="absolute left-1/2 -translate-x-1/2 flex items-center justify-center">
+      <!-- Center: ORIA Logo (Mobile: selalu tampil | Desktop: terdorong naik & hilang saat scroll) -->
+      <div
+        class="absolute left-1/2 -translate-x-1/2 flex items-center justify-center transition-all duration-300 {isScrolled
+          ? 'md:-translate-y-10 md:opacity-0 md:pointer-events-none'
+          : 'translate-y-0 opacity-100'}"
+      >
         <a
           href="/"
           class="flex items-center justify-center hover:opacity-90 transition-opacity select-none focus:outline-none py-1"
@@ -386,8 +421,18 @@
         </a>
       </div>
 
+      <!-- Center (Desktop Scrolled Only): Subnav naik menggantikan posisi Logo ORIA -->
+      <nav
+        aria-label={isProductDetail ? 'Navigasi Detail Produk' : isArtikelCategory ? 'Navigasi Kategori Artikel' : 'Navigasi Halaman Tentang'}
+        class="hidden md:flex items-center justify-center gap-5 lg:gap-8 absolute left-1/2 -translate-x-1/2 max-w-[calc(100%-340px)] overflow-x-auto no-scrollbar transition-all duration-300 {isScrolled
+          ? 'translate-y-0 opacity-100 pointer-events-auto'
+          : 'translate-y-6 opacity-0 pointer-events-none'}"
+      >
+        {@render subNavLinks(true)}
+      </nav>
+
       <!-- Right: Hamburger Button (In Row 1) -->
-      <div class="relative z-50">
+      <div class="relative z-50 shrink-0">
         <button
           type="button"
           onclick={openDrawer}
@@ -403,41 +448,18 @@
       </div>
     </div>
 
-    <!-- ROW 2: Subnav Row -->
+    <!-- ROW 2: Subnav Row (Mobile selalu tampil | Desktop hilang saat scroll karena sudah naik ke Row 1) -->
     <div
-      class="w-full h-11 sm:h-12 flex items-center overflow-x-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden overscroll-x-contain transition-colors duration-300"
+      class="w-full h-11 sm:h-12 flex items-center overflow-x-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden overscroll-x-contain transition-all duration-300 {isScrolled
+        ? 'md:h-0 md:opacity-0 md:overflow-hidden md:pointer-events-none'
+        : 'md:h-12 md:opacity-100'}"
     >
       <div class="min-w-full w-max flex items-center px-6 sm:px-10 lg:px-16 {isProductDetail ? 'justify-center' : 'md:justify-center'}">
         <nav
           aria-label={isProductDetail ? 'Navigasi Detail Produk' : isArtikelCategory ? 'Navigasi Kategori Artikel' : 'Navigasi Halaman Tentang'}
           class="flex items-center gap-6 sm:gap-8 md:gap-10 shrink-0"
         >
-          {#if isArtikelCategory}
-            {#each artikelSubNavItems as item}
-              {@const activeCatSlug = page.data?.category?.id || (page.data?.article?.category ? page.data.article.category.toLowerCase().trim().replace(/\s+/g, '-') : '')}
-              {@const isActive = page.url.pathname.startsWith(item.href) || activeCatSlug === item.id}
-              <a
-                href={item.href}
-                class="flex items-center text-[11px] sm:text-xs md:text-[13px] font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none bg-transparent hover:bg-transparent py-1 {isActive
-                  ? 'text-[#334c54] font-bold'
-                  : isScrolled ? 'text-neutral-700 hover:text-black' : 'text-neutral-300 hover:text-white'}"
-              >
-                <span>{item.label}</span>
-              </a>
-            {/each}
-          {:else}
-            {#each currentSubNavItems as item}
-              <a
-                href="#{item.id}"
-                onclick={(e) => scrollToSection(item.id, e)}
-                class="flex items-center text-[11px] sm:text-xs md:text-[13px] font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none bg-transparent hover:bg-transparent py-1 {activeSection === item.id
-                  ? 'text-[#334c54] font-bold'
-                  : isScrolled ? 'text-neutral-700 hover:text-black' : 'text-neutral-300 hover:text-white'}"
-              >
-                <span>{item.label}</span>
-              </a>
-            {/each}
-          {/if}
+          {@render subNavLinks(false)}
           <!-- Spacer presisi ~8px agar aman dari scrollbar tanpa terlalu renggang (hanya untuk non-detail produk) -->
           {#if !isProductDetail}
             <span class="w-2 md:hidden shrink-0 inline-block pointer-events-none" aria-hidden="true"></span>
