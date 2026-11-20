@@ -64,7 +64,7 @@
         </nav>
 
         <!-- Main Model Name (Ukuran font seimbang & elegan, tidak terlalu besar atau terlalu kecil) -->
-        <h1 class="mt-3 sm:mt-4 font-heading font-medium tracking-[0.16em] sm:tracking-[0.2em] text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase text-[#A3BCC4] leading-tight drop-shadow-[0_4px_30px_rgba(0,0,0,0.95)]">
+        <h1 class="mt-3 sm:mt-4 font-heading font-extrabold tracking-[0.16em] sm:tracking-[0.2em] text-2xl sm:text-3xl md:text-4xl lg:text-5xl uppercase text-[#A3BCC4] leading-tight drop-shadow-[0_4px_30px_rgba(0,0,0,0.95)]">
           {cleanModelName}
         </h1>
 
@@ -72,9 +72,6 @@
         {#if product.priceText}
           <div class="mt-3 sm:mt-4 flex flex-wrap items-baseline gap-2.5 sm:gap-3 drop-shadow-md">
             {#if product.priceText.startsWith('Rp')}
-              <span class="font-mono text-[11px] sm:text-xs uppercase tracking-[0.25em] text-neutral-400">
-                MULAI DARI
-              </span>
               <span class="font-heading font-medium text-xl sm:text-2xl lg:text-3xl text-white tracking-tight tabular-nums">
                 {product.priceText}
               </span>
