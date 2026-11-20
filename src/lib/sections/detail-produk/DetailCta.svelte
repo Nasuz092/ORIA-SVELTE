@@ -29,6 +29,8 @@
     </picture>
     <!-- Cinematic Dark Gradient (Left solid dark for text clarity, right reveals machine) -->
     <div class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-black/15 sm:from-black sm:via-black/85 lg:via-black/70 lg:to-black/30"></div>
+    <!-- Layer Gelap 30% di atas gambar & di belakang teks/tombol -->
+    <div class="absolute inset-0 bg-black/30"></div>
   </div>
 
   <!-- Left-Aligned Content (Lotus Eletre X Style) -->
