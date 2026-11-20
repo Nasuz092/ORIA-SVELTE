@@ -34,10 +34,11 @@
     </picture>
     <!-- Layer gradient hitam dari kiri ke kanan transparan agar teks di kiri tajam -->
     <!-- Mobile: Gradasi atas (hitam ke transparan ke arah bawah) untuk navbar, judul, & breadcrumb -->
-    <div class="sm:hidden absolute top-0 inset-x-0 h-[38%] bg-gradient-to-b from-black via-black/75 to-transparent pointer-events-none"></div>
+    <div class="sm:hidden absolute top-0 inset-x-0 h-[46%] bg-gradient-to-b from-black via-black/80 to-transparent pointer-events-none"></div>
     <!-- Mobile: Gradasi bawah (hitam ke transparan ke arah atas, <50% layar) untuk 4 spesifikasi -->
     <div class="sm:hidden absolute bottom-0 inset-x-0 h-[40%] bg-gradient-to-t from-black via-black/85 to-transparent pointer-events-none"></div>
     <!-- Desktop: Gradasi sinematik kiri ke kanan transparan agar teks kiri tajam -->
+    <div class="hidden sm:block absolute top-0 inset-x-0 h-36 bg-gradient-to-b from-black/75 to-transparent pointer-events-none"></div>
     <div class="hidden sm:block absolute inset-0 bg-gradient-to-r from-black via-black/80 lg:via-black/65 to-transparent pointer-events-none"></div>
   </div>
 

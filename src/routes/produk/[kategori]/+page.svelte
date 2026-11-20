@@ -54,7 +54,10 @@
       />
     </picture>
     <!-- Cinematic Dark Gradient Overlay (Gradasi hitam ke transparan) -->
-    <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent sm:from-black/90 sm:via-black/40 sm:to-transparent"></div>
+    <div class="absolute inset-0 bg-black/25"></div>
+    <div class="sm:hidden absolute top-0 inset-x-0 h-[38%] bg-gradient-to-b from-black/85 via-black/45 to-transparent"></div>
+    <div class="sm:hidden absolute bottom-0 inset-x-0 h-[50%] bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+    <div class="hidden sm:block absolute inset-0 bg-gradient-to-r from-black/90 via-black/45 to-transparent"></div>
   </div>
 
   <!-- Bottom Left: Lotus-Style Hero Typography -->

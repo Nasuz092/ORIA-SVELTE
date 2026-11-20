@@ -9,7 +9,12 @@
       loading="eager"
     />
     <!-- Cinematic Dark Gradient Overlay (Gradasi hitam ke transparan) -->
-    <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent sm:from-black/85 sm:via-black/35 sm:to-transparent"></div>
+    <!-- Mobile: Gradasi atas & bawah agar navbar/subnav dan judul terbaca jelas -->
+    <div class="sm:hidden absolute top-0 inset-x-0 h-[40%] bg-gradient-to-b from-black/90 via-black/50 to-transparent"></div>
+    <div class="sm:hidden absolute bottom-0 inset-x-0 h-[50%] bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+    <!-- Desktop: Gradasi atas tipis untuk navbar & kiri-ke-kanan untuk judul -->
+    <div class="hidden sm:block absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-black/70 to-transparent"></div>
+    <div class="hidden sm:block absolute inset-0 bg-gradient-to-r from-black/90 via-black/45 to-transparent"></div>
   </div>
 
   <!-- Bottom Left Area: Lotus-Style Hero Typography -->

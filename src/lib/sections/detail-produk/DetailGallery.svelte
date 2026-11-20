@@ -80,7 +80,7 @@
     id="gallery"
     class="relative w-full bg-white text-black py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 overflow-hidden select-none"
   >
-    <div class="max-w-7xl mx-auto space-y-8 sm:space-y-10">
+    <div class="max-w-4xl mx-auto space-y-8 sm:space-y-10">
       <!-- Top Header (English Section Title & Brief Editorial Description) -->
       <div class="space-y-3 sm:space-y-4 max-w-3xl">
         <h2 class="font-heading font-medium tracking-[0.2em] sm:tracking-[0.25em] text-2xl sm:text-3xl lg:text-4xl uppercase text-black leading-tight">
