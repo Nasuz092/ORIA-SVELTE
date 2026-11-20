@@ -173,11 +173,94 @@
     </div>
   </div>
 
-  <!-- Main Footer Content (Social Links, Models Column, About ORIA Column) -->
+  <!-- Main Footer Content (Left: About ORIA, Center: Models, Right: Social Links aligned with Models) -->
   <div class="max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-14 pb-16 sm:pb-20">
-      <!-- Left Column: Circular Social Media Icons -->
-      <div class="md:col-span-5 lg:col-span-5 flex flex-col justify-end">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-14 pb-16 sm:pb-20 items-start">
+      <!-- Left Column: ABOUT ORIA -->
+      <div class="md:col-span-4 lg:col-span-4 space-y-4">
+        <h4 class="font-heading font-bold text-sm sm:text-base uppercase tracking-[0.22em] text-white">
+          TENTANG ORIA
+        </h4>
+        <ul class="space-y-2.5 font-sans text-sm sm:text-[15px] text-white/90">
+          <li>
+            <a href="/tentang" class="hover:text-neutral-300 transition-colors">
+              Tentang ORIA
+            </a>
+          </li>
+          <li>
+            <a href="/tentang" class="hover:text-neutral-300 transition-colors">
+              Standar Rekayasa Presisi
+            </a>
+          </li>
+          <li>
+            <a href="/kontak" class="hover:text-neutral-300 transition-colors">
+              Showroom & Workshop
+            </a>
+          </li>
+          <li>
+            <a href="/artikel" class="hover:text-neutral-300 transition-colors">
+              Artikel & Wawasan Industri
+            </a>
+          </li>
+          <li>
+            <a href="/kontak" class="hover:text-neutral-300 transition-colors">
+              Layanan Garansi & Teknisi Resmi
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Center Column: MODELS (Centered directly under ORIA badge) -->
+      <div class="md:col-span-4 lg:col-span-4 flex flex-col md:items-center md:text-center space-y-4">
+        <h4 class="font-heading font-bold text-sm sm:text-base uppercase tracking-[0.22em] text-white">
+          MODEL MESIN
+        </h4>
+        <ul class="space-y-2.5 font-sans text-sm sm:text-[15px] text-white/90">
+          <li>
+            <a href="/produk/uv/oria-uv-flatbed-a3" class="hover:text-neutral-300 transition-colors">
+              ORIA UV Flatbed A3
+            </a>
+          </li>
+          <li>
+            <a href="/produk/sublimasi/oria-sublim-1902" class="hover:text-neutral-300 transition-colors">
+              ORIA Sublimasi 1902
+            </a>
+          </li>
+          <li>
+            <a href="/produk/laser/oria-laser-cutting-6040" class="hover:text-neutral-300 transition-colors">
+              ORIA Laser Cutting 6040
+            </a>
+          </li>
+          <li>
+            <a href="/produk/dtf/oria-dtf-6004" class="hover:text-neutral-300 transition-colors">
+              ORIA DTF 6004 Industrial
+            </a>
+          </li>
+          <li>
+            <a href="/produk/dtg/oria-dtg-or-dtg02" class="hover:text-neutral-300 transition-colors">
+              ORIA DTG OR-DTG02
+            </a>
+          </li>
+          <li>
+            <a href="/produk/outdoor/oria-outdoor-3204-st" class="hover:text-neutral-300 transition-colors">
+              ORIA Outdoor 3204
+            </a>
+          </li>
+          <li>
+            <a href="/produk/outdoor/oria-outdoor-3202" class="hover:text-neutral-300 transition-colors">
+              ORIA Outdoor 3202
+            </a>
+          </li>
+          <li>
+            <a href="/produk/cnc/oria-cnc-router-1325" class="hover:text-neutral-300 transition-colors">
+              ORIA CNC Router 1325
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right Column: Circular Social Media Icons (Aligned with MODEL MESIN heading) -->
+      <div class="md:col-span-4 lg:col-span-4 flex flex-col justify-start md:items-end">
         <div class="flex items-center gap-3 sm:gap-4">
           <!-- Facebook -->
           <a
@@ -231,89 +314,6 @@
             </svg>
           </a>
         </div>
-      </div>
-
-      <!-- Center Column: MODELS -->
-      <div class="md:col-span-3 lg:col-span-3 space-y-4">
-        <h4 class="font-heading font-bold text-sm sm:text-base uppercase tracking-[0.22em] text-white font-bold">
-          MODEL MESIN
-        </h4>
-        <ul class="space-y-2.5 font-sans text-sm sm:text-[15px] text-white/90">
-          <li>
-            <a href="/produk/uv/oria-uv-flatbed-a3" class="hover:text-neutral-300 transition-colors">
-              ORIA UV Flatbed A3
-            </a>
-          </li>
-          <li>
-            <a href="/produk/sublimasi/oria-sublim-1902" class="hover:text-neutral-300 transition-colors">
-              ORIA Sublimasi 1902
-            </a>
-          </li>
-          <li>
-            <a href="/produk/laser/oria-laser-cutting-6040" class="hover:text-neutral-300 transition-colors">
-              ORIA Laser Cutting 6040
-            </a>
-          </li>
-          <li>
-            <a href="/produk/dtf/oria-dtf-6004" class="hover:text-neutral-300 transition-colors">
-              ORIA DTF 6004 Industrial
-            </a>
-          </li>
-          <li>
-            <a href="/produk/dtg/oria-dtg-or-dtg02" class="hover:text-neutral-300 transition-colors">
-              ORIA DTG OR-DTG02
-            </a>
-          </li>
-          <li>
-            <a href="/produk/outdoor/oria-outdoor-3204-st" class="hover:text-neutral-300 transition-colors">
-              ORIA Outdoor 3204
-            </a>
-          </li>
-          <li>
-            <a href="/produk/outdoor/oria-outdoor-3202" class="hover:text-neutral-300 transition-colors">
-              ORIA Outdoor 3202
-            </a>
-          </li>
-          <li>
-            <a href="/produk/cnc/oria-cnc-router-1325" class="hover:text-neutral-300 transition-colors">
-              ORIA CNC Router 1325
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Right Column: ABOUT ORIA -->
-      <div class="md:col-span-4 lg:col-span-4 space-y-4">
-        <h4 class="font-heading font-bold text-sm sm:text-base uppercase tracking-[0.22em] text-white font-bold">
-          TENTANG ORIA
-        </h4>
-        <ul class="space-y-2.5 font-sans text-sm sm:text-[15px] text-white/90">
-          <li>
-            <a href="/tentang" class="hover:text-neutral-300 transition-colors">
-              Tentang ORIA
-            </a>
-          </li>
-          <li>
-            <a href="/tentang" class="hover:text-neutral-300 transition-colors">
-              Standar Rekayasa Presisi
-            </a>
-          </li>
-          <li>
-            <a href="/kontak" class="hover:text-neutral-300 transition-colors">
-              Showroom & Workshop
-            </a>
-          </li>
-          <li>
-            <a href="/artikel" class="hover:text-neutral-300 transition-colors">
-              Artikel & Wawasan Industri
-            </a>
-          </li>
-          <li>
-            <a href="/kontak" class="hover:text-neutral-300 transition-colors">
-              Layanan Garansi & Teknisi Resmi
-            </a>
-          </li>
-        </ul>
       </div>
     </div>
   </div>

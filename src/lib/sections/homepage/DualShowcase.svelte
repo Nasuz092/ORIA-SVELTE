@@ -32,8 +32,14 @@
         <!-- Card Info -->
         <div class="mt-6 flex flex-col flex-1 justify-between">
           <div>
-            <h3 class="font-heading font-medium text-xl sm:text-2xl text-black group-hover:text-[#334c54] transition-colors">
-              Jajaran Mesin Industri
+            <h3 class="font-heading font-medium text-xl sm:text-2xl text-black flex items-center gap-2 sm:gap-2.5">
+              <span class="group-hover:text-[#334c54] transition-colors duration-300">Model Mesin</span>
+              <span
+                class="inline-block h-5 sm:h-6 aspect-[2101/666] bg-black group-hover:bg-[#334c54] transition-colors duration-300"
+                style="-webkit-mask-image: url('/images/oria-logo-hd.png'); mask-image: url('/images/oria-logo-hd.png'); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;"
+                role="img"
+                aria-label="ORIA"
+              ></span>
             </h3>
             <p class="mt-2.5 font-sans text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-lg">
               Eksplorasi jajaran mesin digital printing berkecepatan tinggi, UV Flatbed presisi, DTF modern, dan Laser Cutting untuk skala industri.

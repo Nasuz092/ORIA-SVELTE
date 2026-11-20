@@ -13,16 +13,13 @@
 <!-- ========================================================================= -->
 <!-- SECTION 2: STORY (LOTUS "FREEDOM TO DRIVE" STYLE)                         -->
 <!-- ========================================================================= -->
-<section id="story" class="relative w-full bg-black text-white py-28 sm:py-36 lg:py-48 px-6 sm:px-10 lg:px-16 overflow-hidden select-none">
+<section id="story" class="relative w-full bg-black text-white py-14 sm:py-16 lg:py-20 px-6 sm:px-10 lg:px-16 overflow-hidden select-none">
   <!-- Ambient radial backdrop glow -->
   <div class="absolute inset-0 pointer-events-none"></div>
 
   <div class="relative z-10 max-w-4xl mx-auto text-center space-y-10 sm:space-y-14">
     <!-- Header: Wide letter spacing (Lotus Freedom style) -->
-    <div class="space-y-3 sm:space-y-4">
-      <div class="font-mono text-[10px] sm:text-xs uppercase tracking-[0.35em] text-[#A3BCC4]">
-        REKAYASA & PERFORMA
-      </div>
+    <div>
       <h2 class="font-heading font-light tracking-[0.22em] sm:tracking-[0.32em] text-2xl sm:text-4xl lg:text-5xl uppercase text-white leading-tight">
         DIRANCANG UNTUK PRODUKSI MARATON
       </h2>

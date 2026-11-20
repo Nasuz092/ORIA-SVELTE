@@ -78,7 +78,7 @@
   <!-- ========================================================================= -->
   <section
     id="gallery"
-    class="relative w-full bg-white text-black py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 overflow-hidden select-none"
+    class="relative w-full bg-white text-black pt-16 pb-10 sm:pt-20 sm:pb-12 lg:pt-24 lg:pb-14 px-6 sm:px-10 lg:px-16 overflow-hidden select-none"
   >
     <div class="max-w-4xl mx-auto space-y-8 sm:space-y-10">
       <!-- Top Header (English Section Title & Brief Editorial Description) -->
@@ -152,23 +152,14 @@
         {/if}
       </div>
 
-      <!-- Bottom Caption Bar (Title left, Narrative center, Slide index right) -->
-      <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 pt-1 border-b border-neutral-300 pb-6 text-neutral-800">
-        <!-- Caption Title Left -->
-        <div class="font-heading font-semibold text-xs sm:text-sm tracking-[0.2em] uppercase text-black min-w-[200px]">
-          {gallery[currentIndex].title || `ORIA ${cleanModelName}`}
+      <!-- Slide Index Only -->
+      {#if gallery.length > 1}
+        <div class="flex justify-end pt-1 border-b border-neutral-300 pb-4">
+          <div class="font-mono text-xs sm:text-sm tracking-widest text-black font-bold">
+            {currentIndex + 1} / {gallery.length}
+          </div>
         </div>
-
-        <!-- Narrative Center -->
-        <div class="font-sans text-xs sm:text-sm text-neutral-600 font-normal flex-1 max-w-2xl">
-          {gallery[currentIndex].caption || `Dokumentasi visual lini mesin percetakan presisi ORIA ${cleanModelName}.`}
-        </div>
-
-        <!-- Slide Index Right ("2 / 4") -->
-        <div class="font-mono text-xs sm:text-sm tracking-widest text-black md:text-right min-w-[60px] font-bold">
-          {currentIndex + 1} / {gallery.length}
-        </div>
-      </div>
+      {/if}
     </div>
   </section>
 {/if}

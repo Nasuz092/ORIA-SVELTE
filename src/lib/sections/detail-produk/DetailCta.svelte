@@ -28,9 +28,9 @@
       />
     </picture>
     <!-- Cinematic Dark Gradient (Left solid dark for text clarity, right reveals machine) -->
-    <div class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-black/15 sm:from-black sm:via-black/85 lg:via-black/70 lg:to-black/30"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/35 sm:from-black sm:via-black/85 lg:via-black/70 lg:to-black/35"></div>
     <!-- Layer Gelap 30% di atas gambar & di belakang teks/tombol -->
-    <div class="absolute inset-0 bg-black/30"></div>
+    <div class="absolute inset-0 bg-black/45 sm:bg-black/35"></div>
   </div>
 
   <!-- Left-Aligned Content (Lotus Eletre X Style) -->
@@ -49,7 +49,7 @@
             href="https://wa.me/6281807090888?text={encodeURIComponent(`Halo ORIA, saya ingin konsultasi teknis dan demo mesin ${product.name}`)}"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 bg-transparent hover:bg-[#334c54] hover:border-[#334c54] hover:text-white text-white border border-white font-heading font-bold text-xs sm:text-sm uppercase tracking-[0.28em] transition-all duration-300 group select-none cursor-pointer"
+            class="inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 bg-black/40 hover:bg-[#334c54] hover:border-[#334c54] hover:text-white text-white border border-white font-heading font-bold text-xs sm:text-sm uppercase tracking-[0.28em] transition-all duration-300 group select-none cursor-pointer backdrop-blur-[2px]"
           >
             <span>KONSULTASI SEKARANG</span>
             <svg

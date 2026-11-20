@@ -187,12 +187,12 @@
   let hasSubNav = $derived(isTentang || isProductDetail || isArtikelCategory);
 
   const tentangSubNavItems = [
-    { id: 'oria-story', label: 'KISAH' },
-    { id: 'our-legacy', label: 'REKAM JEJAK' },
+    { id: 'oria-story', label: 'PENGENALAN' },
+    { id: 'our-legacy', label: 'SEJARAH' },
     { id: 'our-machines', label: 'MESIN' },
     { id: 'our-core', label: 'FONDASI' },
-    { id: 'standar-rekayasa', label: 'REKAYASA' },
-    { id: 'kapasitas-layanan', label: 'KAPASITAS' },
+    { id: 'standar-rekayasa', label: 'KEUNGGULAN' },
+    { id: 'kapasitas-layanan', label: 'PENGALAMAN' },
     { id: 'visi-dedikasi', label: 'DEDIKASI' },
     { id: 'showroom', label: 'SHOWROOM' }
   ];
@@ -202,14 +202,14 @@
     if (hasGallery) {
       return [
         { id: 'overview', label: 'RINGKASAN' },
-        { id: 'story', label: 'KISAH' },
+        { id: 'story', label: 'PENGENALAN' },
         { id: 'gallery', label: 'GALERI' },
         { id: 'spec', label: 'SPESIFIKASI' }
       ];
     }
     return [
       { id: 'overview', label: 'RINGKASAN' },
-      { id: 'story', label: 'KISAH' },
+      { id: 'story', label: 'PENGENALAN' },
       { id: 'spec', label: 'SPESIFIKASI' }
     ];
   });
@@ -228,11 +228,46 @@
 
   let activeSection = $state('overview');
 
+  function getScrollContainer(startEl: HTMLElement | null): HTMLElement | null {
+    let cur = startEl?.parentElement ?? document.querySelector<HTMLElement>('[data-scroll-area-viewport], [data-bits-scroll-area-viewport], [data-radix-scroll-area-viewport]');
+    while (cur && cur !== document.body && cur !== document.documentElement) {
+      const style = window.getComputedStyle(cur);
+      if ((style.overflowY === 'auto' || style.overflowY === 'scroll') && cur.scrollHeight > cur.clientHeight) {
+        return cur;
+      }
+      cur = cur.parentElement;
+    }
+    return null;
+  }
+
   function scrollToSection(id: string, e?: MouseEvent) {
     if (e) e.preventDefault();
+    const isDesktop = window.innerWidth >= 768;
+    const navOffset = isDesktop ? 68 : 96;
+
+    if (id === 'overview') {
+      const scroller = getScrollContainer(document.getElementById('overview'));
+      if (scroller) {
+        scroller.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      activeSection = id;
+      return;
+    }
+
     const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const scroller = getScrollContainer(el);
+      if (scroller) {
+        const scrollerRect = scroller.getBoundingClientRect();
+        const elRect = el.getBoundingClientRect();
+        const targetTop = Math.max(0, elRect.top - scrollerRect.top + scroller.scrollTop - navOffset);
+        scroller.scrollTo({ top: targetTop, behavior: 'smooth' });
+      } else {
+        const targetTop = Math.max(0, el.getBoundingClientRect().top + window.scrollY - navOffset);
+        window.scrollTo({ top: targetTop, behavior: 'smooth' });
+      }
       activeSection = id;
     }
   }
@@ -308,7 +343,7 @@
         <a
           href={item.href}
           class="flex items-center {isCompactDesktop ? 'text-[11px] lg:text-xs' : 'text-[11px] sm:text-xs md:text-[13px]'} font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none bg-transparent hover:bg-transparent py-1 {isActive
-            ? 'text-[#334c54] font-bold'
+            ? (isScrolled ? 'text-[#334c54] font-bold' : 'text-[#A3BCC4] font-bold')
             : isScrolled ? 'text-neutral-700 hover:text-black' : 'text-neutral-300 hover:text-white'}"
         >
           <span>{item.label}</span>
@@ -320,7 +355,7 @@
           href="#{item.id}"
           onclick={(e) => scrollToSection(item.id, e)}
           class="flex items-center {isCompactDesktop ? 'text-[11px] lg:text-xs' : 'text-[11px] sm:text-xs md:text-[13px]'} font-semibold tracking-[0.14em] uppercase whitespace-nowrap transition-colors duration-200 focus:outline-none border-none bg-transparent hover:bg-transparent py-1 {activeSection === item.id
-            ? 'text-[#334c54] font-bold'
+            ? (isScrolled ? 'text-[#334c54] font-bold' : 'text-[#A3BCC4] font-bold')
             : isScrolled ? 'text-neutral-700 hover:text-black' : 'text-neutral-300 hover:text-white'}"
         >
           <span>{item.label}</span>

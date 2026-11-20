@@ -60,7 +60,7 @@
     <!-- Header: Clean Title in English (Lotus Style) -->
     <div class="space-y-3 max-w-2xl">
       <h2 class="font-heading font-light text-3xl sm:text-4xl lg:text-5xl tracking-[0.2em] sm:tracking-[0.25em] uppercase text-white">
-        KAPASITAS KAMI
+        PENGALAMAN KAMI
       </h2>
       <p class="font-sans text-sm sm:text-base text-neutral-400 max-w-xl leading-relaxed pt-1">
         Komitmen nyata dan integritas kemitraan jangka panjang yang telah dipercaya oleh ratusan pengusaha percetakan di Indonesia.

@@ -63,13 +63,10 @@
 <!-- ========================================================================= -->
 <!-- SECTION 3: SPEC (MESINPRINTINGJERSEY STYLE IN LOTUS/ORIA COLOR PALETTE)   -->
 <!-- ========================================================================= -->
-<section id="spec" class="w-full bg-white text-black py-24 sm:py-32 lg:py-40 px-6 sm:px-10 lg:px-16 select-none">
+<section id="spec" class="w-full bg-white text-black pt-10 pb-20 sm:pt-12 sm:pb-24 lg:pt-14 lg:pb-28 px-6 sm:px-10 lg:px-16 select-none">
   <div class="max-w-7xl mx-auto space-y-16 sm:space-y-20">
     <!-- Header: Consistent English Title -->
     <div class="text-center space-y-3 sm:space-y-4">
-      <div class="font-mono text-xs uppercase tracking-[0.3em] text-[#334c54]">
-        PERFORMA &amp; KAPABILITAS
-      </div>
       <h2 class="font-heading font-black text-2xl sm:text-4xl lg:text-5xl uppercase tracking-[0.16em] text-black">
         SPESIFIKASI TEKNIS
       </h2>

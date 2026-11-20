@@ -190,7 +190,7 @@
   <!-- Top Center Header (Lotus Style: MODEL KAMI) -->
   <div class="text-center mb-6 sm:mb-8">
     <h2 class="font-heading font-bold text-base sm:text-lg lg:text-xl uppercase tracking-[0.3em] text-neutral-800">
-      MODEL KAMI
+      PRODUK UNGGULAN
     </h2>
   </div>
 

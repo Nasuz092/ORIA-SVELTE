@@ -8,7 +8,7 @@
 <!-- ======================================================================= -->
 <!-- SECTION: Produk Categories (Clean White Editorial Grid)                -->
 <!-- ======================================================================= -->
-<section id="categories" class="w-full bg-white text-black py-20 sm:py-28 lg:py-36 px-6 sm:px-10 lg:px-16 select-none">
+<section id="categories" class="w-full bg-white text-black pt-0 pb-16 sm:pt-0 sm:pb-20 lg:pt-0 lg:pb-24 px-6 sm:px-10 lg:px-16 select-none">
   <div class="max-w-7xl mx-auto">
     <!-- 3-Column Borderless Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-12 lg:gap-16">
@@ -19,7 +19,7 @@
           class="group block flex flex-col focus:outline-none cursor-pointer"
         >
           <!-- Category Machine Image Box (Seamless borderless pure white studio box) -->
-          <div class="w-full aspect-[4/3] overflow-hidden bg-white flex items-center justify-center p-5 sm:p-6 lg:p-7 relative">
+          <div class="w-full aspect-[16/10] overflow-hidden bg-white flex items-center justify-center px-4 sm:px-6 pt-0 pb-2 relative">
             <img
               src={cat.cardImage}
               alt={cat.alt}
@@ -28,15 +28,15 @@
             />
           </div>
 
-          <!-- Category Name and Button Below -->
-          <div class="mt-5 space-y-2.5">
-            <!-- Category Title (Black when idle, #334c54 yellow on hover) -->
+          <!-- Category Name and Button Below (Centered with Image) -->
+          <div class="mt-5 space-y-2.5 text-center flex flex-col items-center">
+            <!-- Category Title (Black when idle, #334c54 on hover) -->
             <h3 class="font-heading font-medium text-base sm:text-lg lg:text-xl text-black uppercase tracking-[0.16em] group-hover:text-[#334c54] transition-colors leading-snug">
               <span class="animated-underline inline">{cat.name}</span>
             </h3>
 
             <!-- Button with Chevron (Strict Rule from AGENTS.md: Chevron only, no arrows) -->
-            <div class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-neutral-700 group-hover:text-[#334c54] transition-colors">
+            <div class="inline-flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-neutral-700 group-hover:text-[#334c54] transition-colors">
               <span>LIHAT {unitCount > 0 ? `(${unitCount})` : 'MESIN'}</span>
               <svg
                 class="w-4 h-4 stroke-current transition-transform duration-300 group-hover:translate-x-1"

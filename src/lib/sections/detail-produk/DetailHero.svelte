@@ -61,7 +61,7 @@
           <svg class="w-3 h-3 text-neutral-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
           </svg>
-          <span class="text-[#A3BCC4] truncate max-w-[200px] sm:max-w-[280px] font-semibold">{product.sku}</span>
+          <span class="text-[#A3BCC4] truncate max-w-[220px] sm:max-w-[360px] font-semibold">{product.name}</span>
         </nav>
 
         <!-- Main Model Name (Ukuran font seimbang & elegan, tidak terlalu besar atau terlalu kecil) -->

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
   import type { FormattedProduct } from '$lib/types/product';
-  import { getProductCategoryId } from '$lib/data/categories';
+  import { CATEGORIES, matchesCategory } from '$lib/data/categories';
 
   interface FlagshipModel {
     id: string;
@@ -14,98 +14,76 @@
 
   let { products = [], activeIndex = $bindable(0) }: { products?: FormattedProduct[]; activeIndex?: number } = $props();
 
-  // Flagship curated model info (Short, elegant Lotus editorial copy - tidak mengambil paragraf panjang dari Strapi)
-  const defaultModels: FlagshipModel[] = [
+  const categoryTabs: { id: string; name: string; fallbackDesc: string; fallbackImage: string }[] = [
     {
       id: 'uv',
       name: 'UV FLATBED',
-      tagline: 'ORIA UV Flatbed A3',
-      desc: 'Presisi cetak mikron pada media datar akrilik, kayu, kaca, dan silinder.',
-      image: '/images/showcase-products.png',
-      href: '/produk/uv/oria-uv-flatbed-a3'
+      fallbackDesc: 'Presisi cetak mikron pada media datar akrilik, kayu, kaca, dan silinder.',
+      fallbackImage: '/images/categories/card-uv.webp'
     },
     {
       id: 'sublimasi',
       name: 'SUBLIMASI',
-      tagline: 'ORIA Sublim 1902',
-      desc: 'Produksi massal jersey dan tekstil berkecepatan tinggi dengan saturasi warna pekat.',
-      image: '/images/hero/sublim-oria-desktop.webp',
-      href: '/produk/sublimasi/oria-sublim-1902'
+      fallbackDesc: 'Produksi massal jersey dan tekstil berkecepatan tinggi dengan saturasi warna pekat.',
+      fallbackImage: '/images/categories/card-sublimasi.webp'
     },
     {
       id: 'outdoor',
       name: 'OUTDOOR',
-      tagline: 'ORIA Outdoor 3204 ST',
-      desc: 'Cetak billboard dan baliho tahan cuaca ekstrem dengan sasis baja anti-vibrasi.',
-      image: '/images/hero/outdoor-oria-desktop.webp',
-      href: '/produk/outdoor/oria-outdoor-3204-st'
+      fallbackDesc: 'Cetak billboard dan baliho tahan cuaca ekstrem dengan sasis baja anti-vibrasi.',
+      fallbackImage: '/images/categories/card-outdoor.webp'
+    },
+    {
+      id: 'indoor',
+      name: 'INDOOR',
+      fallbackDesc: 'Cetak eco-solvent resolusi tinggi untuk stiker, poster, dan display interior.',
+      fallbackImage: '/images/categories/card-indoor.webp'
+    },
+    {
+      id: 'dtf',
+      name: 'DTF',
+      fallbackDesc: 'Sistem cetak film transfer digital untuk sablon kaos dan apparel custom.',
+      fallbackImage: '/images/categories/card-dtf.webp'
+    },
+    {
+      id: 'dtg',
+      name: 'DTG',
+      fallbackDesc: 'Cetak langsung ke atas kaos jadi dengan hasil warna tajam dan lembut di serat kain.',
+      fallbackImage: '/images/categories/card-dtg.webp'
     },
     {
       id: 'laser',
-      name: 'FIBER LASER',
-      tagline: 'ORIA Fiber Laser 3015',
-      desc: 'Pemotongan plat logam dan fabrikasi industri berdaya tinggi dengan akurasi presisi.',
-      image: '/images/core-precision.jpg',
-      href: '/produk/laser/oria-fiber-laser-3015'
+      name: 'LASER CUTTING',
+      fallbackDesc: 'Pemotongan dan pengukiran presisi pada akrilik, kayu, kain, hingga plat logam.',
+      fallbackImage: '/images/categories/card-laser.webp'
+    },
+    {
+      id: 'cnc',
+      name: 'CNC ROUTER',
+      fallbackDesc: 'Fabrikasi berat untuk pemotongan dan ukir kayu, MDF, ACP, dan logam industri.',
+      fallbackImage: '/images/categories/card-cnc.webp'
+    },
+    {
+      id: 'single-pass',
+      name: 'SINGLE PASS',
+      fallbackDesc: 'Cetak digital kemasan kardus dan corrugated box berkecepatan tinggi tanpa pelat.',
+      fallbackImage: '/images/categories/card-single-pass.webp'
     }
   ];
 
   const models = $derived.by(() => {
-    if (products.length === 0) return defaultModels;
-
-    // Pick top flagship models from Strapi if available
-    const uvProd = products.find(p => p.slug === 'oria-uv-flatbed-a3') || products.find(p => p.slug.includes('uv'));
-    const sublimProd = products.find(p => p.slug === 'oria-sublim-1902' || p.slug === 'oria-sublim-1804') || products.find(p => p.slug.includes('sublim'));
-    const outdoorProd = products.find(p => p.slug === 'oria-outdoor-3204-st') || products.find(p => p.slug.includes('outdoor'));
-    const laserProd = products.find(p => p.slug === 'oria-fiber-laser-3015' || p.slug === 'oria-laser-cutting-6040') || products.find(p => p.slug.includes('laser') && !p.slug.includes('uv'));
-
-    const list: FlagshipModel[] = [];
-
-    if (uvProd) {
-      list.push({
-        id: 'uv',
-        name: 'UV FLATBED',
-        tagline: uvProd.name,
-        desc: 'Presisi cetak mikron pada media datar akrilik, kayu, kaca, dan silinder.',
-        image: uvProd.mainImageDesktopUrl || uvProd.imageUrl || '/images/showcase-products.png',
-        href: `/produk/${getProductCategoryId(uvProd)}/${uvProd.slug}`
-      });
-    }
-
-    if (sublimProd) {
-      list.push({
-        id: 'sublimasi',
-        name: 'SUBLIMASI',
-        tagline: sublimProd.name,
-        desc: 'Produksi massal jersey dan tekstil berkecepatan tinggi dengan saturasi warna pekat.',
-        image: sublimProd.mainImageDesktopUrl || sublimProd.imageUrl || '/images/hero/sublim-oria-desktop.webp',
-        href: `/produk/${getProductCategoryId(sublimProd)}/${sublimProd.slug}`
-      });
-    }
-
-    if (outdoorProd) {
-      list.push({
-        id: 'outdoor',
-        name: 'OUTDOOR',
-        tagline: outdoorProd.name,
-        desc: 'Cetak billboard dan baliho tahan cuaca ekstrem dengan sasis baja anti-vibrasi.',
-        image: outdoorProd.mainImageDesktopUrl || outdoorProd.imageUrl || '/images/hero/outdoor-oria-desktop.webp',
-        href: `/produk/${getProductCategoryId(outdoorProd)}/${outdoorProd.slug}`
-      });
-    }
-
-    if (laserProd) {
-      list.push({
-        id: 'laser',
-        name: 'FIBER LASER',
-        tagline: laserProd.name,
-        desc: 'Pemotongan plat logam dan fabrikasi industri berdaya tinggi dengan akurasi presisi.',
-        image: laserProd.mainImageDesktopUrl || laserProd.imageUrl || '/images/core-precision.jpg',
-        href: `/produk/${getProductCategoryId(laserProd)}/${laserProd.slug}`
-      });
-    }
-
-    return list.length >= 3 ? list : defaultModels;
+    return categoryTabs.map((tab) => {
+      const catInfo = CATEGORIES.find((c) => c.id === tab.id);
+      const matched = products.find((p) => matchesCategory(p, tab.id));
+      return {
+        id: tab.id,
+        name: tab.name,
+        tagline: matched?.name || catInfo?.name || tab.name,
+        desc: tab.fallbackDesc,
+        image: matched?.mainImageDesktopUrl || matched?.imageUrl || catInfo?.heroImage || tab.fallbackImage,
+        href: `/produk/${tab.id}`
+      };
+    });
   });
 
   let isUserInteracted = $state(false);
@@ -155,20 +133,20 @@
     {/each}
 
     <!-- Atmospheric Dark Cinematic Gradient Overlay (Gradasi hitam ke transparan) -->
-    <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent sm:from-black/85 sm:via-black/40 sm:to-black/20"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-black/15 sm:from-black/85 sm:via-black/50 sm:to-black/20"></div>
   </div>
 
   <!-- Top-Left: Model Selector Tabs (Lotus Vertical Switcher) -->
-  <div class="relative z-20 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-10 sm:pt-14 lg:pt-16">
-    <div class="flex flex-col items-start space-y-2.5 sm:space-y-3.5">
+  <div class="relative z-20 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-8 sm:pt-10 lg:pt-12">
+    <div class="flex flex-col items-start space-y-1.5 sm:space-y-2 lg:space-y-2.5">
       {#each models as model, index}
         <button
           type="button"
           onclick={() => selectModel(index, true)}
           onmouseenter={() => selectModel(index, true)}
-          class="group text-left font-heading text-2xl sm:text-4xl lg:text-5xl uppercase tracking-[0.25em] sm:tracking-[0.3em] transition-all duration-300 focus:outline-none cursor-pointer {index === activeIndex
+          class="group text-left font-heading text-lg sm:text-2xl lg:text-3xl uppercase tracking-[0.22em] sm:tracking-[0.26em] transition-all duration-300 focus:outline-none cursor-pointer {index === activeIndex
             ? 'text-white font-normal opacity-100'
-            : 'text-neutral-400 font-light opacity-35 hover:opacity-75 hover:text-white'}"
+            : 'text-neutral-400 font-light opacity-40 hover:opacity-80 hover:text-white'}"
           aria-pressed={index === activeIndex}
         >
           <span class="block transition-transform duration-300 {index === activeIndex ? 'translate-x-1 sm:translate-x-2' : 'group-hover:translate-x-1'}">

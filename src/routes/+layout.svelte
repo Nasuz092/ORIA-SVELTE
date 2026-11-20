@@ -3,6 +3,7 @@
   import { page } from '$app/state';
   import Navbar from '$lib/components/layout/Navbar.svelte';
   import Footer from '$lib/components/layout/Footer.svelte';
+  import FloatingWhatsApp from '$lib/components/layout/FloatingWhatsApp.svelte';
   import PageTransition from '$lib/components/layout/PageTransition.svelte';
   import { ScrollArea } from '$lib/components/ui/scroll-area';
 
@@ -52,4 +53,6 @@
     <Footer />
   </div>
 </ScrollArea>
+
+<FloatingWhatsApp />
 
