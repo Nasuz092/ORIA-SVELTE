@@ -210,8 +210,9 @@
         </ul>
       </div>
 
-      <!-- Center Column: MODELS (Centered directly under ORIA badge) -->
-      <div class="md:col-span-4 lg:col-span-4 flex flex-col md:items-center md:text-center space-y-4">
+      <!-- Center Column: MODELS (Block centered under ORIA badge, text left-aligned) -->
+      <div class="md:col-span-4 lg:col-span-4 flex flex-col md:items-center">
+        <div class="space-y-4 text-left">
         <h4 class="font-heading font-bold text-sm sm:text-base uppercase tracking-[0.22em] text-white">
           MODEL MESIN
         </h4>
@@ -257,6 +258,7 @@
             </a>
           </li>
         </ul>
+        </div>
       </div>
 
       <!-- Right Column: Circular Social Media Icons (Aligned with MODEL MESIN heading) -->
