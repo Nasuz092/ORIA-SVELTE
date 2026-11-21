@@ -39,90 +39,185 @@ export function getCleanModelTitle(fullName: string): string {
   return name.trim().toUpperCase().replace(/\s+/g, ' ');
 }
 
-// 4 Primary Specs per product & category (Lotus Eletre X Style)
+// 4 Primary Specs per product & category (100% matched to Strapi specifications table)
 export function getProductSpecs(p: FormattedProduct): ProductKeySpec[] {
   const name = (p.name || '').toLowerCase();
-  const desc = ((p.shortDescription || '') + ' ' + (p.descriptionHtml || '')).toLowerCase();
+  const slug = (p.slug || '').toLowerCase();
   const cat = (p.categoryName || '').toLowerCase();
 
-  // 1. LASER FIBER / CO2 CUTTING & ENGRAVING
-  if (
-    name.includes('laser') ||
-    cat.includes('laser') ||
-    name.includes('marking')
-  ) {
-    let power = '150 W';
-    if (name.includes('6000w') || desc.includes('6000w')) power = '6,000 W';
-    else if (name.includes('1500w') || desc.includes('1500w')) power = '1,500 W';
-    else if (name.includes('30w') || desc.includes('30w')) power = '30 W';
-    else if (name.includes('5w') || desc.includes('5w')) power = '5 W UV';
-    else if (name.includes('150 w') || desc.includes('150w')) power = '150 W';
-    else if (name.includes('6040')) power = '60-80 W';
-    else if (name.includes('6090')) power = '90-100 W';
-    else if (name.includes('1490')) power = '100-130 W';
-
-    let area = '130 x 250 cm';
-    if (name.includes('5w') || name.includes('uv laser marking') || desc.includes('150x150') || desc.includes('150*150') || desc.includes('150×150')) area = '15 x 15 cm';
-    else if (name.includes('2020') || desc.includes('200x200') || desc.includes('200*200')) area = '20 x 20 cm';
-    if (name.includes('6040') || desc.includes('60x40') || desc.includes('600x400')) area = '60 x 40 cm';
-    else if (name.includes('6090') || desc.includes('60x90') || desc.includes('600x900')) area = '60 x 90 cm';
-    else if (name.includes('1490') || desc.includes('1400x900')) area = '140 x 90 cm';
-    else if (name.includes('1310') || desc.includes('1300x1000')) area = '130 x 100 cm';
-    else if (name.includes('1325') || desc.includes('1300x2500')) area = '130 x 250 cm';
-    else if (name.includes('3015') || desc.includes('3000x1500')) area = '300 x 150 cm';
-    else if (name.includes('6015') || desc.includes('6000x1500') || desc.includes('1500 x 6000')) area = '600 x 150 cm';
-    else if (name.includes('1615') || desc.includes('1600x1500')) area = '160 x 150 cm';
-    else if (name.includes('2020') || desc.includes('200x200')) area = '20 x 20 cm';
-
-    let speed = '600 mm/s';
-    if (name.includes('marking') || desc.includes('7000mm/s') || desc.includes('8000 mm/s')) speed = '7,000 mm/s';
-    else if (name.includes('6015') || desc.includes('140 m/min')) speed = '140 m/min';
-    else if (name.includes('galvo') || desc.includes('60cm/s')) speed = '60 cm/s';
-
-    let precision = '±0.01 mm';
-    if (name.includes('fiber') || name.includes('3015') || name.includes('6015')) precision = '±0.02 mm';
-
+  // 0. CONSUMABLE PRINTING (Check first so "tinta sublim" / "tinta ecosolvent" don't match machine categories)
+  if (cat.includes('consumable') || name.includes('tinta') || name.includes('kertas')) {
+    if (slug.includes('kertas-sublim')) {
+      return [
+        { val: '70 / 85 GSM', unit: 'Gramasi', desc: 'Fast Dry / Sticky' },
+        { val: 'Format Roll', unit: 'Kemasan', desc: 'Transfer Sublimasi' },
+        { val: 'Polyester', unit: 'Aplikasi Kain', desc: 'Jersey & Sportswear' },
+        { val: 'Cepat Kering', unit: 'Karakteristik', desc: 'Warna Tajam & Stabil' }
+      ];
+    }
+    if (slug.includes('solvent-km512i')) {
+      return [
+        { val: 'KM512i', unit: 'Kompatibilitas', desc: 'Konica Minolta Head' },
+        { val: 'CMYK', unit: 'Warna Tinta', desc: 'Solvent Outdoor' },
+        { val: '2+ Tahun', unit: 'Ketahanan', desc: 'Tahan Cuaca Ekstrem' },
+        { val: 'Banner & Vinyl', unit: 'Aplikasi', desc: 'Spanduk & Billboard' }
+      ];
+    }
+    if (slug.includes('ecosolvent')) {
+      return [
+        { val: 'Eco-Solvent', unit: 'Tipe Tinta', desc: 'Minim Bau' },
+        { val: 'CMYK', unit: 'Pilihan Warna', desc: 'Harga Per 1 Warna' },
+        { val: 'Piezo Head', unit: 'Kompatibilitas', desc: 'XP600 / i3200 / DX5' },
+        { val: 'Indoor Media', unit: 'Aplikasi', desc: 'Stiker, Poster & Dekor' }
+      ];
+    }
     return [
-      { val: power, unit: 'Laser Power', desc: name.includes('5w') ? 'JPT UV Cold Laser' : (name.includes('fiber') ? 'Raycus Fiber' : 'CO2 Glass Tube') },
-      { val: area, unit: 'Working Bed', desc: 'Area Efektif' },
-      { val: speed, unit: 'Max Speed', desc: 'Kecepatan Proses' },
-      { val: precision, unit: 'Akurasi', desc: 'Presisi Optik' }
+      { val: 'Sublimasi', unit: 'Tipe Tinta', desc: 'High Density Ink' },
+      { val: 'CMYK', unit: 'Pilihan Warna', desc: 'Harga Per 1 Warna' },
+      { val: 'Epson Head', unit: 'Kompatibilitas', desc: 'i3200 / XP600 / DX5' },
+      { val: 'Tekstil & Mug', unit: 'Aplikasi', desc: 'Jersey & Merchandise' }
+    ];
+  }
+
+  // 1. LASER FIBER / CO2 CUTTING & ENGRAVING & UV LASER MARKING
+  if (name.includes('laser') || cat.includes('laser') || name.includes('marking')) {
+    if (slug.includes('uv-laser-marking-5w') || name.includes('5w')) {
+      return [
+        { val: '5 W UV', unit: 'Laser Source', desc: 'JPT Cold Laser 355nm' },
+        { val: '15 x 15 cm', unit: 'Area Kerja', desc: 'Presisi Mikro' },
+        { val: '8,000 mm/s', unit: 'Kecepatan', desc: 'Marking Cepat' },
+        { val: '0.01 mm', unit: 'Lebar Garis', desc: 'Tanpa Bekas Bakar' }
+      ];
+    }
+    if (slug.includes('laser-marking-2020') || name.includes('2020')) {
+      return [
+        { val: '20–50 W', unit: 'Laser Power', desc: 'Raycus / Max Fiber' },
+        { val: '30 x 30 cm', unit: 'Area Maks.', desc: '11 / 20 / 30 cm' },
+        { val: '8,000 mm/s', unit: 'Kecepatan', desc: 'Marking Permanen' },
+        { val: '≤ 1 mm', unit: 'Kedalaman', desc: 'Logam & Plastik Keras' }
+      ];
+    }
+    if (slug.includes('fiber-laser-6015') || name.includes('6015')) {
+      return [
+        { val: '6,000 W', unit: 'Laser Power', desc: 'Raycus Fiber Laser' },
+        { val: '150 x 600 cm', unit: 'Working Area', desc: 'Single Table' },
+        { val: '140 m/min', unit: 'Max Speed', desc: 'Kecepatan Posisi' },
+        { val: '±0.03 mm', unit: 'Akurasi', desc: 'Raytools Cutting Head' }
+      ];
+    }
+    if (slug.includes('fiber-laser-3015') || name.includes('3015')) {
+      return [
+        { val: '1.5–6 kW', unit: 'Laser Power', desc: 'Raycus Fiber Source' },
+        { val: '300 x 150 cm', unit: 'Working Area', desc: 'Single Table' },
+        { val: 'Raytools', unit: 'Cutting Head', desc: 'BM111 / Boci' },
+        { val: 'Inovance', unit: 'Servo Motor', desc: 'Presisi Fabrikasi' }
+      ];
+    }
+    if (slug.includes('fiber-laser-1325') || (name.includes('fiber') && name.includes('1325'))) {
+      return [
+        { val: '1,500 W', unit: 'Laser Power', desc: 'Raycus Water Cooling' },
+        { val: '250 x 130 cm', unit: 'Working Area', desc: 'Area Potong Logam' },
+        { val: '42 m/min', unit: 'Kecepatan', desc: '42.000 mm/menit' },
+        { val: 'Auto Focus', unit: 'Cutting Head', desc: 'Terintegrasi Z Axis' }
+      ];
+    }
+    if (slug.includes('galvo-1615') || name.includes('1615')) {
+      return [
+        { val: 'CO₂ Galvo', unit: 'Tipe Laser', desc: '1 Head Galvo' },
+        { val: '160 x 150 cm', unit: 'Cut Area', desc: 'Khusus Kain & Tekstil' },
+        { val: '60 cm/s', unit: 'Speed Cut', desc: 'Potong Cepat' },
+        { val: 'CCD Camera', unit: 'Vision Model', desc: 'Auto Contour Cutting' }
+      ];
+    }
+    if (slug.includes('co2-1325') || name.includes('1325')) {
+      return [
+        { val: '80–150 W', unit: 'Laser Power', desc: 'CO₂ Metal & Non-Metal' },
+        { val: '130 x 250 cm', unit: 'Area Kerja', desc: 'Meja Ukuran Penuh' },
+        { val: '10,000 mm/s', unit: 'Cut Speed', desc: 'Engrave 64.000 mm/min' },
+        { val: '0.025 mm', unit: 'Resolusi', desc: 'Akrilik 5–20 mm' }
+      ];
+    }
+    if (slug.includes('1310') || name.includes('1310')) {
+      return [
+        { val: '150 W', unit: 'Laser Power', desc: 'CO₂ Laser Generator' },
+        { val: '130 x 100 cm', unit: 'Working Area', desc: 'Water Cooling' },
+        { val: '10–15 mm', unit: 'Potong Akrilik', desc: 'Tepi Bersih & Halus' },
+        { val: 'CCD Camera', unit: 'Fitur Otomatis', desc: 'Auto Contour Cutting' }
+      ];
+    }
+    if (slug.includes('1490') || name.includes('1490')) {
+      return [
+        { val: '60–150 W', unit: 'Daya Laser', desc: 'CO₂ 10.64 μm' },
+        { val: '140–160 cm', unit: 'Lebar Kerja', desc: 'Area Non-Logam' },
+        { val: '1,000 mm/min', unit: 'Kecepatan', desc: '±10–1000 mm/menit' },
+        { val: 'Akrilik & MDF', unit: 'Material', desc: 'Potong & Ukir Presisi' }
+      ];
+    }
+    if (slug.includes('6090') || name.includes('6090')) {
+      return [
+        { val: '100 W', unit: 'Laser Power', desc: 'CO₂ Sealed Tube' },
+        { val: '90 x 60 cm', unit: 'Cutting Area', desc: 'Area Kerja Ringkas' },
+        { val: '10,000 mm/s', unit: 'Cutting Speed', desc: 'Potong & Ukir Cepat' },
+        { val: '±10 mm', unit: 'Tebal Potong', desc: 'Non-Logam Presisi' }
+      ];
+    }
+    // Default CO2 6040
+    return [
+      { val: '100 W', unit: 'Laser Power', desc: 'CO₂ Sealed Tube' },
+      { val: '60 x 40 cm', unit: 'Cutting Area', desc: 'Ringkas & Akurat' },
+      { val: '10,000 mm/s', unit: 'Cutting Speed', desc: 'Ukir & Potong Detail' },
+      { val: '±10 mm', unit: 'Tebal Potong', desc: 'Akrilik, Kayu & Karet' }
     ];
   }
 
   // 2. INDOOR ECO-SOLVENT
-  if (
-    name.includes('indoor') ||
-    name.includes('ecosolvent') ||
-    name.includes('ecocolvent') ||
-    cat.includes('indoor')
-  ) {
-    let width = '1.8 m';
-    if (name.includes('3202')) width = '3.2 m';
-    else if (name.includes('1902')) width = '1.9 m';
-    else if (name.includes('1802')) width = '1.8 m';
-
-    let head = '2x i3200';
-    if (name.includes('xp600')) head = '2x XP600';
-    else if (name.includes('8 warna') || desc.includes('8 warna')) head = 'Dual i3200 (8W)';
-
-    let speed = '40 m²/h';
-    if (name.includes('1802') || name.includes('xp600')) speed = '30 m²/h';
-    else if (name.includes('3202')) speed = '45 m²/h';
-
+  if (name.includes('indoor') || cat.includes('indoor')) {
+    if (slug.includes('1801') || name.includes('1801')) {
+      return [
+        { val: '1.8 m', unit: 'Lebar Cetak', desc: 'Maks. 1.800 mm' },
+        { val: '1x Head', unit: 'Printhead', desc: 'Eco-Solvent CMYK' },
+        { val: '12 m²/h', unit: 'Kecepatan', desc: 'Mode Produksi 4-Pass' },
+        { val: '1,200 DPI', unit: 'Resolusi', desc: 'Ketajaman Detail' }
+      ];
+    }
+    if (slug.includes('1802') || name.includes('1802')) {
+      return [
+        { val: '1.8 m', unit: 'Lebar Cetak', desc: '±180.2 cm Roll' },
+        { val: '2x XP600', unit: 'Printhead', desc: 'Epson Double Head' },
+        { val: '30 m²/h', unit: 'Kecepatan', desc: 'Output Produksi' },
+        { val: '1,440 DPI', unit: 'Resolusi', desc: 'Eco-Solvent 4 Warna' }
+      ];
+    }
+    if (slug.includes('8-warna') || name.includes('8 warna')) {
+      return [
+        { val: '2.0 m', unit: 'Lebar Cetak', desc: 'Maks. 200 cm' },
+        { val: '2x i3200', unit: 'Printhead', desc: 'Epson Double i3200' },
+        { val: '40 m²/h', unit: 'Kecepatan', desc: '4-Pass Produksi' },
+        { val: '8 Warna', unit: 'Konfigurasi', desc: 'CMYK + Lc Lm Rd Or' }
+      ];
+    }
+    // ORIA Indoor 1902
     return [
-      { val: width, unit: 'Lebar Cetak', desc: 'Roll Fleksibel' },
-      { val: head, unit: 'Printhead', desc: 'Presisi Nozzle' },
-      { val: speed, unit: 'Kecepatan', desc: 'Output Produksi' },
+      { val: '1.9 m', unit: 'Lebar Media', desc: 'Roll Fleksibel' },
+      { val: '2x i3200', unit: 'Printhead', desc: 'Epson i3200 A1/E1' },
+      { val: '40 m²/h', unit: 'Kecepatan', desc: '4-Pass (30 m²/h 6-Pass)' },
       { val: '2,400 DPI', unit: 'Resolusi', desc: 'Gradasi Lembut' }
     ];
   }
 
   // 3. OUTDOOR SOLVENT
   if (name.includes('outdoor') || cat.includes('outdoor')) {
+    if (name.includes('3202')) {
+      return [
+        { val: '3.2 m', unit: 'Lebar Cetak', desc: '±320 cm Wide Roll' },
+        { val: '2x XP600', unit: 'Printhead', desc: 'Epson Double Head' },
+        { val: '30 m²/h', unit: 'Kecepatan', desc: 'Spanduk & Banner' },
+        { val: '1,440 DPI', unit: 'Resolusi', desc: 'Solvent Ink CMYK' }
+      ];
+    }
     return [
       { val: '3.2 m', unit: 'Lebar Cetak', desc: 'Super Wide Roll' },
-      { val: '4x KM512i', unit: 'Printhead', desc: 'Konica Minolta' },
+      { val: '4x KM512i', unit: 'Printhead', desc: 'Konica Minolta 30pl' },
       { val: '125 m²/h', unit: 'Kecepatan', desc: 'Produksi Billboard' },
       { val: '2+ Tahun', unit: 'Daya Tahan', desc: 'Solvent Tahan Cuaca' }
     ];
@@ -130,69 +225,190 @@ export function getProductSpecs(p: FormattedProduct): ProductKeySpec[] {
 
   // 4. SUBLIMASI TEXTILE
   if (name.includes('sublim') || cat.includes('sublim')) {
-    let head = '2x i3200';
-    if (name.includes('1804') || desc.includes('4 head')) head = '4x i3200-A1';
+    if (slug.includes('1801') || name.includes('1801')) {
+      return [
+        { val: '1.8 m', unit: 'Lebar Cetak', desc: 'Maks. 1.800 mm' },
+        { val: '1x Head', unit: 'Printhead', desc: 'Sublimation CMYK' },
+        { val: '12 m²/h', unit: 'Kecepatan', desc: 'Mode 4-Pass' },
+        { val: '1,200 DPI', unit: 'Resolusi', desc: 'Detail Tekstil' }
+      ];
+    }
+    if (slug.includes('1804') || name.includes('1804')) {
+      return [
+        { val: '1.8 m', unit: 'Lebar Cetak', desc: '±180 cm Roll' },
+        { val: '4x i3200', unit: 'Printhead', desc: 'i1600 / i3200 Four Head' },
+        { val: '95 m²/h', unit: 'Kecepatan', desc: '3-Pass (72 m²/h 4-Pass)' },
+        { val: '1,440 DPI', unit: 'Resolusi', desc: 'Produksi Massal' }
+      ];
+    }
+    // ORIA Sublim 1902
     return [
-      { val: '1.9 m', unit: 'Lebar Kain', desc: 'Roll Tekstil' },
-      { val: head, unit: 'Printhead', desc: 'Micro-Piezo Precision' },
-      { val: name.includes('1804') ? '140 m²/h' : '80 m²/h', unit: 'Kecepatan', desc: 'Output Maraton' },
-      { val: '3,200 DPI', unit: 'Resolusi', desc: 'Saturasi Solid' }
+      { val: '1.9 m', unit: 'Lebar Media', desc: 'Roll Tekstil' },
+      { val: '2x i3200', unit: 'Printhead', desc: 'Epson i3200 A1/E1' },
+      { val: '40 m²/h', unit: 'Kecepatan', desc: '4-Pass (30 m²/h 6-Pass)' },
+      { val: '2,400 DPI', unit: 'Resolusi', desc: 'Saturasi Solid' }
     ];
   }
 
-  // 5. DTF APPAREL / DIRECT TO FILM
+  // 5. HEAT PRESS ROLL
+  if (name.includes('heat press') || cat.includes('heat press')) {
+    if (name.includes('1942')) {
+      return [
+        { val: '1.9 m', unit: 'Lebar Kerja', desc: 'Roll to Roll Textile' },
+        { val: '80–120 m/h', unit: 'Kecepatan', desc: 'Produksi Tinggi' },
+        { val: '0–400 °C', unit: 'Rentang Suhu', desc: 'Drum Oil Pemanas' },
+        { val: '42 cm', unit: 'Diameter Drum', desc: 'Transfer Merata' }
+      ];
+    }
+    // ORIA Heat Press 1720
+    return [
+      { val: '1.7 m', unit: 'Lebar Transfer', desc: 'Roll 170 cm' },
+      { val: '50–60 m/h', unit: 'Kecepatan', desc: 'Transfer Kontinu' },
+      { val: '0–250 °C', unit: 'Rentang Suhu', desc: 'Conducting Oil' },
+      { val: '8 kW', unit: 'Daya Pemanas', desc: 'Drum 200 mm' }
+    ];
+  }
+
+  // 6. UV DTF (Check before DTF so UV DTF A3 doesn't fall into textile DTF)
+  if (name.includes('uv dtf') || cat.includes('uv dtf')) {
+    return [
+      { val: '35 x 45 cm', unit: 'Lebar Cetak', desc: 'UV DTF Film' },
+      { val: '3x XP600', unit: 'Printhead', desc: 'Epson Triple Head' },
+      { val: 'CMYK+W+V+G', unit: 'Konfigurasi', desc: 'White + Varnish + Glue' },
+      { val: '720 DPI', unit: 'Resolusi', desc: 'Stiker Kristal Timbul' }
+    ];
+  }
+
+  // 7. DTF APPAREL / DIRECT TO FILM
   if ((name.includes('dtf') || cat.includes('dtf')) && !name.includes('dtg') && !cat.includes('dtg')) {
-    let head = '3x XP600';
-    if (name.includes('6004')) head = '4x i3200';
-
+    if (name.includes('6004')) {
+      return [
+        { val: '60 cm', unit: 'Lebar Film', desc: 'Transfer Roll' },
+        { val: '4x i3200-A1', unit: 'Printhead', desc: 'Hoson Board System' },
+        { val: 'CMYK + W', unit: 'Tinta Pigment', desc: 'Sirkulasi Otomatis' },
+        { val: 'Anti-Crack', unit: 'Daya Rekat', desc: 'Shaker & Dryer' }
+      ];
+    }
+    // ORIA DTF A3
     return [
-      { val: name.includes('6004') ? '60 cm' : 'Format Roll', unit: 'Lebar Film', desc: 'Transfer Roll' },
-      { val: head, unit: 'Printhead', desc: 'CMYK + White' },
-      { val: name.includes('6004') ? '22 m²/h' : 'Presisi Tinggi', unit: 'Kecepatan', desc: 'Shaker & Dryer' },
-      { val: 'Anti-Crack', unit: 'Daya Rekat', desc: 'Lentur Tahan Cuci' }
+      { val: '33 cm', unit: 'Lebar Cetak', desc: 'Format A3 Roll' },
+      { val: '2x Printhead', unit: 'Printhead', desc: 'XP600 / 4720 / i3200' },
+      { val: 'CMYKW', unit: 'Tinta Pigment', desc: 'Auto White Circulation' },
+      { val: 'All Fabric', unit: 'Kompatibilitas', desc: 'Katun & Polyester' }
     ];
   }
 
-  // 5b. DTG GARMENT / DIRECT TO GARMENT
+  // 8. DTG GARMENT / DIRECT TO GARMENT
   if (name.includes('dtg') || cat.includes('dtg')) {
-    let head = 'Industrial Head';
-    if (name.includes('dtg02') || name.includes('or-dtg02')) head = 'Dual i3200';
-
     return [
       { val: '40 x 50 cm', unit: 'Area Cetak', desc: 'Platen Kaos' },
-      { val: head, unit: 'Printhead', desc: 'Pigment Tekstil' },
-      { val: '1,440 DPI', unit: 'Resolusi', desc: 'Gradasi Fotografi' },
-      { val: 'Kaos & Tekstil', unit: 'Media Utama', desc: 'Katun & Kanvas' }
+      { val: '2x i3200HD', unit: 'Printhead', desc: 'Epson Dual Head' },
+      { val: '1.5 Min/Pcs', unit: 'Kecepatan', desc: 'Pigment Tekstil' },
+      { val: '1,440 DPI', unit: 'Resolusi', desc: 'CMYK + ORBG' }
     ];
   }
 
-  // 6. CNC ROUTER & METAL MILLING
+  // 9. SINGLE PASS PACKAGING
+  if (name.includes('one pass') || cat.includes('single pass')) {
+    return [
+      { val: 'Single Pass', unit: 'Teknologi', desc: 'Industrial Print Head' },
+      { val: '10–50 m/min', unit: 'Kecepatan', desc: 'High-Speed Packaging' },
+      { val: 'CMYK', unit: 'Tinta', desc: 'Droplet 3–6 PL' },
+      { val: 'Corrugated', unit: 'Aplikasi', desc: 'Kardus, Box & Paper Bag' }
+    ];
+  }
+
+  // 10. CNC ROUTER, PLASMA & METAL MILLING
   if (name.includes('cnc') || cat.includes('cnc') || name.includes('plasma')) {
-    let spindle = '5.5 kW';
-    if (name.includes('6090')) spindle = '2.2 kW';
-    else if (name.includes('plasma')) spindle = 'Plasma Arc 63A';
-
-    let speed = '24,000 RPM';
-    if (name.includes('plasma')) speed = 'Auto THC Control';
-
+    if (name.includes('6090')) {
+      return [
+        { val: '2.2 kW', unit: 'Spindle Power', desc: 'Water Cooling' },
+        { val: '60 x 90 cm', unit: 'Area Kerja', desc: 'Tinggi Z 15 cm' },
+        { val: '24,000 RPM', unit: 'Max Speed', desc: 'DSP A11 Control' },
+        { val: '0.03 mm', unit: 'Akurasi Posisi', desc: 'Milling Logam Presisi' }
+      ];
+    }
+    if (name.includes('plasma')) {
+      return [
+        { val: '10 mm', unit: 'Tebal Potong', desc: 'Potong Plat Besi' },
+        { val: '130 x 250 cm', unit: 'Working Area', desc: 'Deep Waterbed 20 cm' },
+        { val: '4,000 mm/min', unit: 'Max Feedrate', desc: 'Stepper Nema 34' },
+        { val: '3 Axis', unit: 'Sistem Kontrol', desc: 'Fabrikasi Logam' }
+      ];
+    }
+    // ORIA CNC Router 1325
     return [
-      { val: spindle, unit: 'Spindle Power', desc: name.includes('plasma') ? 'Torch Plasma' : 'HF Spindle' },
-      { val: name.includes('6090') ? '60 x 90 cm' : '130 x 250 cm', unit: 'Working Bed', desc: 'Vakum T-Slot' },
-      { val: speed, unit: 'Max RPM', desc: 'Ukir & Milling' },
-      { val: '±0.02 mm', unit: 'Akurasi', desc: 'Helical Rack Pinion' }
+      { val: '5.5 kW', unit: 'Spindle Power', desc: 'Water Cooling' },
+      { val: '130 x 250 cm', unit: 'Working Area', desc: 'Z-Axis 20 cm' },
+      { val: '24,000 RPM', unit: 'Max Speed', desc: 'Leadshine Stepper' },
+      { val: '#20 Rail', unit: 'Guide System', desc: 'Rack & Pinion' }
     ];
   }
 
-  // 7. UV FLATBED / CYLINDER
+  // 11. UV FLATBED, ROLL TO ROLL & CYLINDER
   if (name.includes('uv') || cat.includes('uv') || name.includes('cylinder')) {
-    let bed = 'A3+ Format';
-    if (name.includes('cylinder') || name.includes('tumbler')) bed = 'Silinder 360°';
-
+    if (slug.includes('cylinder-e3') || name.includes('e3')) {
+      return [
+        { val: '4.5–11.5 cm', unit: 'Diameter', desc: 'Panjang 5–26.5 cm' },
+        { val: '1–3x i1600', unit: 'Printhead', desc: 'Epson 3.8 PL' },
+        { val: '1,200 DPI', unit: 'Resolusi', desc: 'Spiral W + C + V' },
+        { val: '20 Detik/Pcs', unit: 'Kecepatan', desc: 'Auto Pressure Clean' }
+      ];
+    }
+    if (name.includes('mini cylinder') || name.includes('tumbler')) {
+      return [
+        { val: '4.5–11 cm', unit: 'Diameter', desc: 'Panjang 4.5–21 cm' },
+        { val: '1x i3200HD', unit: 'Printhead', desc: 'Epson i3200HD-U1' },
+        { val: '2,880 DPI', unit: 'Akurasi', desc: '720–2.880 dpi' },
+        { val: 'CMYK+W+V', unit: 'Tinta UV', desc: '90 kg Unit Kompak' }
+      ];
+    }
+    if (name.includes('roll to roll') || name.includes('1801')) {
+      return [
+        { val: '1.82 m', unit: 'Lebar Cetak', desc: '72" / 1.820 mm' },
+        { val: '1–2x i1600', unit: 'Printhead', desc: 'Epson i1600 U1' },
+        { val: '10–20 m²/h', unit: 'Kecepatan', desc: '6-Pass Produksi' },
+        { val: '1–5 mm', unit: 'Tebal Media', desc: '2×CMYK / CMYK+W' }
+      ];
+    }
+    if (name.includes('6090')) {
+      return [
+        { val: '60 x 90 cm', unit: 'Area Cetak', desc: 'Vacuum Table' },
+        { val: '3–4x Head', unit: 'Printhead', desc: 'Epson i1600 / i3200' },
+        { val: '10 m²/h', unit: 'Kecepatan', desc: 'Production Mode' },
+        { val: '30 cm', unit: 'Tinggi Media', desc: '1–300 mm Adjustable' }
+      ];
+    }
+    if (name.includes('6040')) {
+      return [
+        { val: '60 x 40 cm', unit: 'Format Kerja', desc: 'Automatic Altimetry' },
+        { val: 'Epson DX7', unit: 'Printhead', desc: 'Presisi Datar' },
+        { val: '8 Warna', unit: 'Tinta UV', desc: 'KCMY+LcLm+W+V' },
+        { val: '1,144 DPI', unit: 'Resolusi', desc: '1.2 m²/h (4-Pass)' }
+      ];
+    }
+    if (name.includes('3060')) {
+      return [
+        { val: '30 x 60 cm', unit: 'Area Cetak', desc: 'Flatbed Kompak' },
+        { val: '1x DX7', unit: 'Printhead', desc: 'Hoson Board' },
+        { val: '18 cm', unit: 'Tinggi Media', desc: 'Maks. 180 mm' },
+        { val: 'CMYK+W+V', unit: 'Konfigurasi', desc: 'LED UV Curing' }
+      ];
+    }
+    if (slug.includes('full-color') || name.includes('fullcolor')) {
+      return [
+        { val: 'A3 Format', unit: 'Area Cetak', desc: 'Bahan Keras & Lembut' },
+        { val: '1x XP600', unit: 'Printhead', desc: 'Epson Precision' },
+        { val: '2,880 DPI', unit: 'Akurasi', desc: '1.200 / 2.880 dpi' },
+        { val: 'CMYK + W', unit: '5 Warna', desc: '1–2.5 m²/jam' }
+      ];
+    }
+    // ORIA UV Flatbed A3 (Dual XP600)
     return [
-      { val: bed, unit: 'Format Meja', desc: name.includes('cylinder') ? 'Silinder 360°' : 'Flat & Sheet' },
-      { val: 'LED UV', unit: 'Sistem Kering', desc: 'Water-Cooled' },
-      { val: 'CMYK+W+V', unit: 'Tinta UV', desc: 'Tekstur Emboss 3D' },
-      { val: '15 cm', unit: 'Tebal Media', desc: 'Auto Height' }
+      { val: 'A3 Format', unit: 'Area Cetak', desc: 'Flatbed Media Datar' },
+      { val: '2x XP600', unit: 'Printhead', desc: 'Epson Dual Head' },
+      { val: '5,760 DPI', unit: 'Resolusi Maks.', desc: '5760 × 1440 dpi' },
+      { val: '6 Warna', unit: 'Tinta UV', desc: 'CMYK + Lc + Lm + W' }
     ];
   }
 
