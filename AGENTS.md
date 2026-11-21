@@ -16,4 +16,6 @@
 ## Server & Deployment Rules
 - **BUILD WAJIB DI LOKAL**: JANGAN PERNAH menjalankan build di server produksi! Server memiliki batasan RAM. Build selalu dilakukan di mesin lokal (`pnpm run build`), dan folder `build/` WAJIB di-commit & di-push ke Git.
 - **SERVER INSTALL**: Di server produksi, SELALU gunakan `pnpm install --prod` (atau `pnpm i -P`) untuk menginstal dependensi produksi saja tanpa devDependencies berat, agar sangat ringan dan hemat RAM.
-- **SERVER RESTART**: Setelah `git pull origin main`, cukup restart Phusion Passenger dengan `mkdir -p tmp && touch tmp/restart.txt`.
+- **SERVER RESTART**: Setelah `git fetch origin main && git reset --hard origin/main`, cukup restart Phusion Passenger dengan `mkdir -p tmp && touch tmp/restart.txt`.
+- **OUTPUT PERINTAH SERVER**: Setiap kali selesai melakukan `git push`, SELALU sertakan perintah siap-copy (lengkap dengan `cd ~/domains/oria.co.id/public_html` dan `git fetch`) untuk update & restart di server produksi:
+  `cd ~/domains/oria.co.id/public_html && git fetch origin main && git reset --hard origin/main && mkdir -p tmp && touch tmp/restart.txt` (tambahkan `&& pnpm i -P` jika `package.json` berubah).
