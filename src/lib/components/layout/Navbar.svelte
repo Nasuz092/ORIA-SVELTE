@@ -624,9 +624,9 @@
 
 <!-- SLIDE-IN DRAWER DARI KANAN KE KIRI (Warna Kuning #334c54, teks dan ikon hitam solid) -->
 <aside
-  class="fixed top-0 right-0 h-full z-50 w-[75vw] sm:w-[65vw] md:w-[65vw] lg:w-[48vw] xl:w-[40vw] bg-[#334c54] text-white flex flex-col justify-between transform transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-2xl border-l border-black/15 p-6 sm:p-10 lg:p-12 {drawerOpen ? 'translate-x-0' : 'translate-x-full'}"
+  class="fixed top-0 right-0 h-full z-50 w-[75vw] sm:w-[65vw] md:w-[65vw] lg:w-[48vw] xl:w-[40vw] bg-[#334c54] text-white flex flex-col justify-between transform transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-2xl border-l border-black/15 p-6 sm:p-10 lg:p-12 {drawerOpen ? 'translate-x-0 visible' : 'translate-x-full invisible'}"
   aria-label="Menu Navigasi Utama"
-  aria-hidden={!drawerOpen}
+  inert={!drawerOpen}
 >
   <!-- Drawer Top: Brand Logo oria-logo-hd.png (Hitam) & Close Button (Hitam) -->
   <div class="flex items-center justify-between pb-5 border-b border-white/15 flex-shrink-0">

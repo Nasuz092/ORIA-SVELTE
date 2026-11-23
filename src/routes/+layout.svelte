@@ -7,6 +7,7 @@
   import FloatingWhatsApp from '$lib/components/layout/FloatingWhatsApp.svelte';
   import PageTransition from '$lib/components/layout/PageTransition.svelte';
   import { ScrollArea } from '$lib/components/ui/scroll-area';
+  import { trackWaClick } from '$lib/track-wa';
 
   let { children } = $props();
   let viewportEl = $state<HTMLElement | null>(null);
@@ -32,6 +33,13 @@
 
   onMount(() => {
     try {
+      if (typeof sessionStorage !== 'undefined' && !sessionStorage.getItem('initial_landing_page')) {
+        sessionStorage.setItem(
+          'initial_landing_page',
+          window.location.pathname + window.location.search
+        );
+      }
+
       const urlParams = new URLSearchParams(window.location.search);
       const isAds =
         urlParams.has('gclid') ||
@@ -47,6 +55,21 @@
         localStorage.setItem('traffic_source', 'Google Ads (CPC)');
         const gclid = urlParams.get('gclid') || urlParams.get('gbraid') || urlParams.get('wbraid');
         if (gclid) localStorage.setItem('ads_gclid', gclid);
+      } else if (!localStorage.getItem('traffic_source')) {
+        if (window.document.referrer) {
+          if (window.document.referrer.includes('google.')) {
+            localStorage.setItem('traffic_source', 'Google Organic');
+          } else if (
+            window.document.referrer.includes('facebook.') ||
+            window.document.referrer.includes('instagram.')
+          ) {
+            localStorage.setItem('traffic_source', 'Social Media');
+          } else if (!window.document.referrer.includes(window.location.host)) {
+            localStorage.setItem('traffic_source', window.document.referrer);
+          }
+        } else {
+          localStorage.setItem('traffic_source', 'Direct');
+        }
       }
     } catch (_) {}
 
@@ -141,6 +164,8 @@
             transport: 'beacon'
           });
         }
+
+        trackWaClick({ href: modifiedHref, targetEl: target });
       }
 
       if (href.startsWith('tel:')) {

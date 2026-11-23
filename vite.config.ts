@@ -42,7 +42,7 @@ export default defineConfig({
 				target: env.STRAPI_URL || 'http://127.0.0.1:1338',
 				changeOrigin: true,
 				bypass: (req) => {
-					if (req.url?.startsWith('/api/img')) {
+					if (req.url?.startsWith('/api/img') || req.url?.startsWith('/api/save-lead')) {
 						return req.url;
 					}
 				}
@@ -52,7 +52,8 @@ export default defineConfig({
 	define: {
 		'process.env.STRAPI_URL': JSON.stringify(env.STRAPI_URL || 'http://127.0.0.1:1338'),
 		'process.env.SITE_URL': JSON.stringify(env.SITE_URL || 'https://oria.co.id'),
-		'process.env.WA_NUMBER': JSON.stringify(env.WA_NUMBER || '6281252086455')
+		'process.env.WA_NUMBER': JSON.stringify(env.WA_NUMBER || '6281252086455'),
+		'process.env.GOOGLE_SCRIPT_URL': JSON.stringify(env.GOOGLE_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbxT03DlO5Sn4J-JANkWDQ_r-4kexRBYF53failxtZ8d9nIOQm-12mKvpr05RPqVa55nyw/exec')
 	},
 	test: {
 		expect: { requireAssertions: true },
