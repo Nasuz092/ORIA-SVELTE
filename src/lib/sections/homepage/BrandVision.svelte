@@ -107,7 +107,7 @@
       <!-- Right Column: 4 Core Value Cards -->
       <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
         {#each values as item}
-          <div class="bg-white/[0.06] hover:bg-white/[0.1] backdrop-blur-md rounded-xl p-5 sm:p-6 transition-all duration-300 flex items-start gap-4">
+          <div class="bg-white/10 hover:bg-white/15 backdrop-blur-md rounded-xl p-5 sm:p-6 transition-all duration-300 flex items-start gap-4">
             <div class="w-12 h-12 shrink-0 rounded-lg bg-white/10 backdrop-blur-sm p-2 flex items-center justify-center">
               <img
                 src={item.icon}
