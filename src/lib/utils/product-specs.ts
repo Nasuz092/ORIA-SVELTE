@@ -207,10 +207,10 @@ export function getProductSpecs(p: FormattedProduct): ProductKeySpec[] {
 
   // 3. OUTDOOR SOLVENT
   if (name.includes('outdoor') || cat.includes('outdoor')) {
-    if (name.includes('3202')) {
+    if (slug.includes('3202') || name.includes('3202')) {
       return [
         { val: '3.2 m', unit: 'Lebar Cetak', desc: '±320 cm Wide Roll' },
-        { val: '2x XP600', unit: 'Printhead', desc: 'Epson Double Head' },
+        { val: '2 pcs', unit: 'Printhead', desc: 'ORIA Series' },
         { val: '30 m²/h', unit: 'Kecepatan', desc: 'Spanduk & Banner' },
         { val: '1,440 DPI', unit: 'Resolusi', desc: 'Solvent Ink CMYK' }
       ];
