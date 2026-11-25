@@ -22,12 +22,14 @@
     return digits ? parseInt(digits, 10) : 0;
   });
 
+  const ogImage = $derived(product.cardImageUrl || product.imageUrl);
+
   const productRichSchema = $derived({
     '@context': 'https://schema.org',
     '@type': 'Product',
     '@id': `https://oria.co.id/produk/${kategori}/${product.slug}#richSnippet`,
     name: product.name,
-    image: product.imageUrl?.startsWith('http') ? product.imageUrl : `https://oria.co.id${product.imageUrl}`,
+    image: ogImage?.startsWith('http') ? ogImage : `https://oria.co.id${ogImage}`,
     sku: product.sku || `ORIA-${product.id}`,
     mpn: product.sku || `ORIA-${product.id}`,
     description: product.shortDescription || `Spesifikasi lengkap, harga resmi, dan fitur ${product.name} merk ORIA.`,
@@ -79,11 +81,11 @@
 </script>
 
 <SEO
-  title="Jual {product.name} Resmi ORIA | Harga &amp; Spesifikasi Lengkap"
+  title="Jual {product.name} | Harga &amp; Spesifikasi Lengkap"
   description={product.shortDescription || `Spesifikasi lengkap, harga resmi, dan fitur canggih ${product.name} merk ORIA bergaransi resmi di Indonesia.`}
   keywords="jual {product.name.toLowerCase()}, harga {product.name.toLowerCase()}, spesifikasi {product.name.toLowerCase()}, mesin {product.categoryName.toLowerCase()}, oria indonesia"
   canonical="/produk/{kategori}/{product.slug}"
-  image={product.imageUrl}
+  image={ogImage}
   type="product"
   breadcrumbs={[
     { name: 'Beranda', url: '/' },
