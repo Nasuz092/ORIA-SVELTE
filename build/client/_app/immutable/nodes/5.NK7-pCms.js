@@ -1,1 +1,0 @@
-import{ct as e,lt as t}from"../chunks/Bzd34SZx.js";import"../chunks/xihTtKlq.js";import{t as n}from"../chunks/DofgpL-U.js";function r(r,i){t(i,!0),n(r,{get article(){return i.data.article},get relatedArticles(){return i.data.relatedArticles}}),e()}export{r as component};

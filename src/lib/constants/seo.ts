@@ -1,8 +1,8 @@
 export const SITE_URL = (process.env.SITE_URL || 'https://oria.co.id').replace(/\/$/, '');
 
 export const DEFAULT_SEO = {
-  siteName: 'ORIA Printing',
-  title: 'ORIA Printing — Mesin Digital Printing Industrial Presisi & Solusi Cetak Modern',
+  siteName: 'ORIA Printing Indonesia',
+  title: 'ORIA Printing Indonesia — Mesin Digital Printing Industrial Presisi & Solusi Cetak Modern',
   description:
     'Pusat mesin digital printing terpercaya di Indonesia. Solusi terdepan mesin digital printing UV flatbed, DTF apparel, sublimasi tekstil, outdoor & indoor bergaransi resmi.',
   keywords:
@@ -16,8 +16,8 @@ export const COMPANY_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   '@id': `${SITE_URL}/#Organization`,
-  name: 'ORIA Printing',
-  alternateName: 'ORIA Indonesia',
+  name: 'ORIA Printing Indonesia',
+  alternateName: ['ORIA Printing', 'ORIA Indonesia'],
   url: SITE_URL,
   email: 'info@oria.co.id',
   telephone: '+6281252086455',
@@ -34,7 +34,7 @@ export const COMPANY_SCHEMA = {
     '@id': `${SITE_URL}/#logo`,
     url: `${SITE_URL}/images/oria-logo-hd.png`,
     contentUrl: `${SITE_URL}/images/oria-logo-hd.png`,
-    caption: 'ORIA Printing',
+    caption: 'ORIA Printing Indonesia',
     inLanguage: 'id-ID'
   },
   image: {
@@ -88,12 +88,13 @@ export const WEBSITE_SCHEMA = {
   '@type': 'WebSite',
   '@id': `${SITE_URL}/#website`,
   url: SITE_URL,
-  name: 'ORIA Printing',
+  name: 'ORIA Printing Indonesia',
+  alternateName: ['ORIA Printing', 'oria.co.id'],
   description: DEFAULT_SEO.description,
   publisher: {
     '@type': 'Organization',
     '@id': `${SITE_URL}/#Organization`,
-    name: 'ORIA Printing',
+    name: 'ORIA Printing Indonesia',
     url: SITE_URL
   },
   potentialAction: [

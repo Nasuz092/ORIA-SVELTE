@@ -11,7 +11,17 @@ function tokenize(text: string): string[] {
     .filter(Boolean);
 }
 
-const GENERIC_TOKENS = new Set(['mesin', 'printing', 'digital', 'flatbed', 'oria', 'sublim', 'sublimasi']);
+const GENERIC_TOKENS = new Set([
+  'mesin',
+  'printing',
+  'digital',
+  'flatbed',
+  'oria',
+  'sublim',
+  'sublimasi',
+  'indoor',
+  'outdoor'
+]);
 
 function findBestRedirectTarget(requestedSlug: string, requestedKategori: string, products: FormattedProduct[]): FormattedProduct | null {
   const reqTokens = tokenize(requestedSlug);
@@ -43,6 +53,8 @@ function findBestRedirectTarget(requestedSlug: string, requestedKategori: string
 
     let score = matchedSpecific * 10 - missingFromTarget * 12 - extraOnTarget * 4;
     if (getProductCategoryId(p) === requestedKategori) score += 2;
+    if (pSet.has('indoor') && reqSet.has('indoor')) score += 2;
+    if (pSet.has('outdoor') && reqSet.has('outdoor')) score += 2;
     if (pSet.has('uv') === reqSet.has('uv')) score += 2;
     if (pSet.has('dtf') === reqSet.has('dtf')) score += 2;
 
