@@ -117,7 +117,9 @@ export function transformProduct(p: StrapiProduct): FormattedProduct {
     whatsappMessage: p.whatsapp_message || `Halo ORIA, saya ingin konsultasi mengenai unit: ${p.name}`,
     specificationsHtml: p.specifications || '',
     brochureUrl: p.brochure_url || null,
-    youtubeUrl: p.youtube_url || null
+    youtubeUrl: p.youtube_url || null,
+    seoTitle: p.seo_title?.trim() || '',
+    seoDescription: p.seo_description?.trim() || ''
   };
 }
 

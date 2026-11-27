@@ -68,4 +68,6 @@ export interface FormattedProduct {
   specificationsHtml?: string;
   brochureUrl?: string | null;
   youtubeUrl?: string | null;
+  seoTitle?: string;
+  seoDescription?: string;
 }
