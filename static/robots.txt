@@ -1,8 +1,9 @@
 # robots.txt for https://oria.co.id
 User-agent: *
-Disallow: /api/
+Allow: /
+Allow: /api/img
+Disallow: /api/save-lead
 Disallow: /health
-Disallow: /_app/
 
 # AI & LLM Search Engine Crawlers (AIO, GEO & Live AI Search Optimization)
 User-agent: GPTBot
