@@ -12,7 +12,7 @@
       title: 'Outdoor Printing',
       defaultTagline: 'ORIA OUTDOOR 3204 ST',
       defaultDesc: 'Mesin cetak spanduk flexi, baliho, dan billboard heavy-duty tahan cuaca ekstrem.',
-      defaultHref: '/produk/outdoor/oria-outdoor-3204-st',
+      defaultHref: '/produk/outdoor/mesin-printing-outdoor-oria-3204-st',
       image: '/images/categories/outdoor.webp',
       imgClass: 'max-h-[160px] sm:max-h-[200px] md:max-h-[235px] lg:max-h-[255px] max-w-[98%]',
       ctaText: 'JELAJAHI'
@@ -22,7 +22,7 @@
       title: 'UV Printing',
       defaultTagline: 'ORIA UV FLATBED A3',
       defaultDesc: 'Presisi cetak tinggi untuk media datar akrilik, kayu, kaca, dan merchandise.',
-      defaultHref: '/produk/uv/oria-uv-flatbed-a3',
+      defaultHref: '/produk/uv/mesin-uv-printing-oria-a3',
       image: '/images/categories/uv.webp',
       imgClass: 'max-h-[175px] sm:max-h-[220px] md:max-h-[255px] lg:max-h-[275px] max-w-[85%]',
       ctaText: 'JELAJAHI'
@@ -32,7 +32,7 @@
       title: 'Sublimasi Textile',
       defaultTagline: 'ORIA SUBLIM 1902',
       defaultDesc: 'Inovasi cetak tekstil berkecepatan tinggi untuk apparel, jersey, dan fashion.',
-      defaultHref: '/produk/sublimasi/oria-sublim-1902',
+      defaultHref: '/produk/sublimasi/mesin-sublimasi-oria-1902',
       image: '/images/categories/sublimasi.webp',
       imgClass: 'max-h-[170px] sm:max-h-[215px] md:max-h-[250px] lg:max-h-[270px] max-w-[95%]',
       ctaText: 'JELAJAHI'
@@ -42,7 +42,7 @@
       title: 'Laser Cutting',
       defaultTagline: 'ORIA LASER CUTTING 6040',
       defaultDesc: 'Potong dan grafir akrilik, kayu, MDF, dan souvenir dengan presisi tabung CO2 stabil.',
-      defaultHref: '/produk/laser/oria-laser-cutting-6040',
+      defaultHref: '/produk/laser/mesin-laser-cutting-oria-6040',
       image: '/images/categories/laser.webp',
       imgClass: 'max-h-[170px] sm:max-h-[215px] md:max-h-[250px] lg:max-h-[270px] max-w-[85%]',
       ctaText: 'JELAJAHI'
@@ -52,7 +52,7 @@
       title: 'DTF Printing',
       defaultTagline: 'ORIA DTF 6004',
       defaultDesc: 'Solusi transfer film otomatis untuk custom apparel dan sablon kaos massal.',
-      defaultHref: '/produk/dtf/oria-dtf-6004',
+      defaultHref: '/produk/dtf/mesin-dtf-printing-oria-6004',
       image: '/images/categories/dtf.webp',
       imgClass: 'max-h-[175px] sm:max-h-[220px] md:max-h-[255px] lg:max-h-[275px] max-w-[85%]',
       ctaText: 'JELAJAHI'
@@ -62,7 +62,7 @@
       title: 'DTG Garment',
       defaultTagline: 'ORIA DTG OR-DTG02',
       defaultDesc: 'Cetak langsung ke kaos katun dan garmen tanpa transfer paper dengan tinta pigment tekstil.',
-      defaultHref: '/produk/dtg/oria-dtg-or-dtg02',
+      defaultHref: '/produk/dtg/mesin-dtg-printing-oria-or-dtg02',
       image: '/images/categories/dtg.webp',
       imgClass: 'max-h-[175px] sm:max-h-[220px] md:max-h-[255px] lg:max-h-[275px] max-w-[85%]',
       ctaText: 'JELAJAHI'
@@ -72,7 +72,7 @@
       title: 'Indoor Printing',
       defaultTagline: 'ORIA INDOOR 1902',
       defaultDesc: 'Hasil cetak foto, poster, sticker, dan POSM display beresolusi tajam hingga lebar 3,2 meter.',
-      defaultHref: '/produk/indoor/oria-indoor-1902',
+      defaultHref: '/produk/indoor/mesin-printing-indoor-oria-1902',
       image: '/images/categories/indoor.webp',
       imgClass: 'max-h-[170px] sm:max-h-[215px] md:max-h-[250px] lg:max-h-[270px] max-w-[95%]',
       ctaText: 'JELAJAHI'
@@ -82,7 +82,7 @@
       title: 'CNC Router',
       defaultTagline: 'ORIA CNC 6090',
       defaultDesc: 'Fabrikasi presisi logam, akrilik, reklame huruf timbul, dan panel dengan area kerja 60x90cm.',
-      defaultHref: '/produk/cnc/oria-cnc-metal-6090',
+      defaultHref: '/produk/cnc/mesin-cnc-metal-oria-6090',
       image: '/images/categories/cnc.webp',
       imgClass: 'max-h-[175px] sm:max-h-[220px] md:max-h-[255px] lg:max-h-[275px] max-w-[75%]',
       ctaText: 'JELAJAHI'

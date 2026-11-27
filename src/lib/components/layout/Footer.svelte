@@ -218,42 +218,42 @@
         </h4>
         <ul class="space-y-2.5 font-sans text-sm sm:text-[15px] text-white/90">
           <li>
-            <a href="/produk/uv/oria-uv-flatbed-a3" class="hover:text-neutral-300 transition-colors">
+            <a href="/produk/uv/mesin-uv-printing-oria-a3" class="hover:text-neutral-300 transition-colors">
               ORIA UV Flatbed A3
             </a>
           </li>
           <li>
-            <a href="/produk/sublimasi/oria-sublim-1902" class="hover:text-neutral-300 transition-colors">
+            <a href="/produk/sublimasi/mesin-sublimasi-oria-1902" class="hover:text-neutral-300 transition-colors">
               ORIA Sublimasi 1902
             </a>
           </li>
           <li>
-            <a href="/produk/laser/oria-laser-cutting-6040" class="hover:text-neutral-300 transition-colors">
+            <a href="/produk/laser/mesin-laser-cutting-oria-6040" class="hover:text-neutral-300 transition-colors">
               ORIA Laser Cutting 6040
             </a>
           </li>
           <li>
-            <a href="/produk/dtf/oria-dtf-6004" class="hover:text-neutral-300 transition-colors">
+            <a href="/produk/dtf/mesin-dtf-printing-oria-6004" class="hover:text-neutral-300 transition-colors">
               ORIA DTF 6004 Industrial
             </a>
           </li>
           <li>
-            <a href="/produk/dtg/oria-dtg-or-dtg02" class="hover:text-neutral-300 transition-colors">
+            <a href="/produk/dtg/mesin-dtg-printing-oria-or-dtg02" class="hover:text-neutral-300 transition-colors">
               ORIA DTG OR-DTG02
             </a>
           </li>
           <li>
-            <a href="/produk/outdoor/oria-outdoor-3204-st" class="hover:text-neutral-300 transition-colors">
+            <a href="/produk/outdoor/mesin-printing-outdoor-oria-3204-st" class="hover:text-neutral-300 transition-colors">
               ORIA Outdoor 3204
             </a>
           </li>
           <li>
-            <a href="/produk/outdoor/oria-outdoor-3202" class="hover:text-neutral-300 transition-colors">
+            <a href="/produk/outdoor/mesin-digital-printing-outdoor-oria-3202" class="hover:text-neutral-300 transition-colors">
               ORIA Outdoor 3202
             </a>
           </li>
           <li>
-            <a href="/produk/cnc/oria-cnc-router-1325" class="hover:text-neutral-300 transition-colors">
+            <a href="/produk/cnc/mesin-cnc-router-oria-1325" class="hover:text-neutral-300 transition-colors">
               ORIA CNC Router 1325
             </a>
           </li>
