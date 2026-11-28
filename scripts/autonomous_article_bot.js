@@ -406,20 +406,27 @@ let stickyWorkingEndpoint = null;
 
 async function callGeminiAPI(body, defaultModel = GEMINI_MODEL) {
   const candidateModels = [
-    ...new Set([defaultModel, 'gemini-4-hydrogen', 'gemini-3.8-flash', 'gemini-3.6-flash', 'gemini-2.5-flash'].filter(Boolean))
+    ...new Set([
+      defaultModel,
+      'gemini-4-hydrogen',
+      'gemini-4-carbon',
+      'gemini-4-neon',
+      'gemini-4-argon',
+      'gemini-3.8-flash',
+      'gemini-3.6-flash'
+    ].filter(Boolean))
   ];
 
-  const buildEndpoints = (model) => [
-    `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`,
-    `https://aiplatform.googleapis.com/v1/publishers/google/models/${model}:generateContent?key=${GEMINI_API_KEY}`
-  ];
-
+  // Try generativelanguage.googleapis.com across all allowed models first, then aiplatform fallback
   const attemptsList = [];
   if (stickyWorkingEndpoint) attemptsList.push(stickyWorkingEndpoint);
   for (const model of candidateModels) {
-    for (const url of buildEndpoints(model)) {
-      if (!attemptsList.some((item) => item.url === url)) attemptsList.push({ model, url });
-    }
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
+    if (!attemptsList.some((item) => item.url === url)) attemptsList.push({ model, url });
+  }
+  for (const model of candidateModels) {
+    const url = `https://aiplatform.googleapis.com/v1/publishers/google/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
+    if (!attemptsList.some((item) => item.url === url)) attemptsList.push({ model, url });
   }
 
   let lastRes = null;
@@ -427,30 +434,46 @@ async function callGeminiAPI(body, defaultModel = GEMINI_MODEL) {
 
   for (let i = 0; i < attemptsList.length; i++) {
     const { model, url } = attemptsList[i];
-    try {
-      const res = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-        signal: AbortSignal.timeout(180000)
-      });
-      lastRes = res;
-      lastModel = model;
+    const maxRetries = model === defaultModel ? 2 : 1;
 
-      if (res.ok) {
-        stickyWorkingEndpoint = { model, url };
+    for (let retry = 1; retry <= maxRetries; retry++) {
+      try {
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+          signal: AbortSignal.timeout(180000)
+        });
+        lastRes = res;
+        lastModel = model;
+
+        if (res.ok) {
+          stickyWorkingEndpoint = { model, url };
+          return { res, model };
+        }
+
+        if ((res.status === 503 || res.status === 429) && retry < maxRetries) {
+          logMessage(`⚠️ Model ${model} sibuk (${res.status}). Retry ${retry}/${maxRetries - 1} dalam 5 detik...`);
+          await new Promise((r) => setTimeout(r, 5000));
+          continue;
+        }
+
+        if ([400, 401, 403, 404, 429, 500, 503].includes(res.status) && attemptsList[i + 1]) {
+          logMessage(`⚠️ Model ${model} status ${res.status}. Mencoba cadangan (${attemptsList[i + 1].model})...`);
+          await new Promise((r) => setTimeout(r, 1500));
+          break;
+        }
         return { res, model };
+      } catch (err) {
+        if (retry < maxRetries) {
+          logMessage(`⚠️ Request ${model} gagal (${err.message}). Retry dalam 5 detik...`);
+          await new Promise((r) => setTimeout(r, 5000));
+          continue;
+        }
+        if (!attemptsList[i + 1]) throw err;
+        logMessage(`⚠️ Request ${model} gagal (${err.message}). Mengalihkan ke ${attemptsList[i + 1].model}...`);
+        break;
       }
-
-      if ([400, 401, 403, 404, 429, 500, 503].includes(res.status) && attemptsList[i + 1]) {
-        logMessage(`⚠️ Model ${model} status ${res.status}. Mencoba cadangan (${attemptsList[i + 1].model})...`);
-        await new Promise((r) => setTimeout(r, 1500));
-        continue;
-      }
-      return { res, model };
-    } catch (err) {
-      if (!attemptsList[i + 1]) throw err;
-      logMessage(`⚠️ Request ${model} gagal (${err.message}). Mengalihkan ke ${attemptsList[i + 1].model}...`);
     }
   }
   return { res: lastRes, model: lastModel };
@@ -756,7 +779,7 @@ async function injectDraftToStrapi(articleData, existingArticles = []) {
       title: safeTrunc(articleData.title, 250),
       slug: articleData.slug.substring(0, 200).replace(/-+$/, ''),
       excerpt: safeTrunc(articleData.excerpt, 250),
-      author: 'Tim Teknis ORIA',
+      author: 'Tim Editorial ORIA',
       category,
       tags: safeTrunc(articleData.tags || 'mesin digital printing, oria, percetakan industri', 250, true),
       reading_time: articleData.reading_time,
