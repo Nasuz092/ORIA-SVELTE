@@ -103,7 +103,7 @@ async function getExistingArticles() {
   const fetchByStatus = async (statusParam) => {
     try {
       for (let page = 1; page <= 2; page++) {
-        const url = `${STRAPI_URL}/api/articles?${statusParam}&fields[0]=title&fields[1]=slug&fields[2]=category&fields[3]=createdAt&fields[4]=updatedAt&pagination[page]=${page}&pagination[pageSize]=100&sort=updatedAt:desc`;
+        const url = `${STRAPI_URL}/api/articles?${statusParam}&fields[0]=title&fields[1]=slug&fields[2]=category&fields[3]=createdAt&fields[4]=updatedAt&fields[5]=content&pagination[page]=${page}&pagination[pageSize]=100&sort=updatedAt:desc`;
         const res = await fetch(url, {
           headers: {
             ...(STRAPI_TOKEN ? { Authorization: `Bearer ${STRAPI_TOKEN}` } : {})
@@ -118,13 +118,16 @@ async function getExistingArticles() {
             const slugKey = (attrs.slug || '').toLowerCase().trim();
             const titleKey = (attrs.title || '').toLowerCase().trim();
             const key = `${slugKey}|${titleKey}`;
+            const contentLower = (attrs.content || '').toLowerCase();
             if (!articlesMap.has(key)) {
               articlesMap.set(key, {
                 title: attrs.title || '',
                 slug: attrs.slug || '',
                 category: attrs.category || '',
                 createdAt: attrs.createdAt || '',
-                updatedAt: attrs.updatedAt || ''
+                updatedAt: attrs.updatedAt || '',
+                hasBacklinkMp: contentLower.includes('mesinprinting.id'),
+                hasBacklinkMpj: contentLower.includes('mesinprintingjersey.id')
               });
             }
           }
@@ -224,6 +227,8 @@ function getWeeklyArticleStats(existingArticles) {
   const articlesLast7Days = existingArticles.filter((a) => new Date(a.createdAt || a.updatedAt || 0) >= sevenDaysAgo);
   const thisWeekArticles = existingArticles.filter((a) => new Date(a.createdAt || a.updatedAt || 0) >= startOfWeek);
   const productArticlesLast7Days = articlesLast7Days.filter((a) => a.category === 'Product');
+  const hasBacklinkMpThisWeek = thisWeekArticles.some((a) => a.hasBacklinkMp);
+  const hasBacklinkMpjThisWeek = thisWeekArticles.some((a) => a.hasBacklinkMpj);
 
   const sortedRecent = [...existingArticles]
     .filter((a) => a.createdAt || a.updatedAt)
@@ -242,12 +247,29 @@ function getWeeklyArticleStats(existingArticles) {
   return {
     totalLast7Days: articlesLast7Days.length,
     thisWeekCount: thisWeekArticles.length,
+    hasBacklinkMpThisWeek,
+    hasBacklinkMpjThisWeek,
     productCountLast7Days: productArticlesLast7Days.length,
     troubleshootingCountInRecent3,
     lastMachineCategory: recentCategories[0] || '',
     lastPillarCategory: sortedRecent[0]?.category || '',
     recentTitles: recent3.map((a) => a.title)
   };
+}
+
+// Decide which dofollow backlinks to include (at least 1x/week to mesinprinting.id & 1x/week to mesinprintingjersey.id)
+function getBacklinkTargetsForRun(weeklyStats, dayIndex, topicTitle = '') {
+  const needMp = !weeklyStats.hasBacklinkMpThisWeek;
+  const needMpj = !weeklyStats.hasBacklinkMpjThisWeek;
+
+  if (!needMp && !needMpj) return { includeMp: false, includeMpj: false };
+  if (needMp && !needMpj) return { includeMp: true, includeMpj: false };
+  if (!needMp && needMpj) return { includeMp: false, includeMpj: true };
+
+  // Both still needed this week: on Friday (5) include both to guarantee weekly target; otherwise rotate cleanly
+  if (dayIndex === 5) return { includeMp: true, includeMpj: true };
+  const isTextileTopic = /sublim|jersey|dtf|dtg|tekstil|kaos|heat press/i.test(topicTitle);
+  return isTextileTopic ? { includeMp: false, includeMpj: true } : { includeMp: true, includeMpj: false };
 }
 
 const COMPETITOR_BRANDS = [
@@ -559,7 +581,13 @@ Keluarkan HANYA JSON valid:
   throw new Error(`Tidak ditemukan topik bebas duplikat setelah ${MAX_ATTEMPTS} percobaan.`);
 }
 
-function buildSystemPrompt(catalog, existingArticles, focusProduct = null, seoBrief = null) {
+function buildSystemPrompt(
+  catalog,
+  existingArticles,
+  focusProduct = null,
+  seoBrief = null,
+  backlinkTargets = { includeMp: false, includeMpj: false }
+) {
   const eligibleCatalog = catalog.filter(isProductEligibleForArticle);
   const catalogContext =
     eligibleCatalog.length > 0
@@ -592,8 +620,24 @@ FOKUS PRODUK ORIA:
 `
     : '';
 
+  const backlinkRules = [];
+  if (backlinkTargets.includeMp) {
+    backlinkRules.push(
+      `- Sertakan 1 tautan external DOFOLLOW yang natural ke https://mesinprinting.id:\n  <a href="https://mesinprinting.id" target="_blank" rel="dofollow">mesin digital printing</a> (atau variasi anchor relevan seperti "distributor mesin digital printing").`
+    );
+  }
+  if (backlinkTargets.includeMpj) {
+    backlinkRules.push(
+      `- Sertakan 1 tautan external DOFOLLOW yang natural ke https://mesinprintingjersey.id:\n  <a href="https://mesinprintingjersey.id" target="_blank" rel="dofollow">mesin printing jersey</a> (atau variasi anchor relevan seperti "mesin sublimasi jersey").`
+    );
+  }
+  const backlinkSection =
+    backlinkRules.length > 0
+      ? `\nATURAN BACKLINK DOFOLLOW EKOSISTEM (WAJIB MINGGUAN):\n${backlinkRules.join('\n')}\n- Sisipkan secara alami di dalam paragraf isi artikel.`
+      : `\nATURAN BACKLINK:\n- Kuota backlink mingguan ke mesinprinting.id dan mesinprintingjersey.id sudah terpenuhi minggu ini; fokus pada internal link oria.co.id.`;
+
   return `Anda adalah Senior Technical Writer & Praktisi Digital Printing Industri (10+ tahun pengalaman lapangan) untuk ORIA Printing Indonesia (oria.co.id).
-${seoBriefSection}${productSpotlightSection}
+${seoBriefSection}${productSpotlightSection}${backlinkSection}
 STANDAR WAJIB GOOGLE E-E-A-T + RINGKAS PADAT:
 1. **PANJANG KONTEN PROPORSIONAL (600–850 KATA SAJA)**: Singkat, padat, langsung ke inti pembahasan, tanpa basa-basi bertele-tele. Setiap paragraf maksimal 2–4 kalimat.
 2. **JUDUL TANPA TITIK DUA (":")**: \`title\` dan \`seo_title\` WAJIB maksimal 50–60 karakter (6–9 kata), berupa kalimat natural utuh, dan DILARANG KERAS mengandung tanda titik dua (":"), "|", atau "—".
@@ -608,10 +652,10 @@ ${catalogContext}
 7. **LARANGAN MUTLAK**: Dilarang menyebut merek kompetitor, dilarang memakai kata "calender" (gunakan "mesin heat press roll"), dan dilarang memakai HTML entity pada metadata JSON.`;
 }
 
-async function generateArticle(topicData, catalog, existingArticles) {
+async function generateArticle(topicData, catalog, existingArticles, backlinkTargets = { includeMp: false, includeMpj: false }) {
   if (!GEMINI_API_KEY) throw new Error('GEMINI_API_KEY_BOT_GENERATE / GEMINI_API_KEY belum disetel di .env!');
 
-  const systemPrompt = buildSystemPrompt(catalog, existingArticles, topicData.focusProduct, topicData.seoBrief);
+  const systemPrompt = buildSystemPrompt(catalog, existingArticles, topicData.focusProduct, topicData.seoBrief, backlinkTargets);
   const userPrompt = `Tulis artikel SEO & E-E-A-T ringkas padat (600–850 kata) untuk ORIA Printing Indonesia:
 - Judul: "${topicData.title}"
 - Kategori: "${topicData.category}"
@@ -663,6 +707,27 @@ Keluarkan hasil dalam JSON valid sesuai schema.`;
   parsed.reading_time = String(parsed.reading_time || '4').replace(/[^0-9]/g, '') || '4';
   parsed.slug = cleanPlainText(parsed.slug).toLowerCase().replace(/&+/g, 'dan').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
   if (parsed.content) parsed.content = parsed.content.replace(/\bcalender\b/gi, 'roll');
+
+  // Ensure scheduled dofollow backlinks are present in HTML content
+  if (backlinkTargets.includeMp && parsed.content && !parsed.content.includes('mesinprinting.id')) {
+    parsed.content = parsed.content.replace(
+      /(mesin digital printing)/i,
+      '<a href="https://mesinprinting.id" target="_blank" rel="dofollow">$1</a>'
+    );
+    if (!parsed.content.includes('mesinprinting.id')) {
+      parsed.content += `<p>Untuk referensi kebutuhan lini produksi komersial yang lebih luas, Anda dapat meninjau pilihan <a href="https://mesinprinting.id" target="_blank" rel="dofollow">mesin digital printing</a> bergaransi resmi di Indonesia.</p>`;
+    }
+  }
+  if (backlinkTargets.includeMpj && parsed.content && !parsed.content.includes('mesinprintingjersey.id')) {
+    parsed.content = parsed.content.replace(
+      /(mesin printing jersey|mesin sublimasi)/i,
+      '<a href="https://mesinprintingjersey.id" target="_blank" rel="dofollow">$1</a>'
+    );
+    if (!parsed.content.includes('mesinprintingjersey.id')) {
+      parsed.content += `<p>Untuk lini produksi khusus konveksi olahraga dan tekstil, Anda juga dapat mempelajari solusi <a href="https://mesinprintingjersey.id" target="_blank" rel="dofollow">mesin printing jersey</a> siap pakai untuk skala UMKM hingga pabrik.</p>`;
+    }
+  }
+
   if (topicData.focusProduct || topicData.category === 'Product') parsed.category = 'Product';
 
   logMessage(`✅ Gemini (${usedModel}) selesai membuat artikel: "${parsed.title}"`);
@@ -780,19 +845,28 @@ async function main() {
         ? { title: customTopic, category: forcedPillar || 'Insight', focusProduct: null, seoBrief: null }
         : await discoverAutonomousTopic(existingArticles, catalog, forcedPillar);
 
-      const article = await generateArticle(topicToProcess, catalog, existingArticles);
+      const currentStats = getWeeklyArticleStats(existingArticles);
+      const backlinkTargets = getBacklinkTargetsForRun(currentStats, dayInfo.dayIndex, topicToProcess.title);
+      logMessage(
+        `🔗 Backlink mingguan — mesinprinting.id: ${currentStats.hasBacklinkMpThisWeek ? 'SUDAH' : backlinkTargets.includeMp ? 'SISIPKAN' : 'TUNDA'} | mesinprintingjersey.id: ${currentStats.hasBacklinkMpjThisWeek ? 'SUDAH' : backlinkTargets.includeMpj ? 'SISIPKAN' : 'TUNDA'}`
+      );
+
+      const article = await generateArticle(topicToProcess, catalog, existingArticles, backlinkTargets);
       if (dryRun) {
         logMessage(`✅ [DRY-RUN] Judul: ${article.title} | Slug: ${article.slug} | Kategori: ${article.category}`);
       } else {
         await injectDraftToStrapi(article, existingArticles);
       }
 
+      const contentLower = (article.content || '').toLowerCase();
       existingArticles.push({
         title: article.title,
         slug: article.slug,
         category: article.category,
         createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString()
+        updatedAt: new Date().toISOString(),
+        hasBacklinkMp: contentLower.includes('mesinprinting.id'),
+        hasBacklinkMpj: contentLower.includes('mesinprintingjersey.id')
       });
     } catch (e) {
       logMessage(`❌ Error: ${e.message}`);
